@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@playwright/test": "^1.29.1",
+    "concurrently": "^7.6.0"
+  },
+  "scripts": {
+    "init": "npm ci && cd frontend && npm ci && cd ../action-server && npm ci",
+    "dev": "docker compose up",
+    "dev:mac": "concurrently --names \"frontend,action-server,rasa\" -c \"auto\" \"cd frontend && npm run dev\" \"cd action-server && npm run dev\" \"cd rasa && rasa run --enable-api --cors \"*\"\"",
+    "e2e": "docker-compose up -d && npx playwright test"
+  },
+  "volta": {
+    "node": "18.12.1"
+  }
+}

@@ -1,0 +1,39 @@
+version: "3.0"
+
+services:
+  rasa:
+    container_name: rasa-bot
+    networks: ["rasa-network"]
+    ports:
+      - "5005:5005"
+    build:
+      context: ./rasa
+    command: >
+      run --enable-api --cors "*"
+
+  action-server:
+    container_name: action-server
+    networks: ["rasa-network"]
+    ports:
+      - "8080:8080"
+    build:
+      context: ./action-server
+    volumes:
+      - ./action-server:/usr/local/apps/quatsch/action-server
+      - /usr/local/apps/quatsch/action-server/node_modules
+
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - rasa-network
+
+networks: { rasa-network: {} }

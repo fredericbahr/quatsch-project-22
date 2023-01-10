@@ -1,0 +1,108 @@
+image: node:18-alpine
+
+stages:
+  - build
+  - lint
+  - test
+  - deploy
+
+frontend_build:
+  stage: build
+  script:
+    - cd frontend
+    - npm run init
+    - npm run build
+  artifacts:
+    paths:
+      - frontend/.next
+    expire_in: 5 day
+
+action_server_build:
+  stage: build
+  script:
+    - cd action-server
+    - npm run init
+    - npm run build
+  artifacts:
+    paths:
+      - action-server/dist
+    expire_in: 5 day
+
+rasa_build:
+  stage: build
+  image:
+    name: rasa/rasa:3.4.0
+    entrypoint: [""]
+  script:
+    - cd rasa
+    - rasa train
+  artifacts:
+    paths:
+      - rasa/models
+    expire_in: 5 day
+
+frontend_lint:
+  stage: lint
+  script:
+    - cd frontend
+    - npm run init
+    - npm run lint
+    - npm run prettier
+  needs:
+    job: frontend_build
+    artifacts: true
+
+action_server_lint:
+  stage: lint
+  script:
+    - cd action-server
+    - npm run init
+    - npm run lint
+    - npm run prettier
+  needs:
+    job: action_server_build
+
+rasa_lint:
+  stage: lint
+  image:
+    name: rasa/rasa:3.4.0
+    entrypoint: [""]
+  script:
+    - cd rasa
+    - rasa data validate
+
+action_server_test:
+  stage: test
+  script:
+    - cd action-server
+    - npm run init
+    - npm run test
+  artifacts:
+    paths:
+      - action-server/coverage
+    expire_in: 5 day
+
+rasa_test:
+  stage: test
+  image:
+    name: rasa/rasa:3.4.0
+    entrypoint: [""]
+  script:
+    - cd rasa
+    - rasa test
+
+frontend_test:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.29.1-focal
+  before_script:
+    - apt update && apt install -y curl &&  curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh && curl -fsSL "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
+  script:
+    - npm run init
+    - npm run e2e
+  rules:
+    - when: never
+  artifacts:
+    paths:
+      - e2e-test-report
+      - e2e-test-out
+    expire_in: 5 day
