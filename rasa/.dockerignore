@@ -1,0 +1,6 @@
+tests/*
+models/*
+actions/*
+venv
+**/*.md
+.rasa/cache
