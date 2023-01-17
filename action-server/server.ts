@@ -2,6 +2,9 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import baseRouter from "./src/routes/baseRouter";
+import { topicRouter } from "./src/resources/topic/router";
+import { stationRouter } from "./src/resources/station/router";
+import { measurandAirRouter } from "./src/resources/measurand/air/router";
 
 dotenv.config();
 
@@ -13,6 +16,9 @@ server.use(express.urlencoded({ extended: false }));
 server.use(cors());
 
 server.use(baseRouter);
+server.use("/api/measurand/air", measurandAirRouter);
+server.use("/api/station", stationRouter);
+server.use("/api/topic", topicRouter);
 
 server.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
