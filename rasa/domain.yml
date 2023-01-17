@@ -3,36 +3,37 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
-  - custom_action
+  - context_air_measurand
+
+entities:
+  - measurand
+  - station
+
+slots:
+  measurand:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: measurand
+  station:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: station
 
 actions:
-  - action_custom_action
-  - action_hello_world
+  - action_context_air_measurand
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+    - text: "Hey! Wie kann ich dir helfen?"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Auf Wiedersehen"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "Ich bin ein Bot, angetrieben von Rasa."
 
 session_config:
   session_expiration_time: 60

@@ -19,7 +19,7 @@ Nothing needs to be done here
 
 ## Start
 
-Run `docker-compose up` to start the chatbot, the action-server and the frontend.
+Run `docker compose up` to start the chatbot, the action-server and the frontend.
 
 ## Rasa Chatbot Example
 
