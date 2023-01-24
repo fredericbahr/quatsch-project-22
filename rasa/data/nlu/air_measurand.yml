@@ -1,45 +1,7 @@
 version: "3.1"
 
 nlu:
-  - intent: greet
-    examples: |
-      - hey
-      - hallo
-      - hi
-      - Guten Morgen
-      - Guten Abend
-      - Moin
-      - Los geht's
-      - Hey Kumpel
-      - Guten Tag
-
-  - intent: goodbye
-    examples: |
-      - cu
-      - CU
-      - Bye
-      - Lebewohl
-      - Gute Nacht
-      - Tschüss
-      - Auf Wiedersehen
-      - Einen schönen Tag noch
-      - Man sieht sich
-      - Wir sehen uns später
-
-  - intent: bot_challenge
-    examples: |
-      - Sind Sie ein Bot?
-      - Sind Sie ein Mensch?
-      - Spreche ich mit einem Bot?
-      - Spreche ich mit einem Menschen?
-
-  ## Fallback intent
-  - intent: quanary_default_processing
-    examples: |
-      - Ja, versuche die Anfrage über Quanary zu erkennen
-
   ## Creation of context
-
   - intent: context_air_measurand
     examples: |
       - Wie ist der [Luftqualitätsindex](measurand) in [Aalen](station)?

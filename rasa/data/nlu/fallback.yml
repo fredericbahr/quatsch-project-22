@@ -1,0 +1,7 @@
+version: "3.1"
+
+nlu:
+  ## Fallback intent
+  - intent: quanary_default_processing
+    examples: |
+      - Ja, versuche die Anfrage über Quanary zu erkennen
