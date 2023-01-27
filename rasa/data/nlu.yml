@@ -1,406 +1,413 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hallo
-    - hi
-    - Guten Morgen
-    - Guten Abend
-    - Moin
-    - Los geht's
-    - Hey Kumpel
-    - Guten Tag
+  - intent: greet
+    examples: |
+      - hey
+      - hallo
+      - hi
+      - Guten Morgen
+      - Guten Abend
+      - Moin
+      - Los geht's
+      - Hey Kumpel
+      - Guten Tag
 
-- intent: goodbye
-  examples: |
-    - cu
-    - Lebewohl
-    - Gute Nacht
-    - Tschüss
-    - Auf Wiedersehen
-    - Einen schönen Tag noch
-    - Man sieht sich
-    - Wir sehen uns später
+  - intent: goodbye
+    examples: |
+      - cu
+      - CU
+      - Bye
+      - Lebewohl
+      - Gute Nacht
+      - Tschüss
+      - Auf Wiedersehen
+      - Einen schönen Tag noch
+      - Man sieht sich
+      - Wir sehen uns später
 
-- intent: bot_challenge
-  examples: |
-    - Sind Sie ein Bot?
-    - Sind Sie ein Mensch?
-    - Spreche ich mit einem Bot?
-    - Spreche ich mit einem Menschen?
+  - intent: bot_challenge
+    examples: |
+      - Sind Sie ein Bot?
+      - Sind Sie ein Mensch?
+      - Spreche ich mit einem Bot?
+      - Spreche ich mit einem Menschen?
 
-## Creation of context
+  ## Fallback intent
+  - intent: quanary_default_processing
+    examples: |
+      - Ja, versuche die Anfrage über Quanary zu erkennen
 
-- intent: context_air_measurand
-  examples: |
-    - Wie ist der [Luftqualitätsindex](measurand) in [Aalen](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Aalen](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Aalen](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Aalen](station)?
-    - Wie ist der [luqx](measurand) in [Aalen](station)?
-    - Wie ist der [no2](measurand) in [Aalen](station)?
-    - Wie ist der [o3](measurand) in [Aalen](station)?
-    - Wie ist der [pm10](measurand) in [Aalen](station)?
-    - Wie ist der [pm25k](measurand) in [Aalen](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Baden-Baden](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Baden-Baden](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Baden-Baden](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Baden-Baden](station)?
-    - Wie ist der [luqx](measurand) in [Baden-Baden](station)?
-    - Wie ist der [no2](measurand) in [Baden-Baden](station)?
-    - Wie ist der [o3](measurand) in [Baden-Baden](station)?
-    - Wie ist der [pm10](measurand) in [Baden-Baden](station)?
-    - Wie ist der [pm25k](measurand) in [Baden-Baden](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Bernhausen](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Bernhausen](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Bernhausen](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Bernhausen](station)?
-    - Wie ist der [luqx](measurand) in [Bernhausen](station)?
-    - Wie ist der [no2](measurand) in [Bernhausen](station)?
-    - Wie ist der [o3](measurand) in [Bernhausen](station)?
-    - Wie ist der [pm10](measurand) in [Bernhausen](station)?
-    - Wie ist der [pm25k](measurand) in [Bernhausen](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Biberach](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Biberach](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Biberach](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Biberach](station)?
-    - Wie ist der [luqx](measurand) in [Biberach](station)?
-    - Wie ist der [no2](measurand) in [Biberach](station)?
-    - Wie ist der [o3](measurand) in [Biberach](station)?
-    - Wie ist der [pm10](measurand) in [Biberach](station)?
-    - Wie ist der [pm25k](measurand) in [Biberach](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Eggenstein](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Eggenstein](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Eggenstein](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Eggenstein](station)?
-    - Wie ist der [luqx](measurand) in [Eggenstein](station)?
-    - Wie ist der [no2](measurand) in [Eggenstein](station)?
-    - Wie ist der [o3](measurand) in [Eggenstein](station)?
-    - Wie ist der [pm10](measurand) in [Eggenstein](station)?
-    - Wie ist der [pm25k](measurand) in [Eggenstein](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Freiburg](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Freiburg](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Freiburg](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Freiburg](station)?
-    - Wie ist der [luqx](measurand) in [Freiburg](station)?
-    - Wie ist der [no2](measurand) in [Freiburg](station)?
-    - Wie ist der [o3](measurand) in [Freiburg](station)?
-    - Wie ist der [pm10](measurand) in [Freiburg](station)?
-    - Wie ist der [pm25k](measurand) in [Freiburg](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der [luqx](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der [no2](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der [o3](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der [pm10](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der [pm25k](measurand) in [Freiburg Schwarzwaldstraße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Friedrichshafen](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Friedrichshafen](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Friedrichshafen](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Friedrichshafen](station)?
-    - Wie ist der [luqx](measurand) in [Friedrichshafen](station)?
-    - Wie ist der [no2](measurand) in [Friedrichshafen](station)?
-    - Wie ist der [o3](measurand) in [Friedrichshafen](station)?
-    - Wie ist der [pm10](measurand) in [Friedrichshafen](station)?
-    - Wie ist der [pm25k](measurand) in [Friedrichshafen](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Gärtringen](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Gärtringen](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Gärtringen](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Gärtringen](station)?
-    - Wie ist der [luqx](measurand) in [Gärtringen](station)?
-    - Wie ist der [no2](measurand) in [Gärtringen](station)?
-    - Wie ist der [o3](measurand) in [Gärtringen](station)?
-    - Wie ist der [pm10](measurand) in [Gärtringen](station)?
-    - Wie ist der [pm25k](measurand) in [Gärtringen](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Heidelberg](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Heidelberg](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Heidelberg](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Heidelberg](station)?
-    - Wie ist der [luqx](measurand) in [Heidelberg](station)?
-    - Wie ist der [no2](measurand) in [Heidelberg](station)?
-    - Wie ist der [o3](measurand) in [Heidelberg](station)?
-    - Wie ist der [pm10](measurand) in [Heidelberg](station)?
-    - Wie ist der [pm25k](measurand) in [Heidelberg](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Heilbronn](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Heilbronn](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Heilbronn](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Heilbronn](station)?
-    - Wie ist der [luqx](measurand) in [Heilbronn](station)?
-    - Wie ist der [no2](measurand) in [Heilbronn](station)?
-    - Wie ist der [o3](measurand) in [Heilbronn](station)?
-    - Wie ist der [pm10](measurand) in [Heilbronn](station)?
-    - Wie ist der [pm25k](measurand) in [Heilbronn](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der [luqx](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der [no2](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der [o3](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der [pm10](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der [pm25k](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der [luqx](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der [no2](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der [o3](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der [pm10](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der [pm25k](measurand) in [Karlsruhe-Nordwest](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der [luqx](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der [no2](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der [o3](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der [pm10](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der [pm25k](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Kehl](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Kehl](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Kehl](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Kehl](station)?
-    - Wie ist der [luqx](measurand) in [Kehl](station)?
-    - Wie ist der [no2](measurand) in [Kehl](station)?
-    - Wie ist der [o3](measurand) in [Kehl](station)?
-    - Wie ist der [pm10](measurand) in [Kehl](station)?
-    - Wie ist der [pm25k](measurand) in [Kehl](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Konstanz](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Konstanz](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Konstanz](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Konstanz](station)?
-    - Wie ist der [luqx](measurand) in [Konstanz](station)?
-    - Wie ist der [no2](measurand) in [Konstanz](station)?
-    - Wie ist der [o3](measurand) in [Konstanz](station)?
-    - Wie ist der [pm10](measurand) in [Konstanz](station)?
-    - Wie ist der [pm25k](measurand) in [Konstanz](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der [luqx](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der [no2](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der [o3](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der [pm10](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der [pm25k](measurand) in [Leonberg Grabenstraße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Ludwigsburg](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Ludwigsburg](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Ludwigsburg](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Ludwigsburg](station)?
-    - Wie ist der [luqx](measurand) in [Ludwigsburg](station)?
-    - Wie ist der [no2](measurand) in [Ludwigsburg](station)?
-    - Wie ist der [o3](measurand) in [Ludwigsburg](station)?
-    - Wie ist der [pm10](measurand) in [Ludwigsburg](station)?
-    - Wie ist der [pm25k](measurand) in [Ludwigsburg](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der [luqx](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der [no2](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der [o3](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der [pm10](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der [pm25k](measurand) in [Ludwigsburg Schlossstraße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der [luqx](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der [no2](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der [o3](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der [pm10](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der [pm25k](measurand) in [Mannheim Friedrichsring](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der [luqx](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der [no2](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der [o3](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der [pm10](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der [pm25k](measurand) in [Mannheim-Nord](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Neuenburg](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Neuenburg](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Neuenburg](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Neuenburg](station)?
-    - Wie ist der [luqx](measurand) in [Neuenburg](station)?
-    - Wie ist der [no2](measurand) in [Neuenburg](station)?
-    - Wie ist der [o3](measurand) in [Neuenburg](station)?
-    - Wie ist der [pm10](measurand) in [Neuenburg](station)?
-    - Wie ist der [pm25k](measurand) in [Neuenburg](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der [luqx](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der [no2](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der [o3](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der [pm10](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der [pm25k](measurand) in [Pfinztal Karlsruher Straße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Pforzheim](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Pforzheim](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Pforzheim](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Pforzheim](station)?
-    - Wie ist der [luqx](measurand) in [Pforzheim](station)?
-    - Wie ist der [no2](measurand) in [Pforzheim](station)?
-    - Wie ist der [o3](measurand) in [Pforzheim](station)?
-    - Wie ist der [pm10](measurand) in [Pforzheim](station)?
-    - Wie ist der [pm25k](measurand) in [Pforzheim](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Reutlingen](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Reutlingen](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Reutlingen](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Reutlingen](station)?
-    - Wie ist der [luqx](measurand) in [Reutlingen](station)?
-    - Wie ist der [no2](measurand) in [Reutlingen](station)?
-    - Wie ist der [o3](measurand) in [Reutlingen](station)?
-    - Wie ist der [pm10](measurand) in [Reutlingen](station)?
-    - Wie ist der [pm25k](measurand) in [Reutlingen](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der [luqx](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der [no2](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der [o3](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der [pm10](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der [pm25k](measurand) in [Reutlingen Lederstraße-Ost](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der [luqx](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der [no2](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der [o3](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der [pm10](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der [pm25k](measurand) in [Schramberg Oberndorfer Straße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der [luqx](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der [no2](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der [o3](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der [pm10](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der [pm25k](measurand) in [Schwäbische Alb](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der [luqx](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der [no2](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der [o3](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der [pm10](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der [pm25k](measurand) in [Schwarzwald-Süd](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der [luqx](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der [no2](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der [o3](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der [pm10](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der [pm25k](measurand) in [Stuttgart Am Neckartor](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der [luqx](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der [no2](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der [o3](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der [pm10](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der [pm25k](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der [luqx](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der [no2](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der [o3](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der [pm10](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der [pm25k](measurand) in [Stuttgart-Bad Cannstatt](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der [luqx](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der [no2](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der [o3](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der [pm10](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der [pm25k](measurand) in [Stuttgart Hauptstätter Straße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der [luqx](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der [no2](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der [o3](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der [pm10](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der [pm25k](measurand) in [Stuttgart Hohenheimer Straße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der [luqx](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der [no2](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der [o3](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der [pm10](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der [pm25k](measurand) in [Tauberbischofsheim](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Tübingen](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Tübingen](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Tübingen](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Tübingen](station)?
-    - Wie ist der [luqx](measurand) in [Tübingen](station)?
-    - Wie ist der [no2](measurand) in [Tübingen](station)?
-    - Wie ist der [o3](measurand) in [Tübingen](station)?
-    - Wie ist der [pm10](measurand) in [Tübingen](station)?
-    - Wie ist der [pm25k](measurand) in [Tübingen](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der [luqx](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der [no2](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der [o3](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der [pm10](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der [pm25k](measurand) in [Tübingen Mühlstraße](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Ulm](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Ulm](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Ulm](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Ulm](station)?
-    - Wie ist der [luqx](measurand) in [Ulm](station)?
-    - Wie ist der [no2](measurand) in [Ulm](station)?
-    - Wie ist der [o3](measurand) in [Ulm](station)?
-    - Wie ist der [pm10](measurand) in [Ulm](station)?
-    - Wie ist der [pm25k](measurand) in [Ulm](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der [luqx](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der [no2](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der [o3](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der [pm10](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der [pm25k](measurand) in [Villingen-Schwenningen](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Weil am Rhein](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Weil am Rhein](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Weil am Rhein](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Weil am Rhein](station)?
-    - Wie ist der [luqx](measurand) in [Weil am Rhein](station)?
-    - Wie ist der [no2](measurand) in [Weil am Rhein](station)?
-    - Wie ist der [o3](measurand) in [Weil am Rhein](station)?
-    - Wie ist der [pm10](measurand) in [Weil am Rhein](station)?
-    - Wie ist der [pm25k](measurand) in [Weil am Rhein](station)?
-    - Wie ist der [Luftqualitätsindex](measurand) in [Wiesloch](station)?
-    - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Wiesloch](station)?
-    - Wie ist der Wert des [Ozons](measurand) in [Wiesloch](station)?
-    - Wie ist der Wert des [Feinstaubs](measurand) in [Wiesloch](station)?
-    - Wie ist der [luqx](measurand) in [Wiesloch](station)?
-    - Wie ist der [no2](measurand) in [Wiesloch](station)?
-    - Wie ist der [o3](measurand) in [Wiesloch](station)?
-    - Wie ist der [pm10](measurand) in [Wiesloch](station)?
-    - Wie ist der [pm25k](measurand) in [Wiesloch](station)?
+  ## Creation of context
+
+  - intent: context_air_measurand
+    examples: |
+      - Wie ist der [Luftqualitätsindex](measurand) in [Aalen](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Aalen](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Aalen](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Aalen](station)?
+      - Wie ist der [luqx](measurand) in [Aalen](station)?
+      - Wie ist der [no2](measurand) in [Aalen](station)?
+      - Wie ist der [o3](measurand) in [Aalen](station)?
+      - Wie ist der [pm10](measurand) in [Aalen](station)?
+      - Wie ist der [pm25k](measurand) in [Aalen](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Baden-Baden](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Baden-Baden](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Baden-Baden](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Baden-Baden](station)?
+      - Wie ist der [luqx](measurand) in [Baden-Baden](station)?
+      - Wie ist der [no2](measurand) in [Baden-Baden](station)?
+      - Wie ist der [o3](measurand) in [Baden-Baden](station)?
+      - Wie ist der [pm10](measurand) in [Baden-Baden](station)?
+      - Wie ist der [pm25k](measurand) in [Baden-Baden](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Bernhausen](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Bernhausen](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Bernhausen](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Bernhausen](station)?
+      - Wie ist der [luqx](measurand) in [Bernhausen](station)?
+      - Wie ist der [no2](measurand) in [Bernhausen](station)?
+      - Wie ist der [o3](measurand) in [Bernhausen](station)?
+      - Wie ist der [pm10](measurand) in [Bernhausen](station)?
+      - Wie ist der [pm25k](measurand) in [Bernhausen](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Biberach](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Biberach](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Biberach](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Biberach](station)?
+      - Wie ist der [luqx](measurand) in [Biberach](station)?
+      - Wie ist der [no2](measurand) in [Biberach](station)?
+      - Wie ist der [o3](measurand) in [Biberach](station)?
+      - Wie ist der [pm10](measurand) in [Biberach](station)?
+      - Wie ist der [pm25k](measurand) in [Biberach](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Eggenstein](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Eggenstein](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Eggenstein](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Eggenstein](station)?
+      - Wie ist der [luqx](measurand) in [Eggenstein](station)?
+      - Wie ist der [no2](measurand) in [Eggenstein](station)?
+      - Wie ist der [o3](measurand) in [Eggenstein](station)?
+      - Wie ist der [pm10](measurand) in [Eggenstein](station)?
+      - Wie ist der [pm25k](measurand) in [Eggenstein](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Freiburg](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Freiburg](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Freiburg](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Freiburg](station)?
+      - Wie ist der [luqx](measurand) in [Freiburg](station)?
+      - Wie ist der [no2](measurand) in [Freiburg](station)?
+      - Wie ist der [o3](measurand) in [Freiburg](station)?
+      - Wie ist der [pm10](measurand) in [Freiburg](station)?
+      - Wie ist der [pm25k](measurand) in [Freiburg](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der [luqx](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der [no2](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der [o3](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der [pm10](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der [pm25k](measurand) in [Freiburg Schwarzwaldstraße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Friedrichshafen](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Friedrichshafen](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Friedrichshafen](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Friedrichshafen](station)?
+      - Wie ist der [luqx](measurand) in [Friedrichshafen](station)?
+      - Wie ist der [no2](measurand) in [Friedrichshafen](station)?
+      - Wie ist der [o3](measurand) in [Friedrichshafen](station)?
+      - Wie ist der [pm10](measurand) in [Friedrichshafen](station)?
+      - Wie ist der [pm25k](measurand) in [Friedrichshafen](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Gärtringen](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Gärtringen](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Gärtringen](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Gärtringen](station)?
+      - Wie ist der [luqx](measurand) in [Gärtringen](station)?
+      - Wie ist der [no2](measurand) in [Gärtringen](station)?
+      - Wie ist der [o3](measurand) in [Gärtringen](station)?
+      - Wie ist der [pm10](measurand) in [Gärtringen](station)?
+      - Wie ist der [pm25k](measurand) in [Gärtringen](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Heidelberg](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Heidelberg](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Heidelberg](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Heidelberg](station)?
+      - Wie ist der [luqx](measurand) in [Heidelberg](station)?
+      - Wie ist der [no2](measurand) in [Heidelberg](station)?
+      - Wie ist der [o3](measurand) in [Heidelberg](station)?
+      - Wie ist der [pm10](measurand) in [Heidelberg](station)?
+      - Wie ist der [pm25k](measurand) in [Heidelberg](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Heilbronn](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Heilbronn](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Heilbronn](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Heilbronn](station)?
+      - Wie ist der [luqx](measurand) in [Heilbronn](station)?
+      - Wie ist der [no2](measurand) in [Heilbronn](station)?
+      - Wie ist der [o3](measurand) in [Heilbronn](station)?
+      - Wie ist der [pm10](measurand) in [Heilbronn](station)?
+      - Wie ist der [pm25k](measurand) in [Heilbronn](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der [luqx](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der [no2](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der [o3](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der [pm10](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der [pm25k](measurand) in [Heilbronn Weinsberger Straße-Ost](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der [luqx](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der [no2](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der [o3](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der [pm10](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der [pm25k](measurand) in [Karlsruhe-Nordwest](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der [luqx](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der [no2](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der [o3](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der [pm10](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der [pm25k](measurand) in [Karlsruhe Reinhold-Frank-Straße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Kehl](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Kehl](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Kehl](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Kehl](station)?
+      - Wie ist der [luqx](measurand) in [Kehl](station)?
+      - Wie ist der [no2](measurand) in [Kehl](station)?
+      - Wie ist der [o3](measurand) in [Kehl](station)?
+      - Wie ist der [pm10](measurand) in [Kehl](station)?
+      - Wie ist der [pm25k](measurand) in [Kehl](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Konstanz](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Konstanz](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Konstanz](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Konstanz](station)?
+      - Wie ist der [luqx](measurand) in [Konstanz](station)?
+      - Wie ist der [no2](measurand) in [Konstanz](station)?
+      - Wie ist der [o3](measurand) in [Konstanz](station)?
+      - Wie ist der [pm10](measurand) in [Konstanz](station)?
+      - Wie ist der [pm25k](measurand) in [Konstanz](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der [luqx](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der [no2](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der [o3](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der [pm10](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der [pm25k](measurand) in [Leonberg Grabenstraße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Ludwigsburg](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Ludwigsburg](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Ludwigsburg](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Ludwigsburg](station)?
+      - Wie ist der [luqx](measurand) in [Ludwigsburg](station)?
+      - Wie ist der [no2](measurand) in [Ludwigsburg](station)?
+      - Wie ist der [o3](measurand) in [Ludwigsburg](station)?
+      - Wie ist der [pm10](measurand) in [Ludwigsburg](station)?
+      - Wie ist der [pm25k](measurand) in [Ludwigsburg](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der [luqx](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der [no2](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der [o3](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der [pm10](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der [pm25k](measurand) in [Ludwigsburg Schlossstraße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der [luqx](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der [no2](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der [o3](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der [pm10](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der [pm25k](measurand) in [Mannheim Friedrichsring](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der [luqx](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der [no2](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der [o3](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der [pm10](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der [pm25k](measurand) in [Mannheim-Nord](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Neuenburg](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Neuenburg](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Neuenburg](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Neuenburg](station)?
+      - Wie ist der [luqx](measurand) in [Neuenburg](station)?
+      - Wie ist der [no2](measurand) in [Neuenburg](station)?
+      - Wie ist der [o3](measurand) in [Neuenburg](station)?
+      - Wie ist der [pm10](measurand) in [Neuenburg](station)?
+      - Wie ist der [pm25k](measurand) in [Neuenburg](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der [luqx](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der [no2](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der [o3](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der [pm10](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der [pm25k](measurand) in [Pfinztal Karlsruher Straße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Pforzheim](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Pforzheim](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Pforzheim](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Pforzheim](station)?
+      - Wie ist der [luqx](measurand) in [Pforzheim](station)?
+      - Wie ist der [no2](measurand) in [Pforzheim](station)?
+      - Wie ist der [o3](measurand) in [Pforzheim](station)?
+      - Wie ist der [pm10](measurand) in [Pforzheim](station)?
+      - Wie ist der [pm25k](measurand) in [Pforzheim](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Reutlingen](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Reutlingen](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Reutlingen](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Reutlingen](station)?
+      - Wie ist der [luqx](measurand) in [Reutlingen](station)?
+      - Wie ist der [no2](measurand) in [Reutlingen](station)?
+      - Wie ist der [o3](measurand) in [Reutlingen](station)?
+      - Wie ist der [pm10](measurand) in [Reutlingen](station)?
+      - Wie ist der [pm25k](measurand) in [Reutlingen](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der [luqx](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der [no2](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der [o3](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der [pm10](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der [pm25k](measurand) in [Reutlingen Lederstraße-Ost](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der [luqx](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der [no2](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der [o3](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der [pm10](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der [pm25k](measurand) in [Schramberg Oberndorfer Straße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der [luqx](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der [no2](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der [o3](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der [pm10](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der [pm25k](measurand) in [Schwäbische Alb](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der [luqx](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der [no2](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der [o3](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der [pm10](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der [pm25k](measurand) in [Schwarzwald-Süd](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der [luqx](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der [no2](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der [o3](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der [pm10](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der [pm25k](measurand) in [Stuttgart Am Neckartor](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der [luqx](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der [no2](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der [o3](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der [pm10](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der [pm25k](measurand) in [Stuttgart Arnulf-Klett-Platz](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der [luqx](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der [no2](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der [o3](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der [pm10](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der [pm25k](measurand) in [Stuttgart-Bad Cannstatt](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der [luqx](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der [no2](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der [o3](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der [pm10](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der [pm25k](measurand) in [Stuttgart Hauptstätter Straße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der [luqx](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der [no2](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der [o3](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der [pm10](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der [pm25k](measurand) in [Stuttgart Hohenheimer Straße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der [luqx](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der [no2](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der [o3](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der [pm10](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der [pm25k](measurand) in [Tauberbischofsheim](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Tübingen](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Tübingen](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Tübingen](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Tübingen](station)?
+      - Wie ist der [luqx](measurand) in [Tübingen](station)?
+      - Wie ist der [no2](measurand) in [Tübingen](station)?
+      - Wie ist der [o3](measurand) in [Tübingen](station)?
+      - Wie ist der [pm10](measurand) in [Tübingen](station)?
+      - Wie ist der [pm25k](measurand) in [Tübingen](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der [luqx](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der [no2](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der [o3](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der [pm10](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der [pm25k](measurand) in [Tübingen Mühlstraße](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Ulm](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Ulm](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Ulm](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Ulm](station)?
+      - Wie ist der [luqx](measurand) in [Ulm](station)?
+      - Wie ist der [no2](measurand) in [Ulm](station)?
+      - Wie ist der [o3](measurand) in [Ulm](station)?
+      - Wie ist der [pm10](measurand) in [Ulm](station)?
+      - Wie ist der [pm25k](measurand) in [Ulm](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der [luqx](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der [no2](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der [o3](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der [pm10](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der [pm25k](measurand) in [Villingen-Schwenningen](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Weil am Rhein](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Weil am Rhein](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Weil am Rhein](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Weil am Rhein](station)?
+      - Wie ist der [luqx](measurand) in [Weil am Rhein](station)?
+      - Wie ist der [no2](measurand) in [Weil am Rhein](station)?
+      - Wie ist der [o3](measurand) in [Weil am Rhein](station)?
+      - Wie ist der [pm10](measurand) in [Weil am Rhein](station)?
+      - Wie ist der [pm25k](measurand) in [Weil am Rhein](station)?
+      - Wie ist der [Luftqualitätsindex](measurand) in [Wiesloch](station)?
+      - Wie ist der Wert des [Stickstoffdioxids](measurand) in [Wiesloch](station)?
+      - Wie ist der Wert des [Ozons](measurand) in [Wiesloch](station)?
+      - Wie ist der Wert des [Feinstaubs](measurand) in [Wiesloch](station)?
+      - Wie ist der [luqx](measurand) in [Wiesloch](station)?
+      - Wie ist der [no2](measurand) in [Wiesloch](station)?
+      - Wie ist der [o3](measurand) in [Wiesloch](station)?
+      - Wie ist der [pm10](measurand) in [Wiesloch](station)?
+      - Wie ist der [pm25k](measurand) in [Wiesloch](station)?

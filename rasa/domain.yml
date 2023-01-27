@@ -5,6 +5,8 @@ intents:
   - goodbye
   - bot_challenge
   - context_air_measurand
+  - nlu_fallback
+  - quanary_default_processing
 
 entities:
   - measurand
@@ -22,9 +24,6 @@ slots:
       - type: from_entity
         entity: station
 
-actions:
-  - action_context_air_measurand
-
 responses:
   utter_greet:
     - text: "Hey! Wie kann ich dir helfen?"
@@ -34,6 +33,18 @@ responses:
 
   utter_iamabot:
     - text: "Ich bin ein Bot, angetrieben von Rasa."
+
+  utter_default:
+    - text: "Leider konnte ich dich immer noch nicht verstehen. Bitte versuche es erneut oder stell eine andere Frage"
+
+  utter_ask_rephrase:
+    - text: "Bitte wiederhole deine Anfrage."
+
+actions:
+  - action_context_air_measurand
+  # Fallback
+  - action_default_quanary
+  - action_default_ask_affirmation
 
 session_config:
   session_expiration_time: 60

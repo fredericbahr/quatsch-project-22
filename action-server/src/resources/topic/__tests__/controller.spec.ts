@@ -2,7 +2,7 @@ import { readTopic } from "../controller";
 import { AnnotationResponse, RasaRequest } from "../../../interfaces/http";
 import { AnnotationScore } from "../../../interfaces/annotation";
 
-describe("topic controllers", () => {
+describe("#Topic controllers", () => {
   test("invalid request body", () => {
     const req = {};
     const res = { status: jest.fn(), end: jest.fn() };

@@ -2,7 +2,7 @@ import { readMeasurandAir } from "../controller";
 import { AnnotationResponse, RasaRequest } from "../../../../interfaces/http";
 import { AnnotationScore } from "../../../../interfaces/annotation";
 
-describe("topic controllers", () => {
+describe("#Measurand controllers", () => {
   test("invalid request body", () => {
     const req = {};
     const res = { status: jest.fn(), end: jest.fn() };

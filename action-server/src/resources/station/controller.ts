@@ -11,6 +11,7 @@ export const generateStationAnnotation = (req: RasaRequest): Annotation => {
   return new Annotation({
     score: AnnotationScore.String_Match,
     body: {
+      events: [],
       responses: [
         {
           text: `Messstation: ${JSON.stringify(findStation(req.body.tracker.slots.station))}`,

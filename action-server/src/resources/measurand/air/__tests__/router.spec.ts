@@ -1,6 +1,6 @@
 import { measurandAirRouter } from "../router";
 
-describe("topic router", () => {
+describe("#Measurand router", () => {
   test("has crud routes", () => {
     const routes = [{ path: "/", method: "post" }];
     routes.forEach((route) => {

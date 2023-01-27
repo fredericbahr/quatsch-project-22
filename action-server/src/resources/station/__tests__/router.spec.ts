@@ -1,6 +1,6 @@
 import { stationRouter } from "../router";
 
-describe("topic router", () => {
+describe("#Station router", () => {
   test("has crud routes", () => {
     const routes = [{ path: "/", method: "post" }];
     routes.forEach((route) => {

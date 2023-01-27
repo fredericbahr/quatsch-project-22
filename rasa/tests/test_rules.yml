@@ -2,16 +2,23 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: say goodbye
-  steps:
-  - user: |
-      Auf Wiedersehen
-    intent: goodbye
-  - action: utter_goodbye
+  - story: say goodbye
+    steps:
+      - user: |
+          Auf Wiedersehen
+        intent: goodbye
+      - action: utter_goodbye
 
-- story: bot challenge
-  steps:
-  - user: |
-      Sind Sie ein Bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+  - story: bot challenge
+    steps:
+      - user: |
+          Sind Sie ein Bot?
+        intent: bot_challenge
+      - action: utter_iamabot
+
+  - story: quanary default processing
+    steps:
+      - user: |
+          Ja, versuche die Anfrage über Quanary zu erkennen
+        intent: quanary_default_processing
+      - action: action_default_quanary

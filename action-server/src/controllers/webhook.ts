@@ -3,6 +3,8 @@ import { generateTopicAnnotation } from "../resources/topic/controller";
 import { compare, qanaryBypass } from "./qanary";
 import { generateMeasurandAirAnnotation } from "../resources/measurand/air/controller";
 import { generateStationAnnotation } from "../resources/station/controller";
+import { actionAskAffirmation } from "../resources/fallback/ask-affirmation";
+import { actionDefaultQuanary } from "../resources/fallback/default-quanary";
 
 const actionContextAirMeasurand = async (req: RasaRequest, res: RasaResponse) => {
   // Search for topic with trivial search or qanary retrieval
@@ -15,6 +17,7 @@ const actionContextAirMeasurand = async (req: RasaRequest, res: RasaResponse) =>
   const stationAnnotation = generateStationAnnotation(req);
 
   res.json({
+    events: [],
     responses: [
       ...stationAnnotation.body.responses,
       ...measurandAirAnnotation.body.responses,
@@ -23,18 +26,10 @@ const actionContextAirMeasurand = async (req: RasaRequest, res: RasaResponse) =>
   });
 };
 
-const actionFallback = async (req: RasaRequest, res: RasaResponse) => {
-  res.json({
-    responses: [
-      {
-        text: `Leider ist etwas schief gelaufen ...`,
-      },
-    ],
-  });
-};
-
 enum Next_Action {
   Action_Context_Air_Measurand = "action_context_air_measurand",
+  ACTION_DEFAULT_QUANARY = "action_default_quanary",
+  ASK_AFFIRMATION = "action_default_ask_affirmation",
 }
 
 export const handleCustomAction = async (req: RasaRequest, res: RasaResponse) => {
@@ -43,8 +38,12 @@ export const handleCustomAction = async (req: RasaRequest, res: RasaResponse) =>
       case Next_Action.Action_Context_Air_Measurand:
         await actionContextAirMeasurand(req, res);
         break;
-      default:
-        await actionFallback(req, res);
+      case Next_Action.ACTION_DEFAULT_QUANARY:
+        await actionDefaultQuanary(req, res);
+        break;
+      case Next_Action.ASK_AFFIRMATION:
+        await actionAskAffirmation(req, res);
+        break;
     }
   } catch (e) {
     res.status(400);

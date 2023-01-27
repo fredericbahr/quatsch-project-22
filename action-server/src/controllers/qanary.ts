@@ -5,6 +5,7 @@ export const qanaryBypass = (req: RasaRequest): Annotation => {
   return new Annotation({
     score: Math.random(),
     body: {
+      events: [],
       responses: [
         {
           text: `Qanary response for ${req.body.next_action}`,
