@@ -19,6 +19,7 @@ export const generateTopicAnnotation = (req: RasaRequest): Annotation => {
       return new Annotation({
         score: AnnotationScore.String_Match,
         body: {
+          events: [],
           responses: [
             {
               text: `Sie wollen etwas aus dem Themenbereich ${topic.label} wissen.`,
@@ -30,6 +31,7 @@ export const generateTopicAnnotation = (req: RasaRequest): Annotation => {
     default:
       return new Annotation({
         body: {
+          events: [],
           responses: [
             {
               text: `Der Themenbereich konnte nicht identifiziert werden.`,

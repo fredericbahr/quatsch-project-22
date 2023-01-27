@@ -1,7 +1,6 @@
 version: "3.1"
 
 stories:
-
   - story: Create context
     steps:
       - intent: greet

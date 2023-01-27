@@ -3,6 +3,7 @@
 import { Request, Response } from "express";
 import { RasaAction } from "./action";
 import { Annotation } from "./annotation";
+import { IEvent } from "./event";
 
 interface IButton {
   /** The text on the button */
@@ -11,7 +12,7 @@ interface IButton {
   payload: string;
 }
 
-export type IResponse = IBasicResponse & ICustomProperties;
+export type IResponse = IBasicResponse | ICustomProperties;
 
 export interface IBasicResponse {
   /** The text which should be uttered. */
@@ -36,8 +37,8 @@ interface ICustomProperties {
 export type RasaRequest = Request<never, never, RasaAction>;
 
 export interface IRasaResponseBody {
-  events?: Array<any>;
-  responses: Array<IBasicResponse>;
+  events: Array<any>;
+  responses: Array<IResponse>;
 }
 
 export type RasaResponse = Response<IRasaResponseBody>;

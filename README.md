@@ -30,3 +30,5 @@ Run `docker compose up` to start the chatbot, the action-server and the frontend
 - [YouTube](https://www.youtube.com/watch?v=ZhRo3gfLk90)
 - [Rasa chatbot widgets selection](https://forum.rasa.com/t/which-rasa-chatbot-widget-to-use/48616)
 - [UI Tool](https://botfront.io/)
+- [Sara - Rasa Demo Bot](https://github.com/RasaHQ/rasa-demo)
+- [Stations](https://lupo-cloud.de/air-app/stations)

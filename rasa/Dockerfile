@@ -6,7 +6,7 @@ USER root
 
 COPY . .
 
-RUN rasa train --domain domain.yml --data data --out models
+RUN rasa train --domain domain.yml --data data --out models --force
 
 ENTRYPOINT [ "rasa" ]
 

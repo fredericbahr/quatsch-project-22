@@ -11,6 +11,7 @@ export const generateMeasurandAirAnnotation = (req: RasaRequest): Annotation => 
   return new Annotation({
     score: AnnotationScore.String_Match,
     body: {
+      events: [],
       responses: [
         {
           text: `Messwert: ${JSON.stringify(findMeasurand(req.body.tracker.slots.measurand))}`,
