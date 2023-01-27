@@ -90,6 +90,10 @@ rasa_test:
   script:
     - cd rasa
     - rasa test
+  artifacts:
+    paths:
+      - rasa/results
+    expire_in: 5 day
 
 frontend_test:
   stage: test
