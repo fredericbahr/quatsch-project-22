@@ -1,9 +1,24 @@
-version: "3.0"
+version: "3.5"
 
 services:
+  qanary-pipeline:
+    container_name: qanary-pipeline
+    image: qanary/qanary-pipeline:3.5.1
+    restart: always
+    networks: [ "rasa-network" ]
+    ports:
+      - "$SERVER_PORT:$SERVER_PORT"
+    environment:
+      - STARDOG_URL=$STARDOG_URL
+      - STARDOG_USERNAME=$STARDOG_USERNAME
+      - STARDOG_PASSWORD=$STARDOG_PASSWORD
+      - SERVER_HOST=$SERVER_HOST
+      - SERVER_PORT=$SERVER_PORT
+      - QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true
+
   rasa:
     container_name: rasa-bot
-    networks: ["rasa-network"]
+    networks: [ "rasa-network" ]
     ports:
       - "5005:5005"
     build:
@@ -13,7 +28,7 @@ services:
 
   action-server:
     container_name: action-server
-    networks: ["rasa-network"]
+    networks: [ "rasa-network" ]
     ports:
       - "8080:8080"
     build:
@@ -36,4 +51,6 @@ services:
     networks:
       - rasa-network
 
-networks: { rasa-network: {} }
+networks:
+  rasa-network:
+    external: false
