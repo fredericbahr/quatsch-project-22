@@ -2,7 +2,6 @@
 <summary>Architecture Overview</summary>
 
 ```plantuml
-@startuml
 @startuml Architecture
 skinparam Style strictuml
 autonumber
@@ -12,10 +11,15 @@ title Architecture Overview
 
 actor "user"
 
+loop bis Faktenextraktion vollständig
+
 "user" -> rasa: Wie ist der Ozonwert in Ulm am 23.01.2023\nverglichen mit den Durchschnittswerten\n der letzten 10 Jahre repräsentiert als Text?
 
 rasa -> rasa: Intent-Klassifikation
+autonumber stop
+"user" <-- rasa : (Fallback)
 
+autonumber 3
 rasa -> "action-server": action_water_measurand
 "action-server"-> "action-server": Pipeline-Entscheidung
 
@@ -26,11 +30,16 @@ rasa -> "action-server": action_water_measurand
 
 |||
 
-"action-server" -> "action-server": Fakten-Extraktion
+"action-server" -> "action-server": Fakten-Extraktion/Speicherung
+
+autonumber stop
+"user" <-- "action-server": (Fallback)
+end
 
 |||
 
 database "database"
+autonumber 8
 "action-server" -> "database": Messwertabfrage
 "action-server" <-- "database": Messwerte
 
@@ -43,7 +52,6 @@ database "database"
 
 rasa <-- "action-server": Antwort-Response
 user <-- rasa: Antwort
-@enduml
 @enduml
 ```
 </details>
@@ -80,7 +88,7 @@ frame "Query" {
 
 
 database TripleStore
-start .> [Topic PM]
+start .> [Measurand PM]
 start ..> TripleStore: seeding
 
 [Measurand PM] <.. TripleStore: measurands
