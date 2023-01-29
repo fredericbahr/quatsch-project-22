@@ -9,9 +9,9 @@
 
 The project is structured as follows:
 
-- `frontend` contains the frontend code for serving an UI to interact with the chatbot.
-- `rasa` contains the code for the chatbot based on the rasa framework (actions, nlu, stories, ...).
-- `action-server` contains the code for the custom action server that is used by the chatbot to execute actions.
+- `apps/action-server` contains the code for the custom action server that is used by the chatbot to execute actions.
+- `apps/frontend` contains the frontend code for serving an UI to interact with the chatbot.
+- `apps/rasa` contains the code for the chatbot based on the rasa framework (actions, nlu, stories, ...).
 
 ## Installation
 

@@ -7,7 +7,7 @@ services:
     ports:
       - "5005:5005"
     build:
-      context: ./rasa
+      context: ./apps/rasa
     command: >
       run --enable-api --cors "*"
 
@@ -17,19 +17,19 @@ services:
     ports:
       - "8080:8080"
     build:
-      context: ./action-server
+      context: ./apps/action-server
     volumes:
-      - ./action-server:/usr/local/apps/quatsch/action-server
+      - ./apps/action-server:/usr/local/apps/quatsch/action-server
       - /usr/local/apps/quatsch/action-server/node_modules
 
   frontend:
     container_name: frontend
     build:
-      context: frontend
+      context: ./apps/frontend
       dockerfile: dev.Dockerfile
     volumes:
-      - ./frontend/src:/app/src
-      - ./frontend/public:/app/public
+      - ./apps/frontend/src:/app/src
+      - ./apps/frontend/public:/app/public
     restart: always
     ports:
       - "3000:3000"
