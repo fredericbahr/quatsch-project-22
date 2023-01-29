@@ -1,0 +1,26 @@
+{
+  "name": "qanary-component-core",
+  "version": "1.0.0",
+  "description": "Base typescript qanary component",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "init": "npm ci",
+    "build": "tsc",
+    "example": "npx ts-node src/example.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.16",
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
