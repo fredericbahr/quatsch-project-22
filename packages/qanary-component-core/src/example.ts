@@ -10,4 +10,4 @@ const handler: IQanaryComponentCoreRequestHandler = (req, res) => {
 };
 
 // automatically registers the component at the Spring Boot Admin server
-const myComponent = QanaryComponentCore({ handler });
+QanaryComponentCore({ handler }).catch(console.log);

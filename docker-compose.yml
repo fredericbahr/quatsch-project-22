@@ -17,19 +17,20 @@ services:
     ports:
       - "8080:8080"
     build:
-      context: ./apps/action-server
+      context: .
+      dockerfile: ./apps/action-server/Dockerfile
     volumes:
-      - ./apps/action-server:/usr/local/apps/quatsch/action-server
-      - /usr/local/apps/quatsch/action-server/node_modules
+      - ./apps/action-server:/app/apps/action-server
+      - /app/apps/action-server/node_modules
 
   frontend:
     container_name: frontend
     build:
-      context: ./apps/frontend
-      dockerfile: dev.Dockerfile
+      context: .
+      dockerfile: apps/frontend/Dockerfile
     volumes:
-      - ./apps/frontend/src:/app/src
-      - ./apps/frontend/public:/app/public
+      - ./apps/frontend/src:/app/apps/frontend/src
+      - ./apps/frontend/public:/app/apps/frontend/public
     restart: always
     ports:
       - "3000:3000"

@@ -4,109 +4,72 @@ stages:
   - build
   - lint
   - test
-  - deploy
 
-frontend_build:
-  stage: build
-  script:
-    - cd frontend
-    - npm run init
-    - npm run build
-  artifacts:
-    paths:
-      - frontend/.next
-    expire_in: 5 day
-
-action_server_build:
-  stage: build
-  script:
-    - cd action-server
-    - npm run init
-    - npm run build
-  artifacts:
-    paths:
-      - action-server/dist
-    expire_in: 5 day
-
-rasa_build:
+build_rasa:
   stage: build
   image:
     name: rasa/rasa:3.4.0
     entrypoint: [""]
   script:
-    - cd rasa
+    - cd apps/rasa
     - rasa train
   artifacts:
     paths:
-      - rasa/models
+      - apps/rasa/models
     expire_in: 5 day
 
-frontend_lint:
-  stage: lint
+build_everything_else:
+  stage: build
   script:
-    - cd frontend
+    - apk add --no-cache libc6-compat
+    - apk update
     - npm run init
-    - npm run lint
-    - npm run prettier
-  needs:
-    job: frontend_build
-    artifacts: true
+    - npm run build
+  artifacts:
+    paths:
+      - "**/dist"
+      - "**/.next"
+    expire_in: 5 day
 
-action_server_lint:
-  stage: lint
-  script:
-    - cd action-server
-    - npm run init
-    - npm run lint
-    - npm run prettier
-  needs:
-    job: action_server_build
-
-rasa_lint:
+lint_rasa:
   stage: lint
   image:
     name: rasa/rasa:3.4.0
     entrypoint: [""]
   script:
-    - cd rasa
+    - cd apps/rasa
     - rasa data validate
 
-action_server_test:
+lint_everything_else:
+  stage: lint
+  script:
+    - apk add --no-cache libc6-compat
+    - apk update
+    - npm run init
+    - npm run lint
+
+test_rasa:
+  stage: test
+  image:
+    name: rasa/rasa:3.4.0
+    entrypoint: [""]
+  script:
+    - cd apps/rasa
+    - rasa test
+  artifacts:
+    paths:
+      - apps/rasa/results
+    expire_in: 5 day
+
+
+test_everything_else:
   stage: test
   script:
-    - cd action-server
+    - apk add --no-cache libc6-compat
+    - apk update
     - npm run init
     - npm run test
   artifacts:
     paths:
-      - action-server/coverage
-    expire_in: 5 day
-
-rasa_test:
-  stage: test
-  image:
-    name: rasa/rasa:3.4.0
-    entrypoint: [""]
-  script:
-    - cd rasa
-    - rasa test
-  artifacts:
-    paths:
-      - rasa/results
-    expire_in: 5 day
-
-frontend_test:
-  stage: test
-  image: mcr.microsoft.com/playwright:v1.29.1-focal
-  before_script:
-    - apt update && apt install -y curl &&  curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh && curl -fsSL "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
-  script:
-    - npm run init
-    - npm run e2e
-  rules:
-    - when: never
-  artifacts:
-    paths:
-      - e2e-test-report
-      - e2e-test-out
+      - "**/coverage"
     expire_in: 5 day

@@ -1,5 +1,5 @@
 import { RasaRequest, RasaResponse } from "../../../interfaces/http";
-import { actionDefaultQuanary } from "../default-quanary";
+import { actionDefaultQanary } from "../default-quanary";
 
 describe("#Action Default Quanary", () => {
   const req: RasaRequest = { body: { tracker: { latest_message: { text: "test" } } } } as RasaRequest;
@@ -8,7 +8,7 @@ describe("#Action Default Quanary", () => {
   afterEach(() => jest.clearAllMocks());
 
   it("should return a text response", () => {
-    actionDefaultQuanary(req, res);
+    actionDefaultQanary(req, res);
 
     expect(res.end).toHaveBeenCalled();
     expect(res.json).toHaveBeenCalledWith(

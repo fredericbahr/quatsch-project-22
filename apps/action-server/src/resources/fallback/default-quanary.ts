@@ -5,8 +5,8 @@ import { RasaRequest, RasaResponse } from "../../interfaces/http";
  * @param req Request Object
  * @param res Response Object
  */
-export const actionDefaultQuanary = async (req: RasaRequest, res: RasaResponse) => {
-  const question: string = req.body.tracker.latest_message.text;
+export const actionDefaultQanary = async (req: RasaRequest, res: RasaResponse) => {
+  // const question: string = req.body.tracker.latest_message.text;
 
   res.json({
     events: [],

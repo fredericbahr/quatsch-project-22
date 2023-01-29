@@ -2,17 +2,15 @@
   "name": "rasa",
   "version": "1.0.0",
   "description": "Rasa Chatbot",
-  "scripts": {
-    "dev": "docker run --user $(id -u):$(id -g) -it -v $(pwd):/app --network=\"host\" --publish 5005:5005  --entrypoint rasa rasa/rasa:3.4.0-full run --enable-api --cors \"*\"",
-    "shell": "docker run --user $(id -u):$(id -g) -it -v $(pwd):/app --network=\"host\" --publish 5005:5005  --entrypoint rasa rasa/rasa:3.4.0-full shell --debug",
-    "train": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full train --domain domain.yml --data data --out models",
-    "actions": "docker run -v $(pwd):/app -u root --publish 5055:5055 rasa/rasa:3.4.0-full run actions",
-    "test": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full test --fail-on-prediction-errors",
-    "visualize": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full visualize",
-    "validate": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full data validate"
-  },
-  "author": "",
   "license": "ISC",
+  "scripts": {
+    "rasa:actions": "docker run -v $(pwd):/app -u root --publish 5055:5055 rasa/rasa:3.4.0-full run actions",
+    "rasa:shell": "docker run --user $(id -u):$(id -g) -it -v $(pwd):/app --network=\"host\" --publish 5005:5005  --entrypoint rasa rasa/rasa:3.4.0-full shell --debug",
+    "rasa:test": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full test --fail-on-prediction-errors",
+    "rasa:train": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full train --domain domain.yml --data data --out models",
+    "rasa:validate": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full data validate",
+    "rasa:visualize": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full visualize"
+  },
   "volta": {
     "node": "18.12.1",
     "npm": "8.19.2"

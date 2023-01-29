@@ -1,7 +1,7 @@
 node_modules
 /test-results/
-/playwright-report/
-/playwright/.cache/
+.turbo
 
 e2e-test-report
 e2e-test-out
+

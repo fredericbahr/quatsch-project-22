@@ -1,16 +1,29 @@
 {
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev",
+    "e2e": "docker-compose up -d && npm run e2e:test --workspaces --if-present",
+    "format": "turbo run format",
+    "init": "npm install && npm run build",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "rasa:dev:train": "docker compose build apps/rasa && docker compose up",
+    "test": "turbo run test",
+    "test:fix": "turbo run test:fix"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "devDependencies": {
     "@playwright/test": "^1.29.1",
-    "concurrently": "^7.6.0"
-  },
-  "scripts": {
-    "init": "npm ci && cd apps/frontend && npm ci && cd ../../apps/action-server && npm ci",
-    "dev": "docker compose up",
-    "dev:train": "docker compose build apps/rasa && docker compose up",
-    "dev:mac": "concurrently --names \"apps/frontend,apps/action-server,apps/rasa\" -c \"auto\" \"cd apps/frontend && npm run dev\" \"cd apps/action-server && npm run dev\" \"cd apps/rasa && rasa run --enable-api --cors \"*\"\"",
-    "e2e": "docker-compose up -d && npx playwright test"
+    "prettier": "^2.8.3",
+    "turbo": "^1.7.1"
   },
   "volta": {
-    "node": "18.12.1"
+    "node": "18.12.1",
+    "npm": "8.19.2"
   }
 }

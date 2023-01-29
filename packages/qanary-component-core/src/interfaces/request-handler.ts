@@ -8,5 +8,7 @@ type IQanaryComponentCoreRequest = Request<never, never, IQanaryMessage>;
 type IQanaryComponentCoreResponse = Response<IQanaryMessage>;
 
 /** the request handler type of the qanary component core */
-export type IQanaryComponentCoreRequestHandler = (req: IQanaryComponentCoreRequest, res: IQanaryComponentCoreResponse) => void;
-
+export type IQanaryComponentCoreRequestHandler = (
+  req: IQanaryComponentCoreRequest,
+  res: IQanaryComponentCoreResponse
+) => void;

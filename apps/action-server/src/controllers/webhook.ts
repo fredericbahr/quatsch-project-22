@@ -4,7 +4,7 @@ import { compare, qanaryBypass } from "./qanary";
 import { generateMeasurandAirAnnotation } from "../resources/measurand/air/controller";
 import { generateStationAnnotation } from "../resources/station/controller";
 import { actionAskAffirmation } from "../resources/fallback/ask-affirmation";
-import { actionDefaultQuanary } from "../resources/fallback/default-quanary";
+import { actionDefaultQanary } from "../resources/fallback/default-quanary";
 
 const actionContextAirMeasurand = async (req: RasaRequest, res: RasaResponse) => {
   // Search for topic with trivial search or qanary retrieval
@@ -39,7 +39,7 @@ export const handleCustomAction = async (req: RasaRequest, res: RasaResponse) =>
         await actionContextAirMeasurand(req, res);
         break;
       case Next_Action.ACTION_DEFAULT_QUANARY:
-        await actionDefaultQuanary(req, res);
+        await actionDefaultQanary(req, res);
         break;
       case Next_Action.ASK_AFFIRMATION:
         await actionAskAffirmation(req, res);

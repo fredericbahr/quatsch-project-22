@@ -3,7 +3,6 @@
 import { Request, Response } from "express";
 import { RasaAction } from "./action";
 import { Annotation } from "./annotation";
-import { IEvent } from "./event";
 
 interface IButton {
   /** The text on the button */

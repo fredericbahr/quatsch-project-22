@@ -2,19 +2,17 @@
   "name": "action-server",
   "version": "1.0.0",
   "description": "A custom action server for the rasa chatbot",
+  "license": "ISC",
   "main": "server.js",
   "scripts": {
-    "init": "npm ci",
-    "dev": "npx nodemon server.ts",
     "build": "tsc",
-    "test": "jest --coverage",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "dev": "npx nodemon server.ts",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "jest --coverage"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
