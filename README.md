@@ -1,10 +1,5 @@
 # QUAtsCH-project-22
 
-## Prerequisites
-
-- You need to have a working installation of [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
-- You need to have a working installation of [Node.js](https://nodejs.org/en/download/) v.18.12+ and [npm](https://www.npmjs.com/get-npm) v8.19+.
-
 ## Project structure
 
 The project is structured as follows:
@@ -13,13 +8,57 @@ The project is structured as follows:
 - `apps/frontend` contains the frontend code for serving an UI to interact with the chatbot.
 - `apps/rasa` contains the code for the chatbot based on the rasa framework (actions, nlu, stories, ...).
 
+The dependencies of the apps are located in the `packages` directory as in other multi-package repositories.
+
 ## Installation
 
-Nothing needs to be done here
+### Install with Docker (Recommended)
 
-## Start
+#### Prerequisites
 
-Run `docker compose up` to start the chatbot, the action-server and the frontend.
+- You need to have a working installation of [Docker](https://docs.docker.com/install/)
+  and [Docker Compose](https://docs.docker.com/compose/install/).
+
+##### Build and start the applications
+
+- Run `docker compose up` to start rasa, the action-server and the frontend.
+
+### Install with Node (Partially)
+
+#### Prerequisites
+
+- You need to have a working installation of [Docker](https://docs.docker.com/install/).
+- You need to have a working installation of [Volta](https://docs.volta.sh/guide/getting-started).
+
+##### Initialize
+
+- Run `npm run init` to initialize the project, which includes installing the dependencies and running the build
+  scripts.
+
+#### Commands
+
+The following scripts are the main executable scripts in the umbrella package. All scripts are mappings to turbo, so
+arguments can be passed to [turbo](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), for
+example: `npm run lint -- --filter=rasa`.
+
+| Command              | Description                                                |
+|----------------------|------------------------------------------------------------|
+| `npm run build`      | Creates the artifacts of the respective package            |
+| `npm run clean`      | Removes the created artifacts and temporary files          |
+| `npm run dev`        | Starts the applications and services in a development mode |
+| `npm run format`     | Checks the formatting of the source files                  |
+| `npm run format:fix` | Fixes the formatting of the source files if possible       |
+| `npm run lint`       | Checks the quality of the source files                     |
+| `npm run lint:fix`   | Fixes the quality of the source files if possible          |
+| `npm run test`       | Runs the respective tests                                  |
+
+#### Additional Commands for Rasa
+
+| Command             | Description                                            |
+|---------------------|--------------------------------------------------------|
+| `npm run shell`     | Runs the Rasa shell in a Docker container              |
+| `npm run train`     | Creates the Rasa models in a Docker container          |
+| `npm run visualize` | Creates a visualization of the Rasa stories as a graph |
 
 ## Rasa Chatbot Example
 
