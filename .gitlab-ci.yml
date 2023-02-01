@@ -24,7 +24,6 @@ build:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - npm run build
   artifacts:
     paths:
       - "**/dist"
