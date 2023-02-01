@@ -11,7 +11,7 @@
     "lint:fix": "turbo run lint:fix",
     "shell": "turbo run shell",
     "test": "turbo run test",
-    "test:e2e": "docker-compose up -d && npm run test -- --filter=*-e2e",
+    "e2e": "docker-compose up -d && npm run e2e --workspace=e2e",
     "train": "turbo run train",
     "visualize": "turbo run visualize"
   },

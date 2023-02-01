@@ -45,7 +45,7 @@ lint:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - npm run lint -- --filter=!rasa --filter=!*-test-*
+    - npm run lint -- --filter=!rasa
     - npm run format
 
 test_rasa:
@@ -67,7 +67,7 @@ test:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - npm run test -- --filter=!rasa --filter=!*-test-*
+    - npm run test -- --filter=!rasa
   artifacts:
     paths:
       - "**/coverage"

@@ -52,13 +52,19 @@ example: `npm run lint -- --filter=rasa`.
 | `npm run lint:fix`   | Fixes the quality of the source files if possible          |
 | `npm run test`       | Runs the respective tests                                  |
 
-#### Additional Commands for Rasa
+#### Additional commands for Rasa
 
 | Command             | Description                                            |
 |---------------------|--------------------------------------------------------|
 | `npm run shell`     | Runs the Rasa shell in a Docker container              |
 | `npm run train`     | Creates the Rasa models in a Docker container          |
 | `npm run visualize` | Creates a visualization of the Rasa stories as a graph |
+
+#### Additional commands for e2e
+
+| Command       | Description                   |
+|---------------|-------------------------------|
+| `npm run e2e` | Executes the end-to-end tests |
 
 ## Rasa Chatbot Example
 

@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "rasa-test-e2e",
+  "name": "e2e",
   "scripts": {
-    "test": "playwright test"
+    "e2e": "playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.29.1"
