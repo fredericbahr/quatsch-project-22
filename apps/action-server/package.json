@@ -1,0 +1,45 @@
+{
+  "name": "action-server",
+  "version": "1.0.0",
+  "description": "A custom action server for the rasa chatbot",
+  "license": "ISC",
+  "main": "server.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "npx nodemon server.ts",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.3.1",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.15",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.17",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "volta": {
+    "node": "18.12.1",
+    "npm": "8.19.2"
+  }
+}

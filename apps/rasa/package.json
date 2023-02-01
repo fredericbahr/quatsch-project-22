@@ -1,0 +1,19 @@
+{
+  "name": "rasa",
+  "version": "1.0.0",
+  "description": "Rasa Chatbot",
+  "license": "ISC",
+  "scripts": {
+    "lint": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full data validate",
+    "preshell": "npm run train",
+    "shell": "docker run --user $(id -u):$(id -g) -it -v $(pwd):/app --network=\"host\" --entrypoint rasa rasa/rasa:3.4.0-full shell --debug",
+    "pretest": "npm run train",
+    "test": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full test --fail-on-prediction-errors",
+    "train": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full train --domain domain.yml --data data --out models",
+    "visualize": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full visualize"
+  },
+  "volta": {
+    "node": "18.12.1",
+    "npm": "8.19.2"
+  }
+}

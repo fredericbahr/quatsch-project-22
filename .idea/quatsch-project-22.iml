@@ -3,8 +3,19 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/action-server/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/frontend/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/action-server/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/frontend/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/qanary-component-core/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-core/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/rasa/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/frontend/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/e2e/e2e-test-out" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/action-server/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/rasa/results" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/action-server/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/e2e/e2e-test-report" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-core/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/action-server/coverage" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
