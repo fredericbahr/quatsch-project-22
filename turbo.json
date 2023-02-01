@@ -1,13 +1,23 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDependencies": [
+    "**/.env.*local"
+  ],
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", ".next/**", "public/dist/**"],
-      "dependsOn": ["^build"]
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "public/dist/**"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
     },
     "test": {
-      "outputs": ["coverage/**"],
+      "outputs": [
+        "coverage/**"
+      ],
       "dependsOn": []
     },
     "lint": {
@@ -28,6 +38,18 @@
     },
     "clean": {
       "cache": false
+    },
+    "shell": {
+      "cache": false,
+      "persistent": true
+    },
+    "train": {
+      "cache": false,
+      "persistent": true
+    },
+    "visualize": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

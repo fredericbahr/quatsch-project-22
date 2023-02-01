@@ -9,7 +9,7 @@ build_rasa:
   stage: build
   image:
     name: rasa/rasa:3.4.0
-    entrypoint: [""]
+    entrypoint: [ "" ]
   script:
     - cd apps/rasa
     - rasa train
@@ -35,7 +35,7 @@ lint_rasa:
   stage: lint
   image:
     name: rasa/rasa:3.4.0
-    entrypoint: [""]
+    entrypoint: [ "" ]
   script:
     - cd apps/rasa
     - rasa data validate
@@ -46,13 +46,14 @@ lint_everything_else:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - npm run lint
+    - npm run lint -- --filter=!rasa --filter=!*-test-*
+    - npm run format
 
 test_rasa:
   stage: test
   image:
     name: rasa/rasa:3.4.0
-    entrypoint: [""]
+    entrypoint: [ "" ]
   script:
     - cd apps/rasa
     - rasa test
@@ -61,14 +62,13 @@ test_rasa:
       - apps/rasa/results
     expire_in: 5 day
 
-
 test_everything_else:
   stage: test
   script:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - npm run test
+    - npm run test -- --filter=!rasa --filter=!*-test-*
   artifacts:
     paths:
       - "**/coverage"

@@ -4,14 +4,16 @@
     "build": "turbo run build",
     "clean": "turbo run clean",
     "dev": "turbo run dev",
-    "e2e": "docker-compose up -d && npm run e2e:test --workspaces --if-present",
     "format": "turbo run format",
-    "init": "npm install && npm run build",
+    "format:fix": "turbo run format:fix",
+    "init": "npm ci && npm run build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
-    "rasa:dev:train": "docker compose build apps/rasa && docker compose up",
+    "shell": "turbo run shell",
     "test": "turbo run test",
-    "test:fix": "turbo run test:fix"
+    "test:e2e": "docker-compose up -d && npm run test -- --filter=*-e2e",
+    "train": "turbo run train",
+    "visualize": "turbo run visualize"
   },
   "workspaces": [
     "apps/*",

@@ -9,3 +9,4 @@ addons/__pycache__/
 addons/curl.txt
 results/
 .cache/
+graph.html
