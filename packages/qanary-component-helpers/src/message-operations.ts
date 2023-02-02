@@ -1,11 +1,13 @@
-import { IQanaryMessage } from "../../qanary-component-core/src/interfaces/message";
+import { qanaryComponentApi } from "api";
 
 /**
  * Gets the endpoint attribute from the message
  * @param message the message received from the qanary pipeline
  * @returns the endpoint attribute
  */
-export const getEndpoint = (message: IQanaryMessage): string => {
+export const getEndpoint = (
+  message: qanaryComponentApi.IQanaryMessage
+): string | undefined => {
   return message.endpoint;
 };
 
@@ -14,7 +16,9 @@ export const getEndpoint = (message: IQanaryMessage): string => {
  * @param message the message received from the qanary pipeline
  * @returns the inGraph attribute
  */
-export const getInGraph = (message: IQanaryMessage): string => {
+export const getInGraph = (
+  message: qanaryComponentApi.IQanaryMessage
+): string | undefined => {
   return message.inGraph;
 };
 
@@ -23,6 +27,8 @@ export const getInGraph = (message: IQanaryMessage): string => {
  * @param message the message received from the qanary pipeline
  * @returns the outGraph attribute
  */
-export const getOutGraph = (message: IQanaryMessage): string => {
+export const getOutGraph = (
+  message: qanaryComponentApi.IQanaryMessage
+): string | undefined => {
   return message.outGraph;
 };
