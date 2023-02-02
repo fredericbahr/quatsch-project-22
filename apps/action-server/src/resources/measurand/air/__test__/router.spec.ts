@@ -1,4 +1,4 @@
-import { measurandAirRouter } from "../router";
+import { measurandAirRouter } from "../measurand-air.router";
 
 describe("#Measurand router", () => {
   test("has crud routes", () => {

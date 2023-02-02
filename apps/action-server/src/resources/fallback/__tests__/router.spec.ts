@@ -1,4 +1,4 @@
-import { fallbackRouter } from "../router";
+import { fallbackRouter } from "../fallback.router";
 
 describe("#Fallback router", () => {
   test("has crud routes", () => {

@@ -1,10 +1,11 @@
-import { stationRouter } from "../router";
+import { webhookRouter } from "../webhook.router";
 
-describe("#Station router", () => {
+describe("#Webhook router", () => {
   test("has crud routes", () => {
     const routes = [{ path: "/", method: "post" }];
+
     routes.forEach((route) => {
-      const match = stationRouter.stack.find(
+      const match = webhookRouter.stack.find(
         (stackElement) => stackElement.route.path === route.path && stackElement.route.methods[route.method],
       );
       expect(match).toBeTruthy();

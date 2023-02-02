@@ -1,5 +1,5 @@
 import { RasaRequest, RasaResponse } from "../../../interfaces/http";
-import { actionAskAffirmation } from "../ask-affirmation";
+import { askAffirmationRequestHandler } from "../fallback.controller";
 
 describe("#Action Ask Affirmation", () => {
   const req: RasaRequest = {} as RasaRequest;
@@ -8,7 +8,7 @@ describe("#Action Ask Affirmation", () => {
   afterEach(() => jest.clearAllMocks());
 
   it("should return a text response", () => {
-    actionAskAffirmation(req, res);
+    askAffirmationRequestHandler(req, res);
 
     expect(res.end).toHaveBeenCalled();
     expect(res.json).toHaveBeenCalledWith(
@@ -23,7 +23,7 @@ describe("#Action Ask Affirmation", () => {
   });
 
   it("should return a button response", () => {
-    actionAskAffirmation(req, res);
+    askAffirmationRequestHandler(req, res);
 
     expect(res.end).toHaveBeenCalled();
     expect(res.json).toHaveBeenCalledWith(
