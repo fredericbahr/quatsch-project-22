@@ -1,9 +1,8 @@
 /**
  * Enum for the intents that the webhook receives
  */
-export enum Intents {
+export enum INTENTS {
+  ACTION_CONTEXT_AIR_MEASURAND = "action_context_air_measurand",
+  ACTION_DEFAULT_QUANARY = "action_default_quanary",
   ASK_AFFIRMATION = "action_default_ask_affirmation",
-  ASK_REPHRASE = "action_default_ask_rephrase",
-  OUT_OF_SCOPE = "out_of_scope",
-  DEFAULT_FALLBACK = "default_fallback",
 }

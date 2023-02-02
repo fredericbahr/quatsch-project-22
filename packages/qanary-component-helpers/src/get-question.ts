@@ -1,4 +1,4 @@
-import { IQanaryMessage } from "../../qanary-component-core/src/interfaces/message";
+import { qanaryComponentApi } from "api";
 import { getEndpoint, getInGraph } from "./message-operations";
 import { selectSparql } from "./query-sparql";
 
@@ -32,10 +32,10 @@ const fetchRawQuestion = async (questionUrl: string) => {
  * @returns the asked question
  */
 export const getQuestion = async (
-  message: IQanaryMessage
+  message: qanaryComponentApi.IQanaryMessage
 ): Promise<string | null> => {
-  const inGraph: string = getInGraph(message);
-  const endpointUrl: string = getEndpoint(message);
+  const inGraph: string = getInGraph(message) ?? "";
+  const endpointUrl: string = getEndpoint(message) ?? "";
 
   const queryQuestionUrl = `
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>

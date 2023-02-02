@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/apps/action-server/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/apps/frontend/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/qanary-component-core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/api/specs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/api/src" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/packages/e2e/e2e-test-out" />
       <excludeFolder url="file://$MODULE_DIR$/apps/rasa/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-core/dist" />

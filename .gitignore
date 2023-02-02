@@ -8,3 +8,7 @@ e2e-test-out
 **/.turbo
 **/dist
 
+# OpenAPI Generator files
+.openapi-generator
+.openapi-generator-ignore
+git_push.sh

@@ -21,6 +21,7 @@
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/sparql-http-client": "^2.2.8",
+    "api": "*",
     "eslint": "^8.33.0",
     "prettier": "^2.8.3",
     "typescript": "^4.9.4"
