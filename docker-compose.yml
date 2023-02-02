@@ -5,7 +5,8 @@ services:
     container_name: qanary-pipeline
     image: qanary/qanary-pipeline:3.5.1
     restart: always
-    networks: [ "rasa-network" ]
+    networks:
+      - rasa-network
     ports:
       - "$SERVER_PORT:$SERVER_PORT"
     environment:
@@ -16,9 +17,25 @@ services:
       - SERVER_PORT=$SERVER_PORT
       - QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true
 
+  qanary-component:
+    container_name: qanary-component
+    networks:
+      - rasa-network
+    restart: always
+    ports:
+      - "40500:40500"
+    build:
+      context: .
+      dockerfile: ./packages/qanary-component-core/Dockerfile
+    volumes:
+      - ./packages/qanary-component-core:/app
+      - /app/packages/qanary-component-core/node_modules
+      - /app/node_modules
+
   rasa:
     container_name: rasa-bot
-    networks: [ "rasa-network" ]
+    networks:
+      - rasa-network
     ports:
       - "5005:5005"
     build:
@@ -28,7 +45,8 @@ services:
 
   action-server:
     container_name: action-server
-    networks: [ "rasa-network" ]
+    networks:
+      - rasa-network
     ports:
       - "8080:8080"
     build:
@@ -37,6 +55,7 @@ services:
     volumes:
       - ./apps/action-server:/app/apps/action-server
       - /app/apps/action-server/node_modules
+      - /app/node_modules
 
   frontend:
     container_name: frontend
@@ -46,6 +65,8 @@ services:
     volumes:
       - ./apps/frontend/src:/app/apps/frontend/src
       - ./apps/frontend/public:/app/apps/frontend/public
+      - /app/apps/frontend/node_modules
+      - /app/node_modules
     restart: always
     ports:
       - "3000:3000"

@@ -6,7 +6,7 @@
     "dev": "turbo run dev",
     "format": "turbo run format",
     "format:fix": "turbo run format:fix",
-    "init": "npm ci && npm run build",
+    "init": "npm install && npm run build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "shell": "turbo run shell",
@@ -20,12 +20,12 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@playwright/test": "^1.29.1",
     "prettier": "^2.8.3",
     "turbo": "^1.7.1"
   },
   "volta": {
     "node": "18.12.1",
     "npm": "8.19.2"
-  }
+  },
+  "packageManager": "npm@8.19.2"
 }

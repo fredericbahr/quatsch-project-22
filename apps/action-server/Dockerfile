@@ -10,11 +10,11 @@ WORKDIR /app
 
 # Install dependencies
 COPY . .
-RUN npm ci
+RUN npm run init
 
 RUN turbo prune --scope=action-server --docker
 
 # Note: Don't expose ports here, Compose will handle that for us
 
-# Startdevelopment mode
+# Start development mode
 CMD turbo run dev --scope=action-server

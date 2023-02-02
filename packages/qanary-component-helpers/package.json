@@ -1,0 +1,31 @@
+{
+  "name": "qanary-component-helpers",
+  "version": "1.0.0",
+  "description": "Helper library for Qanary components written in TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "init": "npm ci",
+    "build": "tsc",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prettier": "prettier --c src",
+    "prettier:fix": "prettier --w src",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/sparql-http-client": "^2.2.8",
+    "eslint": "^8.33.0",
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "sparql-http-client": "^2.4.2"
+  }
+}
