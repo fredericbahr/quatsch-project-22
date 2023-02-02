@@ -36,15 +36,15 @@ const getDefaultOptions = async (
   options: IQanaryComponentCoreOptions
 ): Promise<IQanaryComponentCoreOptionsWithConfig> => {
   const pkg = await import(`${process.cwd()}/package.json`);
-  const port = await getPort();
+  const port: number = await getPort();
 
   const defaultConfig: IQanaryComponentCoreServiceConfig = {
-    springBootAdminServerUrl: "http://localhost:40111",
+    springBootAdminServerUrl: "http://qanary-pipeline:40111",
     springBootAdminServerUser: "admin",
     springBootAdminServerPassword: "admin",
     serviceName: pkg.name ?? "",
     servicePort: port,
-    serviceHost: "http://localhost",
+    serviceHost: "http://qanary-component",
     serviceDescription: pkg.description ?? "",
   };
 
@@ -69,14 +69,17 @@ const getDefaultOptions = async (
 export async function QanaryComponentCore(
   options: IQanaryComponentCoreOptions
 ): Promise<Express> {
+  const optionsWithConfig: IQanaryComponentCoreOptionsWithConfig =
+    await getDefaultOptions(options);
   const server: Express = express();
-  const optionsWithConfig = await getDefaultOptions(options);
 
-  server.get(["/health"], healthHandler);
+  // For parsing application/json
+  server.use(express.json());
 
+  // Routes
+  server.get(["/actuator/health", "/health"], healthHandler);
   server.get(["/", "/about"], aboutHandler(optionsWithConfig.description));
-
-  server.get(["/annotatequestion"], optionsWithConfig.handler);
+  server.post(["/annotatequestion"], optionsWithConfig.handler);
 
   server.listen(optionsWithConfig.config.servicePort, async () => {
     console.log(
