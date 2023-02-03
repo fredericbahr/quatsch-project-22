@@ -6,7 +6,7 @@ intents:
   - bot_challenge
   - context_air_measurand
   - nlu_fallback
-  - quanary_default_processing
+  - qanary_default_processing
 
 entities:
   - measurand
@@ -43,7 +43,7 @@ responses:
 actions:
   - action_context_air_measurand
   # Fallback
-  - action_default_quanary
+  - action_default_qanary
   - action_default_ask_affirmation
 
 session_config:
