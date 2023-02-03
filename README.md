@@ -77,3 +77,4 @@ example: `npm run lint -- --filter=rasa`.
 - [UI Tool](https://botfront.io/)
 - [Sara - Rasa Demo Bot](https://github.com/RasaHQ/rasa-demo)
 - [Stations](https://lupo-cloud.de/air-app/stations)
+- [RDF Finder](https://lov.linkeddata.es/dataset/lov/terms?q=)
