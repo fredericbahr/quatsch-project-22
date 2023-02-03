@@ -33,7 +33,7 @@ describe("#Action Ask Affirmation", () => {
             buttons: expect.arrayContaining([
               expect.objectContaining({
                 title: "Ja, Anfrage bearbeiten",
-                payload: "/quanary_default_processing",
+                payload: "/qanary_default_processing",
               }),
               expect.objectContaining({
                 title: "Nein, erneut fragen",

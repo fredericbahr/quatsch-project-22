@@ -115,7 +115,7 @@ rasa <-- webhook: text + button(affirm/deny)
 |||
 
 "user" -> rasa: affirm
-rasa -> webhook: action_default_quanary
+rasa -> webhook: action_default_qanary
 database "database"
 webhook -> "database": read
 webhook <-- "database": data

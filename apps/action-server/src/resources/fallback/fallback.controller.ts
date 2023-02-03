@@ -1,7 +1,7 @@
 import { RasaRequest, RasaResponse } from "../../interfaces/http";
 
 /**
- * Handles the intent/action of `action_default_quanary` by trying to answer the question with a Qanary (default) pipeline.
+ * Handles the intent/action of `action_default_qanary` by trying to answer the question with a Qanary (default) pipeline.
  * @param req Request Object
  * @param res Response Object
  */
@@ -31,7 +31,7 @@ export const askAffirmationRequestHandler = async (req: RasaRequest, res: RasaRe
       {
         text: "Das habe ich nicht richtig verstanden. Soll ich trotzdem versuchen die Anfrage zu bearbeiten",
         buttons: [
-          { title: "Ja, Anfrage bearbeiten", payload: "/quanary_default_processing" },
+          { title: "Ja, Anfrage bearbeiten", payload: "/qanary_default_processing" },
           { title: "Nein, erneut fragen", payload: "/out_of_scope" },
         ],
         response: "",

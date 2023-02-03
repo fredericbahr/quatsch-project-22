@@ -16,9 +16,9 @@ stories:
         intent: bot_challenge
       - action: utter_iamabot
 
-  - story: quanary default processing
+  - story: qanary default processing
     steps:
       - user: |
-          Ja, versuche die Anfrage über Quanary zu erkennen
-        intent: quanary_default_processing
-      - action: action_default_quanary
+          Ja, versuche die Anfrage über Qanary zu erkennen
+        intent: qanary_default_processing
+      - action: action_default_qanary

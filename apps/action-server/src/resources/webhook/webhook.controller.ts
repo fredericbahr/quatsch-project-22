@@ -9,7 +9,7 @@ export const webhookRequestHandler = async (req: RasaRequest, res: RasaResponse)
       case INTENTS.ACTION_CONTEXT_AIR_MEASURAND:
         await measurandAirRequestHandler(req, res);
         break;
-      case INTENTS.ACTION_DEFAULT_QUANARY:
+      case INTENTS.ACTION_DEFAULT_QANARY:
         await fallbackRequestHandler(req, res);
         break;
       case INTENTS.ASK_AFFIRMATION:
