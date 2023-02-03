@@ -17,8 +17,8 @@ rules:
       - action: action_two_stage_fallback
       - active_loop: action_two_stage_fallback
 
-  - rule: Quanary Default Processing if user wishes so
+  - rule: Qanary Default Processing if user wishes so
     steps:
-      - intent: quanary_default_processing
-      - action: action_default_quanary
+      - intent: qanary_default_processing
+      - action: action_default_qanary
   
