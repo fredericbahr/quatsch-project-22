@@ -533,52 +533,6 @@ const addToLists = (trainingDataNer, trainingDataNlu) => {
 };
 
 /**
- * Writes provided data with necessary structure for qanary ner component into ner-train.json file
- * @param {*} data training data array
- */
-const writeJsonFile = (data) => {
-  const trainJson = {
-    trainingdata: data,
-  };
-
-  fs.writeFile(
-    "./ner-train.json",
-    JSON.stringify(trainJson, null, 2),
-    (err) => {
-      if (err) {
-        console.error(err);
-      } else {
-        console.log(
-          "qanary ner component training data written to 'ner-train.json'"
-        );
-      }
-    }
-  );
-};
-
-/**
- * Writes provided data with necessary structure for rasa nlu into nlu-train.yml file
- * @param {*} data training data array
- */
-const writeYmlFile = (data) => {
-  const trainYml = `version: "3.1"
-
-nlu:
-  ## Creation of context
-  - intent: context_air_measurand
-    examples: |
-    - ${data.join("\n    - ")}`;
-
-  fs.writeFile("./nlu-train.yml", trainYml, (err) => {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log("rasa nlu examples written to 'nlu-train.yml'");
-    }
-  });
-};
-
-/**
  * generates training data for questions with station and measurand slots and adds data to lists
  */
 const generateStationMeasurandData = () => {
@@ -678,6 +632,72 @@ const generateStationMeasurandRepresentationCalculationData = () => {
             });
         });
     });
+  });
+};
+
+/**
+ * Writes provided data with necessary structure for qanary ner component into ner-train.json and ner-test.json files
+ * @param {*} data training data array
+ */
+const writeJsonFile = (data) => {
+  const trainJson = {
+    trainingdata: [],
+  };
+  const testJson = {
+    testingdata: [],
+  };
+
+  data.forEach((d, index) => {
+    if (index % 2) {
+      trainJson.trainingdata.push(d);
+    } else {
+      testJson.testingdata.push(d);
+    }
+  });
+
+  fs.writeFile(
+    "./ner-train.json",
+    JSON.stringify(trainJson, null, 2),
+    (err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(
+          "qanary ner component training data written to 'ner-train.json'"
+        );
+      }
+    }
+  );
+  fs.writeFile("./ner-test.json", JSON.stringify(testJson, null, 2), (err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(
+        "qanary ner component testing data written to 'ner-test.json'"
+      );
+    }
+  });
+};
+
+/**
+ * Writes provided data with necessary structure for rasa nlu into nlu-train.yml file
+ * @param {*} data training data array
+ */
+const writeYmlFile = (data) => {
+  const trainYml = `version: "3.1"
+
+nlu:
+  ## Creation of context
+  - intent: context_air_measurand
+    examples: |
+    - ${data.join("\n    - ")}`;
+
+  fs.writeFile("./nlu-train.yml", trainYml, (err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log("rasa nlu examples written to 'nlu-train.yml'");
+    }
   });
 };
 
