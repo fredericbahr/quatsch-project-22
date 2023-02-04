@@ -1,15 +1,13 @@
 import express from "express";
 import { Express } from "express-serve-static-core";
+import { createServer } from "net";
+
 import { aboutHandler } from "./controller/aboutHandler";
 import { healthHandler } from "./controller/healthHandler";
 import { registerComponent } from "./controller/registration";
-import {
-  IQanaryComponentCoreOptions,
-  IQanaryComponentCoreOptionsWithConfig,
-} from "./interfaces/options";
 import { IQanaryComponentCoreDescription } from "./interfaces/description";
+import { IQanaryComponentCoreOptions, IQanaryComponentCoreOptionsWithConfig } from "./interfaces/options";
 import { IQanaryComponentCoreServiceConfig } from "./interfaces/service-config";
-import { createServer } from "net";
 
 /**
  * A function that determines the next free port starting from a given port.
@@ -24,7 +22,7 @@ const getPort = (port = 40500) => {
         error.code === "EADDRINUSE" ? server.listen(++port) : reject(error);
       })
       .on("listening", () => server.close(() => resolve(port)))
-      .listen(port)
+      .listen(port),
   );
 };
 
@@ -33,7 +31,7 @@ const getPort = (port = 40500) => {
  * @param options incomplete options
  */
 const getDefaultOptions = async (
-  options: IQanaryComponentCoreOptions
+  options: IQanaryComponentCoreOptions,
 ): Promise<IQanaryComponentCoreOptionsWithConfig> => {
   const pkg = await import(`${process.cwd()}/package.json`);
   const port: number = await getPort();
@@ -66,11 +64,8 @@ const getDefaultOptions = async (
  * @param options the options of the component
  * @returns the express server instance
  */
-export async function QanaryComponentCore(
-  options: IQanaryComponentCoreOptions
-): Promise<Express> {
-  const optionsWithConfig: IQanaryComponentCoreOptionsWithConfig =
-    await getDefaultOptions(options);
+export async function QanaryComponentCore(options: IQanaryComponentCoreOptions): Promise<Express> {
+  const optionsWithConfig: IQanaryComponentCoreOptionsWithConfig = await getDefaultOptions(options);
   const server: Express = express();
 
   // For parsing application/json
@@ -83,7 +78,7 @@ export async function QanaryComponentCore(
 
   server.listen(optionsWithConfig.config.servicePort, async () => {
     console.log(
-      `Server of component ${optionsWithConfig.config.serviceName} is listening on ${optionsWithConfig.config.serviceHost}:${optionsWithConfig.config.servicePort}`
+      `Server of component ${optionsWithConfig.config.serviceName} is listening on ${optionsWithConfig.config.serviceHost}:${optionsWithConfig.config.servicePort}`,
     );
 
     await registerComponent(optionsWithConfig.config);

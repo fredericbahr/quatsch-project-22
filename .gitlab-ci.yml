@@ -5,19 +5,6 @@ stages:
   - lint
   - test
 
-build_rasa:
-  stage: build
-  image:
-    name: rasa/rasa:3.4.0
-    entrypoint: [ "" ]
-  script:
-    - cd apps/rasa
-    - rasa train
-  artifacts:
-    paths:
-      - apps/rasa/models
-    expire_in: 5 day
-
 build:
   stage: build
   script:
@@ -30,15 +17,6 @@ build:
       - "**/.next"
     expire_in: 5 day
 
-lint_rasa:
-  stage: lint
-  image:
-    name: rasa/rasa:3.4.0
-    entrypoint: [ "" ]
-  script:
-    - cd apps/rasa
-    - rasa data validate
-
 lint:
   stage: lint
   script:
@@ -47,19 +25,6 @@ lint:
     - npm run init
     - npm run lint -- --filter=!rasa
     - npm run format
-
-test_rasa:
-  stage: test
-  image:
-    name: rasa/rasa:3.4.0
-    entrypoint: [ "" ]
-  script:
-    - cd apps/rasa
-    - rasa test
-  artifacts:
-    paths:
-      - apps/rasa/results
-    expire_in: 5 day
 
 test:
   stage: test

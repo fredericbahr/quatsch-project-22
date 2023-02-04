@@ -1,6 +1,6 @@
+import { INTENTS } from "../../enums/intents";
 import { RasaRequest, RasaResponse } from "../../interfaces/http";
 import { askAffirmationRequestHandler, fallbackRequestHandler } from "../fallback/fallback.controller";
-import { INTENTS } from "../../enums/intents";
 import { measurandAirRequestHandler } from "../measurand/air/measurand-air.controller";
 
 export const webhookRequestHandler = async (req: RasaRequest, res: RasaResponse) => {

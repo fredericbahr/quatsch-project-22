@@ -3,7 +3,6 @@ npm-debug.log
 
 # Any
 **/.next
-**/.turbo
 **/coverage
 **/dist
 **/node_modules

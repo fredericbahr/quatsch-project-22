@@ -7,9 +7,7 @@ import { IQanaryComponentCoreServiceConfig } from "../interfaces/service-config"
  */
 type ISpringBootAdminServerInfo = Pick<
   IQanaryComponentCoreServiceConfig,
-  | "springBootAdminServerUrl"
-  | "springBootAdminServerUser"
-  | "springBootAdminServerPassword"
+  "springBootAdminServerUrl" | "springBootAdminServerUser" | "springBootAdminServerPassword"
 >;
 
 /**
@@ -24,9 +22,7 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
  * @param config the configuration of the component
  * @returns an registration object for the Spring Boot Admin
  */
-const generateRegistration = (
-  config: IQanaryComponentCoreServiceConfig
-): IQanaryComponentCoreRegistration => {
+const generateRegistration = (config: IQanaryComponentCoreServiceConfig): IQanaryComponentCoreRegistration => {
   const metadata: IQanaryComponentCoreMetadata = {
     start: new Date().toISOString(),
     description: config.serviceDescription,
@@ -49,13 +45,13 @@ const generateRegistration = (
  */
 const callAdminServer = async (
   registration: IQanaryComponentCoreRegistration,
-  serverInfo: ISpringBootAdminServerInfo
+  serverInfo: ISpringBootAdminServerInfo,
 ) => {
   const headers = {
     "Content-Type": "application/json",
     Accept: "application/json",
     Authorization: `Basic ${Buffer.from(
-      `${serverInfo.springBootAdminServerUser}:${serverInfo.springBootAdminServerPassword}`
+      `${serverInfo.springBootAdminServerUser}:${serverInfo.springBootAdminServerPassword}`,
     ).toString("base64")}`,
   };
 
@@ -72,18 +68,14 @@ const callAdminServer = async (
           `${registration.serviceUrl} could not be registered at ${serverInfo.springBootAdminServerUrl}/instances`,
           response.status,
           response.statusText,
-          response.body
+          response.body,
         );
       }
 
-      console.log(
-        `${registration.serviceUrl} was registered at ${serverInfo.springBootAdminServerUrl}/instances`
-      );
+      console.log(`${registration.serviceUrl} was registered at ${serverInfo.springBootAdminServerUrl}/instances`);
     })
     .catch(() => {
-      console.warn(
-        `${serverInfo.springBootAdminServerUrl}/instances is not available`
-      );
+      console.warn(`${serverInfo.springBootAdminServerUrl}/instances is not available`);
     });
 };
 
@@ -92,12 +84,8 @@ const callAdminServer = async (
  * @param config the configuration of the component
  * @param interval the interval in which the component should call the Spring Boot Admin Server
  */
-export const registerComponent = async (
-  config: IQanaryComponentCoreServiceConfig,
-  interval = 1000 * 10
-) => {
-  const registration: IQanaryComponentCoreRegistration =
-    generateRegistration(config);
+export const registerComponent = async (config: IQanaryComponentCoreServiceConfig, interval = 1000 * 10) => {
+  const registration: IQanaryComponentCoreRegistration = generateRegistration(config);
 
   const serverInfo: ISpringBootAdminServerInfo = {
     springBootAdminServerUrl: config.springBootAdminServerUrl,
@@ -105,6 +93,7 @@ export const registerComponent = async (
     springBootAdminServerPassword: config.springBootAdminServerPassword,
   };
 
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     await callAdminServer(registration, serverInfo);
     await sleep(interval);

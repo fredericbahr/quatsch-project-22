@@ -13,8 +13,7 @@ export interface IQanaryComponentCoreOptions {
 }
 
 /** the options of the qanary component core with mandatory service config */
-export interface IQanaryComponentCoreOptionsWithConfig
-  extends IQanaryComponentCoreOptions {
+export interface IQanaryComponentCoreOptionsWithConfig extends IQanaryComponentCoreOptions {
   /** the configuration of the qanary component/service */
   config: IQanaryComponentCoreServiceConfig;
 }
