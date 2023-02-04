@@ -112,6 +112,38 @@ const addToLists = (
   );
 };
 
+const writeJsonFile = (data) => {
+  const trainJson = {
+    trainingdata: data,
+  };
+
+  fs.writeFile("./train.json", JSON.stringify(trainJson, null, 2), (err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log("qanary ner component training data written to 'train.json'");
+    }
+  });
+};
+
+const writeYmlFile = (data) => {
+  const trainYml = `version: "3.1"
+
+nlu:
+  ## Creation of context
+  - intent: context_air_measurand
+    examples: |
+    - ${data.join("\n    - ")}`;
+
+  fs.writeFile("./air_measurand.yml", trainYml, (err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log("rasa nlu examples written to 'air_measurand.yml'");
+    }
+  });
+};
+
 const questions1 = [
   {
     text: ({ measurand, station }) => `Wie ist der ${measurand} in ${station}?`,
@@ -126,11 +158,6 @@ const questions1 = [
       "pm10",
       "pm25k",
     ],
-  },
-  {
-    text: ({ measurand, station }) =>
-      `Wie ist der ${measurand} Wert in ${station}?`,
-    measurandAllowList: ["luqx", "no2", "o3", "pm10", "pm25k"],
   },
   {
     text: ({ measurand, station }) =>
@@ -213,6 +240,47 @@ const questions2 = [
 
 const questions3 = [
   {
+    text: ({ measurand, station, calculation }) =>
+      `Wie hoch war der ${measurand} in ${station} gestern im ${calculation}?`,
+    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub"],
+    calculationAllowList: ["Minimum", "Maximum", "Durchschnitt"],
+    measurandSuffix: "wert",
+  },
+  {
+    text: ({ measurand, station, calculation }) =>
+      `Wie hoch war der ${measurand} in ${station} gestern im ${calculation}?`,
+    measurandAllowList: [
+      "Luftqualitätsindex",
+      "luqx",
+      "no2",
+      "o3",
+      "pm10",
+      "pm25k",
+    ],
+    representationAllowList: ["Text", "Tabelle", "Liste", "Graph"],
+    calculationAllowList: ["Minimum", "Maximum", "Durchschnitt"],
+  },
+  {
+    text: ({ measurand, station, calculation }) =>
+      `Wie hoch war der ${measurand} Wert in ${station} gestern im ${calculation}?`,
+    measurandAllowList: [
+      "Luftqualitätsindex",
+      "Stickstoffdioxid",
+      "Ozon",
+      "Feinstaub",
+      "luqx",
+      "no2",
+      "o3",
+      "pm10",
+      "pm25k",
+    ],
+    representationAllowList: ["Text", "Tabelle", "Liste", "Graph"],
+    calculationAllowList: ["Minimum", "Maximum", "Durchschnitt"],
+  },
+];
+
+const questions4 = [
+  {
     text: ({ measurand, station, representation, calculation }) =>
       `Wie war der ${measurand} in ${station} am 23.01.2023, verglichen mit den ${calculation} der letzten 10 Jahre repräsentiert als ${representation}?`,
     measurandAllowList: [
@@ -277,6 +345,22 @@ questions3.forEach((question) => {
     measurands
       .filter((measurand) => question.measurandAllowList.includes(measurand))
       .forEach((measurand) => {
+        calculations
+          .filter((calculation) =>
+            question.calculationAllowList.includes(calculation)
+          )
+          .forEach((calculation) => {
+            addToLists(question, { station, measurand, calculation });
+          });
+      });
+  });
+});
+
+questions4.forEach((question) => {
+  stations.forEach((station) => {
+    measurands
+      .filter((measurand) => question.measurandAllowList.includes(measurand))
+      .forEach((measurand) => {
         representations
           .filter((representation) =>
             question.representationAllowList.includes(representation)
@@ -299,30 +383,5 @@ questions3.forEach((question) => {
   });
 });
 
-const trainJson = {
-  trainingdata: trainingData,
-};
-
-fs.writeFile("./train.json", JSON.stringify(trainJson, null, 2), (err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("qanary ner component training data written to 'train.json'");
-  }
-});
-
-const trainYml = `version: "3.1"
-
-nlu:
-  ## Creation of context
-  - intent: context_air_measurand
-    examples: |
-    - ${nluExamples.join("\n    - ")}`;
-
-fs.writeFile("./air_measurand.yml", trainYml, (err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("rasa nlu examples written to 'air_measurand.yml'");
-  }
-});
+writeJsonFile(trainingData);
+writeYmlFile(nluExamples);
