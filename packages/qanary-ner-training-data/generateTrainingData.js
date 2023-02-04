@@ -686,5 +686,5 @@ generateStationMeasurandRepresentationData();
 generateStationMeasurandCalculationData();
 generateStationMeasurandRepresentationCalculationData();
 
-writeJsonFile(trainingData);
-writeYmlFile(nluExamples);
+writeJsonFile(nerData);
+writeYmlFile(nluData);
