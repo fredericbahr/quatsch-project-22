@@ -1,0 +1,5 @@
+{
+  "entities": ["Station", "Measurand", "Calculation", "Representation"],
+  "language": "de",
+  "modeltype": "spacy"
+}

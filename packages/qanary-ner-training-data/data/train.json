@@ -1,0 +1,179 @@
+{
+  "trainingdata": [
+    {
+      "text": "Wie ist der Luftqualitätsindex in Aalen?",
+      "language": "de",
+      "entities": {
+        "Station": "Aalen",
+        "Measurand": "Luftqualitätsindex"
+      }
+    },
+    {
+      "text": "Wie ist der Stickstoffdioxidwert in Baden-Baden?",
+      "language": "de",
+      "entities": {
+        "Station": "Baden-Baden",
+        "Measurand": "Stickstoffdioxidwert"
+      }
+    },
+    {
+      "text": "Wie ist der Ozonwert in Bernhausen?",
+      "language": "de",
+      "entities": {
+        "Station": "Bernhausen",
+        "Measurand": "Ozonwert"
+      }
+    },
+    {
+      "text": "Wie ist der Feinstaubwert in Biberach?",
+      "language": "de",
+      "entities": {
+        "Station": "Biberach",
+        "Measurand": "Feinstaubwert"
+      }
+    },
+    {
+      "text": "Wie ist der luqx Wert in Eggenstein?",
+      "language": "de",
+      "entities": {
+        "Station": "Eggenstein",
+        "Measurand": "luqx"
+      }
+    },
+    {
+      "text": "Wie ist der no2 Wert in Freiburg?",
+      "language": "de",
+      "entities": {
+        "Station": "Freiburg",
+        "Measurand": "no2"
+      }
+    },
+    {
+      "text": "Wie ist der o3 Wert in Freiburg Schwarzwaldstraße?",
+      "language": "de",
+      "entities": {
+        "Station": "Freiburg Schwarzwaldstraße",
+        "Measurand": "o3"
+      }
+    },
+    {
+      "text": "Wie ist der pm10 Wert in Friedrichshafen?",
+      "language": "de",
+      "entities": {
+        "Station": "Friedrichshafen",
+        "Measurand": "pm10"
+      }
+    },
+    {
+      "text": "Wie ist der pm25k Wert in Gärtringen?",
+      "language": "de",
+      "entities": {
+        "Station": "Gärtringen",
+        "Measurand": "pm25k"
+      }
+    },
+    {
+      "text": "Zeig mir einen Graphen des Luftqualitätsindex der letzten Woche aus Heidelberg.",
+      "language": "de",
+      "entities": {
+        "Station": "Heidelberg",
+        "Measurand": "Luftqualitätsindex",
+        "Representation": "Graphen"
+      }
+    },
+    {
+      "text": "Ich hätte gerne das Minimum vom Stickstoffdioxid in Heilbronn des letzten Jahres.",
+      "language": "de",
+      "entities": {
+        "Station": "Heilbronn",
+        "Measurand": "Stickstoffdioxid",
+        "Calculation": "Minimum"
+      }
+    },
+    {
+      "text": "Wie war der Ozonwert in Heilbronn Weinsberger Straße-Ost am 23.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "language": "de",
+      "entities": {
+        "Station": "Heilbronn Weinsberger Straße-Ost",
+        "Measurand": "Ozonwert",
+        "Calculation": "Durchschnittswerten",
+        "Representation": "Tabelle"
+      }
+    },
+    {
+      "text": "Gib mir den maximalen Feinstaubwert in Karlsruhe-Nordwest der letzten 4 Tage als Liste.",
+      "language": "de",
+      "entities": {
+        "Station": "Karlsruhe-Nordwest",
+        "Measurand": "Feinstaubwert",
+        "Calculation": "maximalen",
+        "Representation": "Liste"
+      }
+    },
+    {
+      "text": "Was ist der aktuelle luqx Wert im Vergleich zu gestern in Karlsruhe Reinhold-Frank-Straße als Textantwort?",
+      "language": "de",
+      "entities": {
+        "Station": "Karlsruhe Reinhold-Frank-Straße",
+        "Measurand": "luqx",
+        "Representation": "Textantwort"
+      }
+    },
+    {
+      "text": "Welcher no2 Wert wird gerade in Kehl gemessen? Repräsentiert als Text.",
+      "language": "de",
+      "entities": {
+        "Station": "Kehl",
+        "Measurand": "no2",
+        "Representation": "Text"
+      }
+    },
+    {
+      "text": "Was ist der o3 Wert gerade in Konstanz im Vergleich zum Grenzwert?",
+      "language": "de",
+      "entities": {
+        "Station": "Konstanz",
+        "Measurand": "o3",
+        "Calculation": "Grenzwert"
+      }
+    },
+    {
+      "text": "Was waren die Minima der pm10 Messungen der letzten Woche in Leonberg Grabenstraße, repräsentiert als Graph?",
+      "language": "de",
+      "entities": {
+        "Station": "Leonberg Grabenstraße",
+        "Measurand": "pm10",
+        "Calculation": "Minima",
+        "Representation": "Graph"
+      }
+    },
+    {
+      "text": "Erstelle mir eine Tabelle für den Durchschnitt der pm25k Werte von Ludwigsburg für die letzten 5 Jahre.",
+      "language": "de",
+      "entities": {
+        "Station": "Ludwigsburg",
+        "Measurand": "pm25k",
+        "Calculation": "Durchschnitt",
+        "Representation": "Tabelle"
+      }
+    },
+    {
+      "text": "Wie ist der Luftqualitätsindex in Ludwigsburg Schlossstraße im Vergleich zu den letzten beiden Tagen, als Liste?",
+      "language": "de",
+      "entities": {
+        "Station": "Ludwigsburg Schlossstraße",
+        "Measurand": "Luftqualitätsindex",
+        "Representation": "Liste"
+      }
+    },
+    {
+      "text": "Wie hoch war der Stickstoffdioxidwert in Mannheim Friedrichsring gestern maximal?",
+      "language": "de",
+      "entities": {
+        "Station": "Mannheim Friedrichsring",
+        "Measurand": "Stickstoffdioxidwert",
+        "Calculation": "maximal"
+      }
+    }
+  ]
+}

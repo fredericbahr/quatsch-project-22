@@ -1,0 +1,53 @@
+{
+  "testingdata": [
+    {
+      "text": "I live in  1 in 38272 Dolní Dvořiště",
+      "language": "en",
+      "entities": {
+        "House_Nr": "1",
+        "Post_Code": "38272",
+        "City": "Dolní Dvořiště"
+      }
+    },
+    {
+      "text": "Work inquiries go to Buelowstrasse 187, 27367 Hassendorf",
+      "language": "en",
+      "entities": {
+        "Street": "Buelowstrasse",
+        "House_Nr": "187",
+        "Post_Code": "27367",
+        "City": "Hassendorf"
+      }
+    },
+    {
+      "text": "Please send the package to Ziegelgrund 74, 85123 Karlskron!",
+      "language": "en",
+      "entities": {
+        "Street": "Ziegelgrund",
+        "House_Nr": "74",
+        "Post_Code": "85123",
+        "City": "Karlskron"
+      }
+    },
+    {
+      "text": "Cannot wait to finally work at Ansbacher Strasse 33, 06776 Raguhn",
+      "language": "en",
+      "entities": {
+        "Street": "Ansbacher Strasse",
+        "House_Nr": "33",
+        "Post_Code": "06776",
+        "City": "Raguhn"
+      }
+    },
+    {
+      "text": "I'm so excited! I got the flat in Gotthardstrasse 72, 75173 Pforzheim Innenstadt.",
+      "language": "en",
+      "entities": {
+        "Street": "Gotthardstrasse",
+        "House_Nr": "72",
+        "Post_Code": "75173",
+        "City": "Pforzheim Innenstadt"
+      }
+    }
+  ]
+}
