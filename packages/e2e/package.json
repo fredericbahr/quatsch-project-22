@@ -2,13 +2,17 @@
   "private": true,
   "name": "e2e",
   "scripts": {
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src"
   },
   "devDependencies": {
-    "@playwright/test": "^1.29.1"
+    "@playwright/test": "^1.29.1",
+    "prettier": "^2.8.3",
+    "prettier-config-sdk": "*"
   },
+  "prettier": "prettier-config-sdk",
   "volta": {
-    "node": "18.12.1",
-    "npm": "8.19.2"
+    "extends": "../../package.json"
   }
 }

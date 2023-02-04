@@ -13,7 +13,6 @@
     "visualize": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full visualize"
   },
   "volta": {
-    "node": "18.12.1",
-    "npm": "8.19.2"
+    "extends": "../../package.json"
   }
 }

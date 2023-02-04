@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
 import { actionServerApi } from "api";
+import { Request, Response } from "express";
 
 export type RasaRequest = Request<never, never, actionServerApi.CallActionRequest>;
 

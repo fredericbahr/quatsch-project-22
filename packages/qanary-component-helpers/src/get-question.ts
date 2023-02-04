@@ -1,4 +1,5 @@
 import { qanaryComponentApi } from "api";
+
 import { getEndpoint, getInGraph } from "./message-operations";
 import { selectSparql } from "./query-sparql";
 

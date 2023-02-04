@@ -2,31 +2,38 @@
   "name": "qanary-component-helpers",
   "version": "1.0.0",
   "description": "Helper library for Qanary components written in TypeScript",
+  "license": "ISC",
+  "author": "",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "init": "npm ci",
     "build": "tsc",
+    "init": "npm ci",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "prettier": "prettier --c src",
     "prettier:fix": "prettier --w src",
     "prepublishOnly": "npm run build"
   },
-  "files": [
-    "dist"
-  ],
-  "author": "",
-  "license": "ISC",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "sparql-http-client": "^2.4.2"
+  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/sparql-http-client": "^2.2.8",
     "api": "*",
     "eslint": "^8.33.0",
+    "eslint-config-sdk": "*",
     "prettier": "^2.8.3",
+    "prettier-config-sdk": "*",
+    "ts-config-sdk": "*",
     "typescript": "^4.9.4"
   },
-  "dependencies": {
-    "sparql-http-client": "^2.4.2"
+  "prettier": "prettier-config-sdk",
+  "volta": {
+    "extends": "../../package.json"
   }
 }

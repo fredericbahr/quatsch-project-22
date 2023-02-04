@@ -28,7 +28,7 @@ services:
       context: .
       dockerfile: ./packages/qanary-component-core/Dockerfile
     volumes:
-      - ./packages/qanary-component-core:/app
+      - ./packages/qanary-component-core:/app/packages/qanary-component-core
       - /app/packages/qanary-component-core/node_modules
       - /app/node_modules
 
@@ -63,8 +63,7 @@ services:
       context: .
       dockerfile: apps/frontend/Dockerfile
     volumes:
-      - ./apps/frontend/src:/app/apps/frontend/src
-      - ./apps/frontend/public:/app/apps/frontend/public
+      - ./apps/frontend:/app/apps/frontend
       - /app/apps/frontend/node_modules
       - /app/node_modules
     restart: always
