@@ -1,0 +1,12 @@
+# validate if the DBpedia resource is available in the graph as AnnotationOfInstance
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+ASK
+FROM <GRAPHID>
+WHERE {
+    ?annotationId rdf:type qa:AnnotationOfInstance.
+    ?annotationId oa:hasBody <DBPEDIAENTITY>.
+}

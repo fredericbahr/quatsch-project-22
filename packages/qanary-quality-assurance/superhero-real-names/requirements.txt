@@ -1,0 +1,6 @@
+pystardog
+pandas
+SPARQLWrapper
+argparse
+XlsxWriter
+curlify

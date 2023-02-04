@@ -1,0 +1,55 @@
+:toc:
+:toclevels: 5
+:toc-placement!:
+:source-highlighter: highlight.js
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+# A minimal example of evaluating a Qanary Question Answering system
+
+This is a minimal example of evaluating a https://github.com/WDAqua/Qanary[Qanary] Question Answering system. 
+
+toc::[]
+
+## Example System
+
+To execute the evaluation, you need to have a running Qanary system and need to store the configuration of the Qanary system in a file called link:qanary-test-definition.json[`qanary-test-definition.json`] in this folder. 
+
+Here 2 components are used in the Qanary system:
+
+- https://github.com/WDAqua/Qanary-question-answering-components/tree/master/qanary-component-NED-DBpediaSpotlight[NED-DBpediaSpotlight]
+- https://github.com/WDAqua/Qanary-question-answering-components/tree/master/qanary-component-QB-SimpleRealNameOfSuperHero[QB-SimpleRealNameOfSuperHero]
+
+## Test Configuration
+
+The test configuration is stored in the file link:qanary-test-definition.json[`qanary-test-definition.json`]. 
+The configuration contains the following properties:
+
+. The example configuration contains 3 basic tests expressed by SPAQRL queries (configured in the file `qanary-test-definition.json` by the property `validation-sparql-templates`)):
+
+.. *0_was-any-instance-identified.sparql:* Calculate the number of annotated entities and checks if there is at least one corresponding annotation.
+.. *1_is-the-annotation-correct.sparql:* Validate if the pre-defined DBpedia resource (see the https://github.com/WSE-research/Qanary-quality-assurance/blob/bffb905f2fea49c575e95695d45eb99781cf8f32/superhero-real-names/qanary-test-definition.json#L22[test file configuration] for test-case-specific replacements/placeholders) is available in the graph as annotation of type `AnnotationOfInstance`.
+.. *2_was-a-sparql-query-computed-similar-as-expected.sparql:* Checks if there was an SPARQL query computed by the Qanary Question Answering system and if the stored SPARQL query is similar to the expected result.
+
+. Additionally a custom test was implemented in the file `qanary-test-definition.json` by the property `custom-validation`. 
+The correspond Python file link:./execute-on-dbpedia.py[`custom-validation.py`] is located in this folder. It enables a flexible implementation of custom tests (requirement: needs to return a boolean value). Here, it validates a SPARQL created by the Qanary process
+
+.. the create SPARQL query is retrieved from the Qanary triplestore
+.. the SPARQL query is executed on DBpedia as it is intended by this particular system
+
+
+## Execution of Quality Evaluation Script
+
+To execute the example evaluation, use the following command in the *parent directory* of this folder:
+
+[,shell]
+----
+python evaluate-qanary-system.py --directory=superhero-real-names
+----
+
+The results will be stored in the folder link:./output[`output`].

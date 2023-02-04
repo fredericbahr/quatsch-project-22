@@ -1,0 +1,15 @@
+# validate if there was an SPARQL query computed by the QA system
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+ASK
+FROM <GRAPHID>
+WHERE {
+    ?annotationId rdf:type qa:AnnotationOfAnswerSPARQL .
+    ?annotationId oa:hasBody ?createdAnswerQuery.
+    FILTER(REGEX(?createdAnswerQuery, "SELECT", "i"))
+    FILTER(CONTAINS(?createdAnswerQuery, "DBPEDIAENTITY"))
+    FILTER(CONTAINS(?createdAnswerQuery, "dbr:Category:Superheroes_with_alter_egos"))
+}
