@@ -23,7 +23,7 @@
   ],
   "devDependencies": {
     "prettier": "^2.8.3",
-    "turbo": "^1.7.1"
+    "turbo": "^1.7.3"
   },
   "volta": {
     "node": "18.12.1",
