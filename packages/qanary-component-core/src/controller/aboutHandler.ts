@@ -1,4 +1,4 @@
-import { Request, RequestHandler,Response } from "express";
+import { Request, RequestHandler, Response } from "express";
 
 import { IQanaryComponentCoreDescription } from "../interfaces/description";
 

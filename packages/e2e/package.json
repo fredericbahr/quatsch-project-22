@@ -7,7 +7,7 @@
     "format:fix": "prettier --write src"
   },
   "devDependencies": {
-    "@playwright/test": "^1.29.1",
+    "@playwright/test": "^1.30.0",
     "prettier": "^2.8.3",
     "prettier-config-sdk": "*"
   },

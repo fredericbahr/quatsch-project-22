@@ -1,5 +1,4 @@
-import express from "express";
-import { Express } from "express-serve-static-core";
+import express, { Express } from "express";
 import { createServer } from "net";
 
 import { aboutHandler } from "./controller/aboutHandler";

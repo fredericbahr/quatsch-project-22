@@ -10,7 +10,7 @@ WORKDIR /app
 
 # Install dependencies
 COPY . .
-RUN npm run init
+RUN npm run reinit
 
 RUN turbo prune --scope=frontend --docker
 
