@@ -58,6 +58,14 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/IQanaryMessage"
+            example:
+              values:
+                'urn:qanary#endpoint': 'http://qanary-pipeline:40111/sparql'
+                'urn:qanary#inGraph': 'urn:graph:8379d40d-7da1-4956-ab02-b5b760c67a0a'
+                'urn:qanary#outGraph': 'urn:graph:8379d40d-7da1-4956-ab02-b5b760c67a0a'
+              endpoint: "http://qanary-pipeline:40111/sparql"
+              inGraph: "urn:graph:9bfa0f41-295c-4d26-9a25-b8beccd51595"
+              outGraph: "urn:graph:9bfa0f41-295c-4d26-9a25-b8beccd51595"
         required: true
       responses:
         "200":
