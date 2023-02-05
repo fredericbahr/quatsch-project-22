@@ -1,3 +1,5 @@
+import { springBootAdminServer } from "api";
+
 import { IQanaryComponentCoreMetadata } from "../interfaces/metadata";
 import { IQanaryComponentCoreRegistration } from "../interfaces/registration";
 import { IQanaryComponentCoreServiceConfig } from "../interfaces/service-config";
@@ -9,6 +11,8 @@ type ISpringBootAdminServerInfo = Pick<
   IQanaryComponentCoreServiceConfig,
   "springBootAdminServerUrl" | "springBootAdminServerUser" | "springBootAdminServerPassword"
 >;
+
+const { SpringBootAdminServerApiFactory, Configuration } = springBootAdminServer;
 
 /**
  * Sleeps for the provided amount of milliseconds
@@ -47,35 +51,23 @@ const callAdminServer = async (
   registration: IQanaryComponentCoreRegistration,
   serverInfo: ISpringBootAdminServerInfo,
 ) => {
-  const headers = {
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    Authorization: `Basic ${Buffer.from(
-      `${serverInfo.springBootAdminServerUser}:${serverInfo.springBootAdminServerPassword}`,
-    ).toString("base64")}`,
-  };
+  const configuration = new Configuration({
+    basePath: serverInfo.springBootAdminServerUrl,
+    username: serverInfo.springBootAdminServerUser,
+    password: serverInfo.springBootAdminServerPassword,
+  });
 
-  const data: string = JSON.stringify(registration);
-
-  fetch(`${serverInfo.springBootAdminServerUrl}/instances`, {
-    method: "POST",
-    headers,
-    body: data,
-  })
+  SpringBootAdminServerApiFactory(configuration)
+    .createInstances(registration)
     .then((response) => {
-      if (!response.ok) {
-        return console.warn(
-          `${registration.serviceUrl} could not be registered at ${serverInfo.springBootAdminServerUrl}/instances`,
-          response.status,
-          response.statusText,
-          response.body,
-        );
+      if (response.status >= 201) {
+        return console.warn(`${registration.serviceUrl} could not be registered at ${configuration.basePath}`);
       }
 
-      console.log(`${registration.serviceUrl} was registered at ${serverInfo.springBootAdminServerUrl}/instances`);
+      console.log(`${registration.serviceUrl} was registered at ${configuration.basePath}`);
     })
     .catch(() => {
-      console.warn(`${serverInfo.springBootAdminServerUrl}/instances is not available`);
+      console.warn(`${configuration.basePath} is not available`);
     });
 };
 
