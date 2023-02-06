@@ -12,9 +12,7 @@ WORKDIR /app
 COPY . .
 RUN npm run reinit
 
-RUN turbo prune --scope=qanary-component-core --docker
-
-# Note: Don't expose ports here, Compose will handle that for us
+RUN turbo prune --scope=qanary-component-example --docker
 
 # Start development mode
-CMD npm run dev -- --filter=qanary-component-core
+CMD npm run dev -- --filter=qanary-component-example

@@ -1,87 +1,50 @@
+import cors from "cors";
 import express, { Express } from "express";
-import { createServer } from "net";
 
-import { aboutHandler } from "./controller/aboutHandler";
-import { healthHandler } from "./controller/healthHandler";
-import { registerComponent } from "./controller/registration";
-import { IQanaryComponentCoreDescription } from "./interfaces/description";
-import { IQanaryComponentCoreOptions, IQanaryComponentCoreOptionsWithConfig } from "./interfaces/options";
-import { IQanaryComponentCoreServiceConfig } from "./interfaces/service-config";
+import { errorRequestHandler } from "./middlewares/error/error.middleware";
+import { aboutRouter } from "./resources/about/about.router";
+import { IQanaryComponentMessageHandler } from "./resources/annotatequestion/annotatequestion.model";
+import { annotateQuestionRouter } from "./resources/annotatequestion/annotatequestion.router";
+import { healthRouter } from "./resources/health/health.router";
+import { QanaryComponentCoreServiceConfig } from "./services/registration/registration.model";
+import { registrationService } from "./services/registration/registration.service";
 
-/**
- * A function that determines the next free port starting from a given port.
- * @param port start port
- */
-const getPort = (port = 40500) => {
-  const server = createServer();
-
-  return new Promise<number>((resolve, reject) =>
-    server
-      .on("error", (error: { code: string }) => {
-        error.code === "EADDRINUSE" ? server.listen(++port) : reject(error);
-      })
-      .on("listening", () => server.close(() => resolve(port)))
-      .listen(port),
-  );
-};
-
-/**
- * Adds standard options to missing options
- * @param options incomplete options
- */
-const getDefaultOptions = async (
-  options: IQanaryComponentCoreOptions,
-): Promise<IQanaryComponentCoreOptionsWithConfig> => {
-  const pkg = await import(`${process.cwd()}/package.json`);
-  const port: number = await getPort();
-
-  const defaultConfig: IQanaryComponentCoreServiceConfig = {
-    springBootAdminServerUrl: "http://qanary-pipeline:40111",
-    springBootAdminServerUser: "admin",
-    springBootAdminServerPassword: "admin",
-    serviceName: pkg.name ?? "",
-    servicePort: port,
-    serviceHost: "http://qanary-component",
-    serviceDescription: pkg.description ?? "",
-  };
-
-  const defaultDescription: IQanaryComponentCoreDescription = {
-    name: pkg.name ?? "",
-    description: pkg.description ?? "",
-    version: pkg.version ?? "",
-  };
-
-  return {
-    config: { ...defaultConfig, ...options.config },
-    handler: options.handler,
-    description: { ...defaultDescription, ...options.description },
-  };
-};
+/** the options of the qanary component core with optional service config */
+export interface IQanaryComponentCoreOptions {
+  /** the request handler of the qanary component/service */
+  handler: IQanaryComponentMessageHandler;
+}
 
 /**
  * The core implementation (blueprint) of a Qanary component
  * @param options the options of the component
- * @returns the express server instance
+ * @returns the express app instance
  */
 export async function QanaryComponentCore(options: IQanaryComponentCoreOptions): Promise<Express> {
-  const optionsWithConfig: IQanaryComponentCoreOptionsWithConfig = await getDefaultOptions(options);
-  const server: Express = express();
+  const app: Express = express();
 
   // For parsing application/json
-  server.use(express.json());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
+  app.use(cors());
 
   // Routes
-  server.get(["/actuator/health", "/health"], healthHandler);
-  server.get(["/", "/about"], aboutHandler(optionsWithConfig.description));
-  server.post(["/annotatequestion"], optionsWithConfig.handler);
+  app.use("/", await aboutRouter());
+  app.use("/annotatequestion", await annotateQuestionRouter(options.handler));
+  app.use("/health", await healthRouter());
 
-  server.listen(optionsWithConfig.config.servicePort, async () => {
-    console.log(
-      `Server of component ${optionsWithConfig.config.serviceName} is listening on ${optionsWithConfig.config.serviceHost}:${optionsWithConfig.config.servicePort}`,
-    );
+  // body parser error handler
+  app.use(errorRequestHandler);
 
-    await registerComponent(optionsWithConfig.config);
+  // Generate service configurations
+  const config = await QanaryComponentCoreServiceConfig.create();
+
+  // Start app
+  app.listen(config.springBootAdminClientInstanceServiceBaseUrl.port, async () => {
+    // Initialize services
+    await registrationService(config);
   });
 
-  return server;
+  // Export app
+  return app;
 }
