@@ -22,3 +22,10 @@ stories:
           Ja, versuche die Anfrage über Qanary zu erkennen
         intent: qanary_default_processing
       - action: action_default_qanary
+
+  - story: Vulgar expressions are forbidden
+    steps:
+      - user: |
+          Fick dich!
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
