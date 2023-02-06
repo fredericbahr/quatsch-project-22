@@ -1,109 +1,43 @@
-# Qanary Component Core (TypeScript)
+# Qanary Component Core
 
-This project provides a core component for the Qanary framework. It is written in TypeScript and can be used as a starting point for new custom components.
+A documentation and guide for setting up a qanary component.
 
-## Core Functionality
+## Basic
 
-The core component provides the following functionality:
+A Qanary component is a RESTful server that provides a set of endpoints for the Qanary pipeline. The component must register itself to the Qanary pipeline, to be precise, it must register to the Spring Boot Admin Server. After registration it will be available for the pipeline.
 
-- basic routes for the Spring Boot Admin server
-- a REST endpoint for the Qanary pipeline to communicate with the component
-- a mechanism to register new components at the Spring Boot Admin server
+The pipeline will call the component via a POST request to a defined endpoint. The component itself must be able to handle the request and return a response. The response must be a JSON object that contains a defined set of fields.
 
-## Installation
+## Endpoints
 
-The core component can be installed as a npm package:
+The component must provide the following endpoints:
 
-```bash
-npm install qanary-component-core
-```
+- /health (GET) - returns the health status of the component
+- /about (GET) (optional but recommended) - returns the information about the component
+- / (GET) (optional but recommended) - returns the information about the component
+- /annotation (POST) - handles the request from the pipeline and defines the behaviour of the component
 
-## Usage
+## SpringBootAdminServerInstances
 
-The core component can be used as a framework for new custom components. The following example shows how to create a new component:
+## Health
 
-```typescript
-import {
-    QanaryComponentCore,
-    IQanaryComponentCoreOptions,
-    IQanaryComponentCoreDescription,
-    IQanaryComponentCoreRequestHandler,
-    IQanaryComponentCoreServiceConfig
-} from 'qanary-component-core';
+The `health` endpoint is used by the Spring Boot Admin Server to check the health and uptime status of the component. For the Spring Boot Admin Server to correctly display the component as active the endpoint must return a `200` http status code and the following JSOn object:
 
-const config: IQanaryComponentCoreServiceConfig = {
-  springBootAdminServerUrl: "http://localhost:8080/",
-  springBootAdminServerUser: "admin",
-  springBootAdminServerPassword: "admin",
-  serviceName: "my-component",
-  servicePort: 5000,
-  serviceHost: "http://localhost",
-  serviceDescription: "my-component is doing some magic",
-};
-
-const handler: IQanaryComponentCoreRequestHandler = (req, res) => {
-    // implement your component logic here
-    // e.g get the question and return some analysis
-    // write back the results into the graph/triplestore
-};
-
-const description: IQanaryComponentCoreDescription = {
-    name: "my-component",
-    description: "my-component is doing some magic",
-    version: "0.0.1",
-};
-
-const options: IQanaryComponentCoreOptions = {
-    config,
-    handler,
-    description,
+```json
+{
+  "status": "UP"
 }
-
-// automatically registers the component at the Spring Boot Admin server
-const myComponent = QanaryComponentCore(options);
 ```
 
-## API
+## About
 
-### IQanaryComponentCoreOptions
+The `about` endpoint is used to document the component. It is not required but recommended.
+The endpoint can return any content that the developer wants to provide. The endpoint must return a `200` http status code.
 
-| Property    | Type                                 | Description                       |
-| ----------- | ------------------------------------ | --------------------------------- |
-| config      | `IQanaryComponentCoreConfig`         | Configuration of the component    |
-| handler     | `IQanaryComponentCoreRequestHandler` | Request handler for the component |
-| description | `IQanaryComponentCoreDescription`    | Description of the component      |
+## Handling a request
 
-### IQanaryComponentCoreConfig
-
-| Property                      | Type     | Description                               |
-| ----------------------------- | -------- | ----------------------------------------- |
-| springBootAdminServerUrl      | `string` | URL of the Spring Boot Admin server       |
-| springBootAdminServerUser     | `string` | User for the Spring Boot Admin server     |
-| springBootAdminServerPassword | `string` | Password for the Spring Boot Admin server |
-| serviceName                   | `string` | Name of the component                     |
-| servicePort                   | `number` | Port of the component                     |
-| serviceHost                   | `string` | Host of the component                     |
-| serviceDescription            | `string` | Description of the component              |
-
-### IQanaryComponentCoreDescription
-
-| Property    | Type     | Description                  |
-| ----------- | -------- | ---------------------------- |
-| name        | `string` | Name of the component        |
-| description | `string` | Description of the component |
-| version     | `string` | Version of the component     |
-
-### IQanaryComponentCoreRequestHandler
-
-| Property | Type                                    | Description                      |
-| -------- | --------------------------------------- | -------------------------------- |
-| req      | `Request<never, never, IQanaryMessage>` | Request object of the component  |
-| res      | `Response<IQanaryMessage>`              | Response object of the component |
-
-### IQanaryMessage
-
-| Property | Type     | Description                |
-| -------- | -------- | -------------------------- |
-| endpoint | `string` | URI of the sparql endpoint |
-| inGraph  | `string` | URI of the incoming graph  |
-| outGraph | `string` | URI of the outgoing graph  |
+The `annotatequestion` endpoint is used to handle the request from the pipeline. The core functionality of the component is implemented here.
+The pipeline provides the following information to the component:
+- the url of the sparql endpoint that contains the knowledge graph
+- the url of the input graph that contains the question and previous annotations
+- the url of the output graph that the component must use to store the new annotations

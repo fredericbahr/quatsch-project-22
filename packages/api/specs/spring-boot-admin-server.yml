@@ -16,7 +16,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/ISpringBootAdminServerInstances"
+              "$ref": "#/components/schemas/IComponentRegistrationInfo"
             example:
               name: "my-own-qanary-component"
               serviceUrl: "http://localhost:40500"
@@ -51,7 +51,7 @@ paths:
 
 components:
   schemas:
-    ISpringBootAdminServerInstances:
+    IComponentRegistrationInfo:
       description: "The request body that needs to be send to the Spring Boot Admin Server for registering a new component"
       type: object
       properties:

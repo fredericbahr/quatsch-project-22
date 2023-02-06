@@ -1,4 +1,4 @@
-import { qanaryComponentApi } from "api";
+import { QanaryComponentApi } from "api";
 
 import { getEndpoint, getInGraph } from "./message-operations";
 import { selectSparql } from "./query-sparql";
@@ -23,8 +23,8 @@ const fetchRawQuestion = async (questionUrl: string) => {
     },
   });
 
-  const quesiton: string = await response.text();
-  return quesiton;
+  const question: string = await response.text();
+  return question;
 };
 
 /**
@@ -32,9 +32,7 @@ const fetchRawQuestion = async (questionUrl: string) => {
  * @param message the message containing the graph and endpoint
  * @returns the asked question
  */
-export const getQuestion = async (
-  message: qanaryComponentApi.IQanaryMessage
-): Promise<string | null> => {
+export const getQuestion = async (message: QanaryComponentApi.IQanaryMessage): Promise<string | null> => {
   const inGraph: string = getInGraph(message) ?? "";
   const endpointUrl: string = getEndpoint(message) ?? "";
 
@@ -55,15 +53,10 @@ LIMIT 1
 `;
 
   try {
-    const response = await selectSparql<QuestionSparqlResponse>(
-      endpointUrl,
-      queryQuestionUrl
-    );
+    const response = await selectSparql<QuestionSparqlResponse>(endpointUrl, queryQuestionUrl);
     const firstResponse = 0;
     const questionUrl: string = response[firstResponse].questionUrl.value;
-    const question: string = await fetchRawQuestion(questionUrl);
-
-    return question;
+    return await fetchRawQuestion(questionUrl);
   } catch (error) {
     console.error(error);
     return null;

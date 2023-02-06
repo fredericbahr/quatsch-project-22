@@ -1,4 +1,4 @@
-export * as actionServerApi from "./action-server";
-export * as qanaryComponentApi from "./qanary-component";
-export * as qanaryPipelineApi from "./qanary-pipeline";
-export * as springBootAdminServer from "./spring-boot-admin-server";
+export * as ActionServerApi from "./action-server";
+export * as QanaryComponentApi from "./qanary-component";
+export * as QanaryPipelineApi from "./qanary-pipeline";
+export * as SpringBootAdminServerApi from "./spring-boot-admin-server";

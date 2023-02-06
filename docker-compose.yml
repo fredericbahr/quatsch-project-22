@@ -17,19 +17,40 @@ services:
       - SERVER_PORT=$SERVER_PORT
       - QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true
 
-  qanary-component:
-    container_name: qanary-component
+  qanary-component-example1:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_NAME
     networks:
       - rasa-network
-    restart: always
     ports:
-      - "40500:40500"
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_PORT:40500"
+    restart: always
     build:
       context: .
-      dockerfile: ./packages/qanary-component-core/Dockerfile
+      dockerfile: ./apps/qanary-component-example/Dockerfile
+    environment:
+      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
+      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_PORT
     volumes:
-      - ./packages/qanary-component-core:/app/packages/qanary-component-core
-      - /app/packages/qanary-component-core/node_modules
+      - ./packages/qanary-component-example:/app/packages/qanary-component-example
+      - /app/packages/qanary-component-example/node_modules
+      - /app/node_modules
+        
+  qanary-component-example2:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_B_NAME
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_B_PORT:40500"
+    restart: always
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-example/Dockerfile
+    environment:
+      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
+      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_B_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_B_PORT
+    volumes:
+      - ./packages/qanary-component-example:/app/packages/qanary-component-example
+      - /app/packages/qanary-component-example/node_modules
       - /app/node_modules
 
   rasa:

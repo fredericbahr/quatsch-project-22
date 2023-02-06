@@ -22,6 +22,37 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from './base';
 
 /**
+ * The request body that needs to be send to the Spring Boot Admin Server for registering a new component
+ * @export
+ * @interface IComponentRegistrationInfo
+ */
+export interface IComponentRegistrationInfo {
+    /**
+     * The name of the component
+     * @type {string}
+     * @memberof IComponentRegistrationInfo
+     */
+    'name'?: string;
+    /**
+     * The url of the component. The Spring Boot Admin Server can communicate with the component via this url
+     * @type {string}
+     * @memberof IComponentRegistrationInfo
+     */
+    'serviceUrl'?: string;
+    /**
+     * The url of the health endpoint of the component. The Spring Boot Admin Server can check the health of the component via this endpoint 
+     * @type {string}
+     * @memberof IComponentRegistrationInfo
+     */
+    'healthUrl'?: string;
+    /**
+     * 
+     * @type {IQanaryComponentCoreMetadata}
+     * @memberof IComponentRegistrationInfo
+     */
+    'metadata'?: IQanaryComponentCoreMetadata;
+}
+/**
  * Provides meta data of the component
  * @export
  * @interface IQanaryComponentCoreMetadata
@@ -51,37 +82,6 @@ export interface IQanaryComponentCoreMetadata {
      * @memberof IQanaryComponentCoreMetadata
      */
     'written in'?: string;
-}
-/**
- * The request body that needs to be send to the Spring Boot Admin Server for registering a new component
- * @export
- * @interface ISpringBootAdminServerInstances
- */
-export interface ISpringBootAdminServerInstances {
-    /**
-     * The name of the component
-     * @type {string}
-     * @memberof ISpringBootAdminServerInstances
-     */
-    'name'?: string;
-    /**
-     * The url of the component. The Spring Boot Admin Server can communicate with the component via this url
-     * @type {string}
-     * @memberof ISpringBootAdminServerInstances
-     */
-    'serviceUrl'?: string;
-    /**
-     * The url of the health endpoint of the component. The Spring Boot Admin Server can check the health of the component via this endpoint 
-     * @type {string}
-     * @memberof ISpringBootAdminServerInstances
-     */
-    'healthUrl'?: string;
-    /**
-     * 
-     * @type {IQanaryComponentCoreMetadata}
-     * @memberof ISpringBootAdminServerInstances
-     */
-    'metadata'?: IQanaryComponentCoreMetadata;
 }
 /**
  * The erroneous response for registering a new component at the Spring Boot Admin Server
@@ -143,13 +143,13 @@ export const SpringBootAdminServerApiAxiosParamCreator = function (configuration
         /**
          * Provides an endpoint to register new components at the Spring Boot Admin Server
          * @summary Provides an endpoint to register new components at the Spring Boot Admin Server
-         * @param {ISpringBootAdminServerInstances} iSpringBootAdminServerInstances 
+         * @param {IComponentRegistrationInfo} iComponentRegistrationInfo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInstances: async (iSpringBootAdminServerInstances: ISpringBootAdminServerInstances, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'iSpringBootAdminServerInstances' is not null or undefined
-            assertParamExists('createInstances', 'iSpringBootAdminServerInstances', iSpringBootAdminServerInstances)
+        createInstances: async (iComponentRegistrationInfo: IComponentRegistrationInfo, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'iComponentRegistrationInfo' is not null or undefined
+            assertParamExists('createInstances', 'iComponentRegistrationInfo', iComponentRegistrationInfo)
             const localVarPath = `/instances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -169,7 +169,7 @@ export const SpringBootAdminServerApiAxiosParamCreator = function (configuration
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(iSpringBootAdminServerInstances, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(iComponentRegistrationInfo, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -189,12 +189,12 @@ export const SpringBootAdminServerApiFp = function(configuration?: Configuration
         /**
          * Provides an endpoint to register new components at the Spring Boot Admin Server
          * @summary Provides an endpoint to register new components at the Spring Boot Admin Server
-         * @param {ISpringBootAdminServerInstances} iSpringBootAdminServerInstances 
+         * @param {IComponentRegistrationInfo} iComponentRegistrationInfo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createInstances(iSpringBootAdminServerInstances: ISpringBootAdminServerInstances, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ISpringBootAdminServerInstancesSuccess>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createInstances(iSpringBootAdminServerInstances, options);
+        async createInstances(iComponentRegistrationInfo: IComponentRegistrationInfo, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ISpringBootAdminServerInstancesSuccess>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createInstances(iComponentRegistrationInfo, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -210,12 +210,12 @@ export const SpringBootAdminServerApiFactory = function (configuration?: Configu
         /**
          * Provides an endpoint to register new components at the Spring Boot Admin Server
          * @summary Provides an endpoint to register new components at the Spring Boot Admin Server
-         * @param {ISpringBootAdminServerInstances} iSpringBootAdminServerInstances 
+         * @param {IComponentRegistrationInfo} iComponentRegistrationInfo 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createInstances(iSpringBootAdminServerInstances: ISpringBootAdminServerInstances, options?: any): AxiosPromise<ISpringBootAdminServerInstancesSuccess> {
-            return localVarFp.createInstances(iSpringBootAdminServerInstances, options).then((request) => request(axios, basePath));
+        createInstances(iComponentRegistrationInfo: IComponentRegistrationInfo, options?: any): AxiosPromise<ISpringBootAdminServerInstancesSuccess> {
+            return localVarFp.createInstances(iComponentRegistrationInfo, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -230,13 +230,13 @@ export class SpringBootAdminServerApi extends BaseAPI {
     /**
      * Provides an endpoint to register new components at the Spring Boot Admin Server
      * @summary Provides an endpoint to register new components at the Spring Boot Admin Server
-     * @param {ISpringBootAdminServerInstances} iSpringBootAdminServerInstances 
+     * @param {IComponentRegistrationInfo} iComponentRegistrationInfo 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SpringBootAdminServerApi
      */
-    public createInstances(iSpringBootAdminServerInstances: ISpringBootAdminServerInstances, options?: AxiosRequestConfig) {
-        return SpringBootAdminServerApiFp(this.configuration).createInstances(iSpringBootAdminServerInstances, options).then((request) => request(this.axios, this.basePath));
+    public createInstances(iComponentRegistrationInfo: IComponentRegistrationInfo, options?: AxiosRequestConfig) {
+        return SpringBootAdminServerApiFp(this.configuration).createInstances(iComponentRegistrationInfo, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
