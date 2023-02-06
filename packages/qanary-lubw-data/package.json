@@ -1,0 +1,36 @@
+{
+  "name": "qanary-lubw-data",
+  "version": "1.0.0",
+  "description": "Specialized LUBW data needed in Qanary",
+  "license": "ISC",
+  "author": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "init": "npm ci",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prettier": "prettier --c src",
+    "prettier:fix": "prettier --w src",
+    "prepublishOnly": "npm run build"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "eslint": "^8.33.0",
+    "eslint-config-sdk": "*",
+    "prettier": "^2.8.3",
+    "prettier-config-sdk": "*",
+    "ts-config-sdk": "*",
+    "typescript": "^4.9.4"
+  },
+  "prettier": "prettier-config-sdk",
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
