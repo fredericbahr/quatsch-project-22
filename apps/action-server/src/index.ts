@@ -1,12 +1,10 @@
-import express, { Express, Request, Response } from "express";
-import dotenv from "dotenv";
 import cors from "cors";
-import { webhookRouter } from "./src/resources/webhook/webhook.router";
+import express, { Express, Request, Response } from "express";
 
-dotenv.config();
+import { webhookRouter } from "./resources/webhook/webhook.router";
 
 const server: Express = express();
-const port = process.env.PORT || 8080;
+const port = 8080;
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
