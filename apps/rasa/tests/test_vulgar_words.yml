@@ -1,0 +1,50 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+  - story: vulgar word 1
+    steps:
+      - user: |
+          Fick dich!
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Arschloch
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Verpiss dich
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Du Hurensohn
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Leck mich am Arsch
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Schlampe
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Nutte
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Ich will dich ficken
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Arschloch
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Dreckige Hure
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Spasti
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope

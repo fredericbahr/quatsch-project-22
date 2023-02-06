@@ -21,4 +21,9 @@ rules:
     steps:
       - intent: qanary_default_processing
       - action: action_default_qanary
+
+  - rule: Vulgar expressions are forbidden
+    steps:
+      - intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
   
