@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "A custom action server for the rasa chatbot",
   "license": "ISC",
-  "main": "server.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "clean": "rimraf .turbo coverage dist",
-    "dev": "npx nodemon server.ts",
+    "dev": "npx nodemon src/index.ts",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
     "lint": "eslint src",
@@ -17,7 +17,6 @@
   "dependencies": {
     "api": "*",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
     "express": "^4.18.2"
   },
   "devDependencies": {
