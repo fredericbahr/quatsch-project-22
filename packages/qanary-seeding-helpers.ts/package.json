@@ -15,7 +15,8 @@
     "lint:fix": "eslint src --fix",
     "prettier": "prettier --c src",
     "prettier:fix": "prettier --w src",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "jest --coverage --detectOpenHandles"
   },
   "types": "dist/index.d.ts",
   "dependencies": {
@@ -23,12 +24,18 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
+    "@types/jest": "^29.4.0",
     "eslint": "^8.33.0",
     "eslint-config-sdk": "*",
+    "jest": "^29.4.1",
+    "jest-config-sdk": "*",
     "prettier": "^2.8.3",
     "prettier-config-sdk": "*",
     "ts-config-sdk": "*",
     "typescript": "^4.9.4"
+  },
+  "jest": {
+    "preset": "jest-config-sdk"
   },
   "prettier": "prettier-config-sdk",
   "volta": {

@@ -1,3 +1,4 @@
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
   roots: ["<rootDir>"],
   transform: {
@@ -10,4 +11,6 @@ module.exports = {
     "<rootDir>/dist",
   ],
   preset: "ts-jest",
+  clearMocks: true,
+  coverageReporters: ["clover", "json", "lcov", "text", "text-summary"],
 };
