@@ -13,6 +13,8 @@ build:
     - npm run reinit
   artifacts:
     paths:
+      - "node_modules"
+      - "**/node_modules"
       - "**/dist"
     expire_in: 5 day
 
@@ -34,7 +36,6 @@ lint:
   script:
     - apk add --no-cache libc6-compat
     - apk update
-    - npm run init
     - npm run lint
     - npm run format
 
@@ -52,7 +53,6 @@ test:
   script:
     - apk add --no-cache libc6-compat
     - apk update
-    - npm run init
     - npm run test
   artifacts:
     paths:

@@ -6,7 +6,7 @@ intents:
   - bot_challenge
   - context_air_measurand
   - nlu_fallback
-  - quanary_default_processing
+  - qanary_default_processing
   - vulgar_out_of_scope
 
 entities:
