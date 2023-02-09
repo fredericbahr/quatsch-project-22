@@ -12,11 +12,16 @@ type QuestionSparqlResponse = {
 /**
  * Fetches the raw question from given question url
  * @param questionUrl the url of the question
+ * @param origin the origin for the question request, e.g the origin of qanary pipeline
  * @returns the raw question
  */
-const fetchRawQuestion = async (questionUrl: string) => {
-  const url = `${questionUrl}/raw`;
-  const response = await fetch(url, {
+const fetchRawQuestion = async (questionUrl: string, origin?: string) => {
+  const url: URL = new URL(questionUrl);
+
+  // adjust url to match the origin of the qanary pipeline (e.g. in containerized environments)
+  const adjustedUrl: string = origin ? `${origin}${url.pathname}/raw` : `${questionUrl}/raw`;
+
+  const response = await fetch(adjustedUrl, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -30,13 +35,17 @@ const fetchRawQuestion = async (questionUrl: string) => {
 /**
  * Gets the question from the graph given in the message
  * @param message the message containing the graph and endpoint
+ * @param origin the origin for the question request, e.g the origin of qanary pipeline
  * @returns the asked question
  */
-export const getQuestion = async (message: QanaryComponentApi.IQanaryMessage): Promise<string | null> => {
+export const getQuestion = async (
+  message: QanaryComponentApi.IQanaryMessage,
+  origin?: string,
+): Promise<string | null> => {
   const inGraph: string = getInGraph(message) ?? "";
   const endpointUrl: string = getEndpoint(message) ?? "";
 
-  const queryQuestionUrl = `
+  const questionUrlQuery = `
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
 PREFIX qa: <http://www.wdaqua.eu/qa#>
@@ -53,10 +62,11 @@ LIMIT 1
 `;
 
   try {
-    const response = await selectSparql<QuestionSparqlResponse>(endpointUrl, queryQuestionUrl);
+    const response = await selectSparql<QuestionSparqlResponse>(endpointUrl, questionUrlQuery);
     const firstResponse = 0;
     const questionUrl: string = response[firstResponse].questionUrl.value;
-    return await fetchRawQuestion(questionUrl);
+
+    return await fetchRawQuestion(questionUrl, origin);
   } catch (error) {
     console.error(error);
     return null;
