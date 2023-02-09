@@ -25,7 +25,7 @@ describe("seeding helpers", () => {
 
       const classDefinitions = getClassDefinitions(domains);
 
-      expect(classDefinitions).toEqual("<urn:station a rdfs:Class> .\n");
+      expect(classDefinitions).toEqual("<urn:station> a <rdfs:Class> .\n");
     });
 
     it("should return the class definitions for multiple domains", () => {
@@ -33,7 +33,7 @@ describe("seeding helpers", () => {
 
       const classDefinitions = getClassDefinitions(domains);
 
-      expect(classDefinitions).toEqual("<urn:station a rdfs:Class> .\n<urn:measurand a rdfs:Class> .\n");
+      expect(classDefinitions).toEqual("<urn:station> a <rdfs:Class> .\n<urn:measurand> a <rdfs:Class> .\n");
     });
   });
 
@@ -53,11 +53,11 @@ describe("seeding helpers", () => {
 
       const stationTriples = getStationTriples(stations);
 
-      expect(stationTriples).toEqual(`<urn:DEBW029 a <urn:station> ;
-  identity:id \\"DEBW029\\" ;
-  rdfs:label \\"Aalen\\" ;
-  geo:lat \\"48.84791111098396\\" ;
-  geo:long \\"10.096291667090522\\" .`);
+      expect(stationTriples).toEqual(`<urn:DEBW029> a <urn:station> ;
+  dc:identifier "DEBW029" ;
+  rdfs:label "Aalen" ;
+  geo:lat "48.84791111098396" ;
+  geo:long "10.096291667090522" .`);
     });
 
     it("should return the station triples for multiple stations", () => {
@@ -68,16 +68,16 @@ describe("seeding helpers", () => {
 
       const stationTriples = getStationTriples(stations);
 
-      expect(stationTriples).toEqual(`<urn:DEBW029 a <urn:station> ;
-  identity:id \\"DEBW029\\" ;
-  rdfs:label \\"Aalen\\" ;
-  geo:lat \\"48.84791111098396\\" ;
-  geo:long \\"10.096291667090522\\" .
-<urn:DEBW076 a <urn:station> ;
-  identity:id \\"DEBW076\\" ;
-  rdfs:label \\"Baden-Baden\\" ;
-  geo:lat \\"48.77307222207387\\" ;
-  geo:long \\"8.22021111117469\\" .`);
+      expect(stationTriples).toEqual(`<urn:DEBW029> a <urn:station> ;
+  dc:identifier "DEBW029" ;
+  rdfs:label "Aalen" ;
+  geo:lat "48.84791111098396" ;
+  geo:long "10.096291667090522" .
+<urn:DEBW076> a <urn:station> ;
+  dc:identifier "DEBW076" ;
+  rdfs:label "Baden-Baden" ;
+  geo:lat "48.77307222207387" ;
+  geo:long "8.22021111117469" .`);
     });
   });
 
@@ -95,9 +95,9 @@ describe("seeding helpers", () => {
 
       const measurandTriples = getMeasurandTriples(measurands);
 
-      expect(measurandTriples).toEqual(`<urn:temperature a <urn:measurand> ;
-  identity:id \\"temperature\\" ;
-  rdfs:label \\"Temperature\\" .`);
+      expect(measurandTriples).toEqual(`<urn:temperature> a <urn:measurand> ;
+  dc:identifier "temperature" ;
+  rdfs:label "Temperature" .`);
     });
 
     it("should return the measurand triples for multiple measurands", () => {
@@ -108,12 +108,12 @@ describe("seeding helpers", () => {
 
       const measurandTriples = getMeasurandTriples(measurands);
 
-      expect(measurandTriples).toEqual(`<urn:temperature a <urn:measurand> ;
-  identity:id \\"temperature\\" ;
-  rdfs:label \\"Temperature\\" .
-<urn:precipitation a <urn:measurand> ;
-  identity:id \\"precipitation\\" ;
-  rdfs:label \\"Precipitation\\" .`);
+      expect(measurandTriples).toEqual(`<urn:temperature> a <urn:measurand> ;
+  dc:identifier "temperature" ;
+  rdfs:label "Temperature" .
+<urn:precipitation> a <urn:measurand> ;
+  dc:identifier "precipitation" ;
+  rdfs:label "Precipitation" .`);
     });
   });
 
@@ -136,9 +136,9 @@ describe("seeding helpers", () => {
 
       const calculationTriples = getCalculationTriples(calculations);
 
-      expect(calculationTriples).toEqual(`<urn:avg a <urn:calculation> ;
-  identity:id \\"avg\\" ;
-  rdfs:label \\"Average\\" .`);
+      expect(calculationTriples).toEqual(`<urn:avg> a <urn:calculation> ;
+  dc:identifier "avg" ;
+  rdfs:label "Average" .`);
     });
 
     it("should return the calculation triples for multiple calculations", () => {
@@ -155,12 +155,12 @@ describe("seeding helpers", () => {
 
       const calculationTriples = getCalculationTriples(calculations);
 
-      expect(calculationTriples).toEqual(`<urn:avg a <urn:calculation> ;
-  identity:id \\"avg\\" ;
-  rdfs:label \\"Average\\" .
-<urn:max a <urn:calculation> ;
-  identity:id \\"max\\" ;
-  rdfs:label \\"Maximum\\" .`);
+      expect(calculationTriples).toEqual(`<urn:avg> a <urn:calculation> ;
+  dc:identifier "avg" ;
+  rdfs:label "Average" .
+<urn:max> a <urn:calculation> ;
+  dc:identifier "max" ;
+  rdfs:label "Maximum" .`);
     });
   });
 
@@ -183,9 +183,9 @@ describe("seeding helpers", () => {
 
       const representationTriples = getRepresentationTriples(representations);
 
-      expect(representationTriples).toEqual(`<urn:text a <urn:representation> ;
-  identity:id \\"text\\" ;
-  rdfs:label \\"Text\\" .`);
+      expect(representationTriples).toEqual(`<urn:text> a <urn:representation> ;
+  dc:identifier "text" ;
+  rdfs:label "Text" .`);
     });
 
     it("should return the representation triples for multiple representations", () => {
@@ -202,12 +202,12 @@ describe("seeding helpers", () => {
 
       const representationTriples = getRepresentationTriples(representations);
 
-      expect(representationTriples).toEqual(`<urn:text a <urn:representation> ;
-  identity:id \\"text\\" ;
-  rdfs:label \\"Text\\" .
-<urn:graph a <urn:representation> ;
-  identity:id \\"graph\\" ;
-  rdfs:label \\"Graph\\" .`);
+      expect(representationTriples).toEqual(`<urn:text> a <urn:representation> ;
+  dc:identifier "text" ;
+  rdfs:label "Text" .
+<urn:graph> a <urn:representation> ;
+  dc:identifier "graph" ;
+  rdfs:label "Graph" .`);
     });
   });
 
@@ -218,13 +218,13 @@ describe("seeding helpers", () => {
       expect(triples).toEqual(
         expect.stringContaining(`PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX identity: <http://www.identity.org/ontologies/identity.owl>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>
 
-<urn:station a rdfs:Class> .
-<urn:measurand a rdfs:Class> .
-<urn:calculation a rdfs:Class> .
-<urn:representation a rdfs:Class> .`),
+<urn:station> a <rdfs:Class> .
+<urn:measurand> a <rdfs:Class> .
+<urn:calculation> a <rdfs:Class> .
+<urn:representation> a <rdfs:Class> .`),
       );
     });
 
@@ -251,28 +251,28 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>
 
       expect(triples).toEqual(expect.stringContaining(`PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX identity: <http://www.identity.org/ontologies/identity.owl>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>
 
-<urn:station a rdfs:Class> .
-<urn:measurand a rdfs:Class> .
-<urn:calculation a rdfs:Class> .
-<urn:representation a rdfs:Class> .
+<urn:station> a <rdfs:Class> .
+<urn:measurand> a <rdfs:Class> .
+<urn:calculation> a <rdfs:Class> .
+<urn:representation> a <rdfs:Class> .
 
-<urn:DEBW029 a <urn:station> ;
-  identity:id \\"DEBW029\\" ;
-  rdfs:label \\"Aalen\\" ;
-  geo:lat \\"48.84791111098396\\" ;
-  geo:long \\"10.096291667090522\\" .
-<urn:temperature a <urn:measurand> ;
-  identity:id \\"temperature\\" ;
-  rdfs:label \\"Temperature\\" .
-<urn:avg a <urn:calculation> ;
-  identity:id \\"avg\\" ;
-  rdfs:label \\"Average\\" .
-<urn:text a <urn:representation> ;
-  identity:id \\"text\\" ;
-  rdfs:label \\"Text\\" .`));
+<urn:DEBW029> a <urn:station> ;
+  dc:identifier "DEBW029" ;
+  rdfs:label "Aalen" ;
+  geo:lat "48.84791111098396" ;
+  geo:long "10.096291667090522" .
+<urn:temperature> a <urn:measurand> ;
+  dc:identifier "temperature" ;
+  rdfs:label "Temperature" .
+<urn:avg> a <urn:calculation> ;
+  dc:identifier "avg" ;
+  rdfs:label "Average" .
+<urn:text> a <urn:representation> ;
+  dc:identifier "text" ;
+  rdfs:label "Text" .`));
     });
   });
 });

@@ -9,7 +9,7 @@ import { isEmptyArray } from "./utils";
 export const getPrefixes = (): string => {
   return `PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX identity: <http://www.identity.org/ontologies/identity.owl>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>
 `;
 };
@@ -22,7 +22,7 @@ PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>
 export const getClassDefinitions = (domains: Domain[]): string => {
   let classDefinitions = "";
   domains.forEach((domain) => {
-    classDefinitions += `<urn:${domain} a rdfs:Class> .\n`;
+    classDefinitions += `<urn:${domain}> a <rdfs:Class> .\n`;
   });
 
   return classDefinitions;
@@ -39,11 +39,11 @@ export const getStationTriples = (stations: IStation[]): string => {
   }
 
   const stationTriples = stations.map((station) => {
-    return `<urn:${station.id} a <urn:station> ;
-  identity:id \\"${station.id}\\" ;
-  rdfs:label \\"${station.label}\\" ;
-  geo:lat \\"${station.lat}\\" ;
-  geo:long \\"${station.long}\\" .`;
+    return `<urn:${station.id}> a <urn:station> ;
+  dc:identifier "${station.id}" ;
+  rdfs:label "${station.label}" ;
+  geo:lat "${station.lat}" ;
+  geo:long "${station.long}" .`;
   });
 
   return stationTriples.join("\n");
@@ -60,9 +60,9 @@ export const getMeasurandTriples = (measurands: IMeasurand[]): string => {
   }
 
   const measurandTriples = measurands.map((measurand) => {
-    return `<urn:${measurand.id} a <urn:measurand> ;
-  identity:id \\"${measurand.id}\\" ;
-  rdfs:label \\"${measurand.label}\\" .`;
+    return `<urn:${measurand.id}> a <urn:measurand> ;
+  dc:identifier "${measurand.id}" ;
+  rdfs:label "${measurand.label}" .`;
   });
 
   return measurandTriples.join("\n");
@@ -79,9 +79,9 @@ export const getCalculationTriples = (calculations: ICalculation[]): string => {
   }
 
   const calculationTriples = calculations.map((calculation) => {
-    return `<urn:${calculation.id} a <urn:calculation> ;
-  identity:id \\"${calculation.id}\\" ;
-  rdfs:label \\"${calculation.label}\\" .`;
+    return `<urn:${calculation.id}> a <urn:calculation> ;
+  dc:identifier "${calculation.id}" ;
+  rdfs:label "${calculation.label}" .`;
   });
 
   return calculationTriples.join("\n");
@@ -98,9 +98,9 @@ export const getRepresentationTriples = (representations: IRepresentation[]): st
   }
 
   const representationTriples = representations.map((representation) => {
-    return `<urn:${representation.id} a <urn:representation> ;
-  identity:id \\"${representation.id}\\" ;
-  rdfs:label \\"${representation.label}\\" .`;
+    return `<urn:${representation.id}> a <urn:representation> ;
+  dc:identifier "${representation.id}" ;
+  rdfs:label "${representation.label}" .`;
   });
 
   return representationTriples.join("\n");
@@ -128,12 +128,10 @@ export const generateAdditionalTriples = ({
   calculations?: ICalculation[];
   representations?: IRepresentation[];
 }): string => {
-  return `
-${getPrefixes()}
+  return `${getPrefixes()}
 ${getClassDefinitions(domains)}
 ${getStationTriples(stations)}
 ${getMeasurandTriples(measurands)}
 ${getCalculationTriples(calculations)}
-${getRepresentationTriples(representations)}
-  `;
+${getRepresentationTriples(representations)}`;
 };
