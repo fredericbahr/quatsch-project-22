@@ -13,14 +13,15 @@
     "init": "npm ci",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "prettier": "prettier --c src",
-    "prettier:fix": "prettier --w src",
+    "format": "prettier --c src",
+    "format:fix": "prettier --w src",
     "prepublishOnly": "npm run build",
     "test": "jest --coverage --detectOpenHandles"
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "sparql-http-client": "^2.4.2"
+    "sparql-http-client": "^2.4.2",
+    "qanary-component-core": "*"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

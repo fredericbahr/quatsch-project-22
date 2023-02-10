@@ -1,13 +1,9 @@
-import { QanaryComponentApi } from "api";
+import { IQanaryMessage } from "qanary-component-core";
 
+import { QuestionSparqlResponse } from "./interfaces/question-sparql-response";
 import { getEndpoint, getInGraph } from "./message-operations";
 import { selectSparql } from "./query-sparql";
-
-type QuestionSparqlResponse = {
-  questionUrl: {
-    value: string;
-  };
-};
+import { getQuestionUriQuery } from "./utils/question-uri-query";
 
 /**
  * Fetches the raw question from given question url
@@ -38,33 +34,16 @@ const fetchRawQuestion = async (questionUrl: string, origin?: string) => {
  * @param origin the origin for the question request, e.g the origin of qanary pipeline
  * @returns the asked question
  */
-export const getQuestion = async (
-  message: QanaryComponentApi.IQanaryMessage,
-  origin?: string,
-): Promise<string | null> => {
+export const getQuestion = async (message: IQanaryMessage, origin?: string): Promise<string | null> => {
   const inGraph: string = getInGraph(message) ?? "";
   const endpointUrl: string = getEndpoint(message) ?? "";
 
-  const questionUrlQuery = `
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
-PREFIX qa: <http://www.wdaqua.eu/qa#>
-PREFIX dbr: <http://dbpedia.org/resource/>
-PREFIX xmls: <http://www.w3.org/2001/XMLSchema#>
-PREFIX stardogintern: <tag:stardog:api:>
-
-SELECT ?questionUrl
-FROM <${inGraph}>
-WHERE {
-  ?questionUrl a qa:Question.
-}
-LIMIT 1
-`;
+  const questionUriQuery = getQuestionUriQuery(inGraph);
 
   try {
-    const response = await selectSparql<QuestionSparqlResponse>(endpointUrl, questionUrlQuery);
+    const response = await selectSparql<QuestionSparqlResponse>(endpointUrl, questionUriQuery);
     const firstResponse = 0;
-    const questionUrl: string = response[firstResponse].questionUrl.value;
+    const questionUrl: string = response[firstResponse].questionUri.value;
 
     return await fetchRawQuestion(questionUrl, origin);
   } catch (error) {

@@ -22,7 +22,7 @@ export const handler: IQanaryComponentMessageHandler = async (message: IQanaryMe
   }
 
   for (const measurand of measurands) {
-    checkMeasurandViaRegex(question, measurand);
+    await checkMeasurandViaRegex(message, question, measurand);
   }
 
   return message;

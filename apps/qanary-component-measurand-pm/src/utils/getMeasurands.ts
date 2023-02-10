@@ -37,8 +37,7 @@ WHERE {
     ?measurand a <urn:measurand> .
     ?measurand rdfs:label ?label .
     ?measurand dc:identifier ?id .
-}
-`;
+}`;
 
   const rawMeasurands: IRawMeasurand[] = await selectSparql<IRawMeasurand>(endpointUrl, measurandQuery);
 
