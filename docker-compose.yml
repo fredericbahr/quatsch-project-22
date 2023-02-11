@@ -8,13 +8,13 @@ services:
     networks:
       - rasa-network
     ports:
-      - "$SERVER_PORT:$SERVER_PORT"
+      - "$QANARY_PORT:$QANARY_PORT"
     environment:
       - STARDOG_URL=$STARDOG_URL
       - STARDOG_USERNAME=$STARDOG_USERNAME
       - STARDOG_PASSWORD=$STARDOG_PASSWORD
-      - SERVER_HOST=$SERVER_HOST
-      - SERVER_PORT=$SERVER_PORT
+      - SERVER_HOST=$QANARY_HOST
+      - SERVER_PORT=$QANARY_PORT
       - QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true
 
   qanary-component-example1:
