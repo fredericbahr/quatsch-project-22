@@ -45,7 +45,7 @@ export class SpringBootAdminUrl extends URL {
  */
 export class SpringBootAdminClientInstanceServiceBaseUrl extends URL {
   /**
-   * Determines the available SpringBootAdminClientInstanceServiceBaseUrl, or return a static URL (dynamic Port)
+   * Determines the available SpringBootAdminClientInstanceServiceBaseUrl, or return a static URL (dynamic port)
    * @private
    */
   private static async getDefault(): Promise<string> {
@@ -59,7 +59,7 @@ export class SpringBootAdminClientInstanceServiceBaseUrl extends URL {
    * The factory method of the object
    */
   static async from(): Promise<SpringBootAdminClientInstanceServiceBaseUrl> {
-    return new SpringBootAdminUrl(await this.getDefault());
+    return new SpringBootAdminClientInstanceServiceBaseUrl(await this.getDefault());
   }
 }
 
@@ -105,7 +105,7 @@ export class RegistrationInfo implements SpringBootAdminServerApi.IComponentRegi
     const pkg = await import(`${process.cwd()}/package.json`);
 
     return new RegistrationInfo({
-      name: config.springBootAdminClientInstanceServiceBaseUrl.host,
+      name: config.springBootAdminClientInstanceServiceBaseUrl.hostname,
       serviceUrl: config.springBootAdminClientInstanceServiceBaseUrl.origin,
       healthUrl: config.springBootAdminClientInstanceServiceBaseUrl.origin + "/health",
       metadata: {
