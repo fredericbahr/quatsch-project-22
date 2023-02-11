@@ -52,6 +52,6 @@ export const askSparql = async (endpointUrl: string, query: string): Promise<boo
  * @param query the update query to execute
  */
 export const updateSparql = async (endpointUrl: string, query: string): Promise<void> => {
-  const client: SparqlClient = new SparqlClient({ endpointUrl });
+  const client: SparqlClient = new SparqlClient({ updateUrl: endpointUrl });
   await client.query.update(query);
 };
