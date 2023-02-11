@@ -6,7 +6,7 @@ import { selectSparql } from "../query-sparql";
 
 jest.mock("../query-sparql", () => ({
   selectSparql: jest.fn(() =>
-    Promise.resolve([{ questionUrl: { value: "http://qanary-pipeline:40111/question/urn:inGraph" } }]),
+    Promise.resolve([{ questionUri: { value: "http://qanary-pipeline:40111/question/urn:inGraph" } }]),
   ),
 }));
 
@@ -41,22 +41,23 @@ describe("getQuestion", () => {
   it("should query the raw question id", async () => {
     const endpointUrl = "http://qanary-pipeline:40111/sparql";
     const mockSelectSparql = jest.fn(() =>
-      Promise.resolve([{ questionUrl: { value: "http://qanary-pipeline:40111/question/urn:inGraph" } }]),
+      Promise.resolve([{ questionUri: { value: "http://qanary-pipeline:40111/question/urn:inGraph" } }]),
     );
     (selectSparql as jest.Mock) = mockSelectSparql;
 
     await getQuestion(message);
-    expect(mockSelectSparql).toHaveBeenCalledWith(endpointUrl, expect.stringContaining("SELECT ?questionUrl"));
+
+    expect(mockSelectSparql).toHaveBeenCalledWith(endpointUrl, expect.stringContaining("SELECT ?questionUri"));
     expect(mockSelectSparql).toHaveBeenCalledWith(
       endpointUrl,
       expect.stringContaining("FROM <urn:graph:e8fe00d7-2a1b-4978-acef-af893cd287dd>"),
     );
-    expect(mockSelectSparql).toHaveBeenCalledWith(endpointUrl, expect.stringContaining("?questionUrl a qa:Question"));
+    expect(mockSelectSparql).toHaveBeenCalledWith(endpointUrl, expect.stringContaining("?questionUri a qa:Question"));
   });
 
   it("should fetch the raw question", async () => {
     (selectSparql as jest.Mock) = jest.fn(() =>
-      Promise.resolve([{ questionUrl: { value: "http://qanary-pipeline:40111/question/urn:inGraph" } }]),
+      Promise.resolve([{ questionUri: { value: "http://qanary-pipeline:40111/question/urn:inGraph" } }]),
     );
     await getQuestion(message);
 

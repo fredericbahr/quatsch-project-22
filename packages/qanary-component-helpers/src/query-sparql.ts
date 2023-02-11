@@ -6,10 +6,10 @@ import internal from "stream";
  * @param stream the stream to transform
  * @returns the result of the stream as a promise
  */
-const streamToPromise = <T>(stream: internal.Readable): Promise<T[]> => {
+const streamToPromise = <T>(stream: internal.Readable): Promise<Array<T>> => {
   // eslint-disable-next-line
-  return new Promise<any[]>((resolve, reject) => {
-    const result: T[] = [];
+  return new Promise<Array<any>>((resolve, reject) => {
+    const result: Array<T> = [];
     // eslint-disable-next-line
     stream.on("data", (row: any) => result.push(row));
 
@@ -25,13 +25,10 @@ const streamToPromise = <T>(stream: internal.Readable): Promise<T[]> => {
  * @param query the select query to execute
  * @returns the result of the query
  */
-export const selectSparql = async <T>(
-  endpointUrl: string,
-  query: string
-): Promise<T[]> => {
+export const selectSparql = async <T>(endpointUrl: string, query: string): Promise<Array<T>> => {
   const client: SparqlClient = new SparqlClient({ endpointUrl });
   const stream: internal.Readable = await client.query.select(query);
-  const response: T[] = await streamToPromise<T>(stream);
+  const response: Array<T> = await streamToPromise<T>(stream);
 
   return response;
 };
@@ -42,10 +39,7 @@ export const selectSparql = async <T>(
  * @param query the ask query to execute
  * @returns the result of the query
  */
-export const askSparql = async (
-  endpointUrl: string,
-  query: string
-): Promise<boolean> => {
+export const askSparql = async (endpointUrl: string, query: string): Promise<boolean> => {
   const client: SparqlClient = new SparqlClient({ endpointUrl });
   const answer: boolean = await client.query.ask(query);
 
@@ -57,10 +51,7 @@ export const askSparql = async (
  * @param endpointUrl the sparql endpoint to query
  * @param query the update query to execute
  */
-export const updateSparql = async (
-  endpointUrl: string,
-  query: string
-): Promise<void> => {
+export const updateSparql = async (endpointUrl: string, query: string): Promise<void> => {
   const client: SparqlClient = new SparqlClient({ endpointUrl });
   await client.query.update(query);
 };

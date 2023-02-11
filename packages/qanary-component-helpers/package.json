@@ -13,18 +13,20 @@
     "init": "npm ci",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "prettier": "prettier --c src",
-    "prettier:fix": "prettier --w src",
+    "format": "prettier --c src",
+    "format:fix": "prettier --w src",
     "prepublishOnly": "npm run build",
     "test": "jest --coverage --detectOpenHandles"
   },
   "types": "dist/index.d.ts",
   "dependencies": {
+    "qanary-component-core": "*",
     "sparql-http-client": "^2.4.2"
   },
   "devDependencies": {
-    "@types/node": "^18.11.18",
     "@types/jest": "^29.4.0",
+    "@types/node": "^18.11.18",
+    "@types/rdf-js": "^4.0.2",
     "@types/sparql-http-client": "^2.2.8",
     "api": "*",
     "eslint": "^8.33.0",
