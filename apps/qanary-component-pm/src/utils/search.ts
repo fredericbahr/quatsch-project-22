@@ -3,6 +3,7 @@ import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "qanary
 import { Domain } from "qanary-lubw-data";
 
 import { DomainType } from "../handler";
+import { annotationTypes } from "./annotation-types";
 
 /**
  * Searches for a domain instance within a question via a regular expression
@@ -63,7 +64,12 @@ export const searchForDomainInstances = async <T extends Domain>(
 
   for (const annotation of annotations) {
     if (annotation) {
-      await createAnnotationInKnowledgeGraph(message, `${domain}-pattern-matching`, annotation);
+      await createAnnotationInKnowledgeGraph({
+        message,
+        componentName: `${domain}-pattern-matching`,
+        annotation,
+        annotationType: annotationTypes.get(domain),
+      });
     }
   }
 };

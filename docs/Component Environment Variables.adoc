@@ -1,0 +1,17 @@
+= Environment Variables
+
+The component should be started as a service in a Docker container.
+For this, the following configuration options as environment variables are available.
+
+This list of variables can be applied to all Qanary components managed in this repository.
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Environment Variable |Description
+|SPRING_BOOT_ADMIN_URL |the url to register the component to the qanary pipeline
+|SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL |the url to communicate with the component
+|QANARY_ORIGIN |the origin of the qanary pipeline to query questions
+|===
+
+In addition to the environment variables defined here, components may have individual variables.
+This is used for further configuration of the service and can be seen in the readme of the service.

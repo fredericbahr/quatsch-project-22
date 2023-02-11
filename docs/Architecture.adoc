@@ -1,0 +1,22 @@
+= Architecture
+
+== Overview
+
+[source,plantuml]
+----
+include::diagrams/Makro Architecture.puml[]
+----
+
+== Qanary Pipeline
+
+[source,plantuml]
+----
+include::diagrams/Qanary Pipeline.puml[]
+----
+
+== Action Server
+
+[source,plantuml]
+----
+include::diagrams/Action Server.puml[]
+----

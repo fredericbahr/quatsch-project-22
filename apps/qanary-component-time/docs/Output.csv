@@ -1,0 +1,13 @@
+subject,predicate,object
+tag:stardog:api:0.0487820089079648,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.wdaqua.eu/qa#AnnotationAnswer
+tag:stardog:api:0.0487820089079648,http://www.w3.org/ns/openannotation/core/hasTarget,_:b0
+tag:stardog:api:0.0487820089079648,http://www.w3.org/ns/openannotation/core/hasBody,"{""text"":""03.01.2022 bis 29.01.2022"",""start"":""2022-01-03T12:00:00.000Z"",""end"":""2022-01-29T12:00:00.000Z""}"
+tag:stardog:api:0.0487820089079648,http://www.w3.org/ns/openannotation/core/annotatedAt,2023-02-15T19:14:24.278Z
+tag:stardog:api:0.0487820089079648,http://www.w3.org/ns/openannotation/core/score,1.0
+tag:stardog:api:0.0487820089079648,http://www.w3.org/ns/openannotation/core/annotatedBy,urn:qanary:qanary-component-time
+tag:stardog:api:0.13973774634852143,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.wdaqua.eu/qa#AnnotationAnswer
+tag:stardog:api:0.13973774634852143,http://www.w3.org/ns/openannotation/core/hasTarget,_:b1
+tag:stardog:api:0.13973774634852143,http://www.w3.org/ns/openannotation/core/hasBody,"{""text"":""letzten 10 Jahre"",""start"":""2013-02-15T19:14:25.085Z""}"
+tag:stardog:api:0.13973774634852143,http://www.w3.org/ns/openannotation/core/annotatedAt,2023-02-15T19:14:24.412Z
+tag:stardog:api:0.13973774634852143,http://www.w3.org/ns/openannotation/core/score,0.3333333333333333
+tag:stardog:api:0.13973774634852143,http://www.w3.org/ns/openannotation/core/annotatedBy,urn:qanary:qanary-component-time
