@@ -1,7 +1,7 @@
 {
-  "name": "qanary-component-example",
+  "name": "qanary-component-pm",
   "version": "1.0.0",
-  "description": "This is just an example of a qanary component",
+  "description": "A qanary component for a simple pattern matching based on a lubw domain",
   "license": "ISC",
   "main": "dist/index.js",
   "files": [
@@ -20,24 +20,33 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "api": "*",
-    "qanary-component-core": "*"
+    "express": "^4.18.2",
+    "qanary-component-core": "*",
+    "qanary-component-helpers": "*",
+    "qanary-lubw-data": "*",
+    "qanary-seeding-helpers": "*"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "@types/node": "^18.11.18",
+    "@types/rdf-js": "^4.0.2",
     "eslint": "^8.33.0",
     "eslint-config-sdk": "*",
+    "jest": "^29.4.1",
+    "jest-config-sdk": "*",
+    "nodemon": "2.0.20",
     "openapi-types": "12.1.0",
     "prettier": "^2.8.3",
     "prettier-config-sdk": "*",
     "rimraf": "^4.1.2",
     "ts-config-sdk": "*",
-    "typescript": "^4.9.5",
-    "nodemon": "2.0.20",
-    "jest": "^29.4.1",
-    "jest-config-sdk": "*"
+    "typescript": "^4.9.5"
   },
   "jest": {
-    "preset": "jest-config-sdk"
+    "preset": "jest-config-sdk",
+    "setupFiles": [
+      "<rootDir>/setJestEnvVars.js"
+    ]
   },
   "prettier": "prettier-config-sdk",
   "volta": {

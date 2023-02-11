@@ -13,7 +13,7 @@ jest.mock("../get-question-uri", () => ({
   getQuestionUri: jest.fn(() => Promise.resolve("qanary-question-uri")),
 }));
 
-describe("createAnnotation", () => {
+describe("createAnnotationInKnowledgeGraph", () => {
   const qanaryMessage: IQanaryMessage = {
     endpoint: "http://qanary-pipeline:40111/sparql",
     inGraph: "urn:graph:e8fe00d7-2a1b-4978-acef-af893cd287dd",
@@ -51,7 +51,7 @@ INSERT {
                 oa:end "6"^^xsd:nonNegativeInteger
             ]
         ] ;
-            oa:hasBody "Berlin" ;
+            oa:bodyValue "Berlin" ;
             oa:score "0.9"^^xsd:double ;
             oa:annotatedBy <urn:qanary:test> ;
             oa:annotatedAt ?time .

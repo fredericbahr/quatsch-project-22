@@ -36,7 +36,7 @@ export interface IAnnotationInformationRange {
  * @param componentName the component name that creates the annotation
  * @param annotation the actual annotation to be created
  */
-export const createAnnotation = async (
+export const createAnnotationInKnowledgeGraph = async (
   message: IQanaryMessage,
   componentName: string,
   annotation: IAnnotationInformation,
