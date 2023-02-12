@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quatsch-Projekt 22</title>
+    <link href="/favicon.ico" rel="icon" />
+    <link href="https://yarnpkg.com/en/package/normalize.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .container {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .main {
+        padding: 5rem 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .footer {
+        width: 100%;
+        height: 80px;
+        border-top: 1px solid #eaeaea;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer section {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+        flex: 1;
+      }
+
+      .footer section p {
+        margin: 0;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main class="main">
+        <h1 class="title">Quatsch Projekt von Gudat, Guzy, Fornacon, Bahr</h1>
+      </main>
+      <footer class="footer">
+        <section>
+          <p>Projekt für das Modul fortgeschrittene Themen der Informatik (C204): Question Answering & Chatbots</p>
+          <p>Hochschule für Technik, Wirtschaft und Kultur Leipzig Prof. Andreas Both</p>
+        </section>
+      </footer>
+      <div
+        data-avatar-background="#FF0000"
+        data-default-open="true"
+        data-height="650"
+        data-primary="#FF0000"
+        data-primary-highlight="#DD0000"
+        data-websocket-url="http://localhost:5005"
+        data-width="1000"
+        id="rasa-chat-widget"
+      ></div>
+    </div>
+    <script src="https://unpkg.com/@rasahq/rasa-chat" type="application/javascript"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "jest-config-sdk",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "jest-preset.js",
+  "dependencies": {
+    "ts-jest": "^26.5.0"
+  }
+}

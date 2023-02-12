@@ -21,13 +21,13 @@
       "dependsOn": []
     },
     "lint": {
-      "cache": false
+      "cache": true
     },
     "lint:fix": {
       "cache": false
     },
     "format": {
-      "cache": false
+      "cache": true
     },
     "format:fix": {
       "cache": false

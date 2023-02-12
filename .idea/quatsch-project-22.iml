@@ -8,6 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/packages/qanary-component-core/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/api/specs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/api/src" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/frontend/public" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/e2e/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/qanary-component-helpers/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/packages/e2e/e2e-test-out" />
       <excludeFolder url="file://$MODULE_DIR$/apps/rasa/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-core/dist" />
@@ -20,9 +23,13 @@
       <excludeFolder url="file://$MODULE_DIR$/apps/rasa/results" />
       <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-helpers/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-helpers/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/frontend/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/api/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/api/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="@rasahq" level="application" />
+    <orderEntry type="library" name="normalize" level="application" />
   </component>
 </module>
