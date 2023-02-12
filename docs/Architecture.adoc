@@ -1,7 +1,7 @@
-<details>
-<summary>Architecture Overview</summary>
+Architecture Overview
 
-```plantuml
+[source,plantuml]
+----
 @startuml Architecture
 skinparam Style strictuml
 autonumber
@@ -53,37 +53,35 @@ autonumber 8
 rasa <-- "action-server": Antwort-Response
 user <-- rasa: Antwort
 @enduml
-```
-</details>
+----
 
+Qanary Pipeline
 
-<details>
-<summary>Qanary Pipeline</summary>
-
-```plantuml
+[source,plantuml]
+----
 @startuml
 
 title Architecture Qanary Pipeline
 
 frame "Pattern Matching" {
-    [Measurand PM]
-    [Station PM]
-    [Date PM]
+[Measurand PM]
+[Station PM]
+[Date PM]
 }
 
 frame "Named Entity Recognition" {
-    [DBpedia Spotlight]
-    [Stanford NLP Tool]
+[DBpedia Spotlight]
+[Stanford NLP Tool]
 }
 
 frame "Advanced Recognition" {
-    [Date AR]
-    [Time Range AR]
-    [Customized NER]
+[Date AR]
+[Time Range AR]
+[Customized NER]
 }
 
 frame "Query" {
-    [Query Builder/Executor]
+[Query Builder/Executor]
 }
 
 
@@ -105,6 +103,4 @@ start ..> TripleStore: seeding
 
 [Query Builder/Executor] -> end
 @enduml
-```
-
-</details>
+----
