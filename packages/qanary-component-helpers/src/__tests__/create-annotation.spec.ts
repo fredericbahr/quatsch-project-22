@@ -51,7 +51,7 @@ INSERT {
                 oa:end "6"^^xsd:nonNegativeInteger
             ]
         ] ;
-            oa:bodyValue "Berlin" ;
+            oa:hasBody "Berlin" ;
             oa:score "0.9"^^xsd:double ;
             oa:annotatedBy <urn:qanary:test> ;
             oa:annotatedAt ?time .
