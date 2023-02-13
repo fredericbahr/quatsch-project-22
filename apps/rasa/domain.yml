@@ -7,6 +7,7 @@ intents:
   - context_air_measurand
   - nlu_fallback
   - qanary_default_processing
+  - vulgar_out_of_scope
 
 entities:
   - measurand
@@ -39,6 +40,9 @@ responses:
 
   utter_ask_rephrase:
     - text: "Bitte wiederhole deine Anfrage."
+
+  utter_vulgar_out_of_scope:
+    - text: "Das war nicht sehr nett. Ich werde daher deine Anfrage nicht beantworten.\nVersuche es gerne mit einer netten Ausdrucksweise erneut."
 
 actions:
   - action_context_air_measurand

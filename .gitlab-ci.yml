@@ -5,39 +5,29 @@ stages:
   - lint
   - test
 
-build_rasa:
-  stage: build
-  image:
-    name: rasa/rasa:3.4.0
-    entrypoint: [ "" ]
-  script:
-    - cd apps/rasa
-    - rasa train
-  artifacts:
-    paths:
-      - apps/rasa/models
-    expire_in: 5 day
-
 build:
   stage: build
   script:
     - apk add --no-cache libc6-compat
     - apk update
-    - npm run init
+    - npm run reinit
   artifacts:
     paths:
       - "**/dist"
-      - "**/.next"
     expire_in: 5 day
 
-lint_rasa:
-  stage: lint
+rasa_train:
+  stage: build
   image:
     name: rasa/rasa:3.4.0
-    entrypoint: [ "" ]
+    entrypoint: [""]
   script:
     - cd apps/rasa
-    - rasa data validate
+    - rasa train --domain domain.yml --data data --out models
+  artifacts:
+    paths:
+      - apps/rasa/models
+    expire_in: 5 day
 
 lint:
   stage: lint
@@ -45,21 +35,17 @@ lint:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - npm run lint -- --filter=!rasa
+    - npm run lint
     - npm run format
 
-test_rasa:
-  stage: test
+lint_rasa:
+  stage: lint
   image:
     name: rasa/rasa:3.4.0
-    entrypoint: [ "" ]
+    entrypoint: [""]
   script:
     - cd apps/rasa
-    - rasa test
-  artifacts:
-    paths:
-      - apps/rasa/results
-    expire_in: 5 day
+    - rasa data validate
 
 test:
   stage: test
@@ -67,8 +53,21 @@ test:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - npm run test -- --filter=!rasa
+    - npm run test
   artifacts:
     paths:
       - "**/coverage"
+    expire_in: 5 day
+
+test_rasa:
+  stage: test
+  image:
+    name: rasa/rasa:3.4.0
+    entrypoint: [""]
+  script:
+    - cd apps/rasa
+    - rasa test --fail-on-prediction-errors
+  artifacts:
+    paths:
+      - apps/rasa/results
     expire_in: 5 day

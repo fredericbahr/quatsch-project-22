@@ -3,33 +3,116 @@ version: "3.5"
 services:
   qanary-pipeline:
     container_name: qanary-pipeline
-    image: qanary/qanary-pipeline:3.5.1
+    image: qanary/qanary-pipeline:3.7.0
     restart: always
     networks:
       - rasa-network
     ports:
-      - "$SERVER_PORT:$SERVER_PORT"
+      - "$QANARY_PORT:$QANARY_PORT"
     environment:
       - STARDOG_URL=$STARDOG_URL
       - STARDOG_USERNAME=$STARDOG_USERNAME
       - STARDOG_PASSWORD=$STARDOG_PASSWORD
-      - SERVER_HOST=$SERVER_HOST
-      - SERVER_PORT=$SERVER_PORT
+      - SERVER_HOST=$QANARY_HOST
+      - SERVER_PORT=$QANARY_PORT
       - QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true
 
-  qanary-component:
-    container_name: qanary-component
+  # qanary-component-example1:
+  #   container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_NAME
+  #   networks:
+  #     - rasa-network
+  #   ports:
+  #     - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_PORT:40500"
+  #   restart: always
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/qanary-component-example/Dockerfile
+  #   environment:
+  #     - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
+  #     - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_PORT
+  #   volumes:
+  #     - ./apps/qanary-component-example:/app/apps/qanary-component-example
+  #     - /app/apps/qanary-component-example/node_modules
+  #     - /app/node_modules
+
+  qanary-component-pm-measurand:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_NAME
     networks:
       - rasa-network
-    restart: always
     ports:
-      - "40500:40500"
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_PORT:40500"
+    restart: always
     build:
       context: .
-      dockerfile: ./packages/qanary-component-core/Dockerfile
+      dockerfile: ./apps/qanary-component-pm/Dockerfile
+    environment:
+      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
+      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_PORT
+      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
+      - LUBW_DOMAIN=$PM_MEASURAND_DOMAIN
     volumes:
-      - ./packages/qanary-component-core:/app
-      - /app/packages/qanary-component-core/node_modules
+      - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
+      - /app/apps/qanary-component-pm/node_modules
+      - /app/node_modules
+  
+  qanary-component-pm-station:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_NAME
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_PORT:40500"
+    restart: always
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-pm/Dockerfile
+    environment:
+      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
+      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_PORT
+      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
+      - LUBW_DOMAIN=$PM_STATION_DOMAIN
+    volumes:
+      - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
+      - /app/apps/qanary-component-pm/node_modules
+      - /app/node_modules
+
+  qanary-component-pm-calculation:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_NAME
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_PORT:40500"
+    restart: always
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-pm/Dockerfile
+    environment:
+      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
+      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_PORT
+      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
+      - LUBW_DOMAIN=$PM_CALCULATION_DOMAIN
+    volumes:
+      - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
+      - /app/apps/qanary-component-pm/node_modules
+      - /app/node_modules
+
+  qanary-component-pm-representation:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_NAME
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_PORT:40500"
+    restart: always
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-pm/Dockerfile
+    environment:
+      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
+      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_PORT
+      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
+      - LUBW_DOMAIN=$PM_REPRESENTATION_DOMAIN
+    volumes:
+      - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
+      - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
 
   rasa:
@@ -63,8 +146,7 @@ services:
       context: .
       dockerfile: apps/frontend/Dockerfile
     volumes:
-      - ./apps/frontend/src:/app/apps/frontend/src
-      - ./apps/frontend/public:/app/apps/frontend/public
+      - ./apps/frontend:/app/apps/frontend
       - /app/apps/frontend/node_modules
       - /app/node_modules
     restart: always

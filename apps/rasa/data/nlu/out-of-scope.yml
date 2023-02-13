@@ -1,0 +1,197 @@
+version: "3.1"
+
+nlu:
+  ## Out of Scope intent
+  - intent: vulgar_out_of_scope
+    examples: |
+      - Abschaum
+      - Arsch
+      - Arschficker
+      - Arschfotze
+      - Arschgeige
+      - Arschgesicht
+      - Arschloch
+      - Bastard
+      - Bimbo
+      - Bitch
+      - Blöde Fotze
+      - Blöde Gans
+      - Blodes Arschloch
+      - Bulle
+      - bumsen
+      - Das ist mir scheißegal
+      - Dein Hund soll deine Mutter ficken
+      - Depp
+      - Depp
+      - Dreckige Hure
+      - Drecksack
+      - Drecksau
+      - Du alte Kackbratze
+      - Du Arsch
+      - Du Bastard
+      - Du bist Abschaum
+      - Du bist ein Arsch
+      - Du bist ein Arschficker
+      - Du bist ein Arschgesicht
+      - Du bist ein Arschloch
+      - Du bist ein Bastard
+      - Du bist ein Bimbo
+      - Du bist ein Depp
+      - Du bist ein Drecksack
+      - Du bist ein Eierkopf
+      - Du bist ein Esel
+      - Du bist ein fauler Sack
+      - Du bist ein Fettarsch
+      - Du bist ein Ficker
+      - Du bist ein Fickfehler
+      - Du bist ein Honk
+      - Du bist ein Hurensohn
+      - Du bist ein Idiot
+      - Du bist ein Luder
+      - Du bist ein Lutscher
+      - Du bist ein Mutterficker
+      - Du bist ein Nazi
+      - Du bist ein Neger
+      - Du bist ein Nigger
+      - Du bist ein Penner
+      - Du bist ein Scheißkerl
+      - Du bist ein Schwanz
+      - Du bist ein Schwanzlutscher
+      - Du bist ein Spast
+      - Du bist ein Spasti
+      - Du bist ein Trottel
+      - Du bist ein Volltrottel
+      - Du bist ein Wichser
+      - Du bist ein Zigeuner
+      - Du bist eine Bitch
+      - Du bist eine Drecksau
+      - Du bist eine Dumpfbacke
+      - Du bist eine Fotze
+      - Du bist eine Hexe
+      - Du bist eine Hure
+      - Du bist eine Missgeburt
+      - Du bist eine Nutte
+      - Du bist eine Schlampe
+      - Du bist eine Schwuchtel
+      - Du bist eine Stinkefotze
+      - Du bist eine Tunte
+      - Du bist eine Tussi
+      - Du bist scheiße
+      - Du blöde Kuh
+      - Du Drecksau
+      - Du dumme Kuch
+      - Du Esel
+      - Du Fettarsch
+      - Du Fickfehler
+      - Du gehst mir auf den Sack
+      - Du Hure
+      - Du Hurensohn
+      - Du Kamel
+      - Du kannst mich mal
+      - Du Lusche
+      - Du Missgeburt
+      - Du Mistkerl
+      - Du Muschi
+      - Du Mutterficker
+      - Du Nichtsnutz
+      - Du Pisser
+      - Du Sackgesicht
+      - Du Schwanz
+      - Du Schwanzlutscher
+      - Du Schweinehund
+      - Du spinnst wohl
+      - Du Stinkefotze
+      - Du Trottel
+      - Du Tussi
+      - Du verdammter Arschficker
+      - Du verdammtes Arschloch
+      - Du Volltrottel
+      - Dumme Kuh
+      - Dumme Schlampe
+      - Dummkopf
+      - Dumpfbacke
+      - Eierkopf
+      - Ein Scheißdreck werde ich tun
+      - Ess Scheiße
+      - Fahr zur Hölle
+      - Fauler Sack
+      - Fettarsch
+      - Fick deine Mutter
+      - Fick dich
+      - Fick dich Arschloch
+      - Fick dich ins Knie
+      - Fick dich Wichser
+      - ficken
+      - Ficker
+      - Fickfehler
+      - Fotze
+      - Fresse
+      - Friss scheiße
+      - Fuck off
+      - Fuck you
+      - Geh eienn Schwanz lutschen
+      - Geh Staub fressen
+      - Halt dein Maul
+      - Halt deine Klappe
+      - Halt die Klappe
+      - Halt die Schnauze
+      - Halts Maul
+      - Hast du den Arsch offen
+      - Hexe
+      - Honk
+      - Hure
+      - Hurensohn
+      - Ich fick deine Mutter
+      - Ich fick deine Schwester
+      - Ich hasse dich
+      - Ich will dich ficken
+      - Ich will ficken
+      - Idiot
+      - Kackbratze
+      - Küss mein Arsch
+      - Laber keine Scheiße
+      - Leck mich
+      - Leck mich am Arsch
+      - Leck mich doch
+      - Luder
+      - Lutscher
+      - Missgeburt
+      - Mistkerl
+      - Miststück
+      - Möpse
+      - Mutterficker
+      - Na du Wichser
+      - Nazi
+      - Neger
+      - Nigger
+      - Nutte
+      - Onanieren
+      - Penis
+      - Penner
+      - Pisser
+      - Scheiße
+      - Scheisse
+      - Scheißkerl
+      - Schlampe
+      - Schwanz
+      - Schwanzlutscher
+      - Schwuchtel
+      - Schwul
+      - Sohn einer Hündin
+      - Spast
+      - Spasti
+      - Stinkefotze
+      - Titten
+      - Trottel
+      - Tunte
+      - Tussi
+      - Verdammte Scheiße
+      - Verpiss dich
+      - Voll der Depp
+      - Volltrottel
+      - Was für ein Arsch
+      - Was soll der Scheiß
+      - Wichsen
+      - Wichser
+      - Zigeuner
+      - Zur Hölle mit dir

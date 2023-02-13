@@ -1,5 +1,5 @@
-export { QanaryComponentCore } from "./qanary-component-core";
-export { IQanaryComponentCoreOptions } from "./interfaces/options";
-export { IQanaryComponentCoreServiceConfig } from "./interfaces/service-config";
-export { IQanaryComponentCoreRequestHandler } from "./interfaces/request-handler";
-export { IQanaryComponentCoreDescription } from "./interfaces/description";
+import { QanaryComponentApi } from "api";
+
+export { IQanaryComponentCoreOptions, QanaryComponentCore } from "./qanary-component-core";
+export { IQanaryComponentMessageHandler } from "./resources/annotatequestion/annotatequestion.model";
+export type IQanaryMessage = QanaryComponentApi.IQanaryMessage;

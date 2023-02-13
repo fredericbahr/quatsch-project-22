@@ -1,0 +1,1 @@
+process.env.LUBW_DOMAIN = 'measurand'
