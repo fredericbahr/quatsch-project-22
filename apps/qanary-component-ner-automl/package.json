@@ -1,0 +1,23 @@
+{
+  "name": "qanary-component-ner-automl",
+  "version": "1.0.0",
+  "description": "A qanary NER automl component with training data generation",
+  "license": "ISC",
+  "scripts": {
+    "generate": "node src/generateTrainingData.js",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-sdk": "*",
+    "prettier": "^2.8.3",
+    "prettier-config-sdk": "*"
+  },
+  "prettier": "prettier-config-sdk",
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
