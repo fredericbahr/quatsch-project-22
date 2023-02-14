@@ -115,6 +115,31 @@ services:
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
 
+  qanary-component-ner-automl:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_NAME
+    networks:
+      - rasa-network
+    restart: always
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT:40500"
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-ner-automl/Dockerfile
+      args:
+        TRAININGDATA: ${QANARY_COMPONENT_NER_AUTOML_TRAININGDATA}
+        TESTDATA: ${QANARY_COMPONENT_NER_AUTOML_TESTDATA}
+        MODELTYPE: ${QANARY_COMPONENT_NER_AUTOML_MODELTYPE}
+        LANGUAGE: ${QANARY_COMPONENT_NER_AUTOML_MODELLANGUAGE}
+    volumes:
+      - ./apps/qanary-component-ner-automl:/app
+    deploy:
+        resources:
+          reservations:
+            devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
   rasa:
     container_name: rasa-bot
     networks:
