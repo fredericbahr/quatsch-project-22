@@ -1,0 +1,48 @@
+{
+  "name": "qanary-component-time",
+  "version": "1.0.0",
+  "description": "A component for determining time spans and time values, in questions",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf .turbo coverage dist",
+    "dev": "nodemon src/index.ts",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "jest --coverage --detectOpenHandles"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "api": "*",
+    "qanary-component-core": "*",
+    "qanary-component-helpers": "*",
+    "chrono-node": "2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "eslint": "^8.33.0",
+    "eslint-config-sdk": "*",
+    "openapi-types": "12.1.0",
+    "prettier": "^2.8.3",
+    "prettier-config-sdk": "*",
+    "rimraf": "^4.1.2",
+    "ts-config-sdk": "*",
+    "typescript": "^4.9.5",
+    "nodemon": "2.0.20",
+    "jest": "^29.4.1",
+    "jest-config-sdk": "*"
+  },
+  "jest": {
+    "preset": "jest-config-sdk"
+  },
+  "prettier": "prettier-config-sdk",
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

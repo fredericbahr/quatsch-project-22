@@ -1,0 +1,3 @@
+# Qanary Component Time
+
+A component for determining time spans and time values, in questions

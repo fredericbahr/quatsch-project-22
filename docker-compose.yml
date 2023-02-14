@@ -116,6 +116,25 @@ services:
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
 
+  qanary-component-time:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_NAME
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_PORT:40500"
+    restart: always
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-time/Dockerfile
+    environment:
+      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
+      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_PORT
+      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
+    volumes:
+      - ./apps/qanary-component-time:/app/apps/qanary-component-time
+      - /app/apps/qanary-component-time/node_modules
+      - /app/node_modules
+
   rasa:
     container_name: rasa-bot
     networks:
