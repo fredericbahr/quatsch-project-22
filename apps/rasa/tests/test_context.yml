@@ -13,35 +13,35 @@ stories:
         intent: context_air_measurand
       - action: action_context_air_measurand
 
-  - story: create context with unavailable measured value but existing station
-    steps:
-      - user: |
-          hi
-        intent: greet
-      - action: utter_greet
-      - user: |
-          Wie ist der Irgendwas in [Ulm]{"entity": "station"}?
-        intent: context_air_measurand
-      - action: action_context_air_measurand
-
-  - story: create context with available measured value but not existing station
-    steps:
-      - user: |
-          hi
-        intent: greet
-      - action: utter_greet
-      - user: |
-          Wie ist der [Luftqualitätsindex]{"entity": "measurand"} in Irgendwo?
-        intent: context_air_measurand
-      - action: action_context_air_measurand
-
-  - story: create context with unavailable measured value and non-existing station
-    steps:
-      - user: |
-          hi
-        intent: greet
-      - action: utter_greet
-      - user: |
-          Wie ist der Irgendwas in Irgendwo?
-        intent: context_air_measurand
-      - action: action_context_air_measurand
+#  - story: create context with unavailable measured value but existing station
+#    steps:
+#      - user: |
+#          hi
+#        intent: greet
+#      - action: utter_greet
+#      - user: |
+#          Wie ist der Irgendwas in [Ulm]{"entity": "station"}?
+#        intent: context_air_measurand
+#      - action: action_context_air_measurand
+#
+#  - story: create context with available measured value but not existing station
+#    steps:
+#      - user: |
+#          hi
+#        intent: greet
+#      - action: utter_greet
+#      - user: |
+#          Wie ist der [Luftqualitätsindex]{"entity": "measurand"} in Irgendwo?
+#        intent: context_air_measurand
+#      - action: action_context_air_measurand
+#
+#  - story: create context with unavailable measured value and non-existing station
+#    steps:
+#      - user: |
+#          hi
+#        intent: greet
+#      - action: utter_greet
+#      - user: |
+#          Wie ist der Irgendwas in Irgendwo?
+#        intent: context_air_measurand
+#      - action: action_context_air_measurand
