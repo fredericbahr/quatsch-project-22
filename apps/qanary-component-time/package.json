@@ -1,7 +1,7 @@
 {
   "name": "qanary-component-time",
   "version": "1.0.0",
-  "description": "A component for determining time spans and time values, in questions",
+  "description": "This is a Qanary component for determining time values, in posed questions.",
   "license": "ISC",
   "main": "dist/index.js",
   "files": [

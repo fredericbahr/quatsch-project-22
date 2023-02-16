@@ -1,6 +1,10 @@
+# tag::preamble[]
 version: "3.5"
 
 services:
+# end::preamble[]
+
+  # tag::qanary-pipeline[]
   qanary-pipeline:
     container_name: qanary-pipeline
     image: qanary/qanary-pipeline:3.7.0
@@ -17,6 +21,7 @@ services:
       - SERVER_HOST=$QANARY_HOST
       - SERVER_PORT=$QANARY_PORT
       - QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true
+  # end::qanary-pipeline[]
 
   # qanary-component-example1:
   #   container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_NAME
@@ -36,6 +41,8 @@ services:
   #     - /app/apps/qanary-component-example/node_modules
   #     - /app/node_modules
 
+  # tag::qanary-components[]
+  # tag::qanary-component-pm[]
   qanary-component-pm-measurand:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_NAME
     networks:
@@ -115,7 +122,9 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
+  # end::qanary-component-pm[]
 
+  # tag::qanary-component-time[]
   qanary-component-time:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_NAME
     networks:
@@ -134,24 +143,29 @@ services:
       - ./apps/qanary-component-time:/app/apps/qanary-component-time
       - /app/apps/qanary-component-time/node_modules
       - /app/node_modules
+  # end::qanary-component-time[]
+  # end::qanary-components[]
 
+  # tag::rasa[]
   rasa:
-    container_name: rasa-bot
+    container_name: $RASA_NAME
     networks:
       - rasa-network
     ports:
-      - "5005:5005"
+      - "$RASA_PORT:5005"
     build:
       context: ./apps/rasa
     command: >
       run --enable-api --cors "*"
+  # end::rasa[]
 
+  # tag::action-server[]
   action-server:
-    container_name: action-server
+    container_name: $ACTION_SERVER_NAME
     networks:
       - rasa-network
     ports:
-      - "8080:8080"
+      - "$ACTION_SERVER_PORT:8080"
     build:
       context: .
       dockerfile: ./apps/action-server/Dockerfile
@@ -159,9 +173,11 @@ services:
       - ./apps/action-server:/app/apps/action-server
       - /app/apps/action-server/node_modules
       - /app/node_modules
+  # end::action-server[]
 
+  # tag::frontend[]
   frontend:
-    container_name: frontend
+    container_name: $FRONTEND_NAME
     build:
       context: .
       dockerfile: apps/frontend/Dockerfile
@@ -171,10 +187,13 @@ services:
       - /app/node_modules
     restart: always
     ports:
-      - "3000:3000"
+      - "$FRONTEND_PORT:3000"
     networks:
       - rasa-network
+  # end::frontend[]
 
+# tag::networks[]
 networks:
   rasa-network:
     external: false
+# end::networks[]

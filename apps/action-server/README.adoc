@@ -1,0 +1,40 @@
+// tag::excerpt[]
+= Rasa Action Server
+:toc:
+
+A custom action server for the rasa chatbot.
+Read more at https://rasa.com/docs/action-server/.
+// end::excerpt[]
+
+== Installation
+
+The recommended installation of applications managed in this repository is via https://www.docker.com[Docker].
+
+=== Integration with Docker
+
+The integration is dependent on the Qanary ecosystem as well as the Rasa ecosystem and therefore can not be used standalone.
+To use the application, a Qanary pipeline and a Rasa instance on the same network is required.
+More information about the Qanary framework can be found at https://github.com/WDAqua/Qanary.
+More information about Rasa can be found at https://rasa.com/docs/rasa/.
+
+[source,yaml]
+----
+include::../../docker-compose.yml[tags=preamble;qanary-pipeline;rasa;action-server;networks]
+----
+
+Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
+
+[source,dotenv]
+----
+include::../../.env[tags=qanary-pipeline;rasa;action-server]
+----
+
+== Usage
+
+The action server is not used explicitly, but implicitly through HTTP calls from Rasa and the Qanary pipeline.
+
+[source,plantuml]
+----
+include::../../docs/diagrams/Action Server.puml[]
+----
+

@@ -1,44 +1,13 @@
-== Conventions
+Two Stage Fallback - Two denies
 
-We agreed on a small set of naming conventions for the project. These conventions are not set in stone, but we should try to follow them as much as possible.
+[source,plantuml]
+----
+include::diagrams/Architecture Two Stage Fallback Deny.puml[]
+----
 
-=== General Code Conventions
+Two Stage Fallback - Affirm
 
-* Use `camelCase` for variable and function names.
-* Use `PascalCase` for class names.
-* Naming should follow the clean code principles and be meaningful
-
-==== Types
-
-* explicitly define types for all variables and functions
-
-==== Documentation
-
-* Use `JSDoc`/`TSDoc` for documentation of atleast all public functions, variables and classes.
-* Avoid inline/single line comments for explaning code, extract the code into a function with a meaningful name instead.
-
-=== Folder Structure
-
-* Apps should be placed in the `apps` folder.
-* Packages should be placed in the `packages` folder.
-* Use `kebab-case` for folder names.
-
-==== Differentiation between Apps and Packages
-
-* An app is a standalone project that can be run on its own and will be deployed
-** Deployment is done by an Docker image
-** All projects with a `Dockerfile` are considered apps
-* A package is a library that is used by other apps or packages
-** Packages are not deployed
-** All projects without a `Dockerfile` are considered packages
-
-=== Package naming
-
-* Try to stick to the following naming scheme if possible and applicable: `context[-type][-name]`
-* General packages should not be overcomplicated, keep it simple: e.g. `configs`, `e2e`
-
-==== NPM Packages
-
-* Use the folder name as the package name of the npm package
-* Package names are defined by the `name` property in the `package.json` file
-* Currently we do not use any scope for our packages
+[source,plantuml]
+----
+include::diagrams/Architecture Two Stage Fallback Affirm.puml[]
+----

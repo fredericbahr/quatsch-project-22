@@ -1,0 +1,5 @@
+= Integration with Docker
+
+The integration is dependent on the Qanary ecosystem and does not work standalone.
+To use the component, a Qanary pipeline on the same network is also required.
+More information about the Qanary framework can be found at https://github.com/WDAqua/Qanary.

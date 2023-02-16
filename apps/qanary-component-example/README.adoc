@@ -1,3 +1,10 @@
-== Qanary Component Example
+// tag::excerpt[]
+= Qanary Component Example
+:toc:
 
-This project is an exemplary implementation of a component in the Qanary framework. It is written in TypeScript and can be used as a starting point for new custom components.
+This project is an exemplary implementation of a component in the Qanary framework.
+It is written in TypeScript and can be used as a starting point for new custom components.
+// end::excerpt[]
+
+include::../../docs/Component Install.adoc[leveloffset=+1]
+include::../../docs/Component Environment Variables.adoc[leveloffset=+2]
