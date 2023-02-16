@@ -2,6 +2,20 @@ import { INTENTS, RasaRequest, RasaResponse } from "shared";
 
 import { webhookRequestHandler } from "../webhook.controller";
 
+jest.mock("api", () => ({
+  ...jest.requireActual("api"),
+  QanaryPipelineApi: {
+    Configuration: jest.fn(),
+    QanaryQuestionAnsweringControllerApiFactory: jest.fn(() => {
+      return {
+        createStartQuestionAnsweringWithTextQuestion: jest.fn(() => {
+          return { data: "data" };
+        }),
+      };
+    }),
+  },
+}));
+
 describe("#Webhook controllers", () => {
   test("Valid intents", async () => {
     for (const intent in INTENTS) {

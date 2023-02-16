@@ -128,6 +128,12 @@ export interface IQanaryMessage {
      * @memberof IQanaryMessage
      */
     'outGraph'?: string;
+    /**
+     * The url of the stored question
+     * @type {string}
+     * @memberof IQanaryMessage
+     */
+    'question'?: string;
 }
 
 /**
