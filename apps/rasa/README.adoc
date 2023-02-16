@@ -1,0 +1,29 @@
+// tag::excerpt[]
+= Rasa
+:toc:
+
+A custom instance of the rasa open source plattform.
+Read more at https://rasa.com/docs/.
+// end::excerpt[]
+
+== Installation
+
+The recommended installation of applications managed in this repository is via https://www.docker.com[Docker].
+
+=== Integration with Docker
+
+The integration is dependent on the action server and does not work standalone.
+To use the application, an action server on the same network is required.
+More information about the Rasa Action Server can be found at https://rasa.com/docs/action-server/.
+
+[source,yaml]
+----
+include::../../docker-compose.yml[tags=preamble;rasa;action-server;networks]
+----
+
+Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
+
+[source,dotenv]
+----
+include::../../.env[tags=rasa;action-server]
+----

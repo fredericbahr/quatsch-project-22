@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "A frontend containing the rasa chatbot",
+  "description": "A frontend containing the rasa chatbot ui",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

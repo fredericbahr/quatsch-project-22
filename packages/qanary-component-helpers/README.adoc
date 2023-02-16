@@ -1,3 +1,4 @@
-== Qanary Component Helpers
+= Qanary Component Helpers
+:toc:
 
 Helper library for Qanary components written in TypeScript

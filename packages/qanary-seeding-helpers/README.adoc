@@ -1,21 +1,22 @@
-== Qanary Seeding Helpers
+= Qanary Seeding Helpers
+:toc:
 
 This package contains helper functions to seed a Qanary triplestore with data when sending a POST request to start a Qanary pipeline.
 
-=== Usage
+== Usage
 
 [source,typescript]
 ----
 include::example.ts[]
 ----
 
-=== API
+== API
 
-==== generateAdditionalTriples
+=== generateAdditionalTriples
 
 Generates additional triples for a Qanary pipeline with all the stations, measurands, calculations and representations encoded as rdf triples. The domains describe the above mentioned entities. Those are represented as rdf classes.
 
-[width="100%",cols="19%,19%,62%",options="header",]
+[width="100%",cols="20%,20%,60%",options="header",]
 |===
 |Property |Type |Description
 |domains |Domain[] |An array of domains to generate classes for.
@@ -25,49 +26,49 @@ Generates additional triples for a Qanary pipeline with all the stations, measur
 |representations |Representation[] |An array of representations to generate triples for.
 |===
 
-==== getPrefixes
+=== getPrefixes
 
 Gets the prefixes for the rdf additioanl triples query.
 
-==== getClassDefinitions
+=== getClassDefinitions
 
 Gets the class definitions for the rdf additioanl triples by defining the domains as rdf classes.
 
-==== getStationTriples
+=== getStationTriples
 
 Gets the stations encoded as rdf triples
 
-[cols=",,",options="header",]
+[width="100%",cols="20%,20%,60%",options="header",]
 |===
 |Property |Type |Description
 |stations |Station[] |An array of stations to generate triples for.
 |===
 
-==== getMeasurandTriples
+=== getMeasurandTriples
 
 Gets the measurands encoded as rdf triples
 
-[width="100%",cols="15%,16%,69%",options="header",]
+[width="100%",cols="20%,20%,60%",options="header",]
 |===
 |Property |Type |Description
 |measurands |Measurand[] |An array of measurands to generate triples for.
 |===
 
-==== getCalculationTriples
+=== getCalculationTriples
 
 Gets the calculations encoded as rdf triples
 
-[width="100%",cols="17%,17%,66%",options="header",]
+[width="100%",cols="20%,20%,60%",options="header",]
 |===
 |Property |Type |Description
 |calculations |Calculation[] |An array of calculations to generate triples for.
 |===
 
-==== getRepresentationTriples
+=== getRepresentationTriples
 
 Gets the representations encoded as rdf triples
 
-[width="100%",cols="19%,19%,62%",options="header",]
+[width="100%",cols="20%,20%,60%",options="header",]
 |===
 |Property |Type |Description
 |representations |Representation[] |An array of representations to generate triples for.
