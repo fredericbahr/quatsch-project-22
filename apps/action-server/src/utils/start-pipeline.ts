@@ -1,3 +1,4 @@
+import { QanaryPipelineApi } from "api";
 import { calculations, measurands, representations, stations } from "qanary-lubw-data";
 import { generateAdditionalTriples } from "qanary-seeding-helpers";
 import { IQanaryMessage } from "shared";
@@ -19,22 +20,13 @@ export const startQanaryPipeline = async (question: string, componentlist: strin
     representations,
   });
 
-  // TODO: change to generated axios client
-  return await fetch(`${qanaryPipelineOrigin}/startquestionansweringwithtextquestion`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      question,
-      componentlist,
-      additionalTriples: additionalTriples,
-    }),
-  })
-    .then((res) => res.json())
-    .then((qanaryMessage) => qanaryMessage as IQanaryMessage)
-    .catch((error: unknown) => {
-      console.error(error);
-      throw error;
-    });
+  const qanaryPipelineResponse = await QanaryPipelineApi.QanaryQuestionAnsweringControllerApiFactory(
+    new QanaryPipelineApi.Configuration({ basePath: qanaryPipelineOrigin }),
+  ).createStartQuestionAnsweringWithTextQuestion({
+    question,
+    componentlist,
+    additionalTriples,
+  });
+
+  return qanaryPipelineResponse.data;
 };

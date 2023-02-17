@@ -56,6 +56,9 @@ components:
           type: array
           items:
             type: string
+        additionalTriples:
+          description: "Inserts additional data"
+          type: string
     IQanaryMessage:
       description: "The qanary message that is received/send by the component"
       type: object

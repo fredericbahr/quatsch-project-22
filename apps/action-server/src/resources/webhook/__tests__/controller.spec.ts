@@ -2,18 +2,9 @@ import { INTENTS, RasaRequest, RasaResponse } from "shared";
 
 import { webhookRequestHandler } from "../webhook.controller";
 
-jest.mock("api", () => ({
-  ...jest.requireActual("api"),
-  QanaryPipelineApi: {
-    Configuration: jest.fn(),
-    QanaryQuestionAnsweringControllerApiFactory: jest.fn(() => {
-      return {
-        createStartQuestionAnsweringWithTextQuestion: jest.fn(() => {
-          return { data: "data" };
-        }),
-      };
-    }),
-  },
+jest.mock("../../measurand/air/measurand-air.controller", () => ({
+  ...jest.requireActual("../../measurand/air/measurand-air.controller"),
+  measurandAirRequestHandler: jest.fn((req, res) => res.json()),
 }));
 
 describe("#Webhook controllers", () => {
@@ -24,7 +15,7 @@ describe("#Webhook controllers", () => {
       const res = { json: jest.fn(), end: jest.fn() };
 
       await webhookRequestHandler(req as unknown as RasaRequest, res as unknown as RasaResponse);
-      expect(res.json.mock.calls[0][0]).toHaveProperty("responses");
+      expect(res.json).toHaveBeenCalled();
     }
   });
 

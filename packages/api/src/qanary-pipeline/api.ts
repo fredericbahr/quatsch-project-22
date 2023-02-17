@@ -76,6 +76,12 @@ export interface IRequestQuestionAnsweringProcess {
      * @memberof IRequestQuestionAnsweringProcess
      */
     'componentlist'?: Array<string>;
+    /**
+     * Inserts additional data
+     * @type {string}
+     * @memberof IRequestQuestionAnsweringProcess
+     */
+    'additionalTriples'?: string;
 }
 
 /**
