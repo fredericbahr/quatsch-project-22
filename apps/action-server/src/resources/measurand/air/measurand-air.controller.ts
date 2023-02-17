@@ -1,4 +1,4 @@
-import { QanaryPipelineApi } from "api";
+import { LupoCloudApi, QanaryPipelineApi } from "api";
 
 import { RasaRequest, RasaResponse } from "../../../interfaces/http";
 
@@ -15,16 +15,30 @@ const startQuestionAnsweringWithTextQuestion = () => {
 };
 
 /**
+ * A lupo cloud example fetch
+ */
+const readMetric = () => {
+  return LupoCloudApi.LUPOAirMetricControllerApiFactory().readMetric(
+    LupoCloudApi.ILupoAirMetric.O3,
+    "7d-ago",
+    "station:DEBW039",
+  );
+};
+
+/**
  * Handles the intent/action of `action_context_air_measurand` by trying to answer the question with a Qanary pipeline.
  * @param req Request Object
  * @param res Response Object
  */
 export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
-  const response = await startQuestionAnsweringWithTextQuestion();
+  const qanaryResponse = await startQuestionAnsweringWithTextQuestion();
+  const lupResponse = await readMetric();
+  console.log(qanaryResponse.data, lupResponse.data);
+
   res.json({
     responses: [
       {
-        text: `Anfrage wurde durch Qanary-Measunrand-Air-Pipeline beantwortet: ${JSON.stringify(response.data)}`,
+        text: `Anfrage wurde durch Qanary-Measunrand-Air-Pipeline beantwortet`,
         response: "",
       },
     ],
