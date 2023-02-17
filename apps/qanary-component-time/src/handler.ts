@@ -3,6 +3,8 @@ import { ParsedResult } from "chrono-node";
 import { IQanaryMessage } from "qanary-component-core";
 import { IQanaryComponentMessageHandler } from "qanary-component-core";
 import { createAnnotationInKnowledgeGraph, getQuestion, IAnnotationInformation } from "qanary-component-helpers";
+import { annotationTypes } from "qanary-component-pm";
+import { Domain } from "qanary-lubw-data";
 
 import pkg from "../package.json";
 import { getAnnotationOfQuestionLanguage } from "./query/annotationOfQuestionLanguage";
@@ -47,7 +49,12 @@ export const handler: IQanaryComponentMessageHandler = async (message: IQanaryMe
 
   /** Update knowledge graph for each found */
   for (const annotationInformation of annotationInformations) {
-    await createAnnotationInKnowledgeGraph(message, componentName, annotationInformation);
+    await createAnnotationInKnowledgeGraph({
+      message,
+      componentName,
+      annotation: annotationInformation,
+      annotationType: annotationTypes.get(Domain.Time),
+    });
   }
 
   return message;

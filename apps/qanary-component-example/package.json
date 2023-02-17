@@ -23,18 +23,19 @@
     "qanary-component-core": "*"
   },
   "devDependencies": {
+    "@types/jest": "^29.4.0",
     "@types/node": "^18.11.18",
     "eslint": "^8.33.0",
     "eslint-config-sdk": "*",
+    "jest": "^29.4.1",
+    "jest-config-sdk": "*",
+    "nodemon": "2.0.20",
     "openapi-types": "12.1.0",
     "prettier": "^2.8.3",
     "prettier-config-sdk": "*",
     "rimraf": "^4.1.2",
     "ts-config-sdk": "*",
-    "typescript": "^4.9.5",
-    "nodemon": "2.0.20",
-    "jest": "^29.4.1",
-    "jest-config-sdk": "*"
+    "typescript": "^4.9.5"
   },
   "jest": {
     "preset": "jest-config-sdk"

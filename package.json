@@ -14,7 +14,10 @@
     "test": "turbo run test",
     "e2e": "docker-compose up -d && npm run e2e --workspace=e2e",
     "train": "turbo run train",
-    "visualize": "turbo run visualize"
+    "visualize": "turbo run visualize",
+    "docker:all": "docker-compose --profile all up",
+    "docker:qanary": "docker-compose --profile qanary up",
+    "docker:rasa": "docker-compose --profile rasa up"
   },
   "workspaces": [
     "apps/*",
