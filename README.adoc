@@ -19,6 +19,10 @@ The dependencies of the apps are located in the `packages` directory as in other
 
 * You need to have a working installation of https://docs.docker.com/install/[Docker] and https://docs.docker.com/compose/install/[Docker Compose].
 
+===== Initialize
+
+* Run `docker image build . --tag lubw:latest` to initialize the project.
+
 ===== Build and start the applications
 
 * Run `docker compose up` to start rasa, the action-server and the frontend.
