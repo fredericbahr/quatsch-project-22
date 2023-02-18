@@ -3,6 +3,7 @@
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
+    "docker:build": "docker image build . --tag lubw:latest",
     "dev": "turbo run dev",
     "format": "turbo run format",
     "format:fix": "turbo run format:fix",
@@ -23,7 +24,7 @@
   ],
   "devDependencies": {
     "prettier": "^2.8.3",
-    "turbo": "^1.7.4"
+    "turbo": "^1.8.1"
   },
   "volta": {
     "node": "18.12.1",
