@@ -5,7 +5,7 @@ import { readHealth } from "./health.controller";
 /**
  * The heatlh router for a qanary component
  */
-export const healthRouter = async () => {
+export const healthRouter = async (): Promise<Router> => {
   const router = Router();
 
   router.get(["/"], await readHealth());

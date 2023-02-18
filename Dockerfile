@@ -5,9 +5,10 @@ RUN apk add --no-cache libc6-compat
 RUN apk update
 
 RUN npm install --global turbo
+RUN npm install --global pnpm
 
 WORKDIR /app
 
 # Install dependencies
 COPY . .
-RUN npm run reinit
+RUN pnpm run reinit
