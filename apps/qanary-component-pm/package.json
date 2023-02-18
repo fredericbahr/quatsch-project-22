@@ -42,7 +42,8 @@
     "prettier-config-sdk": "workspace:*",
     "rimraf": "^4.1.2",
     "ts-config-sdk": "workspace:*",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "ts-node": "10.9.1"
   },
   "jest": {
     "preset": "jest-config-sdk",
