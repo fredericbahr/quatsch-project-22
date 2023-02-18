@@ -18,23 +18,24 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "api": "*",
+    "api": "workspace:*",
     "express": "^4.18.2",
     "cors": "^2.8.5"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^18.11.18",
     "eslint": "^8.33.0",
-    "eslint-config-sdk": "*",
+    "eslint-config-sdk": "workspace:*",
     "openapi-types": "12.1.0",
     "prettier": "^2.8.3",
-    "prettier-config-sdk": "*",
+    "prettier-config-sdk": "workspace:*",
     "rimraf": "^4.1.2",
-    "ts-config-sdk": "*",
+    "ts-config-sdk": "workspace:*",
     "typescript": "^4.9.5",
     "jest": "^29.4.1",
-    "jest-config-sdk": "*"
+    "jest-config-sdk": "workspace:*"
   },
   "jest": {
     "preset": "jest-config-sdk"

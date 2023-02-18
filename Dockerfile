@@ -4,10 +4,10 @@ FROM node:18-alpine
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-RUN npm install --global turbo
+RUN corepack enable
 
 WORKDIR /app
 
 # Install dependencies
 COPY . .
-RUN npm run reinit
+RUN pnpm run reinit
