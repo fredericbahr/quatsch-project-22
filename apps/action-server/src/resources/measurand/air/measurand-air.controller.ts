@@ -5,23 +5,11 @@ import { IQanaryAnnotation } from "../../../interfaces/annotations";
 import { RasaRequest, RasaResponse } from "../../../interfaces/http";
 import { AnnotationExtractionService } from "../../../services/extract-annotation-service";
 import { ILUBWMeasurandData, LUBWQueryService } from "../../../services/lubw-query-service";
-import { RepresentationService } from "../../../services/representation-service";
+import { IRepresentationData, RepresentationService } from "../../../services/representation-service";
+import { ILUBWData, LUBWDataTransformationService } from "../../../services/transformation-service";
 import { startQanaryPipeline } from "../../../utils/start-pipeline";
-
-/**
- * Handles an error gracefully by returning a response to the user.
- * @param res the response object
- */
-const handleMeasurandAirRequestError = (res: RasaResponse) => {
-  res.json({
-    responses: [
-      {
-        text: "Beim bearbeiten der Anfrage ist etwas schief gelaufen. Ich kann diese nicht beantworten.",
-        response: "",
-      },
-    ],
-  });
-};
+import { getResponseForMeasurandAir } from "./utils/get-response";
+import { handleMeasurandAirRequestError } from "./utils/handle-error";
 
 /**
  * Handles the intent/action of `action_context_air_measurand` by trying to answer the question with a Qanary pipeline.
@@ -29,8 +17,6 @@ const handleMeasurandAirRequestError = (res: RasaResponse) => {
  * @param res Response Object
  */
 export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
-  let lubwQueryService: LUBWQueryService;
-
   const question: string = req.body?.tracker?.latest_message?.text ?? "";
 
   const componentlist: Array<COMPONENT_LIST> = [
@@ -45,21 +31,15 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
 
     const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAnnotations(qanaryMessage);
 
-    lubwQueryService = new LUBWQueryService(annotations);
+    const lubwData: ILUBWData = LUBWDataTransformationService.getTransformedLUBWData(annotations);
 
-    const measurandData: ILUBWMeasurandData = await lubwQueryService.queryLUBWAPI();
+    const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
-    const representation = RepresentationService.getTextualRepresentation(measurandData);
+    const representation: IRepresentationData = RepresentationService.getTextualRepresentation(measurandData);
 
-    res.json({
-      responses: [
-        {
-          text: "Anfrage wurde durch Qanary-Measunrand-Air-Pipeline beantwortet.",
-          response: "",
-        },
-      ],
-    });
-    res.end();
+    const response = getResponseForMeasurandAir(representation);
+
+    res.json(response);
   } catch (error) {
     console.error(error);
     return handleMeasurandAirRequestError(res);

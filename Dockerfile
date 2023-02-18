@@ -4,10 +4,16 @@ FROM node:18-alpine
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-RUN corepack enable
+RUN npm install --global turbo
 
 WORKDIR /app
-
 # Install dependencies
 COPY . .
-RUN pnpm run reinit
+
+ARG TURBO_TEAM
+ENV TURBO_TEAM=$TURBO_TEAM
+ 
+ARG TURBO_TOKEN
+ENV TURBO_TOKEN=$TURBO_TOKEN
+
+RUN npm run reinit
