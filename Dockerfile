@@ -4,8 +4,7 @@ FROM node:18-alpine
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-RUN npm install --global turbo
-RUN npm install --global pnpm
+RUN corepack enable
 
 WORKDIR /app
 

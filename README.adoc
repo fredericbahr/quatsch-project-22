@@ -32,7 +32,9 @@ The dependencies of the apps are located in the `packages` directory as in other
 ==== Prerequisites
 
 * You need to have a working installation of https://docs.docker.com/install/[Docker].
-* You need to have a working installation of https://docs.volta.sh/guide/getting-started[Volta].
+* You need to have a working installation of https://docs.volta.sh/guide/getting-started[Volta] or https://pnpm.io/installation#using-corepack[corepack] enabled.
+  (These applications load the correct version of `pnpm`, the package manager we use)
+
 
 ===== Initialize
 
