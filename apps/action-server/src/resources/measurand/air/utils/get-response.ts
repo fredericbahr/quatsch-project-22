@@ -9,7 +9,7 @@ export const getResponseForMeasurandAir = (representation: IRepresentationData):
   switch (representation.type) {
     case REPRESENTATION_TYPE.TEXT:
       return createResponse(representation.value, "text");
-    case REPRESENTATION_TYPE.CHART:
+    case REPRESENTATION_TYPE.GRAPH:
       return createResponse(representation.value, "image");
     case REPRESENTATION_TYPE.TABLE:
       return createResponse(representation.value, "image");
