@@ -34,7 +34,6 @@ The dependencies of the apps are located in the `packages` directory as in other
 * You need to have a working installation of https://docs.docker.com/install/[Docker].
 * You need to have a working installation of https://docs.volta.sh/guide/getting-started[Volta].
 
-
 ===== Initialize
 
 * Run `npm run init` to initialize the project, which includes installing the dependencies and running the build scripts.

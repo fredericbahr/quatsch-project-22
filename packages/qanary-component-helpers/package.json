@@ -10,7 +10,6 @@
   ],
   "scripts": {
     "build": "tsc",
-    "init": "npm ci",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "format": "prettier --c src",
@@ -26,7 +25,7 @@
   "devDependencies": {
     "@types/jest": "^29.4.0",
     "@types/node": "^18.11.18",
-    "rdf-js": "^4.0.2",
+    "@types/rdf-js": "^4.0.2",
     "@types/sparql-http-client": "^2.2.8",
     "api": "*",
     "eslint": "^8.33.0",

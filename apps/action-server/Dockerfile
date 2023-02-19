@@ -1,2 +1,4 @@
-FROM lubw:latest
-CMD turbo run dev --scope=action-server
+FROM lubw:latest AS runner
+WORKDIR /app
+
+CMD turbo run dev --filter=action-server
