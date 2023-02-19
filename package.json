@@ -3,27 +3,33 @@
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
-    "docker:build": "docker image build . --tag lubw:latest",
+    "docker:build": "DOCKER_BUILDKIT=1 docker image build . --tag lubw:latest",
+    "docker:up": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose up --build",
     "dev": "turbo run dev",
     "format": "turbo run format",
     "format:fix": "turbo run format:fix",
-    "init": "pnpm install --frozen-lockfile && pnpm run build",
-    "reinit": "pnpm install && pnpm run build",
+    "init": "npm ci && npm run build",
+    "reinit": "npm install && npm run build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "shell": "turbo run shell",
     "test": "turbo run test",
-    "e2e": "docker-compose up -d && pnpm run e2e --workspace=e2e",
+    "e2e": "docker-compose up -d && npm run e2e --workspace=e2e",
     "train": "turbo run train",
     "visualize": "turbo run visualize"
   },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "sdk/*"
+  ],
   "devDependencies": {
     "prettier": "^2.8.3",
     "turbo": "^1.8.1"
   },
   "volta": {
     "node": "18.12.1",
-    "pnpm": "8.19.2"
+    "npm": "8.19.2"
   },
-  "packageManager": "pnpm@7.27.0"
+  "packageManager": "npm@8.19.2"
 }

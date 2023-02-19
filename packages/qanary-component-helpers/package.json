@@ -10,33 +10,32 @@
   ],
   "scripts": {
     "build": "tsc",
-    "init": "pnpm ci",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "format": "prettier --c src",
     "format:fix": "prettier --w src",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest --coverage --detectOpenHandles"
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "qanary-component-core": "workspace:*",
+    "qanary-component-core": "*",
     "sparql-http-client": "^2.4.2"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
     "@types/node": "^18.11.18",
-    "rdf-js": "^4.0.2",
+    "@types/rdf-js": "^4.0.2",
     "@types/sparql-http-client": "^2.2.8",
-    "api": "workspace:*",
+    "api": "*",
     "eslint": "^8.33.0",
-    "eslint-config-sdk": "workspace:*",
+    "eslint-config-sdk": "*",
     "jest": "^29.4.1",
-    "jest-config-sdk": "workspace:*",
+    "jest-config-sdk": "*",
     "openapi-types": "12.1.0",
     "prettier": "^2.8.3",
-    "prettier-config-sdk": "workspace:*",
-    "ts-config-sdk": "workspace:*",
+    "prettier-config-sdk": "*",
+    "ts-config-sdk": "*",
     "typescript": "^4.9.5"
   },
   "jest": {

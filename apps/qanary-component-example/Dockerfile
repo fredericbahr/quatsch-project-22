@@ -1,2 +1,4 @@
-FROM lubw:latest
-CMD npm run dev -- --filter=qanary-component-example
+FROM lubw:latest AS runner
+WORKDIR /app
+
+CMD turbo run dev --filter=qanary-component-example

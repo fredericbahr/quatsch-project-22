@@ -8,7 +8,7 @@ services:
   qanary-pipeline:
     container_name: qanary-pipeline
     image: qanary/qanary-pipeline:3.7.0
-    restart: always
+    restart: unless-stopped
     networks:
       - rasa-network
     ports:
@@ -29,7 +29,7 @@ services:
   #     - rasa-network
   #   ports:
   #     - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_PORT:40500"
-  #   restart: always
+  #   restart: unless-stopped
   #   build:
   #     context: .
   #     dockerfile: ./apps/qanary-component-example/Dockerfile
@@ -48,8 +48,8 @@ services:
     networks:
       - rasa-network
     ports:
-      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_PORT:40500"
-    restart: always
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_PORT"
+    restart: unless-stopped
     build:
       context: .
       dockerfile: ./apps/qanary-component-pm/Dockerfile
@@ -68,8 +68,8 @@ services:
     networks:
       - rasa-network
     ports:
-      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_PORT:40500"
-    restart: always
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_PORT"
+    restart: unless-stopped
     build:
       context: .
       dockerfile: ./apps/qanary-component-pm/Dockerfile
@@ -88,8 +88,8 @@ services:
     networks:
       - rasa-network
     ports:
-      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_PORT:40500"
-    restart: always
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_PORT"
+    restart: unless-stopped
     build:
       context: .
       dockerfile: ./apps/qanary-component-pm/Dockerfile
@@ -108,8 +108,8 @@ services:
     networks:
       - rasa-network
     ports:
-      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_PORT:40500"
-    restart: always
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_PORT"
+    restart: unless-stopped
     build:
       context: .
       dockerfile: ./apps/qanary-component-pm/Dockerfile
@@ -130,8 +130,8 @@ services:
     networks:
       - rasa-network
     ports:
-      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_PORT:40500"
-    restart: always
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_PORT"
+    restart: unless-stopped
     build:
       context: .
       dockerfile: ./apps/qanary-component-time/Dockerfile
@@ -185,7 +185,7 @@ services:
       - ./apps/frontend:/app/apps/frontend
       - /app/apps/frontend/node_modules
       - /app/node_modules
-    restart: always
+    restart: unless-stopped
     ports:
       - "$FRONTEND_PORT:3000"
     networks:

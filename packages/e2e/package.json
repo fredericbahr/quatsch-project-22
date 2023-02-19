@@ -9,7 +9,7 @@
   "devDependencies": {
     "@playwright/test": "^1.30.0",
     "prettier": "^2.8.3",
-    "prettier-config-sdk": "workspace:*"
+    "prettier-config-sdk": "*"
   },
   "prettier": "prettier-config-sdk",
   "volta": {

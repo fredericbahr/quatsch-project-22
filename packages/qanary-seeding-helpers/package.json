@@ -10,28 +10,27 @@
   ],
   "scripts": {
     "build": "tsc",
-    "init": "pnpm ci",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "prettier": "prettier --c src",
     "prettier:fix": "prettier --w src",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "npm run build",
     "test": "jest --coverage --detectOpenHandles"
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "qanary-lubw-data": "workspace:*"
+    "qanary-lubw-data": "*"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/jest": "^29.4.0",
     "eslint": "^8.33.0",
-    "eslint-config-sdk": "workspace:*",
+    "eslint-config-sdk": "*",
     "jest": "^29.4.1",
-    "jest-config-sdk": "workspace:*",
+    "jest-config-sdk": "*",
     "prettier": "^2.8.3",
-    "prettier-config-sdk": "workspace:*",
-    "ts-config-sdk": "workspace:*",
+    "prettier-config-sdk": "*",
+    "ts-config-sdk": "*",
     "typescript": "^4.9.4"
   },
   "jest": {
