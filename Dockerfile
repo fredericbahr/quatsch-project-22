@@ -5,8 +5,6 @@ FROM node:alpine AS installer
 RUN apk add --no-cache libc6-compat
 RUN apk update
 
-# Install global libraries
-RUN npm install --global pnpm
 RUN npm install --global turbo
 
 # Set working directory
@@ -14,7 +12,4 @@ WORKDIR /app
 
 # Install dependencies
 COPY . .
-RUN pnpm install --frozen-lockfile
-
-# Build the projects
-RUN turbo run build
+RUN npm run reinit

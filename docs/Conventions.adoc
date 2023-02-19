@@ -37,8 +37,8 @@ We agreed on a small set of naming conventions for the project. These convention
 * Try to stick to the following naming scheme if possible and applicable: `context[-type][-name]`
 * General packages should not be overcomplicated, keep it simple: e.g. `configs`, `e2e`
 
-=== Packages
+=== NPM Packages
 
-* Use the folder name as the `name` property in the `package.json` file
+* Use the folder name as the package name of the npm package
 * Package names are defined by the `name` property in the `package.json` file
 * Currently we do not use any scope for our packages
