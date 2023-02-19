@@ -84,7 +84,7 @@ export class LUBWDataTransformationService {
       measurand: filteredAnnotations.measurandAnnotation[firstAnnotation]?.hasBody,
       representation: filteredAnnotations.representationAnnotation[firstAnnotation]?.hasBody,
       calculation: filteredAnnotations.calculationAnnotation[firstAnnotation]?.hasBody,
-      time: this.transformTime(filteredAnnotations.timeAnnotation[firstAnnotation].hasBody),
+      time: this.transformTime(filteredAnnotations.timeAnnotation[firstAnnotation]?.hasBody),
     };
 
     return this.mergeWithDefaults(transformedValues, defaultValues);
@@ -95,8 +95,12 @@ export class LUBWDataTransformationService {
    * @param time the annotated time as serialized JSON
    * @returns the difference between the start and end date in days or undefined if the transformation failed
    */
-  private static transformTime(time: string): string | undefined {
+  private static transformTime(time?: string): string | undefined {
     try {
+      if (!time) {
+        throw new Error("The time annotation is missing. Fallback to default value.");
+      }
+
       const timeObject: ITimeObject = JSON.parse(time) as ITimeObject;
 
       if (!timeObject.end) {
@@ -170,6 +174,6 @@ export class LUBWDataTransformationService {
    * @returns true if annotation is of annotation type, false otherwise
    */
   private static filterAnnotationsByAnnotationType(annotation: IQanaryAnnotation, annotationType: string): boolean {
-    return annotation.annotatedBy === annotationType;
+    return annotation.annotatedBy.includes(annotationType);
   }
 }

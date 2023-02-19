@@ -1,5 +1,6 @@
 import { IQanaryMessage } from "api/dist/qanary-component";
 import { getEndpoint, getInGraph, selectSparql } from "qanary-component-helpers";
+import { annotationTypes } from "qanary-component-pm";
 import { BlankNode, Literal, NamedNode } from "rdf-js";
 
 import { IQanaryAnnotation } from "../interfaces/annotations";
@@ -62,8 +63,19 @@ WHERE {
       oa:score ?score ;
       oa:annotatedBy ?annotatedBy ;
       oa:annotatedAt ?annotatedAt .
-    FILTER (?annotationType IN (qa:AnnotationAnswer,qa:AnnotationOfTextualAnswer))
+    FILTER (?annotationType IN (qa:AnnotationAnswer,qa:AnnotationOfTextualAnswer${this.getAnnotationTypes()}))
 }`;
+  }
+
+  /**
+   * Gets the annotation types to filter for inside the query by concatenating the annotation types
+   * @returns the concatenated annotation types
+   */
+  private static getAnnotationTypes(): string {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const concatenatedAnnotationTypes: string = Array.from(annotationTypes, ([_name, value]) => value).join(",");
+
+    return annotationTypes.size > 0 ? `, ${concatenatedAnnotationTypes}` : "";
   }
 
   /**
@@ -74,7 +86,8 @@ WHERE {
   private static transformRawAnnotations(annotations: Array<IRawAnnotation>): Array<IQanaryAnnotation> {
     return annotations.map((annotation: IRawAnnotation) => {
       return {
-        annotationType: annotation.annotationType.value,
+        // sparql client return uri with hasthag: qa#AnnotationOfMeasurand
+        annotationType: annotation.annotationType.value.replace("#", ":"),
         hasBody: annotation.body.value,
         hasTarget: annotation.target.value,
         score: Number(annotation.score.value),

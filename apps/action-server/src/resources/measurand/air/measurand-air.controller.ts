@@ -35,7 +35,7 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
 
     const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
-    const representation: IRepresentationData = RepresentationService.getTextualRepresentation(measurandData);
+    const representation: IRepresentationData = RepresentationService.getRepresentation(measurandData);
 
     const response = getResponseForMeasurandAir(representation);
 
