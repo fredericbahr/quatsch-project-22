@@ -1,12 +1,12 @@
-import { Router } from "express";
+import { RequestHandler, Router } from "express";
 
 import { readAbout } from "./about.controller";
 
 /**
  * The about router for a qanary component
  */
-export const aboutRouter = async (): Promise<Router> => {
-  const router: Router = Router();
+export const aboutRouter = async (): Promise<RequestHandler> => {
+  const router = Router();
 
   router.get(["/", "/about"], await readAbout());
 

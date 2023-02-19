@@ -19,24 +19,22 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "api": "workspace:*",
-    "qanary-component-core": "workspace:*"
+    "api": "*",
+    "qanary-component-core": "*"
   },
   "devDependencies": {
-    "@types/jest": "^29.4.0",
-    "@types/mocha": "^10.0.1",
     "@types/node": "^18.11.18",
     "eslint": "^8.33.0",
-    "eslint-config-sdk": "workspace:*",
+    "eslint-config-sdk": "*",
     "openapi-types": "12.1.0",
     "prettier": "^2.8.3",
-    "prettier-config-sdk": "workspace:*",
+    "prettier-config-sdk": "*",
     "rimraf": "^4.1.2",
-    "ts-config-sdk": "workspace:*",
+    "ts-config-sdk": "*",
     "typescript": "^4.9.5",
     "nodemon": "2.0.20",
     "jest": "^29.4.1",
-    "jest-config-sdk": "workspace:*"
+    "jest-config-sdk": "*"
   },
   "jest": {
     "preset": "jest-config-sdk"

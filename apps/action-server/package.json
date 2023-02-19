@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf .turbo coverage dist",
-    "dev": "npx nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
     "lint": "eslint src",
@@ -15,7 +15,7 @@
     "test": "jest --coverage --detectOpenHandles"
   },
   "dependencies": {
-    "api": "workspace:*",
+    "api": "*",
     "cors": "^2.8.5",
     "express": "^4.18.2"
   },
@@ -28,14 +28,14 @@
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "eslint": "^8.33.0",
-    "eslint-config-sdk": "workspace:*",
+    "eslint-config-sdk": "*",
     "jest": "^29.4.1",
-    "jest-config-sdk": "workspace:*",
+    "jest-config-sdk": "*",
     "nodemon": "^2.0.20",
     "openapi-types": "12.1.0",
     "prettier": "^2.8.3",
-    "prettier-config-sdk": "workspace:*",
-    "ts-config-sdk": "workspace:*",
+    "prettier-config-sdk": "*",
+    "ts-config-sdk": "*",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
