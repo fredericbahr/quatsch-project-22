@@ -12,4 +12,4 @@ WORKDIR /app
 
 # Install dependencies
 COPY . .
-RUN npm run reinit
+RUN npm run init
