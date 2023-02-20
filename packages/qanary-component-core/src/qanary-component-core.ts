@@ -42,7 +42,7 @@ export async function QanaryComponentCore(options: IQanaryComponentCoreOptions):
   // Start app
   app.listen(config.springBootAdminClientInstanceServiceBaseUrl.port, async () => {
     // Initialize services
-    console.log(`Started Qanary component at ${config.springBootAdminClientInstanceServiceBaseUrl}`)
+    console.log(`Started Qanary component at ${config.springBootAdminClientInstanceServiceBaseUrl}`);
     await registrationService(config);
   });
 
