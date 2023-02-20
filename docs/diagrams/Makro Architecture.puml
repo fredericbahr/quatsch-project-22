@@ -38,12 +38,12 @@ alt Fehler
 end
 end
 
+autonumber 8
 "action-server" -> "action-server": Auslesen des\nursprünglichen Intents
 
 |||
 
 database "database"
-autonumber 8
 "action-server" -> "database": Messwertabfrage
 "action-server" <-- "database": Messwerte
 
