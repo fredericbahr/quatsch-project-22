@@ -1,6 +1,6 @@
-import { IQanaryMessage } from "qanary-component-core";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { getQuestion } from "qanary-component-helpers";
+import { IQanaryMessage } from "shared";
 
 import { handler } from "../handler";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

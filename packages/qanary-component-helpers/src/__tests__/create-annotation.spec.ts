@@ -1,4 +1,4 @@
-import { IQanaryMessage } from "qanary-component-core";
+import { IQanaryMessage } from "shared";
 
 import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "../create-annotation";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

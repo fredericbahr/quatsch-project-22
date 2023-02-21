@@ -1,6 +1,7 @@
-import { IQanaryComponentMessageHandler, IQanaryMessage } from "qanary-component-core";
+import { IQanaryComponentMessageHandler } from "qanary-component-core";
 import { getQuestion } from "qanary-component-helpers";
-import { Domain, ICalculation, IMeasurand, IRepresentation, IStation } from "qanary-lubw-data";
+import { ICalculation, IMeasurand, IRepresentation, IStation } from "qanary-lubw-data";
+import { Domain, IQanaryMessage } from "shared";
 
 import { isDomain } from "./utils/check-domain";
 import { getDomainInstances } from "./utils/getDomainInstances";

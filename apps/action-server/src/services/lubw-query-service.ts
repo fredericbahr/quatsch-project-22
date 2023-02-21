@@ -1,12 +1,4 @@
-import { ILUBWData } from "./transformation-service";
-
-/**
- * The interim internal format of the LUBW data aggregated with the measurand data from the lubw api.
- */
-export interface ILUBWMeasurandData extends ILUBWData {
-  /** fetched measurands of the lubw api */
-  measurandData: any;
-}
+import { ILUBWData, ILUBWMeasurandData } from "shared";
 
 /**
  * Service for querying the LUBW API.

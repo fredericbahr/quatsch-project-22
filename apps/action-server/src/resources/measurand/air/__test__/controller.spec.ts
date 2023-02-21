@@ -1,4 +1,5 @@
-import { RasaRequest, RasaResponse } from "../../../../interfaces/http";
+import { RasaRequest, RasaResponse } from "shared";
+
 import { measurandAirRequestHandler } from "../measurand-air.controller";
 
 describe("#Measurand controllers", () => {

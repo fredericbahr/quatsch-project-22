@@ -1,6 +1,6 @@
-import { IQanaryMessage } from "qanary-component-core";
 import { calculations, measurands, representations, stations } from "qanary-lubw-data";
 import { generateAdditionalTriples } from "qanary-seeding-helpers";
+import { IQanaryMessage } from "shared";
 
 /**
  * Starts a Qanary pipeline with the given question and component list

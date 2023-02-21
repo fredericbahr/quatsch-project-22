@@ -1,4 +1,5 @@
-import { Domain, ICalculation, IMeasurand, IRepresentation, IStation } from "qanary-lubw-data";
+import { ICalculation, IMeasurand, IRepresentation, IStation } from "qanary-lubw-data";
+import { Domain } from "shared";
 
 import { isEmptyArray } from "./utils";
 
