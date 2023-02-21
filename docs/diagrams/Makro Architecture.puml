@@ -12,11 +12,15 @@ loop bis Faktenextraktion vollständig
 "user" -> rasa: Wie ist der Ozonwert in Ulm am 23.01.2023\nverglichen mit den Durchschnittswerten\n der letzten 10 Jahre repräsentiert als Text?
 
 rasa -> rasa: Intent-Klassifikation
-autonumber stop
-"user" <-- rasa : (Fallback)
+
+alt Fehler
+    autonumber stop
+    "rasa" -> "user": Fallback
+end
 
 autonumber 3
 rasa -> "action-server": action_water_measurand
+"action-server" -> "action-server": Speicherung des\nursprünglichen Intents
 "action-server"-> "action-server": Pipeline-Entscheidung
 
 |||
@@ -26,16 +30,20 @@ rasa -> "action-server": action_water_measurand
 
 |||
 
-"action-server" -> "action-server": Fakten-Extraktion/Speicherung
+"action-server" -> "action-server": Fakten-Extraktion/Speicherung\nund Validierung
 
-autonumber stop
-"user" <-- "action-server": (Fallback)
+alt Fehler
+    autonumber stop
+    "action-server" -> user: Füllen des ersten ungültigen aber notwendigen Slots
 end
+end
+
+autonumber 8
+"action-server" -> "action-server": Auslesen des\nursprünglichen Intents
 
 |||
 
 database "database"
-autonumber 8
 "action-server" -> "database": Messwertabfrage
 "action-server" <-- "database": Messwerte
 
