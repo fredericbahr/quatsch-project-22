@@ -1,10 +1,8 @@
 import * as chrono from "chrono-node";
 import { ParsedResult } from "chrono-node";
-import { IQanaryMessage } from "qanary-component-core";
 import { IQanaryComponentMessageHandler } from "qanary-component-core";
 import { createAnnotationInKnowledgeGraph, getQuestion, IAnnotationInformation } from "qanary-component-helpers";
-import { annotationTypes } from "qanary-component-pm";
-import { Domain } from "qanary-lubw-data";
+import { annotationTypes, Domain, IQanaryMessage } from "shared";
 
 import pkg from "../package.json";
 import { getAnnotationOfQuestionLanguage } from "./query/annotationOfQuestionLanguage";

@@ -1,14 +1,4 @@
-import { ActionServerApi } from "api";
-
-import { IRepresentationData, REPRESENTATION_TYPE } from "../../../../services/representation-service";
-
-/** type of response we return from measurand air */
-export type ResponseForMeasurandAir = ActionServerApi.CallAction200Response;
-
-enum ResponseType {
-  TEXT = "text",
-  IMAGE = "image",
-}
+import { IRepresentationData, RasaResponseType, REPRESENTATION_TYPE, ResponseForMeasurandAir } from "shared";
 
 /**
  * Gets the response for the measurand air with the given representation.
@@ -18,13 +8,13 @@ enum ResponseType {
 export const getResponseForMeasurandAir = (representation: IRepresentationData): ResponseForMeasurandAir => {
   switch (representation.type) {
     case REPRESENTATION_TYPE.TEXT:
-      return createResponse(representation.value, ResponseType.TEXT);
+      return createResponse(representation.value, RasaResponseType.TEXT);
     case REPRESENTATION_TYPE.GRAPH:
-      return createResponse(representation.value, ResponseType.IMAGE);
+      return createResponse(representation.value, RasaResponseType.IMAGE);
     case REPRESENTATION_TYPE.TABLE:
-      return createResponse(representation.value, ResponseType.IMAGE);
+      return createResponse(representation.value, RasaResponseType.IMAGE);
     default:
-      return createResponse(representation.value, ResponseType.TEXT);
+      return createResponse(representation.value, RasaResponseType.TEXT);
   }
 };
 
@@ -34,7 +24,7 @@ export const getResponseForMeasurandAir = (representation: IRepresentationData):
  * @param propKey the property key of the response (e.g. text, image)
  * @returns the response object with the given value and property key
  */
-const createResponse = (value: string | URL, propKey: ResponseType): ResponseForMeasurandAir => {
+const createResponse = (value: string | URL, propKey: RasaResponseType): ResponseForMeasurandAir => {
   return {
     responses: [
       {

@@ -1,5 +1,4 @@
 import path from "path";
-import { IQanaryMessage } from "qanary-component-core";
 import {
   getEndpoint,
   getInGraph,
@@ -7,20 +6,7 @@ import {
   RESERVED_KEYWORD_IN_SPARQL_QUERY,
   selectSparql,
 } from "qanary-component-helpers";
-import { annotationTypes } from "qanary-component-pm";
-import { BlankNode, Literal, NamedNode } from "rdf-js";
-
-import { IQanaryAnnotation } from "../../interfaces/annotations";
-
-interface IRawAnnotation {
-  annotation: NamedNode;
-  annotationType: NamedNode;
-  target: BlankNode;
-  body: Literal;
-  score: Literal;
-  annotatedBy: NamedNode;
-  annotatedAt: Literal;
-}
+import { annotationTypes, IQanaryAnnotation, IQanaryMessage, IRawAnnotation } from "shared";
 
 /**
  * A service that extracts annotations from the qanary knowledge graph

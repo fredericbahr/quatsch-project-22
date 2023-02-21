@@ -1,4 +1,4 @@
-import { RasaResponse } from "../../../../interfaces/http";
+import { RasaResponse } from "shared";
 
 /**
  * Handles an error gracefully by returning a response to the user.

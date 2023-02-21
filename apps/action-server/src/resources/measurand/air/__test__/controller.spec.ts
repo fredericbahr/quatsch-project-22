@@ -1,15 +1,9 @@
-import { IQanaryMessage } from "qanary-component-core";
+import { ILUBWData,ILUBWMeasurandData,IQanaryAnnotation,IQanaryMessage,IRepresentationData, RasaRequest, RasaResponse, REPRESENTATION_TYPE } from "shared";
 
-import { IQanaryAnnotation } from "../../../../interfaces/annotations";
-import { RasaRequest, RasaResponse } from "../../../../interfaces/http";
 import { AnnotationExtractionService } from "../../../../services/extraction-service.ts/extract-annotation-service";
-import { ILUBWMeasurandData, LUBWQueryService } from "../../../../services/lubw-query-service";
-import {
-  IRepresentationData,
-  REPRESENTATION_TYPE,
-  RepresentationService,
-} from "../../../../services/representation-service";
-import { ILUBWData, LUBWDataTransformationService } from "../../../../services/transformation-service";
+import { LUBWQueryService } from "../../../../services/lubw-query-service";
+import { RepresentationService } from "../../../../services/representation-service";
+import { LUBWDataTransformationService } from "../../../../services/transformation-service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { startQanaryPipeline } from "../../../../utils/start-pipeline";
 import { measurandAirRequestHandler } from "../measurand-air.controller";

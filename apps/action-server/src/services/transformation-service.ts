@@ -1,52 +1,5 @@
 import { differenceInDays } from "date-fns";
-import { Domain } from "qanary-lubw-data";
-
-import { IQanaryAnnotation } from "../interfaces/annotations";
-import { defaultLUBWData } from "../utils/default-lubw-data";
-
-/**
- * The filtered annotations by domain.
- */
-interface IFilteredAnnotations {
-  /** annotations of the domain station */
-  stationAnnotation: Array<IQanaryAnnotation>;
-  /** annotations of the domain measurand */
-  measurandAnnotation: Array<IQanaryAnnotation>;
-  /** annotations of the domain representation */
-  representationAnnotation: Array<IQanaryAnnotation>;
-  /** annotations of the domain calculation */
-  calculationAnnotation: Array<IQanaryAnnotation>;
-  /** annotations of the domain time */
-  timeAnnotation: Array<IQanaryAnnotation>;
-}
-
-/**
- * The interim internal representation of the LUBW data needed to query the database.
- * TODO: could be multiple instances of the same domain (e.g. multiple stations)
- */
-export interface ILUBWData {
-  /** the station id*/
-  station: string;
-  /** the measurand id */
-  measurand: string;
-  /** the representation format */
-  representation: string;
-  /** the calculation type */
-  calculation: string;
-  /** the time as number of days ago*/
-  time: string;
-}
-
-/**
- * The time object consisting of start and optional end time.
- */
-interface ITimeObject {
-  /** recognized start date */
-  start: string;
-  /** recognized end date */
-  end?: string;
-}
-
+import { defaultLUBWData, Domain, IFilteredAnnotations, ILUBWData, IQanaryAnnotation, ITimeObject } from "shared";
 /**
  * Service for transforming the annotations to the intermediate representation format.
  */

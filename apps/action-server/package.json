@@ -20,11 +20,10 @@
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "qanary-component-core": "*",
     "qanary-component-helpers": "*",
-    "qanary-component-pm": "*",
     "qanary-lubw-data": "*",
     "qanary-seeding-helpers": "*",
+    "shared": "*",
     "rdf-js": "^4.0.2"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-import { ILUBWData } from "../services/transformation-service";
+import { ILUBWData } from "../interfaces/lubw";
 
 /**
  * The default LUBW data.
