@@ -1,5 +1,4 @@
 import path from "path";
-import { IQanaryMessage } from "qanary-component-core";
 import {
   getEndpoint,
   getInGraph,
@@ -8,6 +7,7 @@ import {
   selectSparql,
 } from "qanary-component-helpers";
 import { Literal } from "rdf-js";
+import { IQanaryMessage } from "shared";
 
 /**
  * The response of a SPARQL query to the Qanary Question endpoint fetching the question url.

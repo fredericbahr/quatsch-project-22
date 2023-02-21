@@ -1,4 +1,5 @@
-import { RasaRequest, RasaResponse } from "../../../interfaces/http";
+import { RasaRequest, RasaResponse } from "shared";
+
 import { fallbackRequestHandler } from "../fallback.controller";
 
 describe("#Action Default Qanary", () => {
