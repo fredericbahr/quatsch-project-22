@@ -50,7 +50,7 @@ export const handler: IQanaryComponentMessageHandler = async (message: IQanaryMe
   const pipelineOrigin: string | undefined = process.env["QANARY_ORIGIN"];
 
   if (!isDomain(domain)) {
-    throw new Error("Could not get domain from environment variable");
+    throw new Error("Could not get correct domain from environment variable");
   }
 
   /** the know instances of the defined domain */

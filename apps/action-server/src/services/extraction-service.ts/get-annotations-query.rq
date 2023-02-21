@@ -1,0 +1,17 @@
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?annotation ?target ?body ?score ?annotatedBy ?annotatedAt ?annotationType
+FROM <${YOUR_CURRENT_GRAPH_ID}>
+WHERE {
+    ?annotation a ?annotationType ;
+      oa:hasTarget ?target ;
+      oa:hasBody ?body ;
+      oa:score ?score ;
+      oa:annotatedBy ?annotatedBy ;
+      oa:annotatedAt ?annotatedAt .
+    FILTER (?annotationType IN (qa:AnnotationAnswer,qa:AnnotationOfTextualAnswer YOUR_ANNOTATION_TYPES))
+}
