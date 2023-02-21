@@ -1,5 +1,5 @@
-import { INTENTS } from "../../../enums/intents";
-import { RasaRequest, RasaResponse } from "../../../interfaces/http";
+import { INTENTS, RasaRequest, RasaResponse } from "shared";
+
 import { webhookRequestHandler } from "../webhook.controller";
 
 describe("#Webhook controllers", () => {

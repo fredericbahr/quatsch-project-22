@@ -1,26 +1,6 @@
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
-
-import { ILUBWMeasurandData } from "./lubw-query-service";
-
-/**
- * This enum represents the different types of representations.
- */
-export enum REPRESENTATION_TYPE {
-  TEXT = "text",
-  GRAPH = "graph",
-  TABLE = "table",
-}
-
-/**
- * This interface represents the data of a representation.
- */
-export interface IRepresentationData {
-  /** the value of the representation */
-  value: string | URL;
-  /** the type of the representation */
-  type: REPRESENTATION_TYPE;
-}
+import { ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
 /**
  * This service provides methods to transform lubw measurand data into different representations.

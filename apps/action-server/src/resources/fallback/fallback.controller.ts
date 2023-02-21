@@ -1,4 +1,4 @@
-import { RasaRequest, RasaResponse } from "../../interfaces/http";
+import { RasaRequest, RasaResponse } from "shared";
 
 /**
  * Handles the intent/action of `action_default_qanary` by trying to answer the question with a Qanary (default) pipeline.
