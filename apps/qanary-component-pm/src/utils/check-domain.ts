@@ -1,4 +1,4 @@
-import { Domain } from "qanary-lubw-data";
+import { Domain } from "shared";
 
 /**
  * Filters the time domain from the domain enum

@@ -1,4 +1,4 @@
-import { Domain } from "qanary-lubw-data";
+import { Domain } from "../enums/domains";
 
 /**
  * A mapping of domains to their corresponding annotation types within the qanary knowledge graph

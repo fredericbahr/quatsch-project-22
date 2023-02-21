@@ -1,7 +1,7 @@
-import { IQanaryMessage } from "qanary-component-core";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "qanary-component-helpers";
-import { Domain, IMeasurand } from "qanary-lubw-data";
+import { IMeasurand } from "qanary-lubw-data";
+import { Domain, IQanaryMessage } from "shared";
 
 import { searchForDomainInstances } from "../utils/search";
 

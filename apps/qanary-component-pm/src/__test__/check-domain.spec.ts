@@ -1,4 +1,4 @@
-import { Domain } from "qanary-lubw-data";
+import { Domain } from "shared";
 
 import { isDomain } from "../utils/check-domain";
 

@@ -20,6 +20,7 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "qanary-component-core": "*",
+    "shared": "*",
     "sparql-http-client": "^2.4.2"
   },
   "devDependencies": {
