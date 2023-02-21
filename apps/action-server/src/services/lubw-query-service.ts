@@ -5,7 +5,7 @@ import { ILUBWData } from "./transformation-service";
  */
 export interface ILUBWMeasurandData extends ILUBWData {
   /** fetched measurands of the lubw api */
-  measurandData: any;
+  measurandData: Array<any>;
 }
 
 /**

@@ -1,6 +1,12 @@
-import { IQanaryMessage } from "api/dist/qanary-component";
 import path from "path";
-import { getEndpoint, getInGraph, queryFileLoader, RESERVED_KEYWORD_IN_SPARQL_QUERY, selectSparql } from "qanary-component-helpers";
+import { IQanaryMessage } from "qanary-component-core";
+import {
+  getEndpoint,
+  getInGraph,
+  queryFileLoader,
+  RESERVED_KEYWORD_IN_SPARQL_QUERY,
+  selectSparql,
+} from "qanary-component-helpers";
 import { annotationTypes } from "qanary-component-pm";
 import { BlankNode, Literal, NamedNode } from "rdf-js";
 
@@ -30,7 +36,7 @@ export class AnnotationExtractionService {
     const annotationQuery: string = this.getAnnotationQuery(qanaryMessage);
 
     try {
-      const rawAnnotations = await selectSparql<IRawAnnotation>(endpoint, annotationQuery);
+      const rawAnnotations: Array<IRawAnnotation> = await selectSparql<IRawAnnotation>(endpoint, annotationQuery);
 
       return this.transformRawAnnotations(rawAnnotations);
     } catch (error: unknown) {
@@ -49,7 +55,7 @@ export class AnnotationExtractionService {
     const inGraph: string = getInGraph(qanaryMessage) ?? "";
     const queryPath: string = path.join(__dirname, "./get-annotations-query.rq");
 
-   return queryFileLoader(queryPath, [
+    return queryFileLoader(queryPath, [
       {
         keyword: RESERVED_KEYWORD_IN_SPARQL_QUERY.YOUR_CURRENT_GRAPH_ID,
         replacement: inGraph,
@@ -57,9 +63,8 @@ export class AnnotationExtractionService {
       {
         keyword: RESERVED_KEYWORD_IN_SPARQL_QUERY.YOUR_ANNOTATION_TYPES,
         replacement: this.getAnnotationTypes(),
-      }
+      },
     ]);
-  
   }
 
   /**

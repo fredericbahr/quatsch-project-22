@@ -8,7 +8,7 @@ export const handleMeasurandAirRequestError = (res: RasaResponse) => {
   res.json({
     responses: [
       {
-        text: "Beim bearbeiten der Anfrage ist etwas schief gelaufen. Ich kann diese nicht beantworten.",
+        text: "Beim Bearbeiten der Anfrage ist etwas schief gelaufen. Ich kann diese nicht beantworten.",
         response: "",
       },
     ],
