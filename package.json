@@ -4,7 +4,7 @@
     "build": "turbo run build",
     "clean": "turbo run clean",
     "docker:build": "DOCKER_BUILDKIT=1 docker image build . --tag lubw:latest",
-    "docker:up": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose up --build",
+    "docker:up": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose --profile all up --build",
     "dev": "turbo run dev",
     "format": "turbo run format",
     "format:fix": "turbo run format:fix",
@@ -16,7 +16,10 @@
     "test": "turbo run test",
     "e2e": "docker-compose up -d && npm run e2e --workspace=e2e",
     "train": "turbo run train",
-    "visualize": "turbo run visualize"
+    "visualize": "turbo run visualize",
+    "docker:all": "docker-compose --profile all up",
+    "docker:qanary": "docker-compose --profile qanary up",
+    "docker:rasa": "docker-compose --profile rasa up"
   },
   "workspaces": [
     "apps/*",

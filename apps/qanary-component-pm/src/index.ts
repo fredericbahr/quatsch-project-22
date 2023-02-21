@@ -3,6 +3,8 @@ import { IQanaryComponentCoreOptions } from "qanary-component-core";
 
 import { handler } from "./handler";
 
+export { annotationTypes } from "./utils/annotation-types";
+
 /**
  * The configuration object for qanary pm component
  */

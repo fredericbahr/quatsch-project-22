@@ -1,0 +1,16 @@
+import { RasaResponse } from "../../../../interfaces/http";
+
+/**
+ * Handles an error gracefully by returning a response to the user.
+ * @param res the response object
+ */
+export const handleMeasurandAirRequestError = (res: RasaResponse) => {
+  res.json({
+    responses: [
+      {
+        text: "Beim bearbeiten der Anfrage ist etwas schief gelaufen. Ich kann diese nicht beantworten.",
+        response: "",
+      },
+    ],
+  });
+};

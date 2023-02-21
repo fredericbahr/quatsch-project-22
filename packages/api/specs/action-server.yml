@@ -110,7 +110,6 @@ components:
         text:
           description: The text which should be uttered.
           type: string
-      required: ["text"]
     TemplateResponse:
       description: Response template the bot should utter.
       type: object
