@@ -1,4 +1,13 @@
-import { ILUBWData,ILUBWMeasurandData,IQanaryAnnotation,IQanaryMessage,IRepresentationData, RasaRequest, RasaResponse, REPRESENTATION_TYPE } from "shared";
+import {
+  ILUBWData,
+  ILUBWMeasurandData,
+  IQanaryAnnotation,
+  IQanaryMessage,
+  IRepresentationData,
+  RasaRequest,
+  RasaResponse,
+  REPRESENTATION_TYPE,
+} from "shared";
 
 import { AnnotationExtractionService } from "../../../../services/extraction-service.ts/extract-annotation-service";
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
@@ -60,7 +69,7 @@ describe("#Measurand controllers", () => {
     calculation: "average",
     measurand: "luqx",
     station: "DEBW0081",
-    time: "{start: '2021-03-18T13:00:00.000Z'}",
+    time: "1d",
     representation: "text",
   };
   const measurandData: ILUBWMeasurandData = {

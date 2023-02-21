@@ -15,13 +15,18 @@ export class LUBWQueryService {
 
     // TODO: add error handling
     // TODO: add logic for different calculation types
-    const response = await fetch(apiURL);
-    const measurandData = await response.json();
+    try {
+      const response = await fetch(apiURL);
+      const measurandData = await response.json();
 
-    return {
-      measurandData,
-      ...lubwData,
-    };
+      return {
+        measurandData,
+        ...lubwData,
+      };
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   /**

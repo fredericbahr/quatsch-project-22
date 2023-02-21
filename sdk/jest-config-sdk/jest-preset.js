@@ -13,4 +13,5 @@ module.exports = {
   preset: "ts-jest",
   clearMocks: true,
   coverageReporters: ["clover", "json", "lcov", "text", "text-summary"],
+  silent: true,
 };

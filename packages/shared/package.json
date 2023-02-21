@@ -14,8 +14,7 @@
     "lint:fix": "eslint src --fix",
     "prettier": "prettier --c src",
     "prettier:fix": "prettier --w src",
-    "prepublishOnly": "npm run build",
-    "test": "jest --coverage --detectOpenHandles"
+    "prepublishOnly": "npm run build"
   },
   "types": "dist/index.d.ts",
   "dependencies": {

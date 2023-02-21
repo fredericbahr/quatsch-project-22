@@ -89,8 +89,8 @@ INSERT {
             oa:hasSource <qanary-question-uri> ;
             oa:hasSelector [
                 a oa:TextPositionSelector ;
-                oa:start "0"^^xsd:nonNegativeInteger ;
-                oa:end "6"^^xsd:nonNegativeInteger
+                oa:start '0'^^xsd:nonNegativeInteger ;
+                oa:end '6'^^xsd:nonNegativeInteger
             ]
         ] ;
             oa:hasBody 'Berlin' ;

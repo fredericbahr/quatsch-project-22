@@ -1,7 +1,6 @@
-import { IQanaryMessage } from "qanary-component-core";
 import { selectSparql } from "qanary-component-helpers";
+import { IQanaryAnnotation, IQanaryMessage } from "shared";
 
-import { IQanaryAnnotation } from "../../interfaces/annotations";
 import { AnnotationExtractionService } from "../extraction-service.ts/extract-annotation-service";
 
 jest.mock("qanary-component-helpers", () => ({
@@ -19,22 +18,22 @@ describe("Extract Annotation Service", () => {
 
   const rawAnnotations = [
     {
-      annotation: "1",
-      annotationType: "qa#AnnotationOfStation",
-      target: "target",
-      body: "body",
-      score: "1",
-      annotatedBy: "annotatedBy",
-      annotatedAt: "annotatedAt",
+      annotation: { value: "1" },
+      annotationType: { value: "qa#AnnotationOfStation" },
+      target: { value: "target" },
+      body: { value: "body" },
+      score: { value: "1" },
+      annotatedBy: { value: "annotatedBy" },
+      annotatedAt: { value: "annotatedAt" },
     },
     {
-      annotation: "2",
-      annotationType: "qa#AnnotationOfStation",
-      target: "target",
-      body: "body",
-      score: "1",
-      annotatedBy: "annotatedBy",
-      annotatedAt: "annotatedAt",
+      annotation: { value: "2" },
+      annotationType: { value: "qa#AnnotationOfStation" },
+      target: { value: "target" },
+      body: { value: "body" },
+      score: { value: "1" },
+      annotatedBy: { value: "annotatedBy" },
+      annotatedAt: { value: "annotatedAt" },
     },
   ];
 
@@ -64,5 +63,10 @@ describe("Extract Annotation Service", () => {
   it("should return an array of annotations", async () => {
     const annotations = await AnnotationExtractionService.extractAnnotations(qanaryMessage);
     expect(annotations).toEqual(expectedAnnotations);
+  });
+
+  it("should throw an error if the query fails", async () => {
+    (selectSparql as jest.Mock).mockRejectedValue(new Error("error"));
+    await expect(AnnotationExtractionService.extractAnnotations(qanaryMessage)).rejects.toThrowError("error");
   });
 });
