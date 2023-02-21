@@ -1,9 +1,10 @@
 import { IQanaryMessage } from "api/dist/qanary-component";
-import { getEndpoint, getInGraph, selectSparql } from "qanary-component-helpers";
+import path from "path";
+import { getEndpoint, getInGraph, queryFileLoader, RESERVED_KEYWORD_IN_SPARQL_QUERY, selectSparql } from "qanary-component-helpers";
 import { annotationTypes } from "qanary-component-pm";
 import { BlankNode, Literal, NamedNode } from "rdf-js";
 
-import { IQanaryAnnotation } from "../interfaces/annotations";
+import { IQanaryAnnotation } from "../../interfaces/annotations";
 
 interface IRawAnnotation {
   annotation: NamedNode;
@@ -45,26 +46,20 @@ export class AnnotationExtractionService {
    * @returns the query to get all annotations from the knowledge graph
    */
   private static getAnnotationQuery(qanaryMessage: IQanaryMessage): string {
-    const inGraph = getInGraph(qanaryMessage) ?? "";
+    const inGraph: string = getInGraph(qanaryMessage) ?? "";
+    const queryPath: string = path.join(__dirname, "./get-annotations-query.rq");
 
-    return `
-PREFIX qa: <http://www.wdaqua.eu/qa#>
-PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?annotation ?target ?body ?score ?annotatedBy ?annotatedAt ?annotationType
-FROM <${inGraph}>
-WHERE {
-    ?annotation a ?annotationType ;
-      oa:hasTarget ?target ;
-      oa:hasBody ?body ;
-      oa:score ?score ;
-      oa:annotatedBy ?annotatedBy ;
-      oa:annotatedAt ?annotatedAt .
-    FILTER (?annotationType IN (qa:AnnotationAnswer,qa:AnnotationOfTextualAnswer${this.getAnnotationTypes()}))
-}`;
+   return queryFileLoader(queryPath, [
+      {
+        keyword: RESERVED_KEYWORD_IN_SPARQL_QUERY.YOUR_CURRENT_GRAPH_ID,
+        replacement: inGraph,
+      },
+      {
+        keyword: RESERVED_KEYWORD_IN_SPARQL_QUERY.YOUR_ANNOTATION_TYPES,
+        replacement: this.getAnnotationTypes(),
+      }
+    ]);
+  
   }
 
   /**

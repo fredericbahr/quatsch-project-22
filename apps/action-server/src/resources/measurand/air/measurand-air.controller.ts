@@ -3,12 +3,12 @@ import { IQanaryMessage } from "qanary-component-core";
 import { COMPONENT_LIST } from "../../../enums/component-list";
 import { IQanaryAnnotation } from "../../../interfaces/annotations";
 import { RasaRequest, RasaResponse } from "../../../interfaces/http";
-import { AnnotationExtractionService } from "../../../services/extract-annotation-service";
+import { AnnotationExtractionService } from "../../../services/extraction-service.ts/extract-annotation-service";
 import { ILUBWMeasurandData, LUBWQueryService } from "../../../services/lubw-query-service";
 import { IRepresentationData, RepresentationService } from "../../../services/representation-service";
 import { ILUBWData, LUBWDataTransformationService } from "../../../services/transformation-service";
 import { startQanaryPipeline } from "../../../utils/start-pipeline";
-import { getResponseForMeasurandAir } from "./utils/get-response";
+import { getResponseForMeasurandAir, ResponseForMeasurandAir } from "./utils/get-response";
 import { handleMeasurandAirRequestError } from "./utils/handle-error";
 
 /**
@@ -37,7 +37,7 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
 
     const representation: IRepresentationData = RepresentationService.getRepresentation(measurandData);
 
-    const response = getResponseForMeasurandAir(representation);
+    const response: ResponseForMeasurandAir = getResponseForMeasurandAir(representation);
 
     res.json(response);
   } catch (error) {

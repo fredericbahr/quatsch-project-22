@@ -7,8 +7,8 @@ describe("#Measurand controllers", () => {
 
   afterEach(() => jest.clearAllMocks());
 
-  it("should return a text response", () => {
-    measurandAirRequestHandler(req, res);
+  it("should return a text response", async () => {
+    await measurandAirRequestHandler(req, res);
 
     expect(res.end).toHaveBeenCalled();
     expect(res.json).toHaveBeenCalledWith(

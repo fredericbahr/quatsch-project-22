@@ -4,7 +4,7 @@ import { ILUBWData } from "../services/transformation-service";
  * The default LUBW data.
  */
 export const defaultLUBWData: ILUBWData = {
-  measurand: "luqx", // Luftqualitaetsindex
+  measurand: "luqx", // Luftqualitätsindex
   station: "DEBW081", // Karlsruhe Nordwest
   representation: "text",
   calculation: "average",
