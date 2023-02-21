@@ -22,7 +22,7 @@ export class AnnotationExtractionService {
     const annotationQuery: string = this.getAnnotationQuery(qanaryMessage);
 
     try {
-      const rawAnnotations = await selectSparql<IRawAnnotation>(endpoint, annotationQuery);
+      const rawAnnotations: Array<IRawAnnotation> = await selectSparql<IRawAnnotation>(endpoint, annotationQuery);
 
       return this.transformRawAnnotations(rawAnnotations);
     } catch (error: unknown) {
