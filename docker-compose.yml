@@ -21,6 +21,7 @@ services:
       - SERVER_HOST=$QANARY_HOST
       - SERVER_PORT=$QANARY_PORT
       - QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true
+    profiles: ["qanary", "all"]
   # end::qanary-pipeline[]
 
   # qanary-component-example1:
@@ -40,6 +41,7 @@ services:
   #     - ./apps/qanary-component-example:/app/apps/qanary-component-example
   #     - /app/apps/qanary-component-example/node_modules
   #     - /app/node_modules
+  #   profiles: ["qanary", "all"]
 
   # tag::qanary-components[]
   # tag::qanary-component-pm[]
@@ -62,6 +64,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
+    profiles: ["qanary", "all"]
   
   qanary-component-pm-station:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_NAME
@@ -82,6 +85,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
+    profiles: ["qanary", "all"]
 
   qanary-component-pm-calculation:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_NAME
@@ -102,6 +106,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
+    profiles: ["qanary", "all"]
 
   qanary-component-pm-representation:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_NAME
@@ -122,6 +127,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
+    profiles: ["qanary", "all"]
   # end::qanary-component-pm[]
 
   # tag::qanary-component-time[]
@@ -143,6 +149,7 @@ services:
       - ./apps/qanary-component-time:/app/apps/qanary-component-time
       - /app/apps/qanary-component-time/node_modules
       - /app/node_modules
+    profiles: ["qanary", "all"]
   # end::qanary-component-time[]
   # end::qanary-components[]
 
@@ -157,6 +164,7 @@ services:
       context: ./apps/rasa
     command: >
       run --enable-api --cors "*"
+    profiles: ["rasa", "all"]
   # end::rasa[]
 
   # tag::action-server[]
@@ -173,6 +181,7 @@ services:
       - ./apps/action-server:/app/apps/action-server
       - /app/apps/action-server/node_modules
       - /app/node_modules
+    profiles: ["rasa", "all"]
   # end::action-server[]
 
   # tag::frontend[]
@@ -190,6 +199,7 @@ services:
       - "$FRONTEND_PORT:3000"
     networks:
       - rasa-network
+    profiles: ["rasa", "all"]
   # end::frontend[]
 
 # tag::networks[]

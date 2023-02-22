@@ -1,6 +1,5 @@
-import { IQanaryMessage } from "qanary-component-core";
 import { selectSparql } from "qanary-component-helpers";
-import { Domain } from "qanary-lubw-data";
+import { Domain, IQanaryMessage } from "shared";
 
 import { getDomainInstances } from "../utils/getDomainInstances";
 

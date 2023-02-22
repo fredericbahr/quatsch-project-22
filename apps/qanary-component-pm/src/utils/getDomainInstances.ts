@@ -1,7 +1,6 @@
-import { IQanaryMessage } from "qanary-component-core";
 import { getEndpoint, getInGraph, selectSparql } from "qanary-component-helpers";
-import { Domain } from "qanary-lubw-data";
 import { Literal } from "rdf-js";
+import { Domain, IQanaryMessage } from "shared";
 
 import { DomainType } from "../handler";
 

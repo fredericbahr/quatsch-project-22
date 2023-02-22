@@ -9,7 +9,13 @@ RUN npm install --global turbo
 
 # Set working directory
 WORKDIR /app
-
 # Install dependencies
 COPY . .
+
+ARG TURBO_TEAM
+ENV TURBO_TEAM=$TURBO_TEAM
+
+ARG TURBO_TOKEN
+ENV TURBO_TOKEN=$TURBO_TOKEN
+
 RUN npm run init
