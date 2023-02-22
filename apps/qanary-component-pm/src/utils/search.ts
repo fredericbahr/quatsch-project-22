@@ -1,6 +1,5 @@
-import { IQanaryMessage } from "qanary-component-core";
 import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "qanary-component-helpers";
-import { Domain } from "qanary-lubw-data";
+import { annotationTypes, Domain, IQanaryMessage } from "shared";
 
 import { DomainType } from "../handler";
 
@@ -63,7 +62,12 @@ export const searchForDomainInstances = async <T extends Domain>(
 
   for (const annotation of annotations) {
     if (annotation) {
-      await createAnnotationInKnowledgeGraph(message, `${domain}-pattern-matching`, annotation);
+      await createAnnotationInKnowledgeGraph({
+        message,
+        componentName: `${domain}-pattern-matching`,
+        annotation,
+        annotationType: annotationTypes.get(domain),
+      });
     }
   }
 };

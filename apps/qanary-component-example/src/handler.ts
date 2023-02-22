@@ -1,5 +1,5 @@
-import { IQanaryMessage } from "qanary-component-core";
 import { IQanaryComponentMessageHandler } from "qanary-component-core";
+import { IQanaryMessage } from "shared";
 
 /**
  * An event handler for incoming messages of the Qanary pipeline

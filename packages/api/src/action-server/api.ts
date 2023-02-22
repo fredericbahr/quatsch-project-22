@@ -1409,7 +1409,7 @@ export interface Response {
      * @type {string}
      * @memberof Response
      */
-    'text': string;
+    'text'?: string;
     /**
      * 
      * @type {Array<Button>}
@@ -1828,7 +1828,7 @@ export interface TextResponse {
      * @type {string}
      * @memberof TextResponse
      */
-    'text': string;
+    'text'?: string;
 }
 /**
  * Conversation tracker which stores the conversation state.

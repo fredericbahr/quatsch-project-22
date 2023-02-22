@@ -1,4 +1,4 @@
-import { IQanaryMessage } from "qanary-component-core";
+import { IQanaryMessage } from "shared";
 
 import { getQuestionUri } from "./get-question-uri";
 

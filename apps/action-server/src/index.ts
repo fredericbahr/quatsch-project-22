@@ -1,7 +1,11 @@
 import cors from "cors";
+import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
+import path from "path";
 
 import { webhookRouter } from "./resources/webhook/webhook.router";
+
+dotenv.config({ path: path.join(__dirname, "../../.env") });
 
 const server: Express = express();
 const port = 8080;

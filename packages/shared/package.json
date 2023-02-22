@@ -1,0 +1,44 @@
+{
+  "name": "shared",
+  "version": "1.0.0",
+  "description": "Shared common code for the Qanary components",
+  "license": "ISC",
+  "author": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "prettier": "prettier --c src",
+    "prettier:fix": "prettier --w src",
+    "prepublishOnly": "npm run build"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "qanary-lubw-data": "*"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.11.18",
+    "api": "*",
+    "eslint": "^8.33.0",
+    "eslint-config-sdk": "*",
+    "jest": "^29.4.1",
+    "jest-config-sdk": "*",
+    "prettier": "^2.8.3",
+    "prettier-config-sdk": "*",
+    "rdf-js": "^4.0.2",
+    "ts-config-sdk": "*",
+    "typescript": "^4.9.4"
+  },
+  "jest": {
+    "preset": "jest-config-sdk"
+  },
+  "prettier": "prettier-config-sdk",
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
