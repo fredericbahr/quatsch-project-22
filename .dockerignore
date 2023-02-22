@@ -10,3 +10,7 @@ npm-debug.log
 # Rasa
 **/models
 **/.rasa/cache
+
+## Re-include turbo cach
+!**/.turbo/cache
+!**/node_modules/.cache

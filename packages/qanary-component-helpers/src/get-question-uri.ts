@@ -1,4 +1,4 @@
-import { IQanaryMessage } from "qanary-component-core";
+import { IQanaryMessage } from "shared";
 
 import { QuestionSparqlResponse } from "./interfaces/question-sparql-response";
 import { getEndpoint, getInGraph } from "./message-operations";

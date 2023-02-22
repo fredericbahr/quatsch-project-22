@@ -1,6 +1,7 @@
-import { IQanaryComponentMessageHandler, IQanaryMessage } from "qanary-component-core";
+import { IQanaryComponentMessageHandler } from "qanary-component-core";
 import { getQuestion } from "qanary-component-helpers";
-import { Domain, ICalculation, IMeasurand, IRepresentation, IStation } from "qanary-lubw-data";
+import { ICalculation, IMeasurand, IRepresentation, IStation } from "qanary-lubw-data";
+import { Domain, IQanaryMessage } from "shared";
 
 import { isDomain } from "./utils/check-domain";
 import { getDomainInstances } from "./utils/getDomainInstances";
@@ -50,7 +51,7 @@ export const handler: IQanaryComponentMessageHandler = async (message: IQanaryMe
   const pipelineOrigin: string | undefined = process.env["QANARY_ORIGIN"];
 
   if (!isDomain(domain)) {
-    throw new Error("Could not get domain from environment variable");
+    throw new Error("Could not get correct domain from environment variable");
   }
 
   /** the know instances of the defined domain */

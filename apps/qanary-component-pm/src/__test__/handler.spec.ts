@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { IQanaryMessage } from "qanary-component-core";
 import { getQuestion } from "qanary-component-helpers";
+import { IQanaryMessage } from "shared";
 
 import { handler } from "../handler";
 import { getDomainInstances } from "../utils/getDomainInstances";

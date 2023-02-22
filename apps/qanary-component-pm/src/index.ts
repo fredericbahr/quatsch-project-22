@@ -1,5 +1,4 @@
-import { QanaryComponentCore } from "qanary-component-core";
-import { IQanaryComponentCoreOptions } from "qanary-component-core";
+import { IQanaryComponentCoreOptions, QanaryComponentCore } from "qanary-component-core";
 
 import { handler } from "./handler";
 

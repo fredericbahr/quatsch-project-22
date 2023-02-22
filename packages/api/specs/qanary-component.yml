@@ -4,6 +4,10 @@ info:
   title: OpenAPI definition
   version: 3.5.1
 
+servers:
+  - url: http://localhost:40500
+    description: Default Qanary component server url
+
 paths:
   "/about":
     get:
@@ -139,27 +143,7 @@ components:
           type: string
           format: string
     IQanaryMessage:
-      description: "The qanary message that is received/send by the component"
-      type: object
-      properties:
-        values:
-          description: "Additional values"
-          type: object
-          additionalProperties:
-            type: string
-            format: uri
-        inGraph:
-          description: "The graph uri of the knowledge graph that contains information for the incoming request"
-          type: string
-          format: uri
-        endpoint:
-          description: "The sparql endpoint as url"
-          type: string
-          format: url
-        outGraph:
-          description: "The graph uri of the knowledge graph that contains information for the outgoing response"
-          type: string
-          format: uri
+      $ref: "./qanary-pipeline.yml#/components/schemas/IQanaryMessage"
     IQanaryComponentHealth:
       description: "An object describing the overall status of the service"
       type: object

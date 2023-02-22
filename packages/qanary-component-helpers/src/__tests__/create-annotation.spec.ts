@@ -1,4 +1,4 @@
-import { IQanaryMessage } from "qanary-component-core";
+import { IQanaryMessage } from "shared";
 
 import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "../create-annotation";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -33,7 +33,7 @@ describe("createAnnotationInKnowledgeGraph", () => {
     const mockUpdateSparql = jest.fn();
     (updateSparql as jest.Mock) = mockUpdateSparql;
 
-    await createAnnotationInKnowledgeGraph(qanaryMessage, "test", annotation);
+    await createAnnotationInKnowledgeGraph({ message: qanaryMessage, componentName: "test", annotation });
 
     const expectedQuery = `
 PREFIX qa: <http://www.wdaqua.eu/qa#>
@@ -65,11 +65,53 @@ WHERE {
     expect(mockUpdateSparql).toHaveBeenCalledWith(qanaryMessage.endpoint, expectedQuery);
   });
 
+  it("should create an annotation with a custom annotation type", async () => {
+    const annotationType = "qa:AnnotationOfStation";
+    const mockUpdateSparql = jest.fn();
+    (updateSparql as jest.Mock) = mockUpdateSparql;
+
+    await createAnnotationInKnowledgeGraph({
+      message: qanaryMessage,
+      componentName: "test",
+      annotation,
+      annotationType,
+    });
+
+    const expectedQuery = `
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+INSERT {
+    GRAPH <urn:graph:e8fe00d7-2a1b-4978-acef-af893cd287dd> {
+        ?annotation a ${annotationType} .
+        ?annotation oa:hasTarget [
+            a oa:SpecificResource ;
+            oa:hasSource <qanary-question-uri> ;
+            oa:hasSelector [
+                a oa:TextPositionSelector ;
+                oa:start '0'^^xsd:nonNegativeInteger ;
+                oa:end '6'^^xsd:nonNegativeInteger
+            ]
+        ] ;
+            oa:hasBody 'Berlin' ;
+            oa:score '0.9'^^xsd:double ;
+            oa:annotatedBy <urn:qanary:test> ;
+            oa:annotatedAt ?time .
+    }
+}
+WHERE {
+    BIND (IRI(str(RAND())) AS ?annotation)
+    BIND (now() as ?time)
+}`;
+
+    expect(mockUpdateSparql).toHaveBeenCalledWith(qanaryMessage.endpoint, expectedQuery);
+  });
+
   it("should only log an error if one occurs", async () => {
     console.error = jest.fn();
     (updateSparql as jest.Mock) = jest.fn(() => Promise.reject("error"));
 
-    await createAnnotationInKnowledgeGraph(qanaryMessage, "test", annotation);
+    await createAnnotationInKnowledgeGraph({ message: qanaryMessage, componentName: "test", annotation });
 
     expect(console.error).toHaveBeenCalled();
   });

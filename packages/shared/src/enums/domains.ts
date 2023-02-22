@@ -4,4 +4,5 @@ export enum Domain {
   Station = "station",
   Calculation = "calculation",
   Representation = "representation",
+  Time = "time",
 }

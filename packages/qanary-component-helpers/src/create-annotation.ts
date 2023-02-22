@@ -1,4 +1,4 @@
-import { IQanaryMessage } from "qanary-component-core";
+import { IQanaryMessage } from "shared";
 
 import { getQuestionUri } from "./get-question-uri";
 import { getEndpoint, getOutGraph } from "./message-operations";
@@ -31,16 +31,32 @@ export interface IAnnotationInformationRange {
 }
 
 /**
+ * The options to create an annotation in the knowledge graph
+ */
+export interface ICreateAnnotationInKnowledgeGraphOptions {
+  /** the qanary message containing the endpoint and graph */
+  message: IQanaryMessage;
+  /** the component name that creates the annotation */
+  componentName: string;
+  /** the actual annotation to be created */
+  annotation: IAnnotationInformation;
+  /** the type of the annotation, prefixed with "qa:", defaults to "qa:AnnotationAnswer" */
+  annotationType?: string;
+}
+
+/**
  * Creates an annotation in the knowledge graph given in the message
  * @param message the qanary message containing the endpoint and graph
  * @param componentName the component name that creates the annotation
  * @param annotation the actual annotation to be created
+ * @param annotationType the type of the annotation, prefixed with "qa:", defaults to "qa:AnnotationAnswer"
  */
-export const createAnnotationInKnowledgeGraph = async (
-  message: IQanaryMessage,
-  componentName: string,
-  annotation: IAnnotationInformation,
-) => {
+export const createAnnotationInKnowledgeGraph = async ({
+  message,
+  componentName,
+  annotation,
+  annotationType = "qa:AnnotationAnswer",
+}: ICreateAnnotationInKnowledgeGraphOptions): Promise<void> => {
   const outGraph: string = getOutGraph(message) ?? "";
   const endpointUrl: string = getEndpoint(message) ?? "";
   const questionUri: string = (await getQuestionUri(message)) ?? "";
@@ -51,7 +67,7 @@ PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 INSERT {
     GRAPH <${outGraph}> {
-        ?annotation a qa:AnnotationAnswer .
+        ?annotation a ${annotationType} .
         ?annotation oa:hasTarget [
             a oa:SpecificResource ;
             oa:hasSource <${questionUri}> ;
