@@ -1,0 +1,13 @@
+Two Stage Fallback - Two denies
+
+[source,plantuml]
+----
+include::diagrams/Architecture Two Stage Fallback Deny.puml[]
+----
+
+Two Stage Fallback - Affirm
+
+[source,plantuml]
+----
+include::diagrams/Architecture Two Stage Fallback Affirm.puml[]
+----

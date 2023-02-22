@@ -57,12 +57,12 @@ INSERT {
             oa:hasSource <${questionUri}> ;
             oa:hasSelector [
                 a oa:TextPositionSelector ;
-                oa:start "${annotation.range.start}"^^xsd:nonNegativeInteger ;
-                oa:end "${annotation.range.end}"^^xsd:nonNegativeInteger
+                oa:start '${annotation.range.start}'^^xsd:nonNegativeInteger ;
+                oa:end '${annotation.range.end}'^^xsd:nonNegativeInteger
             ]
         ] ;
-            oa:hasBody "${annotation.value}" ;
-            oa:score "${annotation.confidence}"^^xsd:double ;
+            oa:hasBody '${annotation.value}' ;
+            oa:score '${annotation.confidence}'^^xsd:double ;
             oa:annotatedBy <urn:qanary:${componentName}> ;
             oa:annotatedAt ?time .
     }

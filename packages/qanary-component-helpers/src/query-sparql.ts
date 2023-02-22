@@ -28,9 +28,8 @@ const streamToPromise = <T>(stream: internal.Readable): Promise<Array<T>> => {
 export const selectSparql = async <T>(endpointUrl: string, query: string): Promise<Array<T>> => {
   const client: SparqlClient = new SparqlClient({ endpointUrl });
   const stream: internal.Readable = await client.query.select(query);
-  const response: Array<T> = await streamToPromise<T>(stream);
 
-  return response;
+  return await streamToPromise<T>(stream);
 };
 
 /**
@@ -41,9 +40,8 @@ export const selectSparql = async <T>(endpointUrl: string, query: string): Promi
  */
 export const askSparql = async (endpointUrl: string, query: string): Promise<boolean> => {
   const client: SparqlClient = new SparqlClient({ endpointUrl });
-  const answer: boolean = await client.query.ask(query);
 
-  return answer;
+  return await client.query.ask(query);
 };
 
 /**

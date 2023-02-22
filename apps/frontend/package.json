@@ -1,14 +1,14 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "A frontend containing the rasa chatbot",
+  "description": "A frontend containing the rasa chatbot ui",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
     "scripts": {
     "build": "tsc",
     "clean": "rimraf .turbo coverage dist",
-    "dev": "npx nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
     "lint": "eslint src",

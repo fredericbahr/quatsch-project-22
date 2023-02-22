@@ -1,0 +1,4 @@
+= Installation
+
+The recommended installation of Qanary components managed in this repository is via https://www.docker.com[Docker].
+The components can be configured via environment variables to integrate them as needed in this context.

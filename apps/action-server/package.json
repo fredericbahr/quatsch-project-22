@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf .turbo coverage dist",
-    "dev": "npx nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
     "format": "prettier --check src",
     "format:fix": "prettier --write src",
     "lint": "eslint src",

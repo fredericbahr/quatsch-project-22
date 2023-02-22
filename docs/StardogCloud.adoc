@@ -1,0 +1,13 @@
+= Stardog Cloud
+
+To manage the Stardog instance of HTWK, https://cloud.stardog.com/ can be used.
+A Stardog Cloud account is required for this.
+As soon as this is available, a new connection can be established in the administration area with the following data.
+
+|===
+|Username | admin
+|Password | admin
+|Endpoint | https://demos.swe.htwk-leipzig.de:40101
+|===
+
+Please note that in this project the `lubw` database is used.
