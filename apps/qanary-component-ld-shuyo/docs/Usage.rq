@@ -1,0 +1,8 @@
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+
+SELECT ?subject ?predicate ?object
+FROM <YOUR_CURRENT_GRAPH_ID>
+WHERE {
+    ?subject a qa:AnnotationOfQuestionLanguage .
+    ?subject ?predicate ?object .
+}

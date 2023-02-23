@@ -152,6 +152,24 @@ services:
       - /app/node_modules
     profiles: ["qanary", "all"]
   # end::qanary-component-time[]
+
+  # tag::qanary-component-ld-shuyo[]
+  qanary-component-ld-shuyo:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME
+    build:
+      context: ./apps/qanary-component-ld-shuyo
+    restart: unless-stopped
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_PORT:5555"
+    environment:
+      - "SERVER_HOST=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME"
+      - "SERVER_PORT=5555"
+      - "SPRING_BOOT_ADMIN_URL=http://qanary-pipeline:40111"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_PORT"
+    profiles: ["qanary", "all"]
+  # end::qanary-component-ld-shuyo[]
   # end::qanary-components[]
 
   # tag::rasa[]
