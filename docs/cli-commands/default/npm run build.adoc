@@ -1,0 +1,12 @@
+= npm run build
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run build` |Creates the artifacts of the respective package
+// end::command[]
+|===
+
+include::partials/npm-run-script custom arguments.adoc[leveloffset=+1]
+include::partials/--filter.adoc[leveloffset=+2]

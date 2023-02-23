@@ -1,0 +1,15 @@
+= Install with Docker (Recommended)
+
+include::Prerequisites.adoc[leveloffset=+1]
+
+== Build the image
+
+* Run `npm run docker:build` to build the needed docker image of the repo.
+
+== Start the applications
+
+* Run `npm run docker:up` to start all services
+
+== Stop the applications
+
+* Run `npm run docker:down` to stop all services

@@ -1,0 +1,9 @@
+= npm run visualize
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run rasa:visualize` |Creates a visualization of the Rasa stories as a graph
+// end::command[]
+|===

@@ -1,0 +1,12 @@
+= npm run dev
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run dev` |Starts the applications and services in a development mode
+// end::command[]
+|===
+
+include::partials/npm-run-script custom arguments.adoc[leveloffset=+1]
+include::partials/--filter.adoc[leveloffset=+2]
