@@ -4,7 +4,7 @@ include::Prerequisites.adoc[leveloffset=+1]
 
 == Build the image
 
-* Run `npm run docker:build` to initialize the project.
+* Run `npm run docker:build` to build the needed docker image of the repo.
 
 == Start the applications
 
