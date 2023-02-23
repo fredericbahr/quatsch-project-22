@@ -1,15 +1,7 @@
 = QUAtsCH-project-22
 :toc:
 
-== Project structure
-
-The project is structured as follows:
-
-* `apps/action-server` contains the code for the custom action server that is used by the chatbot to execute actions.
-* `apps/frontend` contains the frontend code for serving an UI to interact with the chatbot.
-* `apps/rasa` contains the code for the chatbot based on the rasa framework (actions, nlu, stories, …).
-
-The dependencies of the apps are located in the `packages` directory as in other multi-package repositories.
+include::docs/Project Structure.adoc[leveloffset=+1]
 
 == Usage
 

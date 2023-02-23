@@ -1,0 +1,7 @@
+= Project Structure
+
+The project is structured as follows:
+
+* `/apps/` contains all containerized services in this monorepo
+* `/packages/` contains the libraries services might use
+* `/sdk/` contains configurations for services and libraries
