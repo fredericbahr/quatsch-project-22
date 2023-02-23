@@ -1,0 +1,9 @@
+= Rasa Commands
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+include::npm run rasa:shell.adoc[tags=command]
+include::npm run rasa:train.adoc[tags=command]
+include::npm run rasa:visualize.adoc[tags=command]
+|===

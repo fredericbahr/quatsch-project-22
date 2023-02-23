@@ -1,0 +1,8 @@
+= Docker Commands
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+include::npm run docker:build.adoc[tags=command]
+include::npm run docker:up.adoc[tags=command]
+|===

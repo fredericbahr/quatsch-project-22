@@ -1,0 +1,9 @@
+= npm run e2e
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run e2e` |Executes the end-to-end tests
+// end::command[]
+|===
