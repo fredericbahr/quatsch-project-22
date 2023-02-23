@@ -2,7 +2,7 @@
 
 include::Prerequisites.adoc[leveloffset=+1]
 
-== Build the application
+== Build the image
 
 * Run `npm run docker:build` to initialize the project.
 
