@@ -1,6 +1,6 @@
 = Install with Node (Partially)
 
-include::Prerequisites.adoc[leveloffset=+1]
+include::partials/Prerequisites.adoc[leveloffset=+1]
 
 == Initialize
 
