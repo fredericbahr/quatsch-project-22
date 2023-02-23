@@ -49,8 +49,8 @@ export class SpringBootAdminClientInstanceServiceBaseUrl extends URL {
    * @private
    */
   private static async getDefault(): Promise<string> {
-    if (process.env["SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL"]) {
-      return process.env["SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL"];
+    if (process.env["SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL"]) {
+      return process.env["SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL"];
     }
     return `http://localhost:${await getPort()}`;
   }

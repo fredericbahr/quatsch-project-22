@@ -9,8 +9,8 @@ This list of variables can be applied to all Qanary components managed in this r
 |===
 |Environment Variable |Description
 |SPRING_BOOT_ADMIN_URL |the url to register the component to the qanary pipeline
-|SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL |the url to communicate with the component
-|QANARY_ORIGIN |the origin of the qanary pipeline to query questions
+|SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL |the url to communicate with the component
+|QANARY_ORIGIN (Only Node based components) |the origin of the qanary pipeline to query questions
 |===
 
 In addition to the environment variables defined here, components may have individual variables.
