@@ -1,0 +1,1 @@
+FROM qanary/qanary-pipeline:3.7.0 AS runner
