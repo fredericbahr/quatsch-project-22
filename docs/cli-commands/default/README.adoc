@@ -1,0 +1,16 @@
+= npm Commands
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+include::npm run build.adoc[tags=command]
+include::npm run clean.adoc[tags=command]
+include::npm run dev.adoc[tags=command]
+include::npm run format.adoc[tags=command]
+include::npm run format:fix.adoc[tags=command]
+include::npm run init.adoc[tags=command]
+include::npm run lint.adoc[tags=command]
+include::npm run lint:fix.adoc[tags=command]
+include::npm run reinit.adoc[tags=command]
+include::npm run test.adoc[tags=command]
+|===
