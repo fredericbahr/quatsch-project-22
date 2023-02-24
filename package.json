@@ -9,6 +9,7 @@
     "init": "npm ci && npm run build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
+    "test": "turbo run test",
     "reinit": "npm install && npm run build",
     "docker:all": "docker-compose --profile all up",
     "docker:build": "DOCKER_BUILDKIT=1 docker image build . --tag lubw:latest",
@@ -18,7 +19,7 @@
     "docker:up": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose --profile all up --build",
     "e2e": "docker-compose up -d && npm run e2e --workspace=e2e",
     "rasa:shell": "turbo run shell",
-    "rasa:test": "turbo run test",
+    "rasa:train": "turbo run train",
     "rasa:visualize": "turbo run visualize"
   },
   "workspaces": [
