@@ -7,8 +7,10 @@ The applications and services managed here can be divided into Rasa ecosystem ap
 More information about the Qanary framework can be found at https://github.com/WDAqua/Qanary.
 
 include::qanary-component-example/README.adoc[tags=excerpt,leveloffset=+2]
+include::qanary-component-ld-shuyo/README.adoc[tags=excerpt,leveloffset=+2]
 include::qanary-component-pm/README.adoc[tags=excerpt,leveloffset=+2]
 include::qanary-component-time/README.adoc[tags=excerpt,leveloffset=+2]
+include::qanary-pipeline/README.adoc[tags=excerpt,leveloffset=+2]
 
 == Rasa Applications
 

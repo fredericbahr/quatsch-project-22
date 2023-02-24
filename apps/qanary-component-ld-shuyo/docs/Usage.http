@@ -1,0 +1,9 @@
+POST http://qanary-pipeline:40111/startquestionansweringwithtextquestion
+Content-Type: application/json
+
+{
+  "question": "Wie ist der Ozonwert in Ulm am 23.01.2023?",
+  "componentlist": [
+    "LD-Shuyo"
+  ]
+}

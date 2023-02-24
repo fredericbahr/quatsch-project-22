@@ -61,7 +61,7 @@ If the pipeline is preceded by a component that leaves an AnnotationOfQuestionLa
 include::docs/UsageAdvanced.http[]
 ----
 
-For example, a component that leaves an annotation of the type AnnotationOfQuestionLanguage is https://github.com/WDAqua/Qanary-question-answering-components/tree/master/qanary-component-LD-Shuyo[LD-Shuyo].
+For example, a component that leaves an annotation of the type AnnotationOfQuestionLanguage is link:../qanary-component-ld-shuyo/README.adoc[LD-Shuyo].
 
 === Receive annotation data
 

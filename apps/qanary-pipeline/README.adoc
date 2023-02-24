@@ -1,0 +1,7 @@
+// tag::excerpt[]
+= Qanary Pipeline
+:toc:
+
+A reference implementation for creating question answering systems using the Qanary methodology.
+// end::excerpt[]
+https://github.com/WDAqua/Qanary[Read more]
