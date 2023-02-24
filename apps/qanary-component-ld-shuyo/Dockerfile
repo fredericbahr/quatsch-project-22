@@ -1,0 +1,1 @@
+FROM qanary/qanary-component-ld-shuyo:4.1.5 AS runner

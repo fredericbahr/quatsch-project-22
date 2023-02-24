@@ -4,6 +4,13 @@
     "build": "turbo run build",
     "clean": "turbo run clean",
     "dev": "turbo run dev",
+    "format": "turbo run format",
+    "format:fix": "turbo run format:fix",
+    "init": "npm ci && npm run build",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "test": "turbo run test",
+    "reinit": "npm install && npm run build",
     "docker:all": "docker-compose --profile all up",
     "docker:build": "DOCKER_BUILDKIT=1 docker image build . --tag lubw:latest",
     "docker:down": "docker compose down --remove-orphans",
@@ -11,16 +18,9 @@
     "docker:rasa": "docker-compose --profile rasa up",
     "docker:up": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose --profile all up --build",
     "e2e": "docker-compose up -d && npm run e2e --workspace=e2e",
-    "format": "turbo run format",
-    "format:fix": "turbo run format:fix",
-    "init": "npm ci && npm run build",
-    "lint": "turbo run lint",
-    "lint:fix": "turbo run lint:fix",
-    "reinit": "npm install && npm run build",
-    "shell": "turbo run shell",
-    "test": "turbo run test",
-    "train": "turbo run train",
-    "visualize": "turbo run visualize"
+    "rasa:shell": "turbo run shell",
+    "rasa:train": "turbo run train",
+    "rasa:visualize": "turbo run visualize"
   },
   "workspaces": [
     "apps/*",
@@ -29,7 +29,7 @@
   ],
   "devDependencies": {
     "prettier": "^2.8.3",
-    "turbo": "^1.8.1"
+    "turbo": "^1.8.2"
   },
   "volta": {
     "node": "18.12.1",
