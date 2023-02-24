@@ -23,8 +23,9 @@
     "qanary-component-helpers": "*",
     "qanary-lubw-data": "*",
     "qanary-seeding-helpers": "*",
-    "shared": "*",
-    "rdf-js": "^4.0.2"
+    "rdf-js": "^4.0.2",
+    "redis": "^4.6.4",
+    "shared": "*"
   },
   "devDependencies": {
     "@jest/globals": "^29.4.1",

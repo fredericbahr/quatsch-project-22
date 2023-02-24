@@ -2,3 +2,37 @@
 
 * You need to have a working installation of https://docs.docker.com/install/[Docker] and https://docs.docker.com/compose/install/[Docker Compose].
 * You need to have a working installation of https://docs.volta.sh/guide/getting-started[Volta].
+
+== Environment Variables
+
+All public available environment variables are listed in the `env.example` file.
+
+[source,dotenv]
+----
+include::../../example.env[tags=example-env]
+----
+
+=== Required additional environment variables
+
+The following environment variables are required to be set in order to run the application successfully.
+
+The redis related environment variables are required to be set in order to connect to the redis server. See the related redis documentation for more information.
+
+[source,dotenv]
+----
+REDIS_HOST="redis-host"
+REDIS_PORT=redis-port
+REDIS_PASSWORD="redis-password"
+----
+
+=== Optional additional environment variables
+
+The following environment variables are optional and can be set to customize the application.
+
+The turbo related environment variables are optional and can be set to opt-in for remote caching.
+
+[source,dotenv]
+----
+TURBO_TEAM="turbo-team-name"
+TURBO_TOKEN="turbo-team-token"
+----
