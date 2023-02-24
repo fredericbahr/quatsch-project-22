@@ -2,7 +2,7 @@
   "name": "qanary-lubw-data",
   "version": "1.0.0",
   "description": "Specialized LUBW data needed in Qanary",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "author": "",
   "main": "dist/index.js",
   "files": [

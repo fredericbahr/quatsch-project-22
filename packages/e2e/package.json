@@ -1,6 +1,8 @@
 {
   "private": true,
   "name": "e2e",
+  "description": "End-to-end tests",
+  "license" : "SEE LICENSE IN LICENSE",
   "scripts": {
     "e2e": "playwright test",
     "format": "prettier --check src",

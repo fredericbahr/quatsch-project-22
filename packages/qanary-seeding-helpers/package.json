@@ -2,7 +2,7 @@
   "name": "qanary-seeding-helpers",
   "version": "1.0.0",
   "description": "Helper functions for seeding the Qanary pipeline with information from external sources",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "author": "",
   "main": "dist/index.js",
   "files": [

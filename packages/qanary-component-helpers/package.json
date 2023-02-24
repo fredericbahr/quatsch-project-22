@@ -2,7 +2,7 @@
   "name": "qanary-component-helpers",
   "version": "1.0.0",
   "description": "Helper library for Qanary components written in TypeScript",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "author": "",
   "main": "dist/index.js",
   "files": [
