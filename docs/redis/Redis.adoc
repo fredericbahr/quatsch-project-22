@@ -1,0 +1,15 @@
+= Redis
+
+We use Redis to store session data inside the `action-server`. 
+
+== What is Redis?
+
+Redis is an open-source in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries.
+
+== Usage
+
+We use redis to store related session data, that enhances the functionality of the `action-server` in order to provide a better user experience. 
+
+We for example store the latest `session-id` from rasa and the latest `next-action` in order to handle fallbacks and automatically continue the conversation after a fallback.
+
+We also store IP Lookup data in order to provide the user with a better experience by providing custom recommendations based on the user's location.

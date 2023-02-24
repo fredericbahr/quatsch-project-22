@@ -25,5 +25,5 @@ Keywords prefixed with `$` represent variables and can either be preserved in a 
 
 [source,dotenv]
 ----
-include::../../.env[tags=rasa;action-server]
+include::../../example.env[tags=rasa;action-server]
 ----

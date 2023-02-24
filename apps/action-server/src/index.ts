@@ -3,12 +3,15 @@ import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import path from "path";
 
+import { redisClient } from "./redis/redis-client";
 import { webhookRouter } from "./resources/webhook/webhook.router";
 
-dotenv.config({ path: path.join(__dirname, "../../.env") });
+dotenv.config({ path: path.join(__dirname, "../../../.env") });
 
 const server: Express = express();
 const port = 8080;
+
+redisClient.connect();
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
