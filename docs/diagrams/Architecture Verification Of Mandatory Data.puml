@@ -1,0 +1,65 @@
+@startuml
+
+"Rasa" --> "Rasa Action Server" : INTENT First question
+"Rasa Action Server" --> "Qanary Pipeline" : GET Execute full qanary pipeline
+
+loop
+"Qanary Pipeline" --> "Qanary Component"
+"Qanary Pipeline" <-- "Qanary Component"
+end
+
+
+"Rasa Action Server" <-- "Qanary Pipeline" : Message
+"Rasa Action Server" --> "Qanary Pipeline" : GET Annotations
+"Rasa Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
+"Rasa Action Server" --> "Rasa Action Server" : Transform annotations
+
+"Rasa Action Server" --> "State Store" : SET state
+"Rasa Action Server" --> "State Store" : SET intent
+
+"Rasa Action Server" --> "Rasa Action Server": Verification of mandatory data
+
+alt if mandatory is missing
+loop until all mandatory fields are filled
+"Rasa" <-- "Rasa Action Server" : ERROR:Station is invalid
+"Rasa" --> "Rasa Action Server" : INTENT Station question
+
+"Rasa Action Server" --> "Qanary Pipeline": GET Execute station qanary pipeline
+
+loop
+"Qanary Pipeline" --> "Qanary Component"
+"Qanary Pipeline" <-- "Qanary Component"
+end
+
+"Rasa Action Server" <-- "Qanary Pipeline" : Message
+"Rasa Action Server" --> "Qanary Pipeline" : GET Annotations
+"Rasa Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
+"Rasa Action Server" --> "Rasa Action Server" : Transform annotations
+
+
+"Rasa Action Server" --> "State Store" : GET State
+"Rasa Action Server" <-- "State Store" : RECEIVE State
+
+"Rasa Action Server" --> "Rasa Action Server" : Join states
+
+"Rasa Action Server" --> "State Store" : SET state
+
+"Rasa Action Server" --> "Rasa Action Server": Verification of mandatory data
+end
+
+"Rasa Action Server" --> "State Store" : GET Intent
+"Rasa Action Server" <-- "State Store" : RECEIVE Intent
+
+end
+"Rasa Action Server" --> "Rasa Action Server" : find intent handler
+
+"Rasa Action Server" --> "LUPO API" : Request actual data
+"Rasa Action Server" <--> "LUPO API" : RECEIVE data
+
+"Rasa Action Server" --> "Representation Server" : GET data in representation format
+"Rasa Action Server" <-- "Representation Server" : RECEIVE representation
+
+"Rasa" <-- "Rasa Action Server" : Answer of the question
+
+
+@enduml
