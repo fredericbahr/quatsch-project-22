@@ -9,7 +9,7 @@ import { webhookRouter } from "./resources/webhook/webhook.router";
 dotenv.config({ path: path.join(__dirname, "../../../.env") });
 
 const server: Express = express();
-const port = 8080;
+const port = process.env.ACTION_SERVER_PORT || 8080;
 
 redisClient.connect();
 
