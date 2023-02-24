@@ -1,7 +1,10 @@
 @startuml
 
-"Rasa" --> "Rasa Action Server" : INTENT First question
-"Rasa Action Server" --> "Qanary Pipeline" : GET Execute full qanary pipeline
+autonumber
+skinparam BoxPadding 15
+
+"Rasa" --> "Action Server" : INTENT First question
+"Action Server" --> "Qanary Pipeline" : GET Execute full qanary pipeline
 
 loop
 "Qanary Pipeline" --> "Qanary Component"
@@ -9,57 +12,74 @@ loop
 end
 
 
-"Rasa Action Server" <-- "Qanary Pipeline" : Message
-"Rasa Action Server" --> "Qanary Pipeline" : GET Annotations
-"Rasa Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
-"Rasa Action Server" --> "Rasa Action Server" : Transform annotations
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Message
 
-"Rasa Action Server" --> "State Store" : SET state
-"Rasa Action Server" --> "State Store" : SET intent
+|||
+"Action Server" --> "Qanary Pipeline" : GET Annotations
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
+|||
 
-"Rasa Action Server" --> "Rasa Action Server": Verification of mandatory data
+"Action Server" --> "Action Server" : Transform annotations
 
-alt if mandatory is missing
-loop until all mandatory fields are filled
-"Rasa" <-- "Rasa Action Server" : ERROR:Station is invalid
-"Rasa" --> "Rasa Action Server" : INTENT Station question
+|||
+database "State Store"
+"Action Server" --> "State Store" : SET state
+"Action Server" --> "State Store" : SET intent
+|||
 
-"Rasa Action Server" --> "Qanary Pipeline": GET Execute station qanary pipeline
+"Action Server" --> "Action Server": Verification of mandatory fields
+
+alt if mandatory fields is missing
+
+loop until all mandatory fields are set
+
+"Rasa" <-- "Action Server" : ERROR: Mandatory data missing
+"Rasa" --> "Action Server" : INTENT Mandatory data question
+
+"Action Server" --> "Qanary Pipeline": GET Execute mandatory field qanary pipeline
 
 loop
 "Qanary Pipeline" --> "Qanary Component"
 "Qanary Pipeline" <-- "Qanary Component"
 end
 
-"Rasa Action Server" <-- "Qanary Pipeline" : Message
-"Rasa Action Server" --> "Qanary Pipeline" : GET Annotations
-"Rasa Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
-"Rasa Action Server" --> "Rasa Action Server" : Transform annotations
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Message
+ 
+|||
+"Action Server" --> "Qanary Pipeline" : GET Annotations
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
+|||
 
+"Action Server" --> "Action Server" : Transform annotations
 
-"Rasa Action Server" --> "State Store" : GET State
-"Rasa Action Server" <-- "State Store" : RECEIVE State
+|||
+"Action Server" --> "State Store" : GET State
+"Action Server" <-- "State Store" : RECEIVE State
+|||
 
-"Rasa Action Server" --> "Rasa Action Server" : Join states
+"Action Server" --> "Action Server" : Join states
 
-"Rasa Action Server" --> "State Store" : SET state
+"Action Server" --> "State Store" : SET state
 
-"Rasa Action Server" --> "Rasa Action Server": Verification of mandatory data
+"Action Server" --> "Action Server": Verification of mandatory fields
 end
 
-"Rasa Action Server" --> "State Store" : GET Intent
-"Rasa Action Server" <-- "State Store" : RECEIVE Intent
-
+|||
+"Action Server" --> "State Store" : GET Intent
+"Action Server" <-- "State Store" : RECEIVE Intent
+|||
 end
-"Rasa Action Server" --> "Rasa Action Server" : find intent handler
 
-"Rasa Action Server" --> "LUPO API" : Request actual data
-"Rasa Action Server" <--> "LUPO API" : RECEIVE data
+|||
+"Action Server" --> "Action Server" : find intent handler
 
-"Rasa Action Server" --> "Representation Server" : GET data in representation format
-"Rasa Action Server" <-- "Representation Server" : RECEIVE representation
+"Action Server" --> "LUPO API" : GET lubw data
+"Action Server" <--> "LUPO API" : RECEIVE lubw data
 
-"Rasa" <-- "Rasa Action Server" : Answer of the question
+|||
+"Action Server" --> "Representation Server" : GET data in representation format
+"Action Server" <-- "Representation Server" : RECEIVE representation
 
+"Rasa" <-- "Action Server" : Answer question
 
 @enduml
