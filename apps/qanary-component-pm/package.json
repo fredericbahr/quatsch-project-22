@@ -2,7 +2,7 @@
   "name": "qanary-component-pm",
   "version": "1.0.0",
   "description": "A qanary component for a simple pattern matching based on a lubw domain",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
   "files": [
     "dist"

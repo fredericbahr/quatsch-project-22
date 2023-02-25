@@ -2,7 +2,7 @@
   "name": "action-server",
   "version": "1.0.0",
   "description": "A custom action server for the rasa chatbot",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

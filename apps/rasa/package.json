@@ -2,7 +2,7 @@
   "name": "rasa",
   "version": "1.0.0",
   "description": "A custom instance of the rasa open source plattform",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "scripts": {
     "rasa:lint": "docker run -v $(pwd):/app -u root rasa/rasa:3.4.0-full data validate",
     "rasa:preshell": "npm run train",
