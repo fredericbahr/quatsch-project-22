@@ -10,3 +10,15 @@ stories:
           - measurand
           - station
       - action: action_context_air_measurand
+
+  - story: Missing station
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: context_air_measurand
+        entities:
+          - measurand
+          - station
+      - action: action_context_air_measurand
+      - intent: fallback_station
+      - action: action_fallback_station
