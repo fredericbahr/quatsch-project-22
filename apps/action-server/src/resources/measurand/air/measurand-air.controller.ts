@@ -1,22 +1,23 @@
 import {
   COMPONENT_LIST,
+  IIntentHandler,
   ILUBWData,
-  ILUBWMeasurandData,
+  INTENTS,
   IQanaryAnnotation,
   IQanaryMessage,
-  IRepresentationData,
   RasaRequest,
   RasaResponse,
-  ResponseForMeasurandAir,
+  SuccessRasaResponse,
 } from "shared";
 
+import { VerificationError } from "../../../errors/VerificationError";
+import { ErrorHandlingService } from "../../../services/error-handling-service";
 import { AnnotationExtractionService } from "../../../services/extraction-service.ts/extract-annotation-service";
-import { LUBWQueryService } from "../../../services/lubw-query-service";
-import { RepresentationService } from "../../../services/representation-service";
+import { IntentHandlerFindingService } from "../../../services/intent-handler-finding-service";
+import { StoringService } from "../../../services/storing-service";
 import { LUBWDataTransformationService } from "../../../services/transformation-service";
+import { VerificationService } from "../../../services/verification-service";
 import { startQanaryPipeline } from "../../../utils/start-pipeline";
-import { getResponseForMeasurandAir } from "./utils/get-response";
-import { handleMeasurandAirRequestError } from "./utils/handle-error";
 
 /**
  * Handles the intent/action of `action_context_air_measurand` by trying to answer the question with a Qanary pipeline.
@@ -24,7 +25,9 @@ import { handleMeasurandAirRequestError } from "./utils/handle-error";
  * @param res Response Object
  */
 export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
-  const question: string = req.body?.tracker?.latest_message?.text ?? "";
+  const question: string = req.body.tracker?.latest_message?.text ?? "";
+  const intent: string | undefined = req.body.next_action;
+  const senderId: string | undefined = req.body.sender_id;
 
   const componentlist: Array<COMPONENT_LIST> = [
     COMPONENT_LIST.PATTERN_MATCHING_STATION,
@@ -40,17 +43,22 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
 
     const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAnnotations(qanaryMessage);
 
-    const lubwData: ILUBWData = LUBWDataTransformationService.getTransformedLUBWData(annotations);
+    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations);
 
-    const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
+    StoringService.storeCurrentState({ senderId, intent, lubwData });
 
-    const representation: IRepresentationData = RepresentationService.getRepresentation(measurandData);
+    // throws {@link VerificationError} if verification fails
+    const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(lubwData);
 
-    const response: ResponseForMeasurandAir = getResponseForMeasurandAir(representation);
+    const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandler(intent as INTENTS);
+    const response: SuccessRasaResponse = await measurandAirHandler(verifiedLUBWData);
 
     res.json(response);
-  } catch (error) {
+  } catch (error: unknown) {
+    if (error instanceof VerificationError) {
+      return ErrorHandlingService.handleVerificationError(res, error);
+    }
     console.error(error);
-    return handleMeasurandAirRequestError(res);
+    return ErrorHandlingService.handleDefaultError(res);
   }
 };
