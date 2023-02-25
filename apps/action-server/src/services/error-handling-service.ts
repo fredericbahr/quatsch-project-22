@@ -46,7 +46,7 @@ export class ErrorHandlingService {
     return res.json({
       responses: [
         {
-          text: "Ich konnte keine Station finden. Diese wird aber zwinged benötigt. Bitte geben eine gültige Station an",
+          text: "Ich konnte keine Messstation finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messstation an",
           response: "",
         },
       ],
@@ -65,7 +65,7 @@ export class ErrorHandlingService {
     return res.json({
       responses: [
         {
-          text: "Ich konnte keine Messgröße finden. Diese wird aber zwinged benötigt. Bitte geben eine gültige Messgröße an",
+          text: "Ich konnte keine Messgröße finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messgröße an",
           response: "",
         },
       ],

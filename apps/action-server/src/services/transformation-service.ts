@@ -60,13 +60,15 @@ export class LUBWDataTransformationService {
   private static transformTime(time?: string): string | undefined {
     try {
       if (!time) {
-        throw new Error("The time annotation is missing. Fallback to default value.");
+        console.error("The time annotation is missing. Fallback to default value.");
+        return undefined;
       }
 
       const timeObject: ITimeObject = JSON.parse(time) as ITimeObject;
 
       if (!timeObject.end) {
-        throw new Error("The end date is missing. Fallback to default value.");
+        console.error("The end date is missing. Fallback to default value.");
+        return undefined;
       }
 
       const dayDifference = differenceInDays(new Date(timeObject.end), new Date(timeObject.start));

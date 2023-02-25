@@ -1,4 +1,4 @@
-import { ILUBWData, RasaRequest } from "shared";
+import { ILUBWData } from "shared";
 
 import { VerificationError } from "../errors/VerificationError";
 
@@ -60,6 +60,6 @@ export class VerificationService {
    * @returns the validity of the property
    */
   private static isValidProperty(propertyValue: string | undefined): propertyValue is string {
-    return !propertyValue || propertyValue === "";
+    return propertyValue !== undefined && propertyValue !== null && propertyValue !== "";
   }
 }

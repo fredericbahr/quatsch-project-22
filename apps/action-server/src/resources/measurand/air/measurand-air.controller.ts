@@ -1,25 +1,23 @@
 import {
   COMPONENT_LIST,
+  IIntentHandler,
   ILUBWData,
-  ILUBWMeasurandData,
+  INTENTS,
   IQanaryAnnotation,
   IQanaryMessage,
-  IRepresentationData,
   RasaRequest,
   RasaResponse,
-  ResponseForMeasurandAir,
+  SuccessRasaResponse,
 } from "shared";
 
 import { VerificationError } from "../../../errors/VerificationError";
 import { ErrorHandlingService } from "../../../services/error-handling-service";
 import { AnnotationExtractionService } from "../../../services/extraction-service.ts/extract-annotation-service";
-import { LUBWQueryService } from "../../../services/lubw-query-service";
-import { RepresentationService } from "../../../services/representation-service";
+import { IntentHandlerFindingService } from "../../../services/intent-handler-finding-service";
 import { StoringService } from "../../../services/storing-service";
 import { LUBWDataTransformationService } from "../../../services/transformation-service";
 import { VerificationService } from "../../../services/verification-service";
 import { startQanaryPipeline } from "../../../utils/start-pipeline";
-import { getResponseForMeasurandAir } from "./utils/get-response";
 
 /**
  * Handles the intent/action of `action_context_air_measurand` by trying to answer the question with a Qanary pipeline.
@@ -29,6 +27,7 @@ import { getResponseForMeasurandAir } from "./utils/get-response";
 export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
   const question: string = req.body.tracker?.latest_message?.text ?? "";
   const intent: string | undefined = req.body.next_action;
+  const senderId: string | undefined = req.body.sender_id;
 
   const componentlist: Array<COMPONENT_LIST> = [
     COMPONENT_LIST.PATTERN_MATCHING_STATION,
@@ -46,19 +45,13 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
 
     const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations);
 
-    // TODO: store lubwData in redis
-    StoringService.storeLUBWData(lubwData);
-    StoringService.storeIntent(intent)
+    StoringService.storeCurrentState({ senderId, intent, lubwData });
 
     // throws {@link VerificationError} if verification fails
     const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(lubwData);
 
-    // TODO: extract into method for reusability
-    const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(verifiedLUBWData);
-
-    const representation: IRepresentationData = RepresentationService.getRepresentation(measurandData); // graph
-
-    const response: ResponseForMeasurandAir = getResponseForMeasurandAir(representation);
+    const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandler(intent as INTENTS);
+    const response: SuccessRasaResponse = await measurandAirHandler(verifiedLUBWData);
 
     res.json(response);
   } catch (error: unknown) {

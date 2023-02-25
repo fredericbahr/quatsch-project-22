@@ -8,9 +8,11 @@ export * from "./enums/representation";
 
 export * from "./interfaces/annotations";
 export * from "./interfaces/http";
+export * from "./interfaces/intents";
 export * from "./interfaces/lubw";
 export * from "./interfaces/qanary-interfaces";
 export * from "./interfaces/representation";
+export * from "./interfaces/state";
 
 export * from "./maps/annotations";
 
