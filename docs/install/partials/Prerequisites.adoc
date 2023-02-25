@@ -9,7 +9,7 @@ All public available environment variables are listed in the `env.example` file.
 
 [source,dotenv]
 ----
-include::../../example.env[tags=example-env]
+include::../../../example.env[tags=example-env]
 ----
 
 === Required additional environment variables

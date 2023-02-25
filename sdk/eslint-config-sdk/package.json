@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-sdk",
   "version": "1.0.0",
-  "license": "MIT",
+  "license" : "SEE LICENSE IN LICENSE",
   "main": "index.js",
   "dependencies": {
     "eslint": "^8.33.0",
