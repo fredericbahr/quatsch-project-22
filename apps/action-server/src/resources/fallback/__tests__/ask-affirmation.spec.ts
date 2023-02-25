@@ -1,4 +1,5 @@
-import { RasaRequest, RasaResponse } from "../../../interfaces/http";
+import { RasaRequest, RasaResponse } from "shared";
+
 import { askAffirmationRequestHandler } from "../fallback.controller";
 
 describe("#Action Ask Affirmation", () => {

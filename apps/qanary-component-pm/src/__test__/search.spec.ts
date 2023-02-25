@@ -1,7 +1,7 @@
-import { IQanaryMessage } from "qanary-component-core";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "qanary-component-helpers";
-import { Domain, IMeasurand } from "qanary-lubw-data";
+import { IMeasurand } from "qanary-lubw-data";
+import { Domain, IQanaryMessage } from "shared";
 
 import { searchForDomainInstances } from "../utils/search";
 
@@ -35,13 +35,21 @@ describe("check-via-regex", () => {
         end: 30,
       },
     };
+    const expectedAnnotationType = "qa:AnnotationOfMeasurand";
 
     await searchForDomainInstances(qanaryMessage, question, domain, measurand);
 
-    expect(mockCreateAnnotation).toHaveBeenCalledWith(qanaryMessage, expect.any(String), expectedAnnotation);
+    expect(mockCreateAnnotation).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: qanaryMessage,
+        componentName: expect.any(String),
+        annotation: expectedAnnotation,
+        annotationType: expectedAnnotationType,
+      }),
+    );
   });
 
-  it("should find an annotation for `luwx` (measurand)", async () => {
+  it("should find an annotation for `luqx` (measurand)", async () => {
     const mockCreateAnnotation = jest.fn(() => Promise.resolve());
     (createAnnotationInKnowledgeGraph as jest.Mock) = mockCreateAnnotation;
 
@@ -54,10 +62,18 @@ describe("check-via-regex", () => {
         end: 16,
       },
     };
+    const expectedAnnotationType = "qa:AnnotationOfMeasurand";
 
     await searchForDomainInstances(qanaryMessage, question, domain, measurand);
 
-    expect(mockCreateAnnotation).toHaveBeenCalledWith(qanaryMessage, expect.any(String), expectedAnnotation);
+    expect(mockCreateAnnotation).toHaveBeenCalledWith(
+      expect.objectContaining({
+        message: qanaryMessage,
+        componentName: expect.any(String),
+        annotation: expectedAnnotation,
+        annotationType: expectedAnnotationType,
+      }),
+    );
   });
 
   it("should not throw an error if no measurand is found", async () => {

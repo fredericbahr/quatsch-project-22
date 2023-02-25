@@ -1,0 +1,96 @@
+// tag::excerpt[]
+= Qanary Component Time
+:toc:
+
+This is a Qanary component for determining time values, in posed questions. The time values, depending on whether it is a time span or a time value, are arranged in an object literal, which has at least a start date and possibly an end date. These values are stored together with the found text fragment as a serialized JSON in the knowledge graph.
+
+.Example Question:
+[source,text]
+----
+Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?
+                                └────────────┬───────────┘                                            └───────┬──────┘
+                                      AnnotationOfTime                                                AnnotationOfTime
+----
+
+.Example AnnotationOfTime as deserialized JSON:
+[source,json]
+----
+{"text":"03.01.2022 bis 29.01.2022","start":"2022-01-03T12:00:00.000Z","end":"2022-01-29T12:00:00.000Z"}
+----
+
+This component uses https://github.com/wanasit/chrono and is limited by the possibilities offered by this library.
+// end::excerpt[]
+
+include::../../docs/Component Install.adoc[leveloffset=+1]
+include::../../docs/Component Environment Variables.adoc[leveloffset=+2]
+include::../../docs/Component Integration.adoc[leveloffset=+2]
+
+[source,yaml]
+----
+include::../../docker-compose.yml[tags=preamble;qanary-pipeline;qanary-component-time;networks]
+----
+
+Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
+
+[source,dotenv]
+----
+include::../../example.env[tags=qanary-pipeline;qanary-component-core;qanary-component-time]
+----
+
+== Usage
+
+Usage, as with all Qanary components, is divided into two phases.
+In the first phase, an annotation is requested from the pipeline via the REST interface.
+In the second phase, we can get the annotation data via a SPARQL query.
+
+=== Request an annotation
+
+To use the component, you can make a request to the Qanary pipeline.
+In the following example, a question is asked to the pipeline in German and the time values are determined.
+
+[source,httprequest]
+----
+include::docs/Usage.http[]
+----
+
+TIP: A more advanced use case considers the issue of language.
+If the pipeline is preceded by a component that leaves an AnnotationOfQuestionLanguage with an ISO 639-1 language code, it is evaluated by this component.
+
+[source,httprequest]
+----
+include::docs/UsageAdvanced.http[]
+----
+
+For example, a component that leaves an annotation of the type AnnotationOfQuestionLanguage is link:../qanary-component-ld-shuyo/README.adoc[LD-Shuyo].
+
+=== Receive annotation data
+
+This is a simple SPARQL query to view the annotations of the component.
+To execute it, the `endpoint` from the query must be used for annotation.
+Additionally, `YOUR_CURRENT_GRAPH_ID` must be replaced by the `inGraph` or `outGraph` of the response.
+
+[source,httprequest]
+----
+include::docs/Usage.rq[]
+----
+
+A client is required to execute this SPARQL query.
+
+=== Example Output
+
+A possible SPARQL client is https://jena.apache.org/documentation/tools/[Apache Jena].
+This allows to query the data with the following command line interface:
+
+[source,bash]
+----
+rsparql --file docs/Usage.rq --service http://qanary-pipeline:40111/sparql --results=CSV
+----
+
+For the HTTP query `Wie ist der Ozonwert in Ulm am 23.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?` there are the following found annotations in the SPARQL query
+
+[%header,format=csv]
+|===
+include::docs/Output.csv[]
+|===
+
+include::../../docs/Component Annotation.adoc[leveloffset=+1]

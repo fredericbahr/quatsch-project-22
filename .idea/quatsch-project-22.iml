@@ -11,6 +11,12 @@
       <sourceFolder url="file://$MODULE_DIR$/apps/frontend/public" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/packages/e2e/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/packages/qanary-component-helpers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/qanary-component-example/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/qanary-component-pm/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/qanary-lubw-data/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/qanary-seeding-helpers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/qanary-component-time/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/packages/shared/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/packages/e2e/e2e-test-out" />
       <excludeFolder url="file://$MODULE_DIR$/apps/rasa/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-core/dist" />
@@ -26,6 +32,24 @@
       <excludeFolder url="file://$MODULE_DIR$/apps/frontend/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/api/.turbo" />
       <excludeFolder url="file://$MODULE_DIR$/packages/api/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-pm/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-seeding-helpers/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-lubw-data/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-example/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-pm/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-pm/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-core/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-example/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-lubw-data/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-time/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-example/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-seeding-helpers/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-component-helpers/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-time/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/qanary-component-time/coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/qanary-seeding-helpers/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/shared/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/shared/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

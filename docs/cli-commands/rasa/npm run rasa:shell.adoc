@@ -1,0 +1,9 @@
+= npm run shell
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run rasa:shell` |Runs the Rasa shell in a Docker container
+// end::command[]
+|===

@@ -1,0 +1,7 @@
+= Install with Node (Partially)
+
+include::partials/Prerequisites.adoc[leveloffset=+1]
+
+== Initialize
+
+* Run `npm run init` to initialize the project, which includes installing the dependencies and running the build scripts.

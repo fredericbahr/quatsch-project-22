@@ -1,0 +1,59 @@
+@startuml Architecture
+skinparam Style strictuml
+autonumber
+skinparam BoxPadding 15
+
+title Architecture Overview
+
+actor "user"
+
+loop bis Faktenextraktion vollständig
+
+"user" -> rasa: Wie ist der Ozonwert in Ulm am 23.01.2023\nverglichen mit den Durchschnittswerten\n der letzten 10 Jahre repräsentiert als Text?
+
+rasa -> rasa: Intent-Klassifikation
+
+alt Fehler
+    autonumber stop
+    "rasa" -> "user": Fallback
+end
+
+autonumber 3
+rasa -> "action-server": action_water_measurand
+"action-server" -> "action-server": Speicherung des\nursprünglichen Intents
+"action-server"-> "action-server": Pipeline-Entscheidung
+
+|||
+
+"action-server" -> qanary: Pipeline
+"action-server" <-- qanary: Annotationen
+
+|||
+
+"action-server" -> "action-server": Fakten-Extraktion/Speicherung\nund Validierung
+
+alt Fehler
+    autonumber stop
+    "action-server" -> user: Füllen des ersten ungültigen aber notwendigen Slots
+end
+end
+
+autonumber 8
+"action-server" -> "action-server": Auslesen des\nursprünglichen Intents
+
+|||
+
+database "database"
+"action-server" -> "database": Messwertabfrage
+"action-server" <-- "database": Messwerte
+
+|||
+
+"action-server" -> "representation-server": Repräsentations-Erstellung (Chart/Tabelle)
+"action-server" <-- "representation-server": Repreäsentation
+
+|||
+
+rasa <-- "action-server": Antwort-Response
+user <-- rasa: Antwort
+@enduml

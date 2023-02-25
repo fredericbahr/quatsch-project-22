@@ -1,0 +1,58 @@
+// tag::excerpt[]
+= Qanary Component PM
+:toc:
+
+This is a Qanary component for checking via a regular expression if a given question contains specific lubw domain instances.
+The component receives the question via the knowledge graph.
+It also receives the domain knowledge via the knowledge graph, which get seeded when asking the question.
+// end::excerpt[]
+
+include::../../docs/Component Install.adoc[leveloffset=+1]
+include::../../docs/Component Environment Variables.adoc[leveloffset=+2]
+
+The following environment variables are component-specific variables:
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Environment Variable |Description
+|LUBW_DOMAIN |the lubw domain to check for
+|===
+
+The following domains are applicable:
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Domain |Description
+|station| the lubw domain representing measuring stations
+|measurand| the lubw domain representing measurements
+|calculation| the lubw domain representing calculations types (e.g. avg, max, min)
+|representation| the lubw domain representing representations types (e.g text, chart) |
+|===
+
+include::../../docs/Component Integration.adoc[leveloffset=+2]
+
+[source,yaml]
+----
+include::../../docker-compose.yml[tags=preamble;qanary-pipeline;qanary-component-pm;networks]
+----
+
+Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
+
+[source,dotenv]
+----
+include::../../example.env[tags=qanary-pipeline;qanary-component-core;qanary-component-pm]
+----
+
+== Functionality
+
+The component fetches every rdf triple of the a `<urn:domain>` class, maps it to an internal representation and checks if the question contains an domain isntance.
+If so, it adds the domain instance as an annotation to the knowledge graph.
+
+Note that all matches are added to the knowledge graph.
+This means that if the question contains multiple domain instances, all of them will be added to the knowledge graph.
+
+Additionally the component logs found domain instances to the console.
+
+No error handling is implemented as this component simply does not add annotations to the knowledge graph if errors occur.
+
+include::../../docs/Component Annotation.adoc[leveloffset=+1]

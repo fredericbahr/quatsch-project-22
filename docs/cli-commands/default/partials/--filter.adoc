@@ -1,0 +1,9 @@
+= --filter
+
+Turborepo supports a `--filter` flag that lets you select the workspaces you'd like to execute your task in.
+
+.Synopsis
+[source]
+----
+npm run <command> -- --filter <package-name>
+----

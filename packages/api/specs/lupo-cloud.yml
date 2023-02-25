@@ -1,0 +1,119 @@
+openapi: '3.0.3'
+
+info:
+  title: 'LUPO Cloud'
+  description: 'LUPO Cloud Data'
+  version: '0.0.0'
+
+servers:
+  - url: 'https://lupo-cloud.de/'
+
+paths:
+  '/air/metric/{metric}':
+    get:
+      tags:
+        - 'LUPO Air Metric Controller'
+      summary: 'LUQX Data'
+      description: 'Returns air quality index data'
+      operationId: 'readMetric'
+      parameters:
+        - in: 'path'
+          description: 'The measurand of interest'
+          name: 'metric'
+          required: true
+          schema:
+            $ref: '#/components/schemas/ILupoAirMetric'
+        - in: 'query'
+          description: 'Filter for time start dates'
+          name: 'searchParams'
+          schema:
+            $ref: '#/components/schemas/ILupoMeasuringURLSearchParams'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/ILupoMeasuringDataList'
+
+components:
+  schemas:
+    ILupoAirMetric:
+      description: 'The measurand key of the collected data'
+      type: 'string'
+      default: 'kit.iai.test.o3'
+      enum:
+        - 'kit.iai.test.luqx'
+        - 'kit.iai.test.no2'
+        - 'kit.iai.test.o3'
+        - 'kit.iai.test.pm10'
+        - 'kit.iai.test.pm25k'
+    ILupoAirComp:
+      description: 'The measurand name of the collected data'
+      type: 'string'
+      default: 'O3'
+      enum:
+        - 'LuQX'
+        - 'NO2'
+        - 'O3'
+        - 'PM10'
+        - 'PM25'
+    ILupoAirMeasuringLabels:
+      description: 'An object specifying the origin of the data'
+      type: 'object'
+      properties:
+        station:
+          description: 'The id of a station'
+          type: 'string'
+          default: 'DEBW039'
+        comp:
+          $ref: '#/components/schemas/ILupoAirComp'
+    ILupoMeasuringData:
+      description: 'A data object containing the measurements of the station'
+      type: 'object'
+      properties:
+        metric:
+          $ref: '#/components/schemas/ILupoAirMetric'
+        labels:
+          $ref: '#/components/schemas/ILupoAirMeasuringLabels'
+        metaData:
+          description: 'Meta data'
+          type: 'object'
+        times:
+          description: 'UNIX timestamps with a corresponding value at the same index'
+          type: 'array'
+          items:
+            type: 'integer'
+        values:
+          description: 'Measured values with a corresponding time at the same index'
+          type: 'array'
+          items:
+            type: 'integer'
+            nullable: true
+    ILupoMeasuringDataList:
+      description: 'A list of data measurement data objects'
+      type: 'array'
+      items:
+        $ref: '#/components/schemas/ILupoMeasuringData'
+    ILupoMeasuringURLSearchParams:
+      description: 'The URLSearchParams interface for LUPO cloud URLs'
+      type: 'object'
+      properties:
+        from:
+          description: 'Filter for time start dates'
+          type: 'string'
+          pattern: '^\d*(y|w|d|h)-ago$'
+          default: '2d-ago'
+          nullable: true
+        to:
+          description: 'Filter for time end dates'
+          type: 'string'
+          pattern: '^\d*(y|w|d|h)-ago$'
+          default: '1d-ago'
+          nullable: true
+        labels:
+          description: 'Filter for label contents'
+          type: 'string'
+          pattern: '^station:\w*\d*$'
+          default: "station:DEBW039"
+          nullable: true

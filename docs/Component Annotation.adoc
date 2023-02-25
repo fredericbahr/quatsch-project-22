@@ -1,0 +1,22 @@
+= Creating an annotation
+
+The component adds the following annotation to the knowledge graph:
+
+[source,turtle]
+----
+?annotation a qa:AnnotationAnswer .
+?annotation oa:hasTarget [
+    a oa:SpecificResource ;
+    oa:hasSource <${question-uri}> ;
+    oa:hasSelector [
+        a oa:TextPositionSelector ;
+        oa:start "${range-start}"^^xsd:nonNegativeInteger ;
+        oa:end "${range-end}"^^xsd:nonNegativeInteger
+    ]
+] ;
+    oa:bodyValue "${annotation.value}" ;
+    oa:score "${annotation-confidence}"^^xsd:double ;
+    oa:annotatedBy <urn:qanary:${component-name}> ;
+    oa:annotatedAt ?time .
+}
+----

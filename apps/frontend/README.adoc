@@ -1,0 +1,34 @@
+// tag::excerpt[]
+= Rasa Chat Frontend
+:toc:
+
+A frontend containing the rasa chatbot ui
+Read more at https://www.npmjs.com/package/@rasahq/rasa-chat.
+// end::excerpt[]
+
+== Installation
+
+    The recommended installation of applications managed in this repository is via https://www.docker.com[Docker].
+
+=== Integration with Docker
+
+The integration is dependent on the Rasa ecosystem and does not work standalone.
+To use the application, a Rasa instance on the same network is required.
+More information about Rasa can be found at https://rasa.com/docs/rasa/.
+
+[source,yaml]
+----
+include::../../docker-compose.yml[tags=preamble;rasa;frontend;networks]
+----
+
+Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
+
+
+[source,dotenv]
+----
+include::../../example.env[tags=rasa;frontend]
+----
+
+== Usage
+
+Open http://localhost:3000

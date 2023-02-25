@@ -10,7 +10,6 @@
   ],
   "scripts": {
     "build": "tsc",
-    "init": "npm ci",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "format": "prettier --c src",
@@ -21,6 +20,7 @@
   "types": "dist/index.d.ts",
   "dependencies": {
     "qanary-component-core": "*",
+    "shared": "*",
     "sparql-http-client": "^2.4.2"
   },
   "devDependencies": {
