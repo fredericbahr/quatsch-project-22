@@ -42,10 +42,9 @@ export class LUBWQueryService {
 
     const lubwResonse = await LupoCloudApi.LUPOAirMetricControllerApiFactory().readMetric(
       airMetricAdapter.get(lubwData.measurand) || LupoCloudApi.ILupoAirMetric.O3,
-      {
-        from: `${lubwData.time}-ago`,
-        labels: `station:${lubwData.station}`,
-      },
+      lubwData.time ? `${lubwData.time}-ago` : undefined,
+      undefined,
+      lubwData.station ? `station:${lubwData.station}` : undefined,
     );
 
     return lubwResonse.data;
