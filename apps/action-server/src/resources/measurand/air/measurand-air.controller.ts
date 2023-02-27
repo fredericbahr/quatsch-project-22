@@ -13,7 +13,7 @@ import {
 import { NoIntentHandlerError } from "../../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../../errors/VerificationError";
 import { ErrorHandlingService } from "../../../services/error-handling-service";
-import { AnnotationExtractionService } from "../../../services/extraction-service.ts/extract-annotation-service";
+import { AnnotationExtractionService } from "../../../services/extraction-service/extract-annotation-service";
 import { IntentHandlerFindingService } from "../../../services/intent-handler-finding-service";
 import { StoringService } from "../../../services/storing-service";
 import { LUBWDataTransformationService } from "../../../services/transformation-service";
@@ -48,12 +48,12 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
 
     const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations);
 
-    StoringService.storeCurrentState({ senderId, intent, lubwData });
+    await StoringService.storeCurrentState({ senderId, intent, lubwData });
 
-    // Throws an {@link VerificationError} if verification fails
+    /** Throws an {@link VerificationError} if verification fails */
     const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(lubwData);
 
-    // Throws an {@link NoIntentHandlerError} if no intent handler was found
+    /** Throws an {@link NoIntentHandlerError} if no intent handler was found */
     const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(
       intent as INTENTS,
     );

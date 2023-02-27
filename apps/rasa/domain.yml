@@ -5,7 +5,7 @@ intents:
   - goodbye
   - bot_challenge
   - context_air_measurand
-  - fallback_station
+  - refine_station
   - nlu_fallback
   - qanary_default_processing
   - vulgar_out_of_scope
@@ -47,8 +47,8 @@ responses:
 
 actions:
   - action_context_air_measurand
-  # Custom Fallback
-  - action_fallback_station
+  # Refinements
+  - action_refine_station
   # Rasa Fallback
   - action_default_qanary
   - action_default_ask_affirmation

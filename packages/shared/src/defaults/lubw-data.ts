@@ -1,6 +1,4 @@
-import { ILUBWData } from "../interfaces/lubw";
-
-export type ILUBWDefaultData = Pick<ILUBWData, "calculation" | "representation" | "time">;
+import { ILUBWDefaultData } from "../interfaces/lubw";
 
 /**
  * The default LUBW data.

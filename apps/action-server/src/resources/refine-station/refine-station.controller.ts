@@ -1,8 +1,8 @@
 import {
   COMPONENT_LIST,
-  Domain,
   IIntentHandler,
   ILUBWData,
+  ILUBWDataKey,
   IQanaryAnnotation,
   IQanaryMessage,
   RasaRequest,
@@ -14,14 +14,19 @@ import { AnnotationTypes } from "shared/dist/enums/annotations";
 import { NoIntentHandlerError } from "../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../errors/VerificationError";
 import { ErrorHandlingService } from "../../services/error-handling-service";
-import { AnnotationExtractionService } from "../../services/extraction-service.ts/extract-annotation-service";
+import { AnnotationExtractionService } from "../../services/extraction-service/extract-annotation-service";
 import { IntentHandlerFindingService } from "../../services/intent-handler-finding-service";
 import { StoringService } from "../../services/storing-service";
 import { LUBWDataTransformationService } from "../../services/transformation-service";
 import { VerificationService } from "../../services/verification-service";
 import { startQanaryPipeline } from "../../utils/start-pipeline";
 
-export const fallbackStationRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
+/**
+ * Handler for refining the station if a validation error occured
+ * @param req the request object
+ * @param res the response object
+ */
+export const refineStationRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
   const question: string = req.body.tracker?.latest_message?.text ?? "";
   const senderId: string | undefined = req.body.sender_id;
 
@@ -39,14 +44,14 @@ export const fallbackStationRequestHandler = async (req: RasaRequest, res: RasaR
 
     const station: string | undefined = lubwData.station;
 
-    StoringService.changeStateEntry(senderId, "station", station);
+    await StoringService.changeStateEntry(senderId, ILUBWDataKey.Station, station);
 
     const stateLUBWData: Partial<ILUBWData> | null = await StoringService.getCurrentState(senderId);
 
-    // Throws an {@link VerificationError} if verification fails
+    /** Throws an {@link VerificationError} if verification fails */
     const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(stateLUBWData);
 
-    // Throws an {@link NoIntentHandlerError} if no intent handler was found
+    /** Throws an {@link NoIntentHandlerError} if no intent handler was found */
     const intentHandler: IIntentHandler = await IntentHandlerFindingService.findIntentHandlerInState(senderId);
 
     const response: SuccessRasaResponse = await intentHandler(verifiedLUBWData);

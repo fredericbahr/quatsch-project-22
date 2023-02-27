@@ -1,7 +1,7 @@
 import { selectSparql } from "qanary-component-helpers";
 import { IQanaryAnnotation, IQanaryMessage } from "shared";
 
-import { AnnotationExtractionService } from "../extraction-service.ts/extract-annotation-service";
+import { AnnotationExtractionService } from "../extraction-service/extract-annotation-service";
 
 jest.mock("qanary-component-helpers", () => ({
   ...jest.requireActual("qanary-component-helpers"),

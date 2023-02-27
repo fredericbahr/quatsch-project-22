@@ -60,7 +60,11 @@ export class LUBWDataTransformationService {
       time: this.transformTime(filteredAnnotations.timeAnnotation[firstAnnotation]?.hasBody),
     };
 
-    return mergeWithDefaults ? this.mergeWithDefaults(transformedValues, defaultLUBWData) : transformedValues;
+    if (mergeWithDefaults) {
+      return this.mergeWithDefaults(transformedValues, defaultLUBWData);
+    }
+
+    return transformedValues;
   }
 
   /**

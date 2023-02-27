@@ -27,8 +27,8 @@ stories:
           - measurand
           - station
       - action: action_context_air_measurand
-      - intent: fallback_station
-      - action: action_fallback_station
+      - intent: refine_station
+      - action: action_refine_station
     
   - story: Missing station 2
     steps:
@@ -37,5 +37,5 @@ stories:
           - measurand
           - station
       - action: action_context_air_measurand
-      - intent: fallback_station
-      - action: action_fallback_station
+      - intent: refine_station
+      - action: action_refine_station

@@ -86,10 +86,8 @@ export class AnnotationExtractionService {
    * @returns the concatenated annotation types
    */
   private static getAllAnnotationTypes(): string {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const concatenatedAnnotationTypes: string = Object.keys(AnnotationTypes).join(",");
+    return Object.values(AnnotationTypes).join(",");
 
-    return `, ${concatenatedAnnotationTypes}`;
   }
 
   /**

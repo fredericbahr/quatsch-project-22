@@ -1,8 +1,9 @@
+# Automatically generated file. Do not change the content
 version: "3.1"
 
 nlu:
-  ## Fallback intent for giving information about an station
-  - intent: fallback_station
+  # Refine intent for giving information about a station
+  - intent: refine_station
     examples: |
       - DEBW029
       - Aalen

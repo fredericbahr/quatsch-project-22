@@ -15,9 +15,7 @@ export const measurandAirIntentHandler = async (lubwData: ILUBWData): Promise<Su
 
     const representation: IRepresentationData = RepresentationService.getRepresentation(measurandData);
 
-    const response: SuccessRasaResponse = getResponseForMeasurandAir(representation);
-
-    return response;
+    return getResponseForMeasurandAir(representation);
   } catch {
     throw new Error("Something went wrong while determining the answer to the question.");
   }
