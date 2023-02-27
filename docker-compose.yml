@@ -131,46 +131,6 @@ services:
     profiles: ["qanary", "all", "all-slim"]
   # end::qanary-component-pm[]
 
-  # tag::qanary-component-ner-automl[]
-  qanary-component-ner-automl:
-    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_NAME
-    networks:
-      - rasa-network
-    restart: always
-    ports:
-      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT:40500"
-    build:
-      context: .
-      dockerfile: ./apps/qanary-component-ner-automl/Dockerfile
-      args:
-        TRAININGDATA: ${QANARY_COMPONENT_NER_AUTOML_TRAININGDATA}
-        TESTDATA: ${QANARY_COMPONENT_NER_AUTOML_TESTDATA}
-        MODELTYPE: ${QANARY_COMPONENT_NER_AUTOML_MODELTYPE}
-        LANGUAGE: ${QANARY_COMPONENT_NER_AUTOML_MODELLANGUAGE}
-    environment:
-      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
-      - SPRING_BOOT_ADMIN_USERNAME=$SPRING_BOOT_ADMIN_USERNAME
-      - SPRING_BOOT_ADMIN_PASSWORD=$SPRING_BOOT_ADMIN_PASSWORD
-      - SERVICE_HOST=$SERVICE_HOST
-      - SERVICE_PORT=$SERVICE_PORT
-      - SERVICE_NAME_COMPONENT=$SERVICE_NAME_COMPONENT
-      - SERVICE_DESCRIPTION_COMPONENT=$SERVICE_DESCRIPTION_COMPONENT
-    #  - SERVER_HOST=$QANARY_COMPONENT_NER_AUTOML_SERVER_HOST
-    #  - SERVER_PORT=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT
-    #  - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=$QANARY_COMPONENT_NER_AUTOML_SERVER_HOST:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT
-    command: uvicorn qanarycomponent:app --host 0.0.0.0 --port=40506
-    volumes:
-      - ./apps/qanary-component-ner-automl:/app
-    deploy:
-        resources:
-          reservations:
-            devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-    profiles: ["qanary", "all", "qanary-ner"]
-  # end::qanary-component-ner-automl[]
-
   # tag::qanary-component-time[]
   qanary-component-time:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_NAME
@@ -209,6 +169,44 @@ services:
       - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_PORT"
     profiles: ["qanary", "all", "all-slim"]
   # end::qanary-component-ld-shuyo[]
+
+  # tag::qanary-component-ner-automl[]
+  qanary-component-ner-automl:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_NAME
+    networks:
+      - rasa-network
+    restart: unless-stopped
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT"
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-ner-automl/Dockerfile
+      args:
+        TRAININGDATA: ${QANARY_COMPONENT_NER_AUTOML_TRAININGDATA}
+        TESTDATA: ${QANARY_COMPONENT_NER_AUTOML_TESTDATA}
+        MODELTYPE: ${QANARY_COMPONENT_NER_AUTOML_MODELTYPE}
+        LANGUAGE: ${QANARY_COMPONENT_NER_AUTOML_MODELLANGUAGE}
+    environment:
+      - "SPRING_BOOT_ADMIN_URL=$QANARY_COMPONENT_NER_AUTOML_SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_USERNAME=$QANARY_COMPONENT_NER_AUTOML_SPRING_BOOT_ADMIN_USERNAME"
+      - "SPRING_BOOT_ADMIN_PASSWORD=$QANARY_COMPONENT_NER_AUTOML_SPRING_BOOT_ADMIN_PASSWORD"
+      - "SERVICE_HOST=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT"
+      - "SERVICE_PORT=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT"
+      - "SERVICE_NAME_COMPONENT=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_NAME"
+      - "SERVICE_DESCRIPTION_COMPONENT=$QANARY_COMPONENT_NER_AUTOML_SERVICE_DESCRIPTION"
+      - "PRODUCTION=True"
+    command: uvicorn qanarycomponent:app --host 0.0.0.0 --port=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT
+    volumes:
+      - ./apps/qanary-component-ner-automl:/app
+    deploy:
+        resources:
+          reservations:
+            devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    profiles: ["qanary", "all", "qanary-ner"]
+  # end::qanary-component-ner-automl[]
   # end::qanary-components[]
 
   # tag::rasa[]
