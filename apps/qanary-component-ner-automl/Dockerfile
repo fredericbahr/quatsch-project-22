@@ -1,4 +1,4 @@
-FROM qanary/qanary-component-ner-automl:latest
+FROM qanary/qanary-component-ner-automl-pretrained-name-spacy-de:0.1.1
 USER root
 
 ARG TRAININGDATA
