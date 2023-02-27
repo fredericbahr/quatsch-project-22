@@ -17,17 +17,10 @@ paths:
       description: 'Returns air quality index data'
       operationId: 'readMetric'
       parameters:
-        - in: 'path'
-          description: 'The measurand of interest'
-          name: 'metric'
-          required: true
-          schema:
-            $ref: '#/components/schemas/ILupoAirMetric'
-        - in: 'query'
-          description: 'Filter for time start dates'
-          name: 'searchParams'
-          schema:
-            $ref: '#/components/schemas/ILupoMeasuringURLSearchParams'
+        - $ref: '#/components/parameters/ILupoMeasuringPathParamAirMetric'
+        - $ref: '#/components/parameters/ILupoMeasuringQueryParamFrom'
+        - $ref: '#/components/parameters/ILupoMeasuringQueryParamTo'
+        - $ref: '#/components/parameters/ILupoMeasuringQueryParamLabels'
       responses:
         '200':
           description: 'OK'
@@ -37,11 +30,46 @@ paths:
                 '$ref': '#/components/schemas/ILupoMeasuringDataList'
 
 components:
+  parameters:
+    ILupoMeasuringPathParamAirMetric:
+      in: path
+      name: metric
+      required: true
+      schema:
+        $ref: '#/components/schemas/ILupoAirMetric'
+      description: 'The measurand of interest'
+    ILupoMeasuringQueryParamFrom:
+      in: query
+      name: from
+      schema:
+        type: 'string'
+        pattern: '^\d*(y|w|d|h)-ago$'
+        example: '2d-ago'
+        nullable: true
+      description: 'Filter for time start dates'
+    ILupoMeasuringQueryParamTo:
+      in: query
+      name: to
+      schema:
+        type: 'string'
+        pattern: '^\d*(y|w|d|h)-ago$'
+        example: '2d-ago'
+        nullable: true
+      description: 'Filter for time end dates'
+    ILupoMeasuringQueryParamLabels:
+      in: query
+      name: labels
+      schema:
+        type: 'string'
+        pattern: '^station:\w{4}\d{3}$'
+        example: "station:DEBW039"
+        nullable: true
+      description: 'Filter for label contents'
   schemas:
     ILupoAirMetric:
       description: 'The measurand key of the collected data'
       type: 'string'
-      default: 'kit.iai.test.o3'
+      example: 'kit.iai.test.o3'
       enum:
         - 'kit.iai.test.luqx'
         - 'kit.iai.test.no2'
@@ -51,7 +79,7 @@ components:
     ILupoAirComp:
       description: 'The measurand name of the collected data'
       type: 'string'
-      default: 'O3'
+      example: 'O3'
       enum:
         - 'LuQX'
         - 'NO2'
@@ -65,7 +93,7 @@ components:
         station:
           description: 'The id of a station'
           type: 'string'
-          default: 'DEBW039'
+          example: 'DEBW039'
         comp:
           $ref: '#/components/schemas/ILupoAirComp'
     ILupoMeasuringData:
@@ -103,17 +131,17 @@ components:
           description: 'Filter for time start dates'
           type: 'string'
           pattern: '^\d*(y|w|d|h)-ago$'
-          default: '2d-ago'
+          example: '2d-ago'
           nullable: true
         to:
           description: 'Filter for time end dates'
           type: 'string'
           pattern: '^\d*(y|w|d|h)-ago$'
-          default: '1d-ago'
+          example: '1d-ago'
           nullable: true
         labels:
           description: 'Filter for label contents'
           type: 'string'
           pattern: '^station:\w*\d*$'
-          default: "station:DEBW039"
+          example: "station:DEBW039"
           nullable: true
