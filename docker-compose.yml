@@ -22,7 +22,7 @@ services:
       - "SERVER_HOST=$QANARY_HOST"
       - "SERVER_PORT=$QANARY_PORT"
       - "QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true"
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "all-slim", "qanary-ner"]
   # end::qanary-pipeline[]
 
   # qanary-component-example1:
@@ -42,7 +42,7 @@ services:
   #     - ./apps/qanary-component-example:/app/apps/qanary-component-example
   #     - /app/apps/qanary-component-example/node_modules
   #     - /app/node_modules
-  #   profiles: ["qanary", "all"]
+  #   profiles: ["qanary", "all", "all-slim"]
 
   # tag::qanary-components[]
   # tag::qanary-component-pm[]
@@ -65,7 +65,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "all-slim"]
   
   qanary-component-pm-station:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_NAME
@@ -86,7 +86,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "all-slim"]
 
   qanary-component-pm-calculation:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_NAME
@@ -107,7 +107,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "all-slim"]
 
   qanary-component-pm-representation:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_NAME
@@ -128,7 +128,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "all-slim"]
   # end::qanary-component-pm[]
 
   # tag::qanary-component-ner-automl[]
@@ -168,7 +168,7 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "qanary-ner"]
   # end::qanary-component-ner-automl[]
 
   # tag::qanary-component-time[]
@@ -190,7 +190,7 @@ services:
       - ./apps/qanary-component-time:/app/apps/qanary-component-time
       - /app/apps/qanary-component-time/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "all-slim"]
   # end::qanary-component-time[]
 
   # tag::qanary-component-ld-shuyo[]
@@ -207,7 +207,7 @@ services:
       - "SERVER_HOST=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME"
       - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
       - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_PORT"
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "all-slim"]
   # end::qanary-component-ld-shuyo[]
   # end::qanary-components[]
 
@@ -222,7 +222,7 @@ services:
       context: ./apps/rasa
     command: >
       run --enable-api --cors "*"
-    profiles: ["rasa", "all"]
+    profiles: ["rasa", "all", "all-slim"]
   # end::rasa[]
 
   # tag::action-server[]
@@ -239,7 +239,7 @@ services:
       - ./apps/action-server:/app/apps/action-server
       - /app/apps/action-server/node_modules
       - /app/node_modules
-    profiles: ["rasa", "all"]
+    profiles: ["rasa", "all", "all-slim"]
   # end::action-server[]
 
   # tag::frontend[]
@@ -257,7 +257,7 @@ services:
       - "$FRONTEND_PORT:3000"
     networks:
       - rasa-network
-    profiles: ["rasa", "all"]
+    profiles: ["rasa", "all", "all-slim"]
   # end::frontend[]
 
 # tag::networks[]
