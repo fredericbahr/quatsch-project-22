@@ -10,6 +10,7 @@ include::qanary-component-example/README.adoc[tags=excerpt,leveloffset=+2]
 include::qanary-component-ld-shuyo/README.adoc[tags=excerpt,leveloffset=+2]
 include::qanary-component-pm/README.adoc[tags=excerpt,leveloffset=+2]
 include::qanary-component-time/README.adoc[tags=excerpt,leveloffset=+2]
+include::qanary-component-ner-automl/README.adoc[tags=excerpt,leveloffset=+2]
 include::qanary-pipeline/README.adoc[tags=excerpt,leveloffset=+2]
 
 == Rasa Applications

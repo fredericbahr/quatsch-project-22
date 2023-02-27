@@ -2,7 +2,7 @@
 = Qanary Component NER-Automl
 :toc:
 
-A named entity recognition component trained on custom data.
+A named entity recognition qanary component trained on custom data. This component will recognise the lubw stations, measurands, calculations and representations provided in the training data.
 
 .Example Question:
 [source,text]
