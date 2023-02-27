@@ -61,12 +61,12 @@ describe("Extract Annotation Service", () => {
   });
 
   it("should return an array of annotations", async () => {
-    const annotations = await AnnotationExtractionService.extractAnnotations(qanaryMessage);
+    const annotations = await AnnotationExtractionService.extractAllAnnotations(qanaryMessage);
     expect(annotations).toEqual(expectedAnnotations);
   });
 
   it("should throw an error if the query fails", async () => {
     (selectSparql as jest.Mock).mockRejectedValue(new Error("error"));
-    await expect(AnnotationExtractionService.extractAnnotations(qanaryMessage)).rejects.toThrowError("error");
+    await expect(AnnotationExtractionService.extractAllAnnotations(qanaryMessage)).rejects.toThrowError("error");
   });
 });

@@ -10,6 +10,7 @@ import {
   SuccessRasaResponse,
 } from "shared";
 
+import { NoIntentHandlerError } from "../../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../../errors/VerificationError";
 import { ErrorHandlingService } from "../../../services/error-handling-service";
 import { AnnotationExtractionService } from "../../../services/extraction-service.ts/extract-annotation-service";
@@ -41,24 +42,35 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
   try {
     const qanaryMessage: IQanaryMessage = await startQanaryPipeline(question, componentlist);
 
-    const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAnnotations(qanaryMessage);
+    const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAllAnnotations(
+      qanaryMessage,
+    );
 
     const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations);
 
     StoringService.storeCurrentState({ senderId, intent, lubwData });
 
-    // throws {@link VerificationError} if verification fails
+    // Throws an {@link VerificationError} if verification fails
     const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(lubwData);
 
-    const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandler(intent as INTENTS);
-    const response: SuccessRasaResponse = await measurandAirHandler(verifiedLUBWData);
+    // Throws an {@link NoIntentHandlerError} if no intent handler was found
+    const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(
+      intent as INTENTS,
+    );
 
+    const response: SuccessRasaResponse = await measurandAirHandler(verifiedLUBWData);
     res.json(response);
   } catch (error: unknown) {
+    console.error(error);
+
     if (error instanceof VerificationError) {
       return ErrorHandlingService.handleVerificationError(res, error);
     }
-    console.error(error);
+
+    if (error instanceof NoIntentHandlerError) {
+      return ErrorHandlingService.handleNoIntentError(res);
+    }
+
     return ErrorHandlingService.handleDefaultError(res);
   }
 };

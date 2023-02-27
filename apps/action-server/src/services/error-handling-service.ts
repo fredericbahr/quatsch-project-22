@@ -6,6 +6,11 @@ import { VerificationError } from "../errors/VerificationError";
  * Service for handling verification errors that should be thrown if the LUBW data is not valid/complete.
  */
 export class ErrorHandlingService {
+  /**
+   * Handles a verification error gracefully by returning a response to the user with information about the missing data.
+   * @param res the response object
+   * @param error the verification error thrown
+   */
   public static handleVerificationError(res: RasaResponse, error: VerificationError): RasaResponse {
     const invalidProperty: keyof ILUBWData = error.invalidProperty;
 
@@ -17,6 +22,21 @@ export class ErrorHandlingService {
       default:
         return this.handleDefaultError(res);
     }
+  }
+
+  /**
+   * Handles an no intent error gracefully by returning a response to the user to retry the original question.
+   * @param res the response object
+   */
+  public static handleNoIntentError(res: RasaResponse): RasaResponse {
+    return res.json({
+      responses: [
+        {
+          text: "Ich konnte den letzten Intent nicht finden. Bitte gebe deine Ursprungsfrage erneut ein. Bereits erkannte Daten wurden zurückgesetzt.",
+          response: "",
+        },
+      ],
+    });
   }
 
   /**
@@ -41,7 +61,7 @@ export class ErrorHandlingService {
    * @returns a response to rasa
    */
   private static handleStationError(res: RasaResponse, error: VerificationError): RasaResponse {
-    const unvalidLUBWData: Partial<ILUBWData> = error.unvalidLUBWData;
+    const unvalidLUBWData: Partial<ILUBWData> | null = error.unvalidLUBWData;
 
     return res.json({
       responses: [
@@ -60,7 +80,7 @@ export class ErrorHandlingService {
    * @returns a response to rasa
    */
   private static handleMeasurandError(res: RasaResponse, error: VerificationError): RasaResponse {
-    const unvalidLUBWData: Partial<ILUBWData> = error.unvalidLUBWData;
+    const unvalidLUBWData: Partial<ILUBWData> | null = error.unvalidLUBWData;
 
     return res.json({
       responses: [

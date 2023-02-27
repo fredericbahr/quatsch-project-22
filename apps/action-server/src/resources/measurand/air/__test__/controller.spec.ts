@@ -23,7 +23,7 @@ jest.mock("../../../../utils/start-pipeline", () => ({
 
 jest.mock("../../../../services/extraction-service.ts/extract-annotation-service", () => ({
   AnnotationExtractionService: {
-    extractAnnotations: jest.fn(() => []),
+    extractAllAnnotations: jest.fn(() => []),
   },
 }));
 
@@ -93,14 +93,14 @@ describe("#Measurand controllers", () => {
   const res: RasaResponse = { status: jest.fn(), end: jest.fn(), json: jest.fn() } as unknown as RasaResponse;
 
   const mockStartQanaryPipeline: jest.Mock = jest.fn().mockResolvedValue(qanaryMessage);
-  const mockExtractAnnotations: jest.Mock = jest.fn().mockResolvedValue(annotations);
+  const mockextractAllAnnotations: jest.Mock = jest.fn().mockResolvedValue(annotations);
   const mockGetTransformedLUBWData: jest.Mock = jest.fn().mockReturnValue(measurandData);
   const mockQueryLUBWAPI: jest.Mock = jest.fn().mockResolvedValue(measurandData);
   const mockGetRepresentation: jest.Mock = jest.fn().mockReturnValue(representation);
 
   beforeEach(() => {
     (startQanaryPipeline as jest.Mock) = mockStartQanaryPipeline;
-    (AnnotationExtractionService.extractAnnotations as jest.Mock) = mockExtractAnnotations;
+    (AnnotationExtractionService.extractAllAnnotations as jest.Mock) = mockextractAllAnnotations;
     (LUBWDataTransformationService.getTransformedLUBWData as jest.Mock) = mockGetTransformedLUBWData;
     (LUBWQueryService.queryLUBWAPI as jest.Mock) = mockQueryLUBWAPI;
     (RepresentationService.getRepresentation as jest.Mock) = mockGetRepresentation;
@@ -135,7 +135,7 @@ describe("#Measurand controllers", () => {
     it("should call the annotation extraction service with the qanary message", async () => {
       await measurandAirRequestHandler(req, res);
 
-      expect(mockExtractAnnotations).toHaveBeenCalledWith(qanaryMessage);
+      expect(mockextractAllAnnotations).toHaveBeenCalledWith(qanaryMessage);
     });
   });
 

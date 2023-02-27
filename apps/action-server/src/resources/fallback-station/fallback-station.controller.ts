@@ -1,15 +1,28 @@
-import { COMPONENT_LIST, ILUBWData, IQanaryAnnotation, IQanaryMessage, RasaRequest, RasaResponse } from "shared";
+import {
+  COMPONENT_LIST,
+  Domain,
+  IIntentHandler,
+  ILUBWData,
+  IQanaryAnnotation,
+  IQanaryMessage,
+  RasaRequest,
+  RasaResponse,
+  SuccessRasaResponse,
+} from "shared";
+import { AnnotationTypes } from "shared/dist/enums/annotations";
 
+import { NoIntentHandlerError } from "../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../errors/VerificationError";
 import { ErrorHandlingService } from "../../services/error-handling-service";
 import { AnnotationExtractionService } from "../../services/extraction-service.ts/extract-annotation-service";
+import { IntentHandlerFindingService } from "../../services/intent-handler-finding-service";
 import { StoringService } from "../../services/storing-service";
 import { LUBWDataTransformationService } from "../../services/transformation-service";
+import { VerificationService } from "../../services/verification-service";
 import { startQanaryPipeline } from "../../utils/start-pipeline";
 
 export const fallbackStationRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
   const question: string = req.body.tracker?.latest_message?.text ?? "";
-  const intent: string | undefined = req.body.next_action;
   const senderId: string | undefined = req.body.sender_id;
 
   const componentlist: Array<COMPONENT_LIST> = [COMPONENT_LIST.PATTERN_MATCHING_STATION];
@@ -17,16 +30,39 @@ export const fallbackStationRequestHandler = async (req: RasaRequest, res: RasaR
   try {
     const qanaryMessage: IQanaryMessage = await startQanaryPipeline(question, componentlist);
 
-    const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAnnotations(qanaryMessage);
+    const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAnnotationsByType(
+      qanaryMessage,
+      AnnotationTypes.Station,
+    );
 
-    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations);
+    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, false);
 
-    StoringService.storeCurrentState({ senderId, intent, lubwData });
+    const station: string | undefined = lubwData.station;
+
+    StoringService.changeStateEntry(senderId, "station", station);
+
+    const stateLUBWData: Partial<ILUBWData> | null = await StoringService.getCurrentState(senderId);
+
+    // Throws an {@link VerificationError} if verification fails
+    const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(stateLUBWData);
+
+    // Throws an {@link NoIntentHandlerError} if no intent handler was found
+    const intentHandler: IIntentHandler = await IntentHandlerFindingService.findIntentHandlerInState(senderId);
+
+    const response: SuccessRasaResponse = await intentHandler(verifiedLUBWData);
+
+    res.json(response);
   } catch (error: unknown) {
+    console.error(error);
+
     if (error instanceof VerificationError) {
       return ErrorHandlingService.handleVerificationError(res, error);
     }
-    console.error(error);
+
+    if (error instanceof NoIntentHandlerError) {
+      return ErrorHandlingService.handleNoIntentError(res);
+    }
+
     return ErrorHandlingService.handleDefaultError(res);
   }
 };
