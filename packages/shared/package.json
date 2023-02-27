@@ -2,7 +2,7 @@
   "name": "shared",
   "version": "1.0.0",
   "description": "Shared common code for the Qanary components",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "author": "",
   "main": "dist/index.js",
   "files": [

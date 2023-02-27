@@ -2,7 +2,7 @@
   "name": "qanary-component-example",
   "version": "1.0.0",
   "description": "This is just an example of a qanary component",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
   "files": [
     "dist"
