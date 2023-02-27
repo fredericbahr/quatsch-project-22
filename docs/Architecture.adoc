@@ -20,3 +20,15 @@ include::diagrams/Qanary Pipeline.puml[]
 ----
 include::diagrams/Action Server.puml[]
 ----
+
+== Two Stage Fallback (Default Rasa fallback)
+
+[source,plantuml]
+----
+include::diagrams/Architecture Two Stage Fallback Affirm.puml[]
+----
+
+[source,plantuml]
+----
+include::diagrams/Architecture Two Stage Fallback Deny.puml[]
+----
