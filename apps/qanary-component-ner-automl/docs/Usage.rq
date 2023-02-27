@@ -1,0 +1,14 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+
+SELECT *
+FROM <YOUR_CURRENT_GRAPH_ID>
+WHERE {
+    ?annotationId rdf:type ?type.
+    ?annotationId oa:hasBody ?body.
+    ?annotationId oa:hasTarget ?target.
+    ?target oa:hasSelector ?selector .
+    ?selector oa:start ?start .
+    ?selector oa:end ?end .
+}

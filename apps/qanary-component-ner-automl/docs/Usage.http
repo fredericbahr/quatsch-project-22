@@ -1,0 +1,10 @@
+POST http://qanary-pipeline:40111/startquestionansweringwithtextquestion
+Content-Type: application/json
+
+{
+  "question": "Was war gestern der Ozonwert in Ulm im Durchschnitt repräsentiert als Text?",
+  "language": "de",
+  "componentlist": [
+    "qanary-component-ner-automl"
+  ]
+}
