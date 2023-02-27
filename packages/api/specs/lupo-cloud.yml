@@ -61,7 +61,7 @@ components:
       name: labels
       schema:
         type: 'string'
-        pattern: '^station:\w*\d*$'
+        pattern: '^station:\w{4}\d{3}$'
         example: "station:DEBW039"
         nullable: true
       description: 'Filter for label contents'
