@@ -1,6 +1,6 @@
 import { INTENTS, RasaRequest, RasaResponse } from "shared";
 
-import { askAffirmationRequestHandler, fallbackRequestHandler } from "../fallback/fallback.controller";
+import { askAffirmationRequestHandler, fallbackRequestHandler } from "../fallback-default/fallback.controller";
 import { measurandAirRequestHandler } from "../measurand/air/measurand-air.controller";
 
 export const webhookRequestHandler = async (req: RasaRequest, res: RasaResponse) => {

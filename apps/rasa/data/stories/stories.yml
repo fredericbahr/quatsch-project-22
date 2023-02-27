@@ -1,7 +1,7 @@
 version: "3.1"
 
 stories:
-  - story: Create context
+  - story: Create context 1
     steps:
       - intent: greet
       - action: utter_greet
@@ -10,11 +10,28 @@ stories:
           - measurand
           - station
       - action: action_context_air_measurand
+  - story: Create context 2
+    steps:
+      - intent: context_air_measurand
+        entities:
+          - measurand
+          - station
+      - action: action_context_air_measurand
 
-  - story: Missing station
+  - story: Missing station 1
     steps:
       - intent: greet
       - action: utter_greet
+      - intent: context_air_measurand
+        entities:
+          - measurand
+          - station
+      - action: action_context_air_measurand
+      - intent: fallback_station
+      - action: action_fallback_station
+    
+  - story: Missing station 2
+    steps:
       - intent: context_air_measurand
         entities:
           - measurand
