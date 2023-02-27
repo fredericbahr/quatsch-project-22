@@ -2,7 +2,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
 PREFIX qa: <http://www.wdaqua.eu/qa#>
 
-SELECT *
+SELECT ?annotationId ?type ?body ?start ?end
 FROM <YOUR_CURRENT_GRAPH_ID>
 WHERE {
     ?annotationId rdf:type ?type.
