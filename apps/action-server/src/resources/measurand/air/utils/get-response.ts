@@ -1,11 +1,11 @@
-import { IRepresentationData, RasaResponseType, REPRESENTATION_TYPE, ResponseForMeasurandAir } from "shared";
+import { IRepresentationData, RasaResponseType, REPRESENTATION_TYPE, SuccessRasaResponse } from "shared";
 
 /**
  * Gets the response for the measurand air with the given representation.
  * @param representation the representation/anwser of the measurand air
  * @returns the response for the measurand air with the given representation
  */
-export const getResponseForMeasurandAir = (representation: IRepresentationData): ResponseForMeasurandAir => {
+export const getResponseForMeasurandAir = (representation: IRepresentationData): SuccessRasaResponse => {
   switch (representation.type) {
     case REPRESENTATION_TYPE.TEXT:
       return createResponse(representation.value, RasaResponseType.TEXT);
@@ -24,7 +24,7 @@ export const getResponseForMeasurandAir = (representation: IRepresentationData):
  * @param propKey the property key of the response (e.g. text, image)
  * @returns the response object with the given value and property key
  */
-const createResponse = (value: string | URL, propKey: RasaResponseType): ResponseForMeasurandAir => {
+const createResponse = (value: string | URL, propKey: RasaResponseType): SuccessRasaResponse => {
   return {
     responses: [
       {

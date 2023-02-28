@@ -21,6 +21,13 @@ include::diagrams/Qanary Pipeline.puml[]
 include::diagrams/Action Server.puml[]
 ----
 
+== Verification of mandatory data
+
+[source,plantuml]
+----
+include::diagrams/Architecture Verification Of Mandatory Data.puml[]
+----
+
 == Two Stage Fallback (Default Rasa fallback)
 
 [source,plantuml]
