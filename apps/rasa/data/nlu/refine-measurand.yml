@@ -1,0 +1,57 @@
+# Automatically generated file. Do not change the content
+version: "3.1"
+
+nlu:
+  # Refine intent for giving information about a measurand
+  - intent: refine_measurand
+    examples: |
+      - luqx
+      - Luftqualitätsindex
+      - Ich interessiere mich für die Messart luqx
+      - Ich interessiere mich für die Messart Luftqualitätsindex
+      - Die Messart ist luqx
+      - Die Messart ist Luftqualitätsindex
+      - Nimm die Messart luqx
+      - Nimm die Messart Luftqualitätsindex
+      - Wähle die Messart luqx
+      - Wähle die Messart Luftqualitätsindex
+      - no2
+      - Stickstoffdioxid
+      - Ich interessiere mich für die Messart no2
+      - Ich interessiere mich für die Messart Stickstoffdioxid
+      - Die Messart ist no2
+      - Die Messart ist Stickstoffdioxid
+      - Nimm die Messart no2
+      - Nimm die Messart Stickstoffdioxid
+      - Wähle die Messart no2
+      - Wähle die Messart Stickstoffdioxid
+      - o3
+      - Ozon
+      - Ich interessiere mich für die Messart o3
+      - Ich interessiere mich für die Messart Ozon
+      - Die Messart ist o3
+      - Die Messart ist Ozon
+      - Nimm die Messart o3
+      - Nimm die Messart Ozon
+      - Wähle die Messart o3
+      - Wähle die Messart Ozon
+      - pm10
+      - Feinstaub PM10
+      - Ich interessiere mich für die Messart pm10
+      - Ich interessiere mich für die Messart Feinstaub PM10
+      - Die Messart ist pm10
+      - Die Messart ist Feinstaub PM10
+      - Nimm die Messart pm10
+      - Nimm die Messart Feinstaub PM10
+      - Wähle die Messart pm10
+      - Wähle die Messart Feinstaub PM10
+      - pm25k
+      - Feinstaub PM25
+      - Ich interessiere mich für die Messart pm25k
+      - Ich interessiere mich für die Messart Feinstaub PM25
+      - Die Messart ist pm25k
+      - Die Messart ist Feinstaub PM25
+      - Nimm die Messart pm25k
+      - Nimm die Messart Feinstaub PM25
+      - Wähle die Messart pm25k
+      - Wähle die Messart Feinstaub PM25
