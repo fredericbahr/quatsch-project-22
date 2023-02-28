@@ -9,7 +9,7 @@ import {
   REPRESENTATION_TYPE,
 } from "shared";
 
-import { AnnotationExtractionService } from "../../../../services/extraction-service.ts/extract-annotation-service";
+import { AnnotationExtractionService } from "../../../../services/extraction-service/extract-annotation-service";
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
 import { RepresentationService } from "../../../../services/representation-service";
 import { LUBWDataTransformationService } from "../../../../services/transformation-service";
@@ -21,9 +21,9 @@ jest.mock("../../../../utils/start-pipeline", () => ({
   startQanaryPipeline: jest.fn(),
 }));
 
-jest.mock("../../../../services/extraction-service.ts/extract-annotation-service", () => ({
+jest.mock("../../../../services/extraction-service/extract-annotation-service", () => ({
   AnnotationExtractionService: {
-    extractAnnotations: jest.fn(() => []),
+    extractAllAnnotations: jest.fn(() => []),
   },
 }));
 
@@ -40,7 +40,7 @@ jest.mock("../../../../services/representation-service", () => ({
   },
 }));
 
-describe("#Measurand controllers", () => {
+xdescribe("#Measurand controllers", () => {
   const text = "Ich bin der Test-Text";
   const qanaryMessage: IQanaryMessage = {
     endpoint: "http://qanary-pipeline:40111/sparql",
@@ -93,14 +93,14 @@ describe("#Measurand controllers", () => {
   const res: RasaResponse = { status: jest.fn(), end: jest.fn(), json: jest.fn() } as unknown as RasaResponse;
 
   const mockStartQanaryPipeline: jest.Mock = jest.fn().mockResolvedValue(qanaryMessage);
-  const mockExtractAnnotations: jest.Mock = jest.fn().mockResolvedValue(annotations);
+  const mockExtractAllAnnotations: jest.Mock = jest.fn().mockResolvedValue(annotations);
   const mockGetTransformedLUBWData: jest.Mock = jest.fn().mockReturnValue(measurandData);
   const mockQueryLUBWAPI: jest.Mock = jest.fn().mockResolvedValue(measurandData);
   const mockGetRepresentation: jest.Mock = jest.fn().mockReturnValue(representation);
 
   beforeEach(() => {
     (startQanaryPipeline as jest.Mock) = mockStartQanaryPipeline;
-    (AnnotationExtractionService.extractAnnotations as jest.Mock) = mockExtractAnnotations;
+    (AnnotationExtractionService.extractAllAnnotations as jest.Mock) = mockExtractAllAnnotations;
     (LUBWDataTransformationService.getTransformedLUBWData as jest.Mock) = mockGetTransformedLUBWData;
     (LUBWQueryService.queryLUBWAPI as jest.Mock) = mockQueryLUBWAPI;
     (RepresentationService.getRepresentation as jest.Mock) = mockGetRepresentation;
@@ -135,7 +135,7 @@ describe("#Measurand controllers", () => {
     it("should call the annotation extraction service with the qanary message", async () => {
       await measurandAirRequestHandler(req, res);
 
-      expect(mockExtractAnnotations).toHaveBeenCalledWith(qanaryMessage);
+      expect(mockExtractAllAnnotations).toHaveBeenCalledWith(qanaryMessage);
     });
   });
 

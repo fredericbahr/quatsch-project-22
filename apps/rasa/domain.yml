@@ -1,10 +1,16 @@
 version: "3.1"
 
 intents:
+  # general
   - greet
   - goodbye
   - bot_challenge
+  # contect
   - context_air_measurand
+  # refinement
+  - refine_station
+  - refine_measurand
+  # fallback
   - nlu_fallback
   - qanary_default_processing
   - vulgar_out_of_scope
@@ -46,7 +52,10 @@ responses:
 
 actions:
   - action_context_air_measurand
-  # Fallback
+  # Refinements
+  - action_refine_station
+  - action_refine_measurand
+  # Rasa Fallback
   - action_default_qanary
   - action_default_ask_affirmation
 

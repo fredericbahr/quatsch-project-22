@@ -1,11 +1,11 @@
-import { measurandAirRouter } from "../measurand-air.router";
+import { refineMeasurandRouter } from "../refine-measurand.router";
 
-describe("#Measurand air router", () => {
+describe("#Refine measurand router", () => {
   test("has crud routes", () => {
     const routes = [{ path: "/", method: "post" }];
 
     routes.forEach((route) => {
-      const match = measurandAirRouter.stack.find(
+      const match = refineMeasurandRouter.stack.find(
         (stackElement) => stackElement.route.path === route.path && stackElement.route.methods[route.method],
       );
       expect(match).toBeTruthy();
