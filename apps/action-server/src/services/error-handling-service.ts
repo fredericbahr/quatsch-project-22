@@ -1,4 +1,4 @@
-import { ILUBWData, RasaResponse } from "shared";
+import { ILUBWData, ILUBWDataKey, RasaResponse } from "shared";
 
 import { VerificationError } from "../errors/VerificationError";
 
@@ -12,12 +12,12 @@ export class ErrorHandlingService {
    * @param error the verification error thrown
    */
   public static handleVerificationError(res: RasaResponse, error: VerificationError): RasaResponse {
-    const invalidProperty: keyof ILUBWData = error.invalidProperty;
+    const invalidProperty: ILUBWDataKey = error.invalidProperty;
 
     switch (invalidProperty) {
-      case "station":
+      case ILUBWDataKey.Station:
         return this.handleStationError(res, error);
-      case "measurand":
+      case ILUBWDataKey.Measurand:
         return this.handleMeasurandError(res, error);
       default:
         return this.handleDefaultError(res);

@@ -1,4 +1,4 @@
-import { ILUBWData } from "shared";
+import { ILUBWData, ILUBWDataKey } from "shared";
 
 import { VerificationError } from "../errors/VerificationError";
 
@@ -24,17 +24,8 @@ export class VerificationService {
   private static getVerifiedLUBWData(lubwData: Partial<ILUBWData> | null): ILUBWData {
     // TODO: https://dev.to/svehla/typescript-object-fromentries-389c might be better than type casting
     return Object.fromEntries(
-      this.getEntriesOfObject(lubwData || []).map(([key]) => [key, this.validateProperty(lubwData, key)]),
+      Object.values(ILUBWDataKey).map((key) => [key, this.validateProperty(lubwData, key)]),
     ) as unknown as ILUBWData;
-  }
-
-  /**
-   * Gets the entries of an object as an typed array of tuples
-   * @param obj the object to get the entries of
-   * @returns the typed array of tuples
-   */
-  private static getEntriesOfObject<T extends object>(obj: T): Array<[keyof T, T[keyof T]]> {
-    return Object.entries(obj) as Array<[keyof T, T[keyof T]]>;
   }
 
   /**
