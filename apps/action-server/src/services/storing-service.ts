@@ -1,4 +1,4 @@
-import { ILUBWData, IState, IStoreState } from "shared";
+import { IState, IStoreState } from "shared";
 
 import { redisClient } from "../redis/redis-client";
 
@@ -20,22 +20,22 @@ export class StoringService {
     const currentState: IState | null = await this.getCurrentState(senderId);
 
     if (!currentState) {
-      const state: IState = {
+      const newState: IState = {
         latestIntent: intent,
         ...lubwData,
       };
 
-      await this.storeState(senderId, state);
+      await this.storeState(senderId, newState);
       return;
     }
 
-    const newState: IState = {
+    const updatedState: IState = {
       ...currentState,
       ...lubwData,
       latestIntent: intent,
     };
 
-    await this.storeState(senderId, newState);
+    await this.storeState(senderId, updatedState);
   }
 
   /**
