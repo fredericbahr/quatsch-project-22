@@ -4,7 +4,7 @@ import { VerificationError } from "../errors/VerificationError";
 
 /**
  * Service for verifying fetched lubw data from the knowledge graph
- * Throws an @link VerificationError if the data is not valid
+ * Throws an {@link VerificationError} if the data is not valid
  */
 export class VerificationService {
   /**
@@ -12,7 +12,7 @@ export class VerificationService {
    * @param lubwData the fetched lubw data
    * @returns the verified lubw data
    */
-  public static verifyLUBWData(lubwData: Partial<ILUBWData>): ILUBWData {
+  public static verifyLUBWData(lubwData: Partial<ILUBWData> | null): ILUBWData {
     return this.getVerifiedLUBWData(lubwData);
   }
 
@@ -21,10 +21,10 @@ export class VerificationService {
    * @param lubwData the fetched lubw data to verify
    * @returns the verified lubw data
    */
-  private static getVerifiedLUBWData(lubwData: Partial<ILUBWData>): ILUBWData {
+  private static getVerifiedLUBWData(lubwData: Partial<ILUBWData> | null): ILUBWData {
     // TODO: https://dev.to/svehla/typescript-object-fromentries-389c might be better than type casting
     return Object.fromEntries(
-      this.getEntriesOfObject(lubwData).map(([key]) => [key, this.validateProperty(lubwData, key)]),
+      this.getEntriesOfObject(lubwData || []).map(([key]) => [key, this.validateProperty(lubwData, key)]),
     ) as unknown as ILUBWData;
   }
 
@@ -38,13 +38,14 @@ export class VerificationService {
   }
 
   /**
-   * Validates a property of the lubw data and throws an @link VerificationError if the property is not valid
+   * Validates a property of the lubw data
+   * Throws an {@link VerificationError} if the property is not valid
    * @param data the lubw data to validate
    * @param propKey the property key of the data to validate
    * @returns the validated property
    */
-  private static validateProperty(data: Partial<ILUBWData>, propKey: keyof ILUBWData): string {
-    const propertyValue: string | undefined = data[propKey];
+  private static validateProperty(data: Partial<ILUBWData> | null, propKey: keyof ILUBWData): string {
+    const propertyValue: string | undefined = data?.[propKey];
 
     if (this.isValidProperty(propertyValue)) {
       return propertyValue;

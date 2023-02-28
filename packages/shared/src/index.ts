@@ -1,5 +1,6 @@
 /* eslint-disable simple-import-sort/exports */
 
+export * from "./enums/annotations";
 export * from "./enums/component-list";
 export * from "./enums/domains";
 export * from "./enums/intents";

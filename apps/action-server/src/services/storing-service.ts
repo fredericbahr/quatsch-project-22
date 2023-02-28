@@ -29,10 +29,13 @@ export class StoringService {
       return;
     }
 
-    const newStateWithData: IState = this.addLUBWData(currentState, lubwData);
-    const newStateWithIntent: IState = this.addIntent(newStateWithData, intent);
+    const newState: IState = {
+      ...currentState,
+      ...lubwData,
+      latestIntent: intent,
+    };
 
-    await this.storeState(senderId, newStateWithIntent);
+    await this.storeState(senderId, newState);
   }
 
   /**
@@ -40,7 +43,7 @@ export class StoringService {
    * @param senderId the current senderId
    * @param state the state to store
    */
-  public static async storeState(senderId: string, state: IState): Promise<void> {
+  public static async storeState(senderId: string, state: Partial<IState>): Promise<void> {
     await redisClient.set(senderId, JSON.stringify(state));
   }
 
@@ -49,7 +52,7 @@ export class StoringService {
    * @param senderId the current senderId
    * @returns the current state for the senderId or null if no state was found
    */
-  public static async getCurrentState(senderId: string | undefined): Promise<IState | null> {
+  public static async getCurrentState(senderId: string | undefined): Promise<Partial<IState> | null> {
     if (!senderId) {
       return null;
     }
@@ -60,32 +63,60 @@ export class StoringService {
       return null;
     }
 
-    return JSON.parse(stateInRedis) as IState;
+    return JSON.parse(stateInRedis) as Partial<IState>;
   }
 
   /**
-   * Adds the lubwData to the current state.
-   * @param currentState the current state
-   * @param lubwData the lubwData to add
-   * @returns the new state
+   * Changes one entry of the state for a specific senderId in redis.
+   * If no state was found for the senderId, a new state will be created.
+   * @param senderId the current senderId
+   * @param property the property to change
+   * @param value the new value
    */
-  private static addLUBWData(currentState: IState, lubwData: Partial<ILUBWData>): IState {
-    return {
+  public static async changeStateEntry(
+    senderId: string | undefined,
+    property: keyof IState,
+    value: string | undefined,
+  ): Promise<void> {
+    if (!senderId) {
+      return;
+    }
+
+    const currentState: IState | null = await this.getCurrentState(senderId);
+
+    if (!currentState) {
+      const state: Partial<IState> = {
+        [property]: value,
+      };
+      await this.storeState(senderId, state);
+      return;
+    }
+
+    const newStateWithData: IState = {
       ...currentState,
-      ...lubwData,
+      [property]: value,
     };
+
+    await this.storeState(senderId, newStateWithData);
   }
 
   /**
-   * Adds the intent to the current state.
-   * @param currentState the current state
-   * @param intent the intent to add
-   * @returns the new state
+   * Gets the current state for the senderId from redis.
+   * @param senderId the current senderId
+   * @param property the property to get
+   * @returns the curent value of the property or undefined if no state/property was found
    */
-  private static addIntent(currentState: IState, intent: string | undefined): IState {
-    return {
-      ...currentState,
-      latestIntent: intent,
-    };
+  public static async getStateEntry(senderId: string | undefined, property: keyof IState): Promise<string | undefined> {
+    if (!senderId) {
+      return undefined;
+    }
+
+    const currentState: IState | null = await this.getCurrentState(senderId);
+
+    if (!currentState) {
+      return undefined;
+    }
+
+    return currentState[property];
   }
 }
