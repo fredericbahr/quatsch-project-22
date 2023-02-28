@@ -1,0 +1,9 @@
+version: "3.1"
+
+nlu:
+  - intent: measurand_max
+    examples: |
+      - Was war der höchste Messwert?
+      - Was war der höchste?
+      - Welcher Messwert war der höchste?
+      - Welcher Messung war der höchste Wert zuzuordnen?

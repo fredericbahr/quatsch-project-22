@@ -39,18 +39,6 @@
     },
     "clean": {
       "cache": false
-    },
-    "shell": {
-      "cache": false,
-      "persistent": true
-    },
-    "train": {
-      "cache": false,
-      "persistent": true
-    },
-    "visualize": {
-      "cache": false,
-      "persistent": true
     }
   }
 }

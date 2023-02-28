@@ -1,0 +1,9 @@
+version: "3.1"
+
+nlu:
+  - intent: measurand_min
+    examples: |
+      - Was war der niedrigste Messwert?
+      - Was war der niedrigste?
+      - Welcher Messwert war der niedrigste?
+      - Welcher Messung war der niedrigste Wert zuzuordnen?

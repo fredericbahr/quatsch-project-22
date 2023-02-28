@@ -22,7 +22,7 @@ describe("Representation Service", () => {
       const representation = RepresentationService.getRepresentation(measurandData);
 
       expect(representation).toEqual({
-        value: "Der Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023 1",
+        value: "Der Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023: 1",
         type: REPRESENTATION_TYPE.Text,
       });
     });
@@ -98,7 +98,7 @@ describe("Representation Service", () => {
       const representation = RepresentationService.getTextualRepresentation(measurandData);
 
       expect(representation).toEqual({
-        value: "Der Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023 1",
+        value: "Der Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023: 1",
         type: REPRESENTATION_TYPE.Text,
       });
     });

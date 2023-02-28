@@ -120,10 +120,11 @@ export class LUBWDataTransformationService {
    * @param defaultValues the default values
    * @returns the merged values
    */
-  private static mergeWithDefaults(
-    customValues: Partial<ILUBWData>,
+  public static mergeWithDefaults(
+    customValues: Partial<ILUBWData> | null,
     defaultValues: ILUBWDefaultData,
   ): Partial<ILUBWData> {
+    customValues = customValues ?? {};
     return {
       ...customValues,
       representation: customValues.representation || defaultValues.representation,

@@ -3,7 +3,7 @@ import { ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
 import { RepresentationService } from "../../../../services/representation-service";
 import { ResponseService } from "../../../../services/response-service";
-import { measurandCompleteIntentHandler } from "../complete.intent-handler";
+import { completeIntentHandler } from "../complete.intent-handler";
 
 jest.mock("../../../../services/lubw-query-service", () => ({
   LUBWQueryService: {
@@ -60,7 +60,7 @@ describe("Measurand Complete Intent Handler", () => {
 
   describe("LUBW API Query", () => {
     it("should call the LUBW API with the correct data", async () => {
-      await measurandCompleteIntentHandler(lubwData);
+      await completeIntentHandler(lubwData);
 
       expect(mockQueryLUBWAPI).toHaveBeenCalledWith(lubwData);
     });
@@ -68,7 +68,7 @@ describe("Measurand Complete Intent Handler", () => {
 
   describe("Representation Service", () => {
     it("should call the Representation Service with the correct data", async () => {
-      await measurandCompleteIntentHandler(lubwData);
+      await completeIntentHandler(lubwData);
 
       expect(mockGetRepresentation).toHaveBeenCalledWith(measurandData);
     });
@@ -76,7 +76,7 @@ describe("Measurand Complete Intent Handler", () => {
 
   describe("Response", () => {
     it("should call the response utils with the correct data", async () => {
-      await measurandCompleteIntentHandler(lubwData);
+      await completeIntentHandler(lubwData);
 
       expect(mockGetResponseByRepresentation).toHaveBeenCalledWith(representation);
     });
@@ -86,7 +86,7 @@ describe("Measurand Complete Intent Handler", () => {
     it("should throw an error if the LUBW API query fails", async () => {
       mockQueryLUBWAPI.mockRejectedValue(new Error());
 
-      await expect(measurandCompleteIntentHandler(lubwData)).rejects.toThrowError();
+      await expect(completeIntentHandler(lubwData)).rejects.toThrowError();
     });
   });
 });

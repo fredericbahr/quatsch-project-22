@@ -34,7 +34,7 @@ export class RepresentationService {
     return {
       value: `Der Wert der Messart ${measurandData.measurand} für die Station ${
         measurandData.station
-      } beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })} ${
+      } beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })}: ${
         measurandData.measurandData[0].values[0]
       }`,
       type: REPRESENTATION_TYPE.Text,

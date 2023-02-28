@@ -1,0 +1,22 @@
+version: "3.1"
+
+stories:
+  - story: Missing measurand
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+      - action: action_measurand_complete
+      - intent: refine_measurand
+      - action: action_refine_measurand
+
+  - story: Missing mandatory data first measurand
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+      - action: action_measurand_complete
+      - intent: refine_measurand
+      - action: action_refine_measurand
+      - intent: refine_station
+      - action: action_refine_station

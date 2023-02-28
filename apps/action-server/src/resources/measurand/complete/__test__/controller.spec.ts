@@ -10,7 +10,7 @@ import { LUBWDataTransformationService } from "../../../../services/transformati
 import { VerificationService } from "../../../../services/verification-service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { startQanaryPipeline } from "../../../../utils/start-pipeline";
-import { measurandCompleteRequestHandler } from "../complete.controller";
+import { completeRequestHandler } from "../complete.controller";
 
 jest.mock("../../../../utils/start-pipeline", () => ({
   startQanaryPipeline: jest.fn(),
@@ -115,13 +115,13 @@ describe("#Measurand controllers", () => {
 
   describe("Qanary Pipeline", () => {
     it("should start the qanary pipeline with given question", async () => {
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(text, expect.any(Array));
     });
 
     it("should start the qanary pipeline with correct components", async () => {
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(
         expect.any(String),
@@ -138,7 +138,7 @@ describe("#Measurand controllers", () => {
 
   describe("Annotation Extraction", () => {
     it("should extract all annotation", async () => {
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockExtractAllAnnotations).toHaveBeenCalledWith(qanaryMessage);
     });
@@ -146,7 +146,7 @@ describe("#Measurand controllers", () => {
 
   describe("Transformation", () => {
     it("should transform the annotations", async () => {
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.objectContaining(annotations));
     });
@@ -154,7 +154,7 @@ describe("#Measurand controllers", () => {
 
   describe("Storing", () => {
     it("should store the current data and intent", async () => {
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockStoreData).toHaveBeenCalledWith({
         senderId: expect.any(String),
@@ -166,7 +166,7 @@ describe("#Measurand controllers", () => {
 
   describe("Verification", () => {
     it("should call the verification service with the lubwData", async () => {
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockVerifyLUBWData).toHaveBeenCalledWith(expect.objectContaining(lubwData));
     });
@@ -174,13 +174,13 @@ describe("#Measurand controllers", () => {
 
   describe("Intent Handling", () => {
     it("should find the correct intent handler", async () => {
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockFindIntentHandler).toHaveBeenCalledWith(intent);
     });
 
     it("should call the intent handler with the correct data", async () => {
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockMeasurandCompleteIntentHandler).toHaveBeenCalledWith(lubwData);
     });
@@ -193,7 +193,7 @@ describe("#Measurand controllers", () => {
         throw verificationErrror;
       });
 
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockHandleVerificationError).toHaveBeenCalledWith(res, verificationErrror);
     });
@@ -206,7 +206,7 @@ describe("#Measurand controllers", () => {
         throw noIntentHandlerError;
       });
 
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockHandleNoIntentHandlerError).toHaveBeenCalledWith(res);
     });
@@ -214,7 +214,7 @@ describe("#Measurand controllers", () => {
     it("should handle unexpected errors occordingly", async () => {
       mockStartQanaryPipeline.mockRejectedValue(new Error("Error"));
 
-      await measurandCompleteRequestHandler(req, res);
+      await completeRequestHandler(req, res);
 
       expect(mockHandleDefaultError).toHaveBeenCalledWith(res);
     });
