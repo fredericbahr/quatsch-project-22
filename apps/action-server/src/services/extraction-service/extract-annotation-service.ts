@@ -6,7 +6,7 @@ import {
   RESERVED_KEYWORD_IN_SPARQL_QUERY,
   selectSparql,
 } from "qanary-component-helpers";
-import { annotationTypes, IQanaryAnnotation, IQanaryMessage, IRawAnnotation } from "shared";
+import { AnnotationTypes, IQanaryAnnotation, IQanaryMessage, IRawAnnotation } from "shared";
 
 /**
  * A service that extracts annotations from the qanary knowledge graph
@@ -17,7 +17,7 @@ export class AnnotationExtractionService {
    * @param qanaryMessage the qanary message containing the knowledge graph uri
    * @returns the extracted annotations
    */
-  public static async extractAnnotations(qanaryMessage: IQanaryMessage): Promise<Array<IQanaryAnnotation>> {
+  public static async extractAllAnnotations(qanaryMessage: IQanaryMessage): Promise<Array<IQanaryAnnotation>> {
     const endpoint: string = getEndpoint(qanaryMessage) ?? "";
     const annotationQuery: string = this.getAnnotationQuery(qanaryMessage);
 
@@ -33,11 +33,39 @@ export class AnnotationExtractionService {
   }
 
   /**
-   * Gets the query to get all annotations from the knowledge graph
+   * Transforms raw annotations of the given annotation type from the knowledge graph
+   * @param annotationType the type of the annotation to extract
    * @param qanaryMessage the qanary message containing the knowledge graph uri
-   * @returns the query to get all annotations from the knowledge graph
+   * @returns the extracted annotations
    */
-  private static getAnnotationQuery(qanaryMessage: IQanaryMessage): string {
+  public static async extractAnnotationsByType(
+    qanaryMessage: IQanaryMessage,
+    annotationType: AnnotationTypes,
+  ): Promise<Array<IQanaryAnnotation>> {
+    const endpoint: string = getEndpoint(qanaryMessage) ?? "";
+    const annotationQuery: string = this.getAnnotationQuery(qanaryMessage, annotationType);
+
+    try {
+      const rawAnnotations: Array<IRawAnnotation> = await selectSparql<IRawAnnotation>(endpoint, annotationQuery);
+
+      return this.transformRawAnnotations(rawAnnotations);
+    } catch (error: unknown) {
+      console.error("Error while extracting annotations", error);
+
+      throw error;
+    }
+  }
+
+  /**
+   * Gets the query to get annotations from the knowledge graph
+   * @param qanaryMessage the qanary message containing the knowledge graph uri
+   * @param annotationTypes the annotation types to extract
+   * @returns the query to get annotations from the knowledge graph
+   */
+  private static getAnnotationQuery(
+    qanaryMessage: IQanaryMessage,
+    annotationTypes: string = this.getAllAnnotationTypes(),
+  ): string {
     const inGraph: string = getInGraph(qanaryMessage) ?? "";
     const queryPath: string = path.join(__dirname, "./get-annotations-query.rq");
 
@@ -48,20 +76,17 @@ export class AnnotationExtractionService {
       },
       {
         keyword: RESERVED_KEYWORD_IN_SPARQL_QUERY.YOUR_ANNOTATION_TYPES,
-        replacement: this.getAnnotationTypes(),
+        replacement: annotationTypes,
       },
     ]);
   }
 
   /**
-   * Gets the annotation types to filter for inside the query by concatenating the annotation types
+   * Gets all annotation types to filter for inside the query by concatenating the annotation types
    * @returns the concatenated annotation types
    */
-  private static getAnnotationTypes(): string {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const concatenatedAnnotationTypes: string = Array.from(annotationTypes, ([_name, value]) => value).join(",");
-
-    return annotationTypes.size > 0 ? `, ${concatenatedAnnotationTypes}` : "";
+  private static getAllAnnotationTypes(): string {
+    return Object.values(AnnotationTypes).join(",");
   }
 
   /**
