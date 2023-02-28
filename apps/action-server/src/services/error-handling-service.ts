@@ -12,7 +12,7 @@ export class ErrorHandlingService {
    * @param error the verification error thrown
    */
   public static handleVerificationError(res: RasaResponse, error: VerificationError): RasaResponse {
-    const invalidProperty: keyof ILUBWData = error.invalidProperty;
+    const invalidProperty: ILUBWDataKey = error.invalidProperty;
 
     switch (invalidProperty) {
       case ILUBWDataKey.Station:
