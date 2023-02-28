@@ -1,0 +1,9 @@
+POST http://qanary-pipeline:40111/startquestionansweringwithtextquestion
+Content-Type: application/json
+
+{
+  "question": "Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+  "componentlist": [
+    "qanary-component-time"
+  ]
+}

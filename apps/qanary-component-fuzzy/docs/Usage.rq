@@ -1,0 +1,9 @@
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+
+SELECT ?subject ?predicate ?object
+FROM <YOUR_CURRENT_GRAPH_ID>
+WHERE {
+    ?subject oa:annotatedBy ?componentname ;
+    ?predicate ?object .
+    FILTER REGEX (STR(?componentname), ".*fuzzy") .
+}
