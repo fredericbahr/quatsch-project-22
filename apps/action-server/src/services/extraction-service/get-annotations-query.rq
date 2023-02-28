@@ -13,5 +13,5 @@ WHERE {
       oa:score ?score ;
       oa:annotatedBy ?annotatedBy ;
       oa:annotatedAt ?annotatedAt .
-    FILTER (?annotationType IN (qa:AnnotationAnswer,qa:AnnotationOfTextualAnswer YOUR_ANNOTATION_TYPES))
+    FILTER (?annotationType IN (qa:AnnotationAnswer,qa:AnnotationOfTextualAnswer, qa:YOUR_ANNOTATION_TYPES))
 }

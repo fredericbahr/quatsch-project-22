@@ -2,7 +2,7 @@ import * as chrono from "chrono-node";
 import { ParsedResult } from "chrono-node";
 import { IQanaryComponentMessageHandler } from "qanary-component-core";
 import { createAnnotationInKnowledgeGraph, getQuestion, IAnnotationInformation } from "qanary-component-helpers";
-import { annotationTypes, Domain, IQanaryMessage } from "shared";
+import { annotationTypesMap, Domain, IQanaryMessage } from "shared";
 
 import pkg from "../package.json";
 import { getAnnotationOfQuestionLanguage } from "./query/annotationOfQuestionLanguage";
@@ -51,7 +51,7 @@ export const handler: IQanaryComponentMessageHandler = async (message: IQanaryMe
       message,
       componentName,
       annotation: annotationInformation,
-      annotationType: annotationTypes.get(Domain.Time),
+      annotationType: annotationTypesMap.get(Domain.Time),
     });
   }
 

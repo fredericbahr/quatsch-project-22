@@ -1,0 +1,85 @@
+@startuml
+
+autonumber
+skinparam BoxPadding 15
+
+"Rasa" --> "Action Server" : INTENT First question
+"Action Server" --> "Qanary Pipeline" : GET Execute full qanary pipeline
+
+loop
+"Qanary Pipeline" --> "Qanary Component"
+"Qanary Pipeline" <-- "Qanary Component"
+end
+
+
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Message
+
+|||
+"Action Server" --> "Qanary Pipeline" : GET Annotations
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
+|||
+
+"Action Server" --> "Action Server" : Transform annotations
+
+|||
+database "State Store"
+"Action Server" --> "State Store" : SET state
+"Action Server" --> "State Store" : SET intent
+|||
+
+"Action Server" --> "Action Server": Verification of mandatory fields
+
+alt if mandatory fields is missing
+
+loop until all mandatory fields are set
+
+"Rasa" <-- "Action Server" : ERROR: Mandatory data missing
+"Rasa" --> "Action Server" : INTENT Mandatory data question
+
+"Action Server" --> "Qanary Pipeline": GET Execute mandatory field qanary pipeline
+
+loop
+"Qanary Pipeline" --> "Qanary Component"
+"Qanary Pipeline" <-- "Qanary Component"
+end
+
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Message
+ 
+|||
+"Action Server" --> "Qanary Pipeline" : GET Annotations
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
+|||
+
+"Action Server" --> "Action Server" : Transform annotations
+
+|||
+"Action Server" --> "State Store" : GET State
+"Action Server" <-- "State Store" : RECEIVE State
+|||
+
+"Action Server" --> "Action Server" : Join states
+
+"Action Server" --> "State Store" : SET state
+
+"Action Server" --> "Action Server": Verification of mandatory fields
+end
+
+|||
+"Action Server" --> "State Store" : GET Intent
+"Action Server" <-- "State Store" : RECEIVE Intent
+|||
+end
+
+|||
+"Action Server" --> "Action Server" : find intent handler
+
+"Action Server" --> "LUPO API" : GET lubw data
+"Action Server" <--> "LUPO API" : RECEIVE lubw data
+
+|||
+"Action Server" --> "Representation Server" : GET data in representation format
+"Action Server" <-- "Representation Server" : RECEIVE representation
+
+"Rasa" <-- "Action Server" : Answer question
+
+@enduml
