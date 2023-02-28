@@ -1,22 +1,24 @@
 import {
   COMPONENT_LIST,
+  IIntentHandler,
   ILUBWData,
-  ILUBWMeasurandData,
+  INTENTS,
   IQanaryAnnotation,
   IQanaryMessage,
-  IRepresentationData,
   RasaRequest,
   RasaResponse,
-  ResponseForMeasurandAir,
+  SuccessRasaResponse,
 } from "shared";
 
-import { AnnotationExtractionService } from "../../../services/extraction-service.ts/extract-annotation-service";
-import { LUBWQueryService } from "../../../services/lubw-query-service";
-import { RepresentationService } from "../../../services/representation-service";
+import { NoIntentHandlerError } from "../../../errors/NoIntentHandlerError";
+import { VerificationError } from "../../../errors/VerificationError";
+import { ErrorHandlingService } from "../../../services/error-handling-service";
+import { AnnotationExtractionService } from "../../../services/extraction-service/extract-annotation-service";
+import { IntentHandlerFindingService } from "../../../services/intent-handler-finding-service";
+import { StoringService } from "../../../services/storing-service";
 import { LUBWDataTransformationService } from "../../../services/transformation-service";
+import { VerificationService } from "../../../services/verification-service";
 import { startQanaryPipeline } from "../../../utils/start-pipeline";
-import { getResponseForMeasurandAir } from "./utils/get-response";
-import { handleMeasurandAirRequestError } from "./utils/handle-error";
 
 /**
  * Handles the intent/action of `action_context_air_measurand` by trying to answer the question with a Qanary pipeline.
@@ -24,7 +26,9 @@ import { handleMeasurandAirRequestError } from "./utils/handle-error";
  * @param res Response Object
  */
 export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
-  const question: string = req.body?.tracker?.latest_message?.text ?? "";
+  const question: string = req.body.tracker?.latest_message?.text ?? "";
+  const intent: string | undefined = req.body.next_action;
+  const senderId: string | undefined = req.body.sender_id;
 
   const componentlist: Array<COMPONENT_LIST> = [
     COMPONENT_LIST.PATTERN_MATCHING_STATION,
@@ -38,19 +42,35 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
   try {
     const qanaryMessage: IQanaryMessage = await startQanaryPipeline(question, componentlist);
 
-    const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAnnotations(qanaryMessage);
+    const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAllAnnotations(
+      qanaryMessage,
+    );
 
-    const lubwData: ILUBWData = LUBWDataTransformationService.getTransformedLUBWData(annotations);
+    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations);
 
-    const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
+    await StoringService.storeCurrentState({ senderId, intent, lubwData });
 
-    const representation: IRepresentationData = RepresentationService.getRepresentation(measurandData);
+    /** Throws an {@link VerificationError} if verification fails */
+    const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(lubwData);
 
-    const response: ResponseForMeasurandAir = getResponseForMeasurandAir(representation);
+    /** Throws an {@link NoIntentHandlerError} if no intent handler was found */
+    const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(
+      intent as INTENTS,
+    );
 
+    const response: SuccessRasaResponse = await measurandAirHandler(verifiedLUBWData);
     res.json(response);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(error);
-    return handleMeasurandAirRequestError(res);
+
+    if (error instanceof VerificationError) {
+      return ErrorHandlingService.handleVerificationError(res, error);
+    }
+
+    if (error instanceof NoIntentHandlerError) {
+      return ErrorHandlingService.handleNoIntentError(res);
+    }
+
+    return ErrorHandlingService.handleDefaultError(res);
   }
 };
