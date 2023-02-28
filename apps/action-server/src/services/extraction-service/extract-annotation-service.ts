@@ -87,7 +87,6 @@ export class AnnotationExtractionService {
    */
   private static getAllAnnotationTypes(): string {
     return Object.values(AnnotationTypes).join(",");
-
   }
 
   /**
