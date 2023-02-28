@@ -7,14 +7,14 @@ import { IRepresentationData, RasaResponseType, REPRESENTATION_TYPE, SuccessRasa
  */
 export const getResponseForMeasurandAir = (representation: IRepresentationData): SuccessRasaResponse => {
   switch (representation.type) {
-    case REPRESENTATION_TYPE.TEXT:
-      return createResponse(representation.value, RasaResponseType.TEXT);
-    case REPRESENTATION_TYPE.GRAPH:
-      return createResponse(representation.value, RasaResponseType.IMAGE);
-    case REPRESENTATION_TYPE.TABLE:
-      return createResponse(representation.value, RasaResponseType.IMAGE);
+    case REPRESENTATION_TYPE.Text:
+      return createResponse(representation.value, RasaResponseType.Text);
+    case REPRESENTATION_TYPE.Graph:
+      return createResponse(representation.value, RasaResponseType.Image);
+    case REPRESENTATION_TYPE.Table:
+      return createResponse(representation.value, RasaResponseType.Image);
     default:
-      return createResponse(representation.value, RasaResponseType.TEXT);
+      return createResponse(representation.value, RasaResponseType.Text);
   }
 };
 

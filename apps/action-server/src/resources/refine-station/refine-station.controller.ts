@@ -65,7 +65,7 @@ export const refineStationRequestHandler = async (req: RasaRequest, res: RasaRes
     }
 
     if (error instanceof NoIntentHandlerError) {
-      return ErrorHandlingService.handleNoIntentError(res);
+      return ErrorHandlingService.handleNoIntentHandlerError(res);
     }
 
     return ErrorHandlingService.handleDefaultError(res);

@@ -28,7 +28,7 @@ export class ErrorHandlingService {
    * Handles an no intent error gracefully by returning a response to the user to retry the original question.
    * @param res the response object
    */
-  public static handleNoIntentError(res: RasaResponse): RasaResponse {
+  public static handleNoIntentHandlerError(res: RasaResponse): RasaResponse {
     return res.json({
       responses: [
         {

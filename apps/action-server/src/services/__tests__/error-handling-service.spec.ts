@@ -68,9 +68,9 @@ describe("Error Handling Service", () => {
     });
   });
 
-  describe("handleNoIntentError", () => {
+  describe("handleNoIntentHandlerError", () => {
     it("should return a response with the correct text", () => {
-      ErrorHandlingService.handleNoIntentError(res);
+      ErrorHandlingService.handleNoIntentHandlerError(res);
 
       expect(res.json).toHaveBeenCalledWith({
         responses: [

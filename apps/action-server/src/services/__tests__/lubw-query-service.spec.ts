@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import { ILUBWData } from "shared";
 
 import { LUBWQueryService } from "../lubw-query-service";
