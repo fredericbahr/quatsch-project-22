@@ -1,3 +1,9 @@
+
+image:https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/badges/main/pipeline.svg[link="https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/-/commits/main",title="pipeline status"]
+
+image:https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/badges/main/coverage.svg[link="https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/-/commits/main",title="coverage status"]
+
+
 = QUAtsCH-project-22
 :toc:
 

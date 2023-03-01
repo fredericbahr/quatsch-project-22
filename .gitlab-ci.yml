@@ -58,6 +58,7 @@ test:
     paths:
       - "**/coverage"
     expire_in: 5 day
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
 test_rasa:
   stage: test
