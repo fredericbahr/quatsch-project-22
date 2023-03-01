@@ -82,8 +82,10 @@ export class LUBWDataTransformationService {
       const timeObject: ITimeObject = JSON.parse(time) as ITimeObject;
 
       if (!timeObject.end) {
-        console.error("The end date is missing. Fallback to default value.");
-        return undefined;
+        const [earlyDate, lateDate] = this.sortDates(timeObject.start, new Date().toISOString());
+        const dayDifference = differenceInDays(new Date(lateDate), new Date(earlyDate));
+
+        return `${dayDifference}d`;
       }
 
       const dayDifference = differenceInDays(new Date(timeObject.end), new Date(timeObject.start));
@@ -93,6 +95,23 @@ export class LUBWDataTransformationService {
       console.error(error);
       return undefined;
     }
+  }
+
+  /**
+   * Sorts the dates ascending.
+   * @param firstDateString the first date
+   * @param secondDateString the second date
+   * @returns an array with date strings sorted ascending
+   */
+  private static sortDates(firstDateString: string, secondDateString: string): string[] {
+    const date1: number = new Date(firstDateString).getTime();
+    const date2: number = new Date(secondDateString).getTime();
+
+    if (date1 < date2) {
+      return [firstDateString, secondDateString];
+    }
+
+    return [secondDateString, firstDateString];
   }
 
   /**
