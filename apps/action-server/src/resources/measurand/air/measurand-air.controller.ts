@@ -68,7 +68,7 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
     }
 
     if (error instanceof NoIntentHandlerError) {
-      return ErrorHandlingService.handleNoIntentError(res);
+      return ErrorHandlingService.handleNoIntentHandlerError(res);
     }
 
     return ErrorHandlingService.handleDefaultError(res);
