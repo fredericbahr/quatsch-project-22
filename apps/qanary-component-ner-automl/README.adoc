@@ -76,3 +76,17 @@ For the HTTP query `Was war gestern der Ozonwert in Ulm im Durchschnitt repräse
 |===
 include::docs/Output.csv[]
 |===
+
+== Training Data
+
+Custom training data for this Qanary NER component can be generated. Lubw domain instances for stations, measurands, calculations and representations will be combined with a set of training questions.
+
+To generate usable training/testing data one of the following commands can be used:
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+|`npm run generate:csv` |generates NER training and testing data as CSV files for immediate training on container startup
+|`npm run generate:json` |generates NER training and testing data as JSON files for retraining via `/retrain` route
+|`npm run generate:yml` |generates NLU training data as YML file for Rasa NLU slot filling
+|===
