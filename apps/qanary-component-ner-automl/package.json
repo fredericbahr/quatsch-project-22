@@ -2,7 +2,7 @@
   "name": "qanary-component-ner-automl",
   "version": "1.0.0",
   "description": "A qanary NER automl component with training data generation",
-  "license": "ISC",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "generate": "node src/generateTrainingData.js",
     "format": "prettier --check src",
