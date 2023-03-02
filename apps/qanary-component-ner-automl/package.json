@@ -16,6 +16,9 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
+  "dependencies": {
+    "qanary-lubw-data": "*"
+  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "eslint": "^8.33.0",
