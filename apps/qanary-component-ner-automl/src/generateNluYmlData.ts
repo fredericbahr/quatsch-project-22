@@ -1,19 +1,15 @@
 import * as fs from "fs";
 
-import { generateNluTrainingData, NluTrainingData } from "./generateTrainingData";
+import generateNluYmlFileContent from "./generateFileContent/generateNluYmlFileContent";
+import { generateNluTrainingData } from "./generateTrainingData/generateNluTrainingData";
+import { NluTrainingData } from "./types";
 
 /**
  * Writes provided data with necessary structure for rasa nlu into ../rasa/data/nlu/air-measurand.yml file
  * @param data training data array
  */
 const writeYmlFile = (data: Array<NluTrainingData>): void => {
-  const trainYml = `version: "3.1"
-
-nlu:
-  ## Creation of context
-  - intent: context_air_measurand
-    examples: |
-    - ${data.join("\n    - ")}`;
+  const trainYml = generateNluYmlFileContent(data);
 
   fs.writeFile("../rasa/data/nlu/air-measurand.yml", trainYml, (err) => {
     if (err) {

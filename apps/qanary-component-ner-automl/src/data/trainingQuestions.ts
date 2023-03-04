@@ -1,22 +1,4 @@
-export type DomainTemplate = {
-  station?: string;
-  measurand?: string;
-  calculation?: string;
-  representation?: string;
-};
-
-export type TrainingQuestion = {
-  text: (templates: DomainTemplate) => string;
-  measurandAllowList?: Array<string>;
-  measurandPrefix?: string;
-  measurandSuffix?: string;
-  representationAllowList?: Array<string>;
-  representationPrefix?: string;
-  representationSuffix?: string;
-  calculationAllowList?: Array<string>;
-  calculationPrefix?: string;
-  calculationSuffix?: string;
-};
+import { TrainingQuestion } from "../types";
 
 export const questionsStationMeasurand: Array<TrainingQuestion> = [
   {
