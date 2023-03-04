@@ -3,7 +3,7 @@ import * as fs from "fs";
 import { generateNluTrainingData, NluTrainingData } from "./generateTrainingData";
 
 /**
- * Writes provided data with necessary structure for rasa nlu into trainingdata/train.yml file
+ * Writes provided data with necessary structure for rasa nlu into ../rasa/data/nlu/air-measurand.yml file
  * @param data training data array
  */
 const writeYmlFile = (data: Array<NluTrainingData>): void => {
@@ -15,11 +15,11 @@ nlu:
     examples: |
     - ${data.join("\n    - ")}`;
 
-  fs.writeFile("trainingdata/train.yml", trainYml, (err) => {
+  fs.writeFile("../rasa/data/nlu/air-measurand.yml", trainYml, (err) => {
     if (err) {
       console.error(err);
     } else {
-      console.log("rasa nlu examples written to 'trainingdata/train.yml'");
+      console.log("rasa nlu examples written to '../rasa/data/nlu/air-measurand.yml'");
     }
   });
 };
