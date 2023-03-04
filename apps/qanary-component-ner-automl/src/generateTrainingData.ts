@@ -83,10 +83,10 @@ const generateNluDataEntry = (
   calculation?: string,
 ): NluTrainingData => {
   const trainingDataNlu: NluTrainingData = question.text({
-    station: `[${station}](station)`,
-    measurand: `[${measurand}](measurand)`,
-    representation: `[${representation}](representation)`,
-    calculation: `[${calculation}](calculation)`,
+    station,
+    measurand,
+    representation,
+    calculation,
   });
 
   return trainingDataNlu;
