@@ -9,7 +9,7 @@ import { NluTrainingData } from "./types";
  * @param data training data array
  */
 const writeYmlFile = (data: Array<NluTrainingData>): void => {
-  const trainYml = generateNluYmlFileContent(data);
+  const trainYml = generateNluYmlFileContent(data.filter(() => Math.random() <= 0.05));
 
   fs.writeFile("../rasa/data/nlu/air-measurand.yml", trainYml, (err) => {
     if (err) {
