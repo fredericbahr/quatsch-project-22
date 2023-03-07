@@ -1,7 +1,8 @@
 import { ILUBWData, ILUBWMeasurandData, IRepresentationData, SuccessRasaResponse } from "shared";
 
 import { LUBWQueryService } from "../../../services/lubw-query-service";
-import { RepresentationService } from "../../../services/representation-service";
+import { ResponseService } from "../../../services/response-service";
+import { ThresholdRepresentationService } from "./treshold.representation";
 
 /**
  * The intent handler for the intent `action_context_air_measurand`.
@@ -12,10 +13,11 @@ export const measurandThresholdIntentHandler = async (lubwData: ILUBWData): Prom
   try {
     const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
-    const representation: IRepresentationData = RepresentationService.getRepresentation(measurandData);
+    const representation: IRepresentationData = ThresholdRepresentationService.getRepresentation(measurandData);
 
-    return getResponseForMeasurandAir(representation);
-  } catch {
+    return ResponseService.getResponseByRepresentation(representation);
+  } catch (error) {
+    console.error(error);
     throw new Error("Something went wrong while determining the answer to the question.");
   }
 };

@@ -3,6 +3,8 @@ import path from "path";
 
 import { measurands } from "../data/measurands";
 import { stations } from "../data/stations";
+import { IMeasurand } from "../interfaces/measurand";
+import { IStation } from "../interfaces/station";
 
 const createMeasurandThresholdNLU = () => {
   const writeStream = fs.createWriteStream(
@@ -30,30 +32,58 @@ const createMeasurandThresholdNLU = () => {
   writeStream.write("\n");
 
   // starting questions with measurand, station and time range
-  measurands.forEach((measurands) => {
-    stations.forEach((station) => {
+  measurands.forEach((measurands: IMeasurand) => {
+    stations.forEach((station: IStation, index: number) => {
       const startDate = "23.03.2021";
       const endDate = "23.05.2021";
       const { id: measurandId, label: measurandLabel } = measurands;
       const { id: stationId, label: stationLabel } = station;
 
-      writeStream.write(`      - Ist der ${measurandId}wert für die Station ${stationId} grenzwertig?\n`);
-      writeStream.write(`      - Ist der ${measurandId}wert für die Station ${stationId} extrem?\n`);
-      writeStream.write(`      - Ist der ${measurandId}wert für die Station ${stationId} gefährlich?\n`);
+      if (index === 0) {
+        writeStream.write(`      - Ist der ${measurandId}wert für die Station ${stationId} grenzwertig?\n`);
+        writeStream.write(`      - Ist der ${measurandId}wert für die Station ${stationId} extrem?\n`);
+        writeStream.write(`      - Ist der ${measurandId}wert für die Station ${stationId} gefährlich?\n`);
+      }
+
+      if (index === 0) {
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} grenzwertig ausgegeben als Graph?\n`,
+        );
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} extrem ausgegeben als Graph?\n`,
+        );
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} gefährlich ausgegeben als Graph?\n`,
+        );
+
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} grenzwertig ausgegeben als Tabelle?\n`,
+        );
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} extrem ausgegeben als Tabelle?\n`,
+        );
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} gefährlich ausgegeben als Tabelle?\n`,
+        );
+      }
 
       writeStream.write(`      - Ist der ${measurandLabel}wert für die Station ${stationLabel} grenzwertig?\n`);
       writeStream.write(`      - Ist der ${measurandLabel}wert für die Station ${stationLabel} extrem?\n`);
-      writeStream.write(`      - Ist der ${measurandLabel}wert für die Station ${stationLabel} gefährlich?\n`);
+      if (index === 0) {
+        writeStream.write(`      - Ist der ${measurandLabel}wert für die Station ${stationLabel} gefährlich?\n`);
+      }
 
-      writeStream.write(
-        `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} zwischen dem ${startDate} und ${endDate} grenzwertig?\n`,
-      );
-      writeStream.write(
-        `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} zwischen dem ${startDate} und ${endDate} extrem?\n`,
-      );
-      writeStream.write(
-        `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} zwischen dem ${startDate} und ${endDate} gefährlich?\n`,
-      );
+      if (index < 15) {
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} zwischen dem ${startDate} und ${endDate} grenzwertig?\n`,
+        );
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} zwischen dem ${startDate} und ${endDate} extrem?\n`,
+        );
+        writeStream.write(
+          `      - Ist der ${measurandLabel}wert für die Station ${stationLabel} zwischen dem ${startDate} und ${endDate} gefährlich?\n`,
+        );
+      }
     });
   });
 };

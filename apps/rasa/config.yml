@@ -26,7 +26,7 @@ pipeline:
     epochs: 100
     constrain_similarities: true
   - name: FallbackClassifier
-    threshold: 0.8 # intent confidence under this threshold will be ignored, the nlu_fallback intent will be used instead
+    threshold: 0.7 # intent confidence under this threshold will be ignored, the nlu_fallback intent will be used instead
     ambiguity_threshold: 0.1
 
 # Configuration for Rasa Core.

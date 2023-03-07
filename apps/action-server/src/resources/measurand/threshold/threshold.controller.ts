@@ -47,9 +47,12 @@ export const measurandThresholdRequestHandler = async (req: RasaRequest, res: Ra
       qanaryMessage,
     );
 
-    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, false);
-
     const storedState: Partial<IState> | null = await StoringService.getCurrentState(senderId);
+
+    const shouldMergeWithDefaultState: boolean = storedState === null;
+
+    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, shouldMergeWithDefaultState);
+
     const mergedState: Partial<ILUBWData> = mergeStateAndLubwData(storedState, lubwData);
 
     /** Throws an {@link VerificationError} if verification fails */
