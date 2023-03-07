@@ -5,8 +5,9 @@ intents:
   - greet
   - goodbye
   - bot_challenge
-  # contect
+  # context
   - context_air_measurand
+  - measurand_threshold
   # refinement
   - refine_station
   - refine_measurand
@@ -52,6 +53,7 @@ responses:
 
 actions:
   - action_context_air_measurand
+  - action_measurand_threshold
   # Refinements
   - action_refine_station
   - action_refine_measurand

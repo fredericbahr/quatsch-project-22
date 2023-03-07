@@ -9,14 +9,17 @@ export const measurands: IMeasurand[] = [
   {
     id: "no2",
     label: "Stickstoffdioxid",
+    threshold: [200],
   },
   {
     id: "o3",
     label: "Ozon",
+    threshold: [180, 240],
   },
   {
     id: "pm10",
     label: "Feinstaub PM10",
+    threshold: [50],
   },
   {
     id: "pm25k",
