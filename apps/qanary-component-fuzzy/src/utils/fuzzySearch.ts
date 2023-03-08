@@ -1,11 +1,9 @@
 import Fuse from "fuse.js";
-import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "qanary-component-helpers";
-import { annotationTypesMap, Domain, IQanaryMessage } from "shared";
+import { createAnnotationInKnowledgeGraph, getDomainInstances, IAnnotationInformation } from "qanary-component-helpers";
+import { annotationTypesMap, Domain, DomainType, IQanaryMessage } from "shared";
 
 import pkg from "../../package.json";
-import { DomainType } from "../handler";
 import { AnnotationOfInstance } from "../query/annotationOfInstance";
-import { getDomainInstances } from "./getDomainInstances";
 
 /**
  * Creates a Fuse.js fuzzy search object with provided data.

@@ -1,15 +1,14 @@
-import { getEndpoint, getInGraph, selectSparql } from "qanary-component-helpers";
 import { Literal } from "rdf-js";
 import { Domain, IQanaryMessage } from "shared";
+import { DomainType } from "shared";
 
-import { DomainType } from "../handler";
-
-// TODO: move to helpers packages to use here and in pm component
+import { getEndpoint, getInGraph } from "./message-operations";
+import { selectSparql } from "./query-sparql";
 
 /**
  * A raw domain instance returned by the SPARQL query
  */
-interface IRawDomainInstance {
+export interface IRawDomainInstance {
   label: Literal;
   id: Literal;
 }

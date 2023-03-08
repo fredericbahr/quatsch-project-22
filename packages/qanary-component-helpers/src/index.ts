@@ -3,6 +3,7 @@ export {
   IAnnotationInformation,
   IAnnotationInformationRange,
 } from "./create-annotation";
+export { getDomainInstances, IRawDomainInstance } from "./get-domain-instances";
 export { getQuestion } from "./get-question";
 export { getQuestionUri } from "./get-question-uri";
 export { getEndpoint, getInGraph, getOutGraph } from "./message-operations";
