@@ -35,6 +35,17 @@ const extractQuestionSubstringFromAnnotation = (
 };
 
 /**
+ * Inverts the provided fuse confidence score.
+ * Because in fuse 0 indicates a perfect match and 1 a total mismatch,
+ * the score needs to be inverted for a use with other qanary components.
+ * @param fuseScore the score generated from a fuse fuzzy compare
+ * @returns inverted confidence score
+ */
+const invertFuseScore = (fuseScore: number): number => {
+  return 1 - fuseScore;
+};
+
+/**
  * Searches for a domain instance within a question via fuse fuzzy search.
  * @param question the question to search in
  * @param annotationOfInstance the annotation from a ner component
@@ -61,7 +72,7 @@ const searchViaFuzzy = <T extends Domain>(
 
   return {
     value: result.item.id,
-    confidence: result.score,
+    confidence: invertFuseScore(result.score),
     range: {
       start: annotationOfInstance.start,
       end: annotationOfInstance.end,
