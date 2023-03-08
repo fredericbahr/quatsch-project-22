@@ -94,7 +94,7 @@ export class ThresholdRepresentationService {
     return {
       value: new URL(
         `https://api.quickchart.io/v1/table?data=${JSON.stringify({
-          title: `Messart ${measurandData.measurand} für die Station ${measurandData.station}`,
+          title: `Messart ${measurandData.measurand} für die Station ${measurandData.station} mit Grenzwerten`,
           columns: this.getTableColumns(measurandData),
           dataSource: ["-", ...this.getTableSources(measurandData)],
         })}`,

@@ -51,15 +51,17 @@ export const measurandThresholdRequestHandler = async (req: RasaRequest, res: Ra
 
     const shouldMergeWithDefaultState: boolean = storedState === null;
 
-    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, shouldMergeWithDefaultState);
-
+    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(
+      annotations,
+      shouldMergeWithDefaultState,
+    );
+    
     const mergedState: Partial<ILUBWData> = mergeStateAndLubwData(storedState, lubwData);
+    
+    await StoringService.storeCurrentState({ senderId, intent, lubwData: mergedState });
 
     /** Throws an {@link VerificationError} if verification fails */
     const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(mergedState);
-
-    /** Stores new state only if verification was successful */
-    await StoringService.storeCurrentState({ senderId, intent, lubwData: verifiedLUBWData });
 
     /** Throws an {@link NoIntentHandlerError} if no intent handler was found */
     const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(
