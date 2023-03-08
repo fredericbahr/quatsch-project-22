@@ -12,7 +12,7 @@ import { getDomainInstances } from "./getDomainInstances";
  * @param domainInstances list of domain instances to use as data for fuzzy search
  * @returns a new fuse instance with loaded data
  */
-const createFuse = <T extends Domain>(domainInstances: Array<DomainType<T>>) => {
+const createFuse = <T extends Domain>(domainInstances: Array<DomainType<T>>): Fuse<DomainType<T>> => {
   const options = {
     includeScore: true,
     keys: ["id", "label"],
