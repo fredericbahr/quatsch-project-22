@@ -14,11 +14,11 @@ export class RepresentationService {
    */
   public static getRepresentation(measurandData: ILUBWMeasurandData): IRepresentationData {
     switch (measurandData.representation) {
-      case REPRESENTATION_TYPE.TEXT:
+      case REPRESENTATION_TYPE.Text:
         return this.getTextualRepresentation(measurandData);
-      case REPRESENTATION_TYPE.GRAPH:
+      case REPRESENTATION_TYPE.Graph:
         return this.getChartRepresentation(measurandData);
-      case REPRESENTATION_TYPE.TABLE:
+      case REPRESENTATION_TYPE.Table:
         return this.getTableRepresentation(measurandData);
       default:
         return this.getTextualRepresentation(measurandData);
@@ -37,7 +37,7 @@ export class RepresentationService {
       } beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })} ${
         measurandData.measurandData[0].values[0]
       }`,
-      type: REPRESENTATION_TYPE.TEXT,
+      type: REPRESENTATION_TYPE.Text,
     };
   }
 
@@ -72,7 +72,7 @@ export class RepresentationService {
           },
         })}`,
       ),
-      type: REPRESENTATION_TYPE.GRAPH,
+      type: REPRESENTATION_TYPE.Graph,
     };
   }
 
@@ -105,7 +105,7 @@ export class RepresentationService {
           ],
         })}`,
       ),
-      type: REPRESENTATION_TYPE.TABLE,
+      type: REPRESENTATION_TYPE.Table,
     };
   }
 }

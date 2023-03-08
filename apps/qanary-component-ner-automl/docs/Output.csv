@@ -1,0 +1,5 @@
+"annotationId","type","body","start","end"
+"tag:stardog:api:0.2865477880913113","http://www.wdaqua.eu/qa#AnnotationOfInstance","MEASURAND","20","28"
+"tag:stardog:api:0.05944389712676701","http://www.wdaqua.eu/qa#AnnotationOfInstance","STATION","32","35"
+"tag:stardog:api:0.8618006515896715","http://www.wdaqua.eu/qa#AnnotationOfInstance","CALCULATION","39","51"
+"tag:stardog:api:0.18507497888487545","http://www.wdaqua.eu/qa#AnnotationOfInstance","REPRESENTATION","70","74"

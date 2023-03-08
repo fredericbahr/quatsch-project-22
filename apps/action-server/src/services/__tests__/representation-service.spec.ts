@@ -23,7 +23,7 @@ describe("Representation Service", () => {
 
       expect(representation).toEqual({
         value: "Der Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023 1",
-        type: REPRESENTATION_TYPE.TEXT,
+        type: REPRESENTATION_TYPE.Text,
       });
     });
 
@@ -55,7 +55,7 @@ describe("Representation Service", () => {
             },
           })}`,
         ),
-        type: REPRESENTATION_TYPE.GRAPH,
+        type: REPRESENTATION_TYPE.Graph,
       });
     });
 
@@ -87,7 +87,7 @@ describe("Representation Service", () => {
             ],
           })}`,
         ),
-        type: REPRESENTATION_TYPE.TABLE,
+        type: REPRESENTATION_TYPE.Table,
       });
     });
   });
@@ -99,7 +99,7 @@ describe("Representation Service", () => {
 
       expect(representation).toEqual({
         value: "Der Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023 1",
-        type: REPRESENTATION_TYPE.TEXT,
+        type: REPRESENTATION_TYPE.Text,
       });
     });
   });
@@ -132,7 +132,7 @@ describe("Representation Service", () => {
             },
           })}`,
         ),
-        type: REPRESENTATION_TYPE.GRAPH,
+        type: REPRESENTATION_TYPE.Graph,
       });
     });
   });
@@ -165,7 +165,7 @@ describe("Representation Service", () => {
             ],
           })}`,
         ),
-        type: REPRESENTATION_TYPE.TABLE,
+        type: REPRESENTATION_TYPE.Table,
       });
     });
   });

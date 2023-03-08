@@ -1,18 +1,13 @@
-import {
-  ILUBWData,
-  ILUBWMeasurandData,
-  IQanaryAnnotation,
-  IQanaryMessage,
-  IRepresentationData,
-  RasaRequest,
-  RasaResponse,
-  REPRESENTATION_TYPE,
-} from "shared";
+import { ILUBWData, ILUBWDataKey, IQanaryAnnotation, IQanaryMessage, RasaRequest, RasaResponse } from "shared";
 
+import { NoIntentHandlerError } from "../../../../errors/NoIntentHandlerError";
+import { VerificationError } from "../../../../errors/VerificationError";
+import { ErrorHandlingService } from "../../../../services/error-handling-service";
 import { AnnotationExtractionService } from "../../../../services/extraction-service/extract-annotation-service";
-import { LUBWQueryService } from "../../../../services/lubw-query-service";
-import { RepresentationService } from "../../../../services/representation-service";
+import { IntentHandlerFindingService } from "../../../../services/intent-handler-finding-service";
+import { StoringService } from "../../../../services/storing-service";
 import { LUBWDataTransformationService } from "../../../../services/transformation-service";
+import { VerificationService } from "../../../../services/verification-service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { startQanaryPipeline } from "../../../../utils/start-pipeline";
 import { measurandAirRequestHandler } from "../measurand-air.controller";
@@ -27,20 +22,35 @@ jest.mock("../../../../services/extraction-service/extract-annotation-service", 
   },
 }));
 
-jest.mock("../../../../services/lubw-query-service", () => ({
-  LUBWQueryService: {
-    queryLUBWAPI: jest.fn(() => []),
+jest.mock("../../../../services/storing-service", () => ({
+  StoringService: {
+    storeCurrentState: jest.fn(),
   },
 }));
 
-jest.mock("../../../../services/representation-service", () => ({
-  ...jest.requireActual("../../../../services/representation-service"),
-  RepresentationService: {
-    getRepresentation: jest.fn(() => []),
+jest.mock("../../../../services/verification-service", () => ({
+  VerificationService: {
+    verifyLUBWData: jest.fn(),
   },
 }));
 
-xdescribe("#Measurand controllers", () => {
+jest.mock("../../../../services/intent-handler-finding-service", () => ({
+  IntentHandlerFindingService: {
+    findIntentHandlerByIntent: jest.fn(),
+  },
+}));
+
+jest.mock("../../../../services/error-handling-service", () => ({
+  ErrorHandlingService: {
+    handleNoIntentHandlerError: jest.fn(),
+    handleVerificationError: jest.fn(),
+    handleDefaultError: jest.fn(),
+  },
+}));
+
+describe("#Measurand controllers", () => {
+  const senderId = "test-sender-id";
+  const intent = "action_context_air_measurand";
   const text = "Ich bin der Test-Text";
   const qanaryMessage: IQanaryMessage = {
     endpoint: "http://qanary-pipeline:40111/sparql",
@@ -72,38 +82,33 @@ xdescribe("#Measurand controllers", () => {
     time: "1d",
     representation: "text",
   };
-  const measurandData: ILUBWMeasurandData = {
-    ...lubwData,
-    measurandData: [
-      {
-        metric: "kit.iai.test.luqx",
-        labels: {},
-        metaData: {},
-        times: [1677003319],
-        values: [2.0],
-      },
-    ],
-  };
-  const representation: IRepresentationData = {
-    value: "Die Luftqualität in Aalen ist gut.",
-    type: REPRESENTATION_TYPE.TEXT,
-  };
 
-  const req: RasaRequest = { body: { tracker: { latest_message: { text } } } } as RasaRequest;
+  const req: RasaRequest = {
+    body: { next_action: intent, sender_id: senderId, tracker: { latest_message: { text } } },
+  } as RasaRequest;
   const res: RasaResponse = { status: jest.fn(), end: jest.fn(), json: jest.fn() } as unknown as RasaResponse;
 
   const mockStartQanaryPipeline: jest.Mock = jest.fn().mockResolvedValue(qanaryMessage);
   const mockExtractAllAnnotations: jest.Mock = jest.fn().mockResolvedValue(annotations);
-  const mockGetTransformedLUBWData: jest.Mock = jest.fn().mockReturnValue(measurandData);
-  const mockQueryLUBWAPI: jest.Mock = jest.fn().mockResolvedValue(measurandData);
-  const mockGetRepresentation: jest.Mock = jest.fn().mockReturnValue(representation);
+  const mockGetTransformedLUBWData: jest.Mock = jest.fn().mockReturnValue(lubwData);
+  const mockStoreData: jest.Mock = jest.fn();
+  const mockVerifyLUBWData: jest.Mock = jest.fn().mockReturnValue(lubwData);
+  const mockMeasurandAirIntentHandler: jest.Mock = jest.fn();
+  const mockFindIntentHandler: jest.Mock = jest.fn().mockReturnValue(mockMeasurandAirIntentHandler);
+  const mockHandleVerificationError: jest.Mock = jest.fn();
+  const mockHandleNoIntentHandlerError: jest.Mock = jest.fn();
+  const mockHandleDefaultError: jest.Mock = jest.fn();
 
   beforeEach(() => {
     (startQanaryPipeline as jest.Mock) = mockStartQanaryPipeline;
     (AnnotationExtractionService.extractAllAnnotations as jest.Mock) = mockExtractAllAnnotations;
+    (StoringService.storeCurrentState as jest.Mock) = mockStoreData;
     (LUBWDataTransformationService.getTransformedLUBWData as jest.Mock) = mockGetTransformedLUBWData;
-    (LUBWQueryService.queryLUBWAPI as jest.Mock) = mockQueryLUBWAPI;
-    (RepresentationService.getRepresentation as jest.Mock) = mockGetRepresentation;
+    (VerificationService.verifyLUBWData as jest.Mock) = mockVerifyLUBWData;
+    (IntentHandlerFindingService.findIntentHandlerByIntent as jest.Mock) = mockFindIntentHandler;
+    (ErrorHandlingService.handleVerificationError as jest.Mock) = mockHandleVerificationError;
+    (ErrorHandlingService.handleNoIntentHandlerError as jest.Mock) = mockHandleNoIntentHandlerError;
+    (ErrorHandlingService.handleDefaultError as jest.Mock) = mockHandleDefaultError;
   });
 
   afterEach(() => jest.clearAllMocks());
@@ -132,7 +137,7 @@ xdescribe("#Measurand controllers", () => {
   });
 
   describe("Annotation Extraction", () => {
-    it("should call the annotation extraction service with the qanary message", async () => {
+    it("should extract all annotation", async () => {
       await measurandAirRequestHandler(req, res);
 
       expect(mockExtractAllAnnotations).toHaveBeenCalledWith(qanaryMessage);
@@ -140,48 +145,78 @@ xdescribe("#Measurand controllers", () => {
   });
 
   describe("Transformation", () => {
-    it("should call the transformation service with the annotations", async () => {
+    it("should transform the annotations", async () => {
       await measurandAirRequestHandler(req, res);
 
       expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.objectContaining(annotations));
     });
   });
 
-  describe("LUBW Data", () => {
-    it("should call the LUBW Query Service with the annotations", async () => {
+  describe("Storing", () => {
+    it("should store the current data and intent", async () => {
       await measurandAirRequestHandler(req, res);
 
-      expect(mockQueryLUBWAPI).toHaveBeenCalledWith(expect.objectContaining(lubwData));
-    });
-  });
-
-  describe("Representation", () => {
-    it("should call the representation service with the measurand data", async () => {
-      await measurandAirRequestHandler(req, res);
-
-      expect(mockGetRepresentation).toHaveBeenCalledWith(expect.objectContaining(measurandData));
-    });
-  });
-
-  describe("Response", () => {
-    it("should return the correct response", async () => {
-      await measurandAirRequestHandler(req, res);
-
-      expect(res.json).toHaveBeenCalledWith({
-        responses: [{ text: representation.value, response: "" }],
+      expect(mockStoreData).toHaveBeenCalledWith({
+        senderId: expect.any(String),
+        intent: expect.any(String),
+        lubwData: expect.objectContaining(lubwData),
       });
+    });
+  });
+
+  describe("Verification", () => {
+    it("should call the verification service with the lubwData", async () => {
+      await measurandAirRequestHandler(req, res);
+
+      expect(mockVerifyLUBWData).toHaveBeenCalledWith(expect.objectContaining(lubwData));
+    });
+  });
+
+  describe("Intent Handling", () => {
+    it("should find the correct intent handler", async () => {
+      await measurandAirRequestHandler(req, res);
+
+      expect(mockFindIntentHandler).toHaveBeenCalledWith(intent);
+    });
+
+    it("should call the intent handler with the correct data", async () => {
+      await measurandAirRequestHandler(req, res);
+
+      expect(mockMeasurandAirIntentHandler).toHaveBeenCalledWith(lubwData);
     });
   });
 
   describe("Error Handling", () => {
-    it("should return an error response if an error occurs", async () => {
+    it("should handle Verifications errors occordingly", async () => {
+      const verificationErrror = new VerificationError("Error", null, ILUBWDataKey.Station);
+      mockVerifyLUBWData.mockImplementation(() => {
+        throw verificationErrror;
+      });
+
+      await measurandAirRequestHandler(req, res);
+
+      expect(mockHandleVerificationError).toHaveBeenCalledWith(res, verificationErrror);
+    });
+
+    it("should handle no intent handler errors occordingly", async () => {
+      mockVerifyLUBWData.mockReset();
+
+      const noIntentHandlerError = new NoIntentHandlerError("Error");
+      mockFindIntentHandler.mockImplementation(() => {
+        throw noIntentHandlerError;
+      });
+
+      await measurandAirRequestHandler(req, res);
+
+      expect(mockHandleNoIntentHandlerError).toHaveBeenCalledWith(res);
+    });
+
+    it("should handle unexpected errors occordingly", async () => {
       mockStartQanaryPipeline.mockRejectedValue(new Error("Error"));
 
       await measurandAirRequestHandler(req, res);
 
-      expect(res.json).toHaveBeenCalledWith({
-        responses: [{ text: expect.any(String), response: "" }],
-      });
+      expect(mockHandleDefaultError).toHaveBeenCalledWith(res);
     });
   });
 });

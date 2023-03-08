@@ -2,7 +2,7 @@ import { ILUBWData } from "shared";
 
 import { LUBWQueryService } from "../lubw-query-service";
 
-describe("LUBW Query Service", () => {
+xdescribe("LUBW Query Service", () => {
   const lubwData: ILUBWData = {
     calculation: "average",
     measurand: "luqx",
@@ -20,7 +20,7 @@ describe("LUBW Query Service", () => {
     );
   });
 
-  xit("should query the LUBW API", async () => {
+  it("should query the LUBW API", async () => {
     const data = await LUBWQueryService.queryLUBWAPI(lubwData);
 
     expect(data).toEqual({
@@ -29,7 +29,7 @@ describe("LUBW Query Service", () => {
     });
   });
 
-  xit("should throw an error if the query fails", async () => {
+  it("should throw an error if the query fails", async () => {
     (window.fetch as jest.Mock) = jest.fn(() => Promise.reject("error"));
 
     await expect(LUBWQueryService.queryLUBWAPI(lubwData)).rejects.toEqual("error");

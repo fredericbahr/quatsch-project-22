@@ -1,0 +1,9 @@
+= npm run docker:up-slim
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run docker:up-slim` |Starts all services within the monorepo except for the qanary ner component
+// end::command[]
+|===
