@@ -1,6 +1,6 @@
 import Fuse from "fuse.js";
 import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "qanary-component-helpers";
-import { annotationTypes, Domain, IQanaryMessage } from "shared";
+import { annotationTypesMap, Domain, IQanaryMessage } from "shared";
 
 import pkg from "../../package.json";
 import { DomainType } from "../handler";
@@ -93,7 +93,7 @@ export const searchForDomainInstances = async (
       message,
       componentName: pkg.name,
       annotation,
-      annotationType: annotationTypes.get(annotationOfInstance.domain),
+      annotationType: annotationTypesMap.get(annotationOfInstance.domain),
     });
   }
 };
