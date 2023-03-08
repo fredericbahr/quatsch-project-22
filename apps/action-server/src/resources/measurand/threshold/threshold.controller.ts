@@ -55,9 +55,9 @@ export const measurandThresholdRequestHandler = async (req: RasaRequest, res: Ra
       annotations,
       shouldMergeWithDefaultState,
     );
-    
+
     const mergedState: Partial<ILUBWData> = mergeStateAndLubwData(storedState, lubwData);
-    
+
     await StoringService.storeCurrentState({ senderId, intent, lubwData: mergedState });
 
     /** Throws an {@link VerificationError} if verification fails */

@@ -9,7 +9,7 @@ export class IntentHandlerFindingService {
   /** Map of all intent handlers */
   private static intentHandlerMap: IIntentHandlerMap = new Map<INTENTS, IIntentHandler>([
     [INTENTS.ACTION_CONTEXT_AIR_MEASURAND, measurandAirIntentHandler],
-    [INTENTS.ACTION_MEASURAND_THRESHOLD, measurandThresholdIntentHandler]
+    [INTENTS.ACTION_MEASURAND_THRESHOLD, measurandThresholdIntentHandler],
   ]);
 
   /**

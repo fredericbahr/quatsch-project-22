@@ -184,7 +184,10 @@ describe("#Measurand Threshold controllers", () => {
     it("should merge the current state with the transformed data", async () => {
       await measurandThresholdRequestHandler(req, res);
 
-      expect(mockMergeStateAndLubwData).toHaveBeenCalledWith(expect.objectContaining(state), expect.objectContaining(lubwData));
+      expect(mockMergeStateAndLubwData).toHaveBeenCalledWith(
+        expect.objectContaining(state),
+        expect.objectContaining(lubwData),
+      );
     });
   });
 

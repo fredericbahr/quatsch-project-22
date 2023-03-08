@@ -58,11 +58,11 @@ describe("mergeStateAndLubwData", () => {
 
     const result = mergeStateAndLubwData(state, lubwData);
     expect(result).toEqual({
-        station: undefined,
-        measurand: lubwData.measurand,
-        calculation: lubwData.calculation,
-        representation: lubwData.representation,
-        time: lubwData.time,
+      station: undefined,
+      measurand: lubwData.measurand,
+      calculation: lubwData.calculation,
+      representation: lubwData.representation,
+      time: lubwData.time,
     });
   });
 });
