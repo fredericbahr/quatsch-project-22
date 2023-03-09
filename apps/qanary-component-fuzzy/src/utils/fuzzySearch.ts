@@ -79,7 +79,8 @@ const searchViaFuzzy = <T extends Domain>(
 };
 
 /**
- * Checks if annotated part of question containes one of the domain instances of annotation domain. Writes results as new annotations to triple store.
+ * Checks if annotated part of question containes one of the domain instances of annotation domain.
+ * Writes results as new annotations to triple store.
  * @param message the qanary message
  * @param question the question to check whether it contains a domain instance
  * @param annotationOfInstance the annotation from a ner component

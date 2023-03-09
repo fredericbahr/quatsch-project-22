@@ -15,7 +15,7 @@ jest.mock("qanary-component-helpers", () => ({
   getQuestion: jest.fn(() => Promise.resolve("")),
 }));
 
-describe("handler", () => {
+describe("#Component handler", () => {
   const qanaryMessage: IQanaryMessage = {
     endpoint: "http://qanary-pipeline:40111/sparql",
     inGraph: "urn:graph:e8fe00d7-2a1b-4978-acef-af893cd287dd",
