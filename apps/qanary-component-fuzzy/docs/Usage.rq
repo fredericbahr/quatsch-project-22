@@ -1,9 +1,16 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
 
-SELECT ?subject ?predicate ?object
+SELECT ?annotationId ?componentname ?type ?body ?score ?start ?end
 FROM <YOUR_CURRENT_GRAPH_ID>
 WHERE {
-    ?subject oa:annotatedBy ?componentname ;
-    ?predicate ?object .
+    ?annotationId oa:annotatedBy ?componentname .
     FILTER REGEX (STR(?componentname), ".*fuzzy") .
+    ?annotationId rdf:type ?type .
+    ?annotationId oa:hasBody ?body .
+    ?annotationId oa:score ?score.
+    ?annotationId oa:hasTarget ?target.
+    ?target oa:hasSelector ?selector .
+    ?selector oa:start ?start .
+    ?selector oa:end ?end .
 }

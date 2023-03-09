@@ -2,23 +2,29 @@
 = Qanary Component Fuzzy
 :toc:
 
-This is a Qanary component for determining time values, in posed questions. The time values, depending on whether it is a time span or a time value, are arranged in an object literal, which has at least a start date and possibly an end date. These values are stored together with the found text fragment as a serialized JSON in the knowledge graph.
+This is a Qanary component for checking if given NER annotations in a question match specific lubw domain instances via a fuzzy compare.
+The component receives prior AnnotationsOfInstance from a NER qanary component via the knowledge graph.
+It also receives the domain knowledge via the knowledge graph, which get seeded when asking the question.
 
-.Example Question:
+.Example Prior NER Annotations in Question:
 [source,text]
 ----
-Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?
-                                └────────────┬───────────┘                                            └───────┬──────┘
-                                      AnnotationOfTime                                                AnnotationOfTime
+Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?
+                    └┬────────────────┘    └┬─┘    └─────────┬┘                   └┬┘
+           AnnotationOfInstance   AnnotationOfInstance   AnnotationOfInstance   AnnotationOfInstance
+                 MEASURAND               STATION              CALCULATION          REPRESENTATION
 ----
 
-.Example AnnotationOfTime as deserialized JSON:
-[source,json]
+.Example Result Fuzzy Match Annotations in Question:
+[source,text]
 ----
-{"text":"03.01.2022 bis 29.01.2022","start":"2022-01-03T12:00:00.000Z","end":"2022-01-29T12:00:00.000Z"}
+Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?
+                    └┬────────────────┘    └┬─┘    └─────────┬┘                   └┬┘
+           AnnotationOfMeasurand   AnnotationOfStation   AnnotationOfCalculation   AnnotationOfRepresentation
+            Luftqualitätsindex             Ulm                 Durchschnitt                   Text
 ----
 
-This component uses https://github.com/wanasit/chrono and is limited by the possibilities offered by this library.
+This component uses https://fusejs.io for the fuzzy compare logic and is limited by the possibilities offered by this library.
 // end::excerpt[]
 
 include::../../docs/Component Install.adoc[leveloffset=+1]
@@ -27,15 +33,27 @@ include::../../docs/Component Integration.adoc[leveloffset=+2]
 
 [source,yaml]
 ----
-include::../../docker-compose.yml[tags=preamble;qanary-pipeline;qanary-component-time;networks]
+include::../../docker-compose.yml[tags=preamble;qanary-pipeline;qanary-component-fuzzy;networks]
 ----
 
 Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
 
 [source,dotenv]
 ----
-include::../../example.env[tags=qanary-pipeline;qanary-component-core;qanary-component-time]
+include::../../example.env[tags=qanary-pipeline;qanary-component-core;qanary-component-fuzzy]
 ----
+
+== Functionality
+
+The component fetches every rdf triple of the a `<urn:domain>` class, maps it to an internal representation and checks if previous NER annotations in the question fuzzy match a domain instance.
+If so, it adds the domain instance as an annotation to the knowledge graph.
+
+Note that all matches are added to the knowledge graph.
+This means that if the question contains multiple domain instances, all of them will be added to the knowledge graph.
+
+Additionally the component logs found domain instances to the console.
+
+No error handling is implemented as this component simply does not add annotations to the knowledge graph if errors occur.
 
 == Usage
 
@@ -46,22 +64,12 @@ In the second phase, we can get the annotation data via a SPARQL query.
 === Request an annotation
 
 To use the component, you can make a request to the Qanary pipeline.
-In the following example, a question is asked to the pipeline in German and the time values are determined.
+In the following example, a question is asked to the pipeline in german and domain instances are matched and annotated.
 
 [source,httprequest]
 ----
 include::docs/Usage.http[]
 ----
-
-TIP: A more advanced use case considers the issue of language.
-If the pipeline is preceded by a component that leaves an AnnotationOfQuestionLanguage with an ISO 639-1 language code, it is evaluated by this component.
-
-[source,httprequest]
-----
-include::docs/UsageAdvanced.http[]
-----
-
-For example, a component that leaves an annotation of the type AnnotationOfQuestionLanguage is link:../qanary-component-ld-shuyo/README.adoc[LD-Shuyo].
 
 === Receive annotation data
 
@@ -86,7 +94,7 @@ This allows to query the data with the following command line interface:
 rsparql --file docs/Usage.rq --service http://qanary-pipeline:40111/sparql --results=CSV
 ----
 
-For the HTTP query `Wie ist der Ozonwert in Ulm am 23.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?` there are the following found annotations in the SPARQL query
+For the HTTP query `Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?` there are the following found annotations in the SPARQL query
 
 [%header,format=csv]
 |===
