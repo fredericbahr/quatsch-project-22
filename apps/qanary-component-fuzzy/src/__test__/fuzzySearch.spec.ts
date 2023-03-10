@@ -4,13 +4,21 @@ import { IStation } from "qanary-lubw-data";
 import { Domain, IQanaryMessage } from "shared";
 
 import { AnnotationOfInstance } from "../query/annotationOfInstance";
-import { searchForDomainInstances } from "../utils/fuzzySearch";
+import { invertFuseScore, searchForDomainInstances } from "../utils/fuzzySearch";
 
 jest.mock("qanary-component-helpers", () => ({
   ...jest.requireActual("qanary-component-helpers"),
   getDomainInstances: jest.fn(() => Promise.resolve([])),
   createAnnotationInKnowledgeGraph: jest.fn(() => Promise.resolve()),
 }));
+
+describe("#Component invertFuseScore", () => {
+  it("should return 0 when score is undefined", () => {
+    const invertedScore = invertFuseScore(undefined);
+
+    expect(invertedScore).toStrictEqual(0);
+  });
+});
 
 describe("#Component fuzzySearch", () => {
   const qanaryMessage: IQanaryMessage = {

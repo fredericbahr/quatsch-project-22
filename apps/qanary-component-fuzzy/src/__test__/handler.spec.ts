@@ -75,6 +75,18 @@ describe("#Component handler", () => {
     expect(mockCheckDomainInstancesViaFuzzy).toHaveBeenCalledTimes(2);
   });
 
+  it("should return the message if no previous annotations exist", async () => {
+    const mockGetDomainInstances = jest.fn(() => Promise.resolve(null));
+    (getAnnotationsOfInstance as jest.Mock) = mockGetDomainInstances;
+
+    const mockCheckDomainInstancesViaFuzzy = jest.fn(() => Promise.resolve());
+    (searchForDomainInstances as jest.Mock) = mockCheckDomainInstancesViaFuzzy;
+
+    const result = await handler(qanaryMessage);
+
+    expect(result).toEqual(qanaryMessage);
+  });
+
   it("should return the message", async () => {
     const mockGetDomainInstances = jest.fn(() => Promise.resolve([]));
     (getAnnotationsOfInstance as jest.Mock) = mockGetDomainInstances;
