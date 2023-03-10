@@ -7,12 +7,16 @@ import { AnnotationOfInstance } from "../query/annotationOfInstance";
 
 /**
  * Creates a Fuse.js fuzzy search object with provided data.
+ * The location of the match in the string doesn't matter for the score.
+ * And a score threshold of 0.6 is used (resulting in inverted threshold of 0.4).
  * @param domainInstances list of domain instances to use as data for fuzzy search
  * @returns a new fuse instance with loaded data
  */
 const createFuse = <T extends Domain>(domainInstances: Array<DomainType<T>>): Fuse<DomainType<T>> => {
   const options = {
     includeScore: true,
+    ignoreLocation: true,
+    threshold: 0.6,
     keys: ["id", "label"],
   };
 
