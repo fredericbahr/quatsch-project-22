@@ -5,17 +5,17 @@ import { generateSmallNluTrainingData } from "./generateTrainingData/generateSma
 import { NluTrainingData } from "./types";
 
 /**
- * Writes provided data with necessary structure for rasa nlu into ../rasa/data/nlu/air-measurand.yml file
+ * Writes provided data with necessary structure for rasa nlu into ../rasa/data/nlu/complete-measurand.yml file
  * @param data training data array
  */
 const writeYmlFile = (data: Array<NluTrainingData>): void => {
   const trainYml = generateNluYmlFileContent(data.filter(() => Math.random() <= 0.25));
 
-  fs.writeFile("../rasa/data/nlu/air-measurand.yml", trainYml, (err) => {
+  fs.writeFile("../rasa/data/nlu/complete-measurand.yml", trainYml, (err) => {
     if (err) {
       console.error(err);
     } else {
-      console.log("rasa nlu examples written to '../rasa/data/nlu/air-measurand.yml'");
+      console.log("rasa nlu examples written to '../rasa/data/nlu/complete-measurand.yml'");
     }
   });
 };
