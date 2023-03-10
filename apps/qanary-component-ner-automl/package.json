@@ -10,6 +10,7 @@
     "generate:csv": "ts-node src/generateNerCsvData.ts",
     "generate:json": "ts-node src/generateNerJsonData.ts",
     "generate:yml": "ts-node src/generateNluYmlData.ts",
+    "generate:yml-small": "ts-node src/generateSmallNluYmlData.ts",
     "build": "tsc",
     "clean": "rimraf .turbo coverage dist",
     "format": "prettier --check src",
