@@ -1,6 +1,6 @@
 import { RasaResponse } from "shared";
 
-import { handleMeasurandAirRequestError } from "../../utils/handle-error";
+import { handleMeasurandCompleteRequestError } from "../../utils/handle-error";
 
 describe("Handler error utils", () => {
   it("should return a response", () => {
@@ -8,7 +8,7 @@ describe("Handler error utils", () => {
       json: jest.fn(),
     } as unknown as RasaResponse;
 
-    handleMeasurandAirRequestError(res);
+    handleMeasurandCompleteRequestError(res);
 
     expect(res.json).toHaveBeenCalledWith({
       responses: [

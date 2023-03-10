@@ -2,9 +2,9 @@ import { INTENTS, RasaRequest, RasaResponse } from "shared";
 
 import { webhookRequestHandler } from "../webhook.controller";
 
-jest.mock("../../measurand/air/measurand-air.controller", () => ({
-  ...jest.requireActual("../../measurand/air/measurand-air.controller"),
-  measurandAirRequestHandler: jest.fn((req, res) => res.json()),
+jest.mock("../../measurand/complete/complete.controller", () => ({
+  ...jest.requireActual("../../measurand/complete/complete.controller"),
+  measurandCompleteRequestHandler: jest.fn((req, res) => res.json()),
 }));
 
 describe("#Webhook controllers", () => {

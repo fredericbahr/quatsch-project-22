@@ -3,7 +3,7 @@ import { ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
 import { RepresentationService } from "../../../../services/representation-service";
 import { ResponseService } from "../../../../services/response-service";
-import { measurandAirIntentHandler } from "../measurand-air.intent-handler";
+import { measurandCompleteIntentHandler } from "../complete.intent-handler";
 
 jest.mock("../../../../services/lubw-query-service", () => ({
   LUBWQueryService: {
@@ -23,7 +23,7 @@ jest.mock("../../../../services/response-service", () => ({
   },
 }));
 
-describe("Measurand Air Intent Handler", () => {
+describe("Measurand Complete Intent Handler", () => {
   const lubwData: ILUBWData = {
     calculation: "average",
     measurand: "luqx",
@@ -60,7 +60,7 @@ describe("Measurand Air Intent Handler", () => {
 
   describe("LUBW API Query", () => {
     it("should call the LUBW API with the correct data", async () => {
-      await measurandAirIntentHandler(lubwData);
+      await measurandCompleteIntentHandler(lubwData);
 
       expect(mockQueryLUBWAPI).toHaveBeenCalledWith(lubwData);
     });
@@ -68,7 +68,7 @@ describe("Measurand Air Intent Handler", () => {
 
   describe("Representation Service", () => {
     it("should call the Representation Service with the correct data", async () => {
-      await measurandAirIntentHandler(lubwData);
+      await measurandCompleteIntentHandler(lubwData);
 
       expect(mockGetRepresentation).toHaveBeenCalledWith(measurandData);
     });
@@ -76,7 +76,7 @@ describe("Measurand Air Intent Handler", () => {
 
   describe("Response", () => {
     it("should call the response utils with the correct data", async () => {
-      await measurandAirIntentHandler(lubwData);
+      await measurandCompleteIntentHandler(lubwData);
 
       expect(mockGetResponseByRepresentation).toHaveBeenCalledWith(representation);
     });
@@ -86,7 +86,7 @@ describe("Measurand Air Intent Handler", () => {
     it("should throw an error if the LUBW API query fails", async () => {
       mockQueryLUBWAPI.mockRejectedValue(new Error());
 
-      await expect(measurandAirIntentHandler(lubwData)).rejects.toThrowError();
+      await expect(measurandCompleteIntentHandler(lubwData)).rejects.toThrowError();
     });
   });
 });

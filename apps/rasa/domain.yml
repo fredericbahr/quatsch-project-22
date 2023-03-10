@@ -6,7 +6,7 @@ intents:
   - goodbye
   - bot_challenge
   # contect
-  - context_air_measurand
+  - measurand_complete
   # refinement
   - refine_station
   - refine_measurand
@@ -51,7 +51,7 @@ responses:
     - text: "Das war nicht sehr nett. Ich werde daher deine Anfrage nicht beantworten.\nVersuche es gerne mit einer netten Ausdrucksweise erneut."
 
 actions:
-  - action_context_air_measurand
+  - action_measurand_complete
   # Refinements
   - action_refine_station
   - action_refine_measurand
