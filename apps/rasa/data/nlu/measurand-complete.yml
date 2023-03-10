@@ -2,7 +2,7 @@ version: "3.1"
 
 nlu:
   ## Creation of context
-  - intent: context_air_measurand
+  - intent: measurand_complete
     examples: |
       - Wie ist der Stickstoffdioxid in DEBW029?
       - Wie ist der no2 in Aalen?

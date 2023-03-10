@@ -21,11 +21,11 @@ import { VerificationService } from "../../../services/verification-service";
 import { startQanaryPipeline } from "../../../utils/start-pipeline";
 
 /**
- * Handles the intent/action of `action_context_air_measurand` by trying to answer the question with a Qanary pipeline.
+ * Handles the intent/action of `action_measurand_complete` by trying to answer the question with a Qanary pipeline.
  * @param req Request Object
  * @param res Response Object
  */
-export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
+export const measurandCompleteRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
   const question: string = req.body.tracker?.latest_message?.text ?? "";
   const intent: string | undefined = req.body.next_action;
   const senderId: string | undefined = req.body.sender_id;
@@ -56,11 +56,11 @@ export const measurandAirRequestHandler = async (req: RasaRequest, res: RasaResp
     const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(lubwData);
 
     /** Throws an {@link NoIntentHandlerError} if no intent handler was found */
-    const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(
+    const measurandCompleteHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(
       intent as INTENTS,
     );
 
-    const response: SuccessRasaResponse = await measurandAirHandler(verifiedLUBWData);
+    const response: SuccessRasaResponse = await measurandCompleteHandler(verifiedLUBWData);
     res.json(response);
   } catch (error: unknown) {
     console.error(error);

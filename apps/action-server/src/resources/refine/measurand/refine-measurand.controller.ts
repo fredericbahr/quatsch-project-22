@@ -11,27 +11,27 @@ import {
 } from "shared";
 import { AnnotationTypes } from "shared/dist/enums/annotations";
 
-import { NoIntentHandlerError } from "../../errors/NoIntentHandlerError";
-import { VerificationError } from "../../errors/VerificationError";
-import { ErrorHandlingService } from "../../services/error-handling-service";
-import { AnnotationExtractionService } from "../../services/extraction-service/extract-annotation-service";
-import { IntentHandlerFindingService } from "../../services/intent-handler-finding-service";
-import { StoringService } from "../../services/storing-service";
-import { LUBWDataTransformationService } from "../../services/transformation-service";
-import { VerificationService } from "../../services/verification-service";
-import { startQanaryPipeline } from "../../utils/start-pipeline";
+import { NoIntentHandlerError } from "../../../errors/NoIntentHandlerError";
+import { VerificationError } from "../../../errors/VerificationError";
+import { ErrorHandlingService } from "../../../services/error-handling-service";
+import { AnnotationExtractionService } from "../../../services/extraction-service/extract-annotation-service";
+import { IntentHandlerFindingService } from "../../../services/intent-handler-finding-service";
+import { StoringService } from "../../../services/storing-service";
+import { LUBWDataTransformationService } from "../../../services/transformation-service";
+import { VerificationService } from "../../../services/verification-service";
+import { startQanaryPipeline } from "../../../utils/start-pipeline";
 
 /**
- * Handler for refining the station if a validation error occured
+ * Handler for refining the measurand if a validation error occured
  * @param req the request object
  * @param res the response object
  */
-export const refineStationRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
+export const refineMeasurandRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
   const question: string = req.body.tracker?.latest_message?.text ?? "";
   const senderId: string | undefined = req.body.sender_id;
 
   const componentlist: Array<COMPONENT_LIST> = [
-    COMPONENT_LIST.PATTERN_MATCHING_STATION,
+    COMPONENT_LIST.PATTERN_MATCHING_MEASURAND,
     COMPONENT_LIST.NER_AUTOML,
     COMPONENT_LIST.FUZZY_NER,
   ];
@@ -41,14 +41,14 @@ export const refineStationRequestHandler = async (req: RasaRequest, res: RasaRes
 
     const annotations: Array<IQanaryAnnotation> = await AnnotationExtractionService.extractAnnotationsByType(
       qanaryMessage,
-      AnnotationTypes.Station,
+      AnnotationTypes.Measurand,
     );
 
     const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, false);
 
-    const station: string | undefined = lubwData.station;
+    const measurand: string | undefined = lubwData.measurand;
 
-    await StoringService.changeStateEntry(senderId, ILUBWDataKey.Station, station);
+    await StoringService.changeStateEntry(senderId, ILUBWDataKey.Measurand, measurand);
 
     const stateLUBWData: Partial<ILUBWData> | null = await StoringService.getCurrentState(senderId);
 

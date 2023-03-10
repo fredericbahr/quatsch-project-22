@@ -5,15 +5,15 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: context_air_measurand
-      - action: action_context_air_measurand
+      - intent: measurand_complete
+      - action: action_measurand_complete
 
   - story: Missing station
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: context_air_measurand
-      - action: action_context_air_measurand
+      - intent: measurand_complete
+      - action: action_measurand_complete
       - intent: refine_station
       - action: action_refine_station
 
@@ -21,8 +21,8 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: context_air_measurand
-      - action: action_context_air_measurand
+      - intent: measurand_complete
+      - action: action_measurand_complete
       - intent: refine_measurand
       - action: action_refine_measurand
 
@@ -30,8 +30,8 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: context_air_measurand
-      - action: action_context_air_measurand
+      - intent: measurand_complete
+      - action: action_measurand_complete
       - intent: refine_station
       - action: action_refine_station
       - intent: refine_measurand
@@ -41,8 +41,8 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: context_air_measurand
-      - action: action_context_air_measurand
+      - intent: measurand_complete
+      - action: action_measurand_complete
       - intent: refine_measurand
       - action: action_refine_measurand
       - intent: refine_station

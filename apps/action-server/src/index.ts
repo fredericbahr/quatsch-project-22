@@ -4,6 +4,9 @@ import express, { Express, Request, Response } from "express";
 import path from "path";
 
 import { redisClient } from "./redis/redis-client";
+import { fallbackRouter } from "./resources/fallback";
+import { measurandRouter } from "./resources/measurand";
+import { refineRouter } from "./resources/refine";
 import { webhookRouter } from "./resources/webhook/webhook.router";
 
 dotenv.config({ path: path.join(__dirname, "../../../.env") });
@@ -18,6 +21,11 @@ server.use(express.urlencoded({ extended: false }));
 server.use(cors());
 
 server.use("/webhook", webhookRouter);
+
+/** for testing purposes only */
+server.use("/fallback", fallbackRouter);
+server.use("/measurand", measurandRouter);
+server.use("/refine", refineRouter);
 
 server.get("/", (req: Request, res: Response) => {
   res.send("Rasa Action Server");
