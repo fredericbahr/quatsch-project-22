@@ -3,7 +3,7 @@
 :toc:
 
 This is a Qanary component for checking if given NER annotations in a question match specific lubw domain instances via a fuzzy compare.
-The component receives prior AnnotationsOfInstance from a NER qanary component via the knowledge graph.
+The component receives prior `AnnotationOfInstance`-annotations from a NER qanary component via the knowledge graph.
 It also receives the domain knowledge via the knowledge graph, which get seeded when asking the question.
 
 .Example Prior NER Annotations in Question:
