@@ -19,7 +19,8 @@
     "test": "jest --coverage --detectOpenHandles"
   },
   "dependencies": {
-    "qanary-lubw-data": "*"
+    "qanary-lubw-data": "*",
+    "shared": "*"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
