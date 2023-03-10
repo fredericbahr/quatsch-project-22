@@ -8,50 +8,50 @@ import {
   RasaResponse,
 } from "shared";
 
-import { NoIntentHandlerError } from "../../../errors/NoIntentHandlerError";
-import { VerificationError } from "../../../errors/VerificationError";
-import { ErrorHandlingService } from "../../../services/error-handling-service";
-import { AnnotationExtractionService } from "../../../services/extraction-service/extract-annotation-service";
-import { IntentHandlerFindingService } from "../../../services/intent-handler-finding-service";
-import { StoringService } from "../../../services/storing-service";
-import { LUBWDataTransformationService } from "../../../services/transformation-service";
-import { VerificationService } from "../../../services/verification-service";
+import { NoIntentHandlerError } from "../../../../errors/NoIntentHandlerError";
+import { VerificationError } from "../../../../errors/VerificationError";
+import { ErrorHandlingService } from "../../../../services/error-handling-service";
+import { AnnotationExtractionService } from "../../../../services/extraction-service/extract-annotation-service";
+import { IntentHandlerFindingService } from "../../../../services/intent-handler-finding-service";
+import { StoringService } from "../../../../services/storing-service";
+import { LUBWDataTransformationService } from "../../../../services/transformation-service";
+import { VerificationService } from "../../../../services/verification-service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { startQanaryPipeline } from "../../../utils/start-pipeline";
-import { refineMeasurandRequestHandler } from "../refine-measurand.controller";
+import { startQanaryPipeline } from "../../../../utils/start-pipeline";
+import { refineStationRequestHandler } from "../refine-station.controller";
 
-jest.mock("../../../utils/start-pipeline", () => ({
+jest.mock("../../../../utils/start-pipeline", () => ({
   startQanaryPipeline: jest.fn(),
 }));
 
-jest.mock("../../../services/extraction-service/extract-annotation-service", () => ({
+jest.mock("../../../../services/extraction-service/extract-annotation-service", () => ({
   AnnotationExtractionService: {
     extractAllAnnotations: jest.fn(() => []),
     extractAnnotationsByType: jest.fn(() => []),
   },
 }));
 
-jest.mock("../../../services/storing-service", () => ({
+jest.mock("../../../../services/storing-service", () => ({
   StoringService: {
     changeStateEntry: jest.fn(),
     storeCurrentState: jest.fn(),
   },
 }));
 
-jest.mock("../../../services/verification-service", () => ({
+jest.mock("../../../../services/verification-service", () => ({
   VerificationService: {
     verifyLUBWData: jest.fn(),
   },
 }));
 
-jest.mock("../../../services/intent-handler-finding-service", () => ({
+jest.mock("../../../../services/intent-handler-finding-service", () => ({
   IntentHandlerFindingService: {
     findIntentHandlerByIntent: jest.fn(),
     findIntentHandlerInState: jest.fn(),
   },
 }));
 
-jest.mock("../../../services/error-handling-service", () => ({
+jest.mock("../../../../services/error-handling-service", () => ({
   ErrorHandlingService: {
     handleNoIntentHandlerError: jest.fn(),
     handleVerificationError: jest.fn(),
@@ -59,7 +59,7 @@ jest.mock("../../../services/error-handling-service", () => ({
   },
 }));
 
-describe("#Refine Measurand controllers", () => {
+describe("#Refine Station controllers", () => {
   const senderId = "test-sender-id";
   const text = "Ich bin der Test-Text";
   const qanaryMessage: IQanaryMessage = {
@@ -69,18 +69,18 @@ describe("#Refine Measurand controllers", () => {
   };
   const annotations: Array<IQanaryAnnotation> = [
     {
-      annotationType: "qa:AnnotationOfMeasurand",
-      hasBody: "o3",
+      annotationType: "qa:AnnotationOfStation",
+      hasBody: "DEBW0081",
       hasTarget: "b1",
       annotatedAt: "2021-03-18T13:00:00.000Z",
-      annotatedBy: "<urn:qanary:measurand-pattern-matching>",
+      annotatedBy: "<urn:qanary:station-pattern-matching>",
       score: 1,
     },
   ];
   const lubwData: Partial<ILUBWData> = {
     calculation: undefined,
-    measurand: "o3",
-    station: undefined,
+    measurand: undefined,
+    station: "DEBW0081",
     time: undefined,
     representation: undefined,
   };
@@ -126,32 +126,32 @@ describe("#Refine Measurand controllers", () => {
 
   describe("Qanary Pipeline", () => {
     it("should start the qanary pipeline with given question", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(text, expect.any(Array));
     });
 
     it("should start the qanary pipeline with correct components", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(
         expect.any(String),
-        expect.arrayContaining(["qanary-component-pm-measurand"]),
+        expect.arrayContaining(["qanary-component-pm-station"]),
       );
     });
   });
 
   describe("Annotation Extraction", () => {
     it("should extract measurand annotation", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
-      expect(mockExtractAnnotationsByType).toHaveBeenCalledWith(qanaryMessage, AnnotationTypes.Measurand);
+      expect(mockExtractAnnotationsByType).toHaveBeenCalledWith(qanaryMessage, AnnotationTypes.Station);
     });
   });
 
   describe("Transformation", () => {
     it("should transform the annotations", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.objectContaining(annotations), false);
     });
@@ -159,13 +159,13 @@ describe("#Refine Measurand controllers", () => {
 
   describe("Storing", () => {
     it("should store the measurand", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
-      expect(mockChangeStateEntry).toHaveBeenCalledWith(expect.any(String), ILUBWDataKey.Measurand, expect.any(String));
+      expect(mockChangeStateEntry).toHaveBeenCalledWith(expect.any(String), ILUBWDataKey.Station, expect.any(String));
     });
 
     it("should get the current state", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockGetCurrentState).toHaveBeenCalledWith(expect.any(String));
     });
@@ -173,7 +173,7 @@ describe("#Refine Measurand controllers", () => {
 
   describe("Verification", () => {
     it("should call the verification service with the lubwData", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockVerifyLUBWData).toHaveBeenCalledWith(expect.objectContaining(state));
     });
@@ -181,13 +181,13 @@ describe("#Refine Measurand controllers", () => {
 
   describe("Intent Handling", () => {
     it("should find the correct intent handler", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockFindIntentHandlerInState).toHaveBeenCalledWith(senderId);
     });
 
     it("should call the intent handler with the correct data", async () => {
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockIntentHandler).toHaveBeenCalledWith(state);
     });
@@ -200,7 +200,7 @@ describe("#Refine Measurand controllers", () => {
         throw verificationErrror;
       });
 
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockHandleVerificationError).toHaveBeenCalledWith(res, verificationErrror);
     });
@@ -213,7 +213,7 @@ describe("#Refine Measurand controllers", () => {
         throw noIntentHandlerError;
       });
 
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockHandleNoIntentHandlerError).toHaveBeenCalledWith(res);
     });
@@ -221,7 +221,7 @@ describe("#Refine Measurand controllers", () => {
     it("should handle unexpected errors occordingly", async () => {
       mockStartQanaryPipeline.mockRejectedValue(new Error("Error"));
 
-      await refineMeasurandRequestHandler(req, res);
+      await refineStationRequestHandler(req, res);
 
       expect(mockHandleDefaultError).toHaveBeenCalledWith(res);
     });

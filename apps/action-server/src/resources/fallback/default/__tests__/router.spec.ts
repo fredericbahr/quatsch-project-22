@@ -1,4 +1,4 @@
-import { fallbackRouter } from "../fallback.router";
+import { defaultFallbackRouter } from "../fallback.router";
 
 describe("#Fallback router", () => {
   test("has crud routes", () => {
@@ -8,7 +8,7 @@ describe("#Fallback router", () => {
     ];
 
     routes.forEach((route) => {
-      const match = fallbackRouter.stack.find(
+      const match = defaultFallbackRouter.stack.find(
         (fallbackElement) => fallbackElement.route.path === route.path && fallbackElement.route.methods[route.method],
       );
       expect(match).toBeTruthy();

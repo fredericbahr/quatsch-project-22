@@ -11,7 +11,7 @@ stories:
       - user: |
           Wie ist der Luftqualitätsindex in Ulm?
         intent: context_air_measurand
-      - action: action_context_air_measurand
+      - action: action_measurand_complete
 
 #  - story: create context with unavailable measured value but existing station
 #    steps:
@@ -21,8 +21,8 @@ stories:
 #      - action: utter_greet
 #      - user: |
 #          Wie ist der Irgendwas in [Ulm]{"entity": "station"}?
-#        intent: context_air_measurand
-#      - action: action_context_air_measurand
+#        intent: measurand_complete
+#      - action: action_measurand_complete
 #
 #  - story: create context with available measured value but not existing station
 #    steps:
@@ -32,8 +32,8 @@ stories:
 #      - action: utter_greet
 #      - user: |
 #          Wie ist der [Luftqualitätsindex]{"entity": "measurand"} in Irgendwo?
-#        intent: context_air_measurand
-#      - action: action_context_air_measurand
+#        intent: measurand_complete
+#      - action: action_measurand_complete
 #
 #  - story: create context with unavailable measured value and non-existing station
 #    steps:
@@ -43,5 +43,5 @@ stories:
 #      - action: utter_greet
 #      - user: |
 #          Wie ist der Irgendwas in Irgendwo?
-#        intent: context_air_measurand
-#      - action: action_context_air_measurand
+#        intent: measurand_complete
+#      - action: action_measurand_complete

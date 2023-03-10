@@ -67,5 +67,5 @@ stories:
 #      - action: action_default_ask_rephrase
 #      - user: |
 #          Wie ist der [Luftqualitätsindex]{"entity": "measurand"} in Irgendwo?
-#        intent: context_air_measurand
-#      - action: action_context_air_measurand
+#        intent: measurand_complete
+#      - action: action_measurand_complete
