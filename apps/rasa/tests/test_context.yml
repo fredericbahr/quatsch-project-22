@@ -9,7 +9,7 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der [Luftqualitätsindex]{"entity": "measurand"} in [Ulm]{"entity": "station"}?
+          Wie ist der Luftqualitätsindex in Ulm?
         intent: context_air_measurand
       - action: action_context_air_measurand
 
