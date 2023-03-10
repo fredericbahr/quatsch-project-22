@@ -22,14 +22,11 @@ const createFuse = <T extends Domain>(domainInstances: Array<DomainType<T>>): Fu
 /**
  * Extracts a substring from the question based on the annotation start and end.
  * @param question the question to extract the substring from
- * @param annotationOfInstance the annotation from a ner component
+ * @param annotation the annotation from a ner component
  * @returns extracted substring
  */
-const extractQuestionSubstringFromAnnotation = (
-  question: string,
-  annotationOfInstance: AnnotationOfInstance,
-): string => {
-  return question.substring(annotationOfInstance.start, annotationOfInstance.end);
+const extractQuestionSubstringFromAnnotation = (question: string, annotation: AnnotationOfInstance): string => {
+  return question.substring(annotation.start, annotation.end);
 };
 
 /**
@@ -46,19 +43,19 @@ const invertFuseScore = (fuseScore: number): number => {
 /**
  * Searches for a domain instance within a question via fuse fuzzy search.
  * @param question the question to search in
- * @param annotationOfInstance the annotation from a ner component
+ * @param annotation the annotation from a ner component
  * @param domainInstance the domain instance to search for
  * @returns an annotation if the domain instance was found, null otherwise
  */
 const searchViaFuzzy = <T extends Domain>(
   question: string,
-  annotationOfInstance: AnnotationOfInstance,
+  annotation: AnnotationOfInstance,
   domainInstances: Array<DomainType<T>>,
 ): IAnnotationInformation | null => {
   const FIRST_RESULT_INDEX = 0;
   const fuse = createFuse(domainInstances);
 
-  const annotatedString = extractQuestionSubstringFromAnnotation(question, annotationOfInstance);
+  const annotatedString = extractQuestionSubstringFromAnnotation(question, annotation);
   const results = fuse.search(annotatedString);
   const result = results[FIRST_RESULT_INDEX];
 
@@ -72,8 +69,8 @@ const searchViaFuzzy = <T extends Domain>(
     value: result.item.id,
     confidence: invertFuseScore(result.score),
     range: {
-      start: annotationOfInstance.start,
-      end: annotationOfInstance.end,
+      start: annotation.start,
+      end: annotation.end,
     },
   } as IAnnotationInformation;
 };
@@ -83,27 +80,24 @@ const searchViaFuzzy = <T extends Domain>(
  * Writes results as new annotations to triple store.
  * @param message the qanary message
  * @param question the question to check whether it contains a domain instance
- * @param annotationOfInstance the annotation from a ner component
+ * @param annotation the annotation from a ner component
  */
 export const searchForDomainInstances = async (
   message: IQanaryMessage,
   question: string,
-  annotationOfInstance: AnnotationOfInstance,
+  annotation: AnnotationOfInstance,
 ): Promise<void> => {
   /** the known instances of the defined domain */
-  const domainInstances: DomainType<typeof annotationOfInstance.domain>[] = await getDomainInstances(
-    annotationOfInstance.domain,
-    message,
-  );
+  const domainInstances: DomainType<typeof annotation.domain>[] = await getDomainInstances(annotation.domain, message);
 
-  const annotation = searchViaFuzzy(question, annotationOfInstance, domainInstances);
+  const fuzzyAnnotation = searchViaFuzzy(question, annotation, domainInstances);
 
-  if (annotation) {
+  if (fuzzyAnnotation) {
     await createAnnotationInKnowledgeGraph({
       message,
       componentName: pkg.name,
-      annotation,
-      annotationType: annotationTypesMap.get(annotationOfInstance.domain),
+      annotation: fuzzyAnnotation,
+      annotationType: annotationTypesMap.get(annotation.domain),
     });
   }
 };
