@@ -9,8 +9,8 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der [Luftqualitätsindex]{"entity": "measurand"} in [Ulm]{"entity": "station"}?
-        intent: measurand_complete
+          Wie ist der Luftqualitätsindex in Ulm?
+        intent: context_air_measurand
       - action: action_measurand_complete
 
 #  - story: create context with unavailable measured value but existing station

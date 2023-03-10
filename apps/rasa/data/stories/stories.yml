@@ -6,9 +6,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: measurand_complete
-        entities:
-          - measurand
-          - station
       - action: action_measurand_complete
 
   - story: Missing station
@@ -16,9 +13,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: measurand_complete
-        entities:
-          - measurand
-          - station
       - action: action_measurand_complete
       - intent: refine_station
       - action: action_refine_station
@@ -28,9 +22,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: measurand_complete
-        entities:
-          - measurand
-          - station
       - action: action_measurand_complete
       - intent: refine_measurand
       - action: action_refine_measurand
@@ -40,9 +31,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: measurand_complete
-        entities:
-          - measurand
-          - station
       - action: action_measurand_complete
       - intent: refine_station
       - action: action_refine_station
@@ -54,9 +42,6 @@ stories:
       - intent: greet
       - action: utter_greet
       - intent: measurand_complete
-        entities:
-          - measurand
-          - station
       - action: action_measurand_complete
       - intent: refine_measurand
       - action: action_refine_measurand

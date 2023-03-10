@@ -15,22 +15,6 @@ intents:
   - qanary_default_processing
   - vulgar_out_of_scope
 
-entities:
-  - measurand
-  - station
-
-slots:
-  measurand:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: measurand
-  station:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: station
-
 responses:
   utter_greet:
     - text: "Hey! Wie kann ich dir helfen?"
