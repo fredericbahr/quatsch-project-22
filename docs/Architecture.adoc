@@ -28,6 +28,14 @@ include::diagrams/Action Server.puml[]
 include::diagrams/Architecture Verification Of Mandatory Data.puml[]
 ----
 
+== Merge with Default Values
+
+[source,plantuml]
+----
+include::diagrams/Merge with Defaults.puml[]
+----
+
+
 == Two Stage Fallback (Default Rasa fallback)
 
 [source,plantuml]
