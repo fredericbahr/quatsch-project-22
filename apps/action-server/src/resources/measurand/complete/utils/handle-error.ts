@@ -4,7 +4,7 @@ import { RasaResponse } from "shared";
  * Handles an error gracefully by returning a response to the user.
  * @param res the response object
  */
-export const handleMeasurandAirRequestError = (res: RasaResponse) => {
+export const handleMeasurandCompleteRequestError = (res: RasaResponse) => {
   res.json({
     responses: [
       {

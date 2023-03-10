@@ -14,7 +14,7 @@ describe("Intent Handler Finding Service", () => {
   const senderId = "senderId";
 
   describe("findIntentHandlerByIntent", () => {
-    const intent = INTENTS.ACTION_CONTEXT_AIR_MEASURAND;
+    const intent = INTENTS.ACTION_MEASURAND_COMPLETE;
 
     it("should return the intent handler for the given intent", () => {
       const intentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(intent);
@@ -32,7 +32,7 @@ describe("Intent Handler Finding Service", () => {
 
   describe("findIntentHandlerInState", () => {
     it("should return the intent handler for the intent in the state", async () => {
-      (StoringService.getStateEntry as jest.Mock) = jest.fn().mockResolvedValue(INTENTS.ACTION_CONTEXT_AIR_MEASURAND);
+      (StoringService.getStateEntry as jest.Mock) = jest.fn().mockResolvedValue(INTENTS.ACTION_MEASURAND_COMPLETE);
 
       const intentHandler = await IntentHandlerFindingService.findIntentHandlerInState(senderId);
 
