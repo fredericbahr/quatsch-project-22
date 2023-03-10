@@ -1,14 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { getQuestion } from "qanary-component-helpers";
+import { getDomainInstances, getQuestion } from "qanary-component-helpers";
 import { IQanaryMessage } from "shared";
 
 import { handler } from "../handler";
-import { getDomainInstances } from "../utils/getDomainInstances";
 import { searchForDomainInstances } from "../utils/search";
-
-jest.mock("../utils/getDomainInstances", () => ({
-  getDomainInstances: jest.fn(() => Promise.resolve([])),
-}));
 
 jest.mock("../utils/search", () => ({
   searchForDomainInstances: jest.fn(() => Promise.resolve()),
@@ -17,6 +12,7 @@ jest.mock("../utils/search", () => ({
 jest.mock("qanary-component-helpers", () => ({
   ...jest.requireActual("qanary-component-helpers"),
   getQuestion: jest.fn(() => Promise.resolve("")),
+  getDomainInstances: jest.fn(() => Promise.resolve([])),
 }));
 
 describe("handler", () => {

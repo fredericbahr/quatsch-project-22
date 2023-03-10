@@ -1,43 +1,9 @@
 import { IQanaryComponentMessageHandler } from "qanary-component-core";
-import { getQuestion } from "qanary-component-helpers";
-import { ICalculation, IMeasurand, IRepresentation, IStation } from "qanary-lubw-data";
-import { Domain, IQanaryMessage } from "shared";
+import { getDomainInstances, getQuestion } from "qanary-component-helpers";
+import { Domain, DomainType, IQanaryMessage } from "shared";
 
 import { isDomain } from "./utils/check-domain";
-import { getDomainInstances } from "./utils/getDomainInstances";
 import { searchForDomainInstances } from "./utils/search";
-
-/**
- * generic type for domains
- *
- * @example Measurand example
- * ```ts
- *  const example: DomainType<Domain.Measurand> = {
- *    id: "",
- *    label: ""
- *  }
- * ```
- *
- * @example Station example
- * ```ts
- *  const example: DomainType<Domain.Station> = {
- *    id: "",
- *    label: "",
- *    lat: NaN,
- *    long: NaN
- *  }
- * ```
- */
-
-export type DomainType<T extends Domain> = T extends Domain.Measurand
-  ? IMeasurand
-  : T extends Domain.Station
-  ? IStation
-  : T extends Domain.Calculation
-  ? ICalculation
-  : T extends Domain.Representation
-  ? IRepresentation
-  : never;
 
 /**
  * The event handler for the qanary component generic pm

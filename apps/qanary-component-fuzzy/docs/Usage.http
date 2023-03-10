@@ -1,0 +1,10 @@
+POST http://qanary-pipeline:40111/startquestionansweringwithtextquestion
+Content-Type: application/json
+
+{
+  "question": "Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?",
+  "componentlist": [
+    "qanary-component-ner-automl",
+    "qanary-component-fuzzy"
+  ]
+}

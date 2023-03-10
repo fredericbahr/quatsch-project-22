@@ -1,22 +1,23 @@
-import { getEndpoint, getInGraph, selectSparql } from "qanary-component-helpers";
 import { Literal } from "rdf-js";
 import { Domain, IQanaryMessage } from "shared";
+import { DomainType } from "shared";
 
-import { DomainType } from "../handler";
+import { getEndpoint, getInGraph } from "./message-operations";
+import { selectSparql } from "./query-sparql";
 
 /**
  * A raw domain instance returned by the SPARQL query
  */
-interface IRawDomainInstance {
+export interface IRawDomainInstance {
   label: Literal;
   id: Literal;
 }
 
 /**
- * Gets the calculation types from the knowledge graph by querying the SPARQL endpoint
+ * Gets the instances for given lubw domain from the knowledge graph by querying the SPARQL endpoint
  * @param domain the lubw domain to get the domain instances for
  * @param message the qanary message provided by the pipeline with the endpoint and graph
- * @returns the calculation types found in the knowledge graph
+ * @returns the instances for given lubw domain found in the knowledge graph
  */
 export const getDomainInstances = async <T extends Domain>(
   domain: Domain,

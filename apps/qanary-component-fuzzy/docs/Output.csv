@@ -1,0 +1,5 @@
+annotationId,componentname,type,body,score,start,end
+tag:stardog:api:0.3457588166041693,urn:qanary:qanary-component-fuzzy,http://www.wdaqua.eu/qa#AnnotationOfMeasurand,luqx,0.8421052631578947,20,39
+tag:stardog:api:0.8926872822083718,urn:qanary:qanary-component-fuzzy,http://www.wdaqua.eu/qa#AnnotationOfStation,DEBW019,0.75,43,47
+tag:stardog:api:0.1634716060903284,urn:qanary:qanary-component-fuzzy,http://www.wdaqua.eu/qa#AnnotationOfCalculation,average,0.9999999999999998,51,63
+tag:stardog:api:0.6132111055293069,urn:qanary:qanary-component-fuzzy,http://www.wdaqua.eu/qa#AnnotationOfRepresentation,text,0.8888888888888888,82,85

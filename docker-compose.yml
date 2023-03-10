@@ -207,6 +207,28 @@ services:
               capabilities: [gpu]
     profiles: ["qanary", "all", "qanary-ner"]
   # end::qanary-component-ner-automl[]
+
+  # tag::qanary-component-fuzzy[]
+  qanary-component-fuzzy:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_NAME
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_PORT"
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-fuzzy/Dockerfile
+    environment:
+      - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_PORT"
+      - "QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT"
+    volumes:
+      - ./apps/qanary-component-fuzzy:/app/apps/qanary-component-fuzzy
+      - /app/apps/qanary-component-fuzzy/node_modules
+      - /app/node_modules
+    profiles: ["qanary", "all", "qanary-ner"]
+  # end::qanary-component-fuzzy[]
   # end::qanary-components[]
 
   # tag::rasa[]

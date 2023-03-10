@@ -1,10 +1,9 @@
-import { selectSparql } from "qanary-component-helpers";
 import { Domain, IQanaryMessage } from "shared";
 
-import { getDomainInstances } from "../utils/getDomainInstances";
+import { getDomainInstances } from "../get-domain-instances";
+import { selectSparql } from "../query-sparql";
 
-jest.mock("qanary-component-helpers", () => ({
-  ...jest.requireActual("qanary-component-helpers"),
+jest.mock("../query-sparql", () => ({
   selectSparql: jest.fn(),
 }));
 
