@@ -40,7 +40,11 @@ const extractQuestionSubstringFromAnnotation = (question: string, annotation: An
  * @param fuseScore the score generated from a fuse fuzzy compare
  * @returns inverted confidence score
  */
-const invertFuseScore = (fuseScore: number): number => {
+export const invertFuseScore = (fuseScore: number | undefined): number => {
+  if (fuseScore === undefined) {
+    return 0;
+  }
+
   return 1 - fuseScore;
 };
 
@@ -94,7 +98,7 @@ export const searchForDomainInstances = async (
   /** the known instances of the defined domain */
   const domainInstances: DomainType<typeof annotation.domain>[] = await getDomainInstances(annotation.domain, message);
 
-  const fuzzyAnnotation: IAnnotationInformation = searchViaFuzzy<typeof annotation.domain>(
+  const fuzzyAnnotation: IAnnotationInformation | null = searchViaFuzzy<typeof annotation.domain>(
     question,
     annotation,
     domainInstances,

@@ -22,6 +22,10 @@ export const handler: IQanaryComponentMessageHandler = async (message: IQanaryMe
 
   const annotationsOfInstance: Array<AnnotationOfInstance> | null = await getAnnotationsOfInstance(message);
 
+  if (!annotationsOfInstance) {
+    return message;
+  }
+
   for (const annotationOfInstance of annotationsOfInstance) {
     await searchForDomainInstances(message, question, annotationOfInstance);
   }

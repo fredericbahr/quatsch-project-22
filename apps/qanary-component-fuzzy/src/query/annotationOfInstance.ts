@@ -22,7 +22,7 @@ export type AnnotationOfInstanceSparqlResponse = {
  * A converted object for a AnnotationOfInstance element.
  */
 export type AnnotationOfInstance = {
-  domain: Domain | undefined;
+  domain: Domain;
   start: number;
   end: number;
 };
@@ -46,7 +46,7 @@ const readQueryAnnotationOfInstance = (inGraph: string): string => {
  * Tests if the data is empty.
  * @param data the sparql response
  */
-const isEmpty = (data: Array<AnnotationOfInstanceSparqlResponse>) => {
+const isEmpty = (data: Array<AnnotationOfInstanceSparqlResponse>): boolean => {
   return data.length === 0;
 };
 
