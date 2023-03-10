@@ -2,7 +2,7 @@ import { ILUBWData, ILUBWMeasurandData, IRepresentationData, SuccessRasaResponse
 
 import { LUBWQueryService } from "../../../services/lubw-query-service";
 import { RepresentationService } from "../../../services/representation-service";
-import { getResponseForMeasurandAir } from "./utils/get-response";
+import { ResponseService } from "../../../services/response-service";
 
 /**
  * The intent handler for the intent `action_context_air_measurand`.
@@ -15,7 +15,7 @@ export const measurandAirIntentHandler = async (lubwData: ILUBWData): Promise<Su
 
     const representation: IRepresentationData = RepresentationService.getRepresentation(measurandData);
 
-    return getResponseForMeasurandAir(representation);
+    return ResponseService.getResponseByRepresentation(representation);
   } catch {
     throw new Error("Something went wrong while determining the answer to the question.");
   }
