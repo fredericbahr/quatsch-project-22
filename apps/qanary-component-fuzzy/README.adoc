@@ -45,7 +45,7 @@ include::../../example.env[tags=qanary-pipeline;qanary-component-core;qanary-com
 
 == Functionality
 
-The component fetches every rdf triple of the a `<urn:domain>` class, maps it to an internal representation and checks if previous NER annotations in the question fuzzy match a domain instance.
+The component fetches every rdf triple of a `<urn:domain>` class, maps it to an internal representation and checks if previous NER annotations in the question fuzzy match a domain instance.
 If so, it adds the domain instance as an annotation to the knowledge graph.
 
 Note that all matches are added to the knowledge graph.
