@@ -53,7 +53,7 @@ const searchViaFuzzy = <T extends Domain>(
   domainInstances: Array<DomainType<T>>,
 ): IAnnotationInformation | null => {
   const FIRST_RESULT_INDEX = 0;
-  const fuse = createFuse(domainInstances);
+  const fuse = createFuse<T>(domainInstances);
 
   const annotatedString = extractQuestionSubstringFromAnnotation(question, annotation);
   const results = fuse.search(annotatedString);
@@ -90,7 +90,7 @@ export const searchForDomainInstances = async (
   /** the known instances of the defined domain */
   const domainInstances: DomainType<typeof annotation.domain>[] = await getDomainInstances(annotation.domain, message);
 
-  const fuzzyAnnotation = searchViaFuzzy(question, annotation, domainInstances);
+  const fuzzyAnnotation = searchViaFuzzy<typeof annotation.domain>(question, annotation, domainInstances);
 
   if (fuzzyAnnotation) {
     await createAnnotationInKnowledgeGraph({
