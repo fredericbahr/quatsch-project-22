@@ -5,4 +5,5 @@
 |Command |Description
 include::npm run docker:build.adoc[tags=command]
 include::npm run docker:up.adoc[tags=command]
+include::npm run docker:up-slim.adoc[tags=command]
 |===

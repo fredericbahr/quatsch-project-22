@@ -1,7 +1,5 @@
 import { createAnnotationInKnowledgeGraph, IAnnotationInformation } from "qanary-component-helpers";
-import { annotationTypesMap, Domain, IQanaryMessage } from "shared";
-
-import { DomainType } from "../handler";
+import { annotationTypesMap, Domain, DomainType, IQanaryMessage } from "shared";
 
 /**
  * Searches for a domain instance within a question via a regular expression

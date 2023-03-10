@@ -4,6 +4,7 @@ stages:
   - build
   - lint
   - test
+  - rasa
 
 build:
   stage: build
@@ -16,19 +17,6 @@ build:
       - "**/dist"
     expire_in: 5 day
 
-rasa_train:
-  stage: build
-  image:
-    name: rasa/rasa:3.4.0
-    entrypoint: [""]
-  script:
-    - cd apps/rasa
-    - rasa train --domain domain.yml --data data --out models
-  artifacts:
-    paths:
-      - apps/rasa/models
-    expire_in: 5 day
-
 lint:
   stage: lint
   script:
@@ -37,15 +25,6 @@ lint:
     - npm run init
     - npm run lint
     - npm run format
-
-lint_rasa:
-  stage: lint
-  image:
-    name: rasa/rasa:3.4.0
-    entrypoint: [""]
-  script:
-    - cd apps/rasa
-    - rasa data validate
 
 test:
   stage: test
@@ -60,8 +39,30 @@ test:
     expire_in: 5 day
   coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
 
+rasa_train:
+  stage: rasa
+  image:
+    name: rasa/rasa:3.4.0
+    entrypoint: [""]
+  script:
+    - cd apps/rasa
+    - rasa train --domain domain.yml --data data --out models
+  artifacts:
+    paths:
+      - apps/rasa/models
+    expire_in: 5 day
+
+lint_rasa:
+  stage: rasa
+  image:
+    name: rasa/rasa:3.4.0
+    entrypoint: [""]
+  script:
+    - cd apps/rasa
+    - rasa data validate
+
 test_rasa:
-  stage: test
+  stage: rasa
   image:
     name: rasa/rasa:3.4.0
     entrypoint: [""]

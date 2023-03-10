@@ -1,0 +1,13 @@
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+
+SELECT ?body ?start ?end
+FROM <YOUR_CURRENT_GRAPH_ID>
+WHERE {
+    ?annotation a qa:AnnotationOfInstance .
+    ?annotation oa:hasBody ?body.
+    ?annotation oa:hasTarget ?target.
+    ?target oa:hasSelector ?selector .
+    ?selector oa:start ?start .
+    ?selector oa:end ?end .
+}
