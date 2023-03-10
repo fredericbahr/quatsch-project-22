@@ -6,3 +6,4 @@ export { ICalculation } from "./interfaces/calculation";
 export { IMeasurand } from "./interfaces/measurand";
 export { IRepresentation } from "./interfaces/representation";
 export { IStation } from "./interfaces/station";
+export { popularStations } from "./data/popular"

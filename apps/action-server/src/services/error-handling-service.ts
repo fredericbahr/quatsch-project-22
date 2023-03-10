@@ -1,4 +1,5 @@
-import { ILUBWData, ILUBWDataKey, RasaResponse } from "shared";
+import { ILUBWData, ILUBWDataKey, RasaResponse, IStation, IMeasurand } from "shared";
+import { popularStations, measurands } from "qanary-lubw-data"
 
 import { VerificationError } from "../errors/VerificationError";
 
@@ -66,8 +67,12 @@ export class ErrorHandlingService {
     return res.json({
       responses: [
         {
-          text: "Ich konnte keine Messstation finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messstation an",
           response: "",
+          text: "Ich konnte keine Messstation finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messstation an.",
+          buttons: popularStations.map((popularStation: IStation) => ({
+            title: popularStation.label,
+            payload: `Ich interessiere mich für die Station ${popularStation.label}.`
+          }))
         },
       ],
     });
@@ -85,8 +90,12 @@ export class ErrorHandlingService {
     return res.json({
       responses: [
         {
-          text: "Ich konnte keine Messgröße finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messgröße an",
           response: "",
+          text: "Ich konnte keine Messgröße finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messgröße an.",
+          buttons: measurands.map((measurand: IMeasurand) => ({
+            title: measurand.label,
+            payload: `Ich interessiere mich für die Messart ${measurand.label}.`
+          }))
         },
       ],
     });
