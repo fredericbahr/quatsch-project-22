@@ -13,7 +13,7 @@ import { AnnotationOfInstance } from "../query/annotationOfInstance";
  * @returns a new fuse instance with loaded data
  */
 const createFuse = <T extends Domain>(domainInstances: Array<DomainType<T>>): Fuse<DomainType<T>> => {
-  const options = {
+  const options: Fuse.IFuseOptions<DomainType<T>> = {
     includeScore: true,
     ignoreLocation: true,
     threshold: 0.6,
@@ -57,11 +57,11 @@ const searchViaFuzzy = <T extends Domain>(
   domainInstances: Array<DomainType<T>>,
 ): IAnnotationInformation | null => {
   const FIRST_RESULT_INDEX = 0;
-  const fuse = createFuse<T>(domainInstances);
+  const fuse: Fuse<DomainType<T>> = createFuse<T>(domainInstances);
 
-  const annotatedString = extractQuestionSubstringFromAnnotation(question, annotation);
-  const results = fuse.search(annotatedString);
-  const result = results[FIRST_RESULT_INDEX];
+  const annotatedString: string = extractQuestionSubstringFromAnnotation(question, annotation);
+  const results: Array<Fuse.FuseResult<DomainType<T>>> = fuse.search(annotatedString);
+  const result: Fuse.FuseResult<DomainType<T>> | null = results[FIRST_RESULT_INDEX];
 
   if (!result) {
     return null;
@@ -94,7 +94,11 @@ export const searchForDomainInstances = async (
   /** the known instances of the defined domain */
   const domainInstances: DomainType<typeof annotation.domain>[] = await getDomainInstances(annotation.domain, message);
 
-  const fuzzyAnnotation = searchViaFuzzy<typeof annotation.domain>(question, annotation, domainInstances);
+  const fuzzyAnnotation: IAnnotationInformation = searchViaFuzzy<typeof annotation.domain>(
+    question,
+    annotation,
+    domainInstances,
+  );
 
   if (fuzzyAnnotation) {
     await createAnnotationInKnowledgeGraph({
