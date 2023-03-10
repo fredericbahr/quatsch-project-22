@@ -33,14 +33,14 @@ include::../../docs/Component Integration.adoc[leveloffset=+2]
 
 [source,yaml]
 ----
-include::../../docker-compose.yml[tags=preamble;qanary-pipeline;qanary-component-fuzzy;networks]
+include::../../docker-compose.yml[tags=preamble;qanary-pipeline;qanary-component-ner-automl;qanary-component-fuzzy;networks]
 ----
 
 Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
 
 [source,dotenv]
 ----
-include::../../example.env[tags=qanary-pipeline;qanary-component-core;qanary-component-fuzzy]
+include::../../example.env[tags=qanary-pipeline;qanary-component-core;qanary-component-ner-automl;qanary-component-fuzzy]
 ----
 
 == Functionality
