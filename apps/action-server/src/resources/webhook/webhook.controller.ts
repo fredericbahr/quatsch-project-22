@@ -1,15 +1,18 @@
 import { INTENTS, RasaRequest, RasaResponse } from "shared";
 
-import { askAffirmationRequestHandler, fallbackRequestHandler } from "../fallback-default/fallback.controller";
-import { measurandAirRequestHandler } from "../measurand/air/measurand-air.controller";
-import { refineMeasurandRequestHandler } from "../refine-measurand/refine-measurand.controller";
-import { refineStationRequestHandler } from "../refine-station/refine-station.controller";
+import { askAffirmationRequestHandler, fallbackRequestHandler } from "../fallback/default/fallback.controller";
+import { measurandCompleteRequestHandler } from "../measurand/complete/complete.controller";
+import { refineMeasurandRequestHandler } from "../refine/measurand/refine-measurand.controller";
+import { refineStationRequestHandler } from "../refine/station/refine-station.controller";
 
-export const webhookRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
+/**
+ * Handles the webhook request from Rasa and calls the appropriate controller
+ */
+export const webhookRequestHandler = async (req: RasaRequest, res: RasaResponse): Promise<void> => {
   try {
     switch (req.body.next_action) {
-      case INTENTS.ACTION_CONTEXT_AIR_MEASURAND:
-        await measurandAirRequestHandler(req, res);
+      case INTENTS.ACTION_MEASURAND_COMPLETE:
+        await measurandCompleteRequestHandler(req, res);
         break;
       case INTENTS.ACTION_REFINE_STATION:
         await refineStationRequestHandler(req, res);

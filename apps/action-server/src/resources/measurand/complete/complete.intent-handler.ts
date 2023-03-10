@@ -5,11 +5,11 @@ import { RepresentationService } from "../../../services/representation-service"
 import { ResponseService } from "../../../services/response-service";
 
 /**
- * The intent handler for the intent `action_context_air_measurand`.
+ * The intent handler for the intent `action_measurand_complete`.
  * @param lubwData the gathered LUBW data
  * @returns the answer to the question
  */
-export const measurandAirIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
+export const measurandCompleteIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
   try {
     const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
