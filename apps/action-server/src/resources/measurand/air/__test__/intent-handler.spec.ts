@@ -2,9 +2,8 @@ import { ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE
 
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
 import { RepresentationService } from "../../../../services/representation-service";
+import { ResponseService } from "../../../../services/response-service";
 import { measurandAirIntentHandler } from "../measurand-air.intent-handler";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { getResponseForMeasurandAir } from "../utils/get-response";
 
 jest.mock("../../../../services/lubw-query-service", () => ({
   LUBWQueryService: {
@@ -18,8 +17,10 @@ jest.mock("../../../../services/representation-service", () => ({
   },
 }));
 
-jest.mock("../utils/get-response", () => ({
-  getResponseForMeasurandAir: jest.fn(),
+jest.mock("../../../../services/response-service", () => ({
+  ResponseService: {
+    getResponseByRepresentation: jest.fn(),
+  },
 }));
 
 describe("Measurand Air Intent Handler", () => {
@@ -49,12 +50,12 @@ describe("Measurand Air Intent Handler", () => {
 
   const mockQueryLUBWAPI: jest.Mock = jest.fn().mockResolvedValue(measurandData);
   const mockGetRepresentation: jest.Mock = jest.fn().mockReturnValue(representation);
-  const mockGetResponseForMeasurandAir: jest.Mock = jest.fn();
+  const mockGetResponseByRepresentation: jest.Mock = jest.fn();
 
   beforeEach(() => {
     (LUBWQueryService.queryLUBWAPI as jest.Mock) = mockQueryLUBWAPI;
     (RepresentationService.getRepresentation as jest.Mock) = mockGetRepresentation;
-    (getResponseForMeasurandAir as jest.Mock) = mockGetResponseForMeasurandAir;
+    (ResponseService.getResponseByRepresentation as jest.Mock) = mockGetResponseByRepresentation;
   });
 
   describe("LUBW API Query", () => {
@@ -77,7 +78,7 @@ describe("Measurand Air Intent Handler", () => {
     it("should call the response utils with the correct data", async () => {
       await measurandAirIntentHandler(lubwData);
 
-      expect(mockGetResponseForMeasurandAir).toHaveBeenCalledWith(representation);
+      expect(mockGetResponseByRepresentation).toHaveBeenCalledWith(representation);
     });
   });
 

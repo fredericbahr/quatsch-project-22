@@ -1,6 +1,6 @@
 import { IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
-import { getResponseForMeasurandAir } from "../../utils/get-response";
+import { ResponseService } from "../response-service";
 
 describe("Get Response Util", () => {
   describe("text representation", () => {
@@ -10,7 +10,7 @@ describe("Get Response Util", () => {
         value: "test",
       };
 
-      const response = getResponseForMeasurandAir(representation);
+      const response = ResponseService.getResponseByRepresentation(representation);
 
       expect(response).toEqual({
         responses: [
@@ -30,7 +30,7 @@ describe("Get Response Util", () => {
         value: "test",
       };
 
-      const response = getResponseForMeasurandAir(representation);
+      const response = ResponseService.getResponseByRepresentation(representation);
 
       expect(response).toEqual({
         responses: [
@@ -50,7 +50,7 @@ describe("Get Response Util", () => {
         value: "test",
       };
 
-      const response = getResponseForMeasurandAir(representation);
+      const response = ResponseService.getResponseByRepresentation(representation);
 
       expect(response).toEqual({
         responses: [
