@@ -10,7 +10,7 @@ const generateNluYmlFileContent = (data: Array<NluTrainingData>): string => {
 
 nlu:
   ## Creation of context
-  - intent: context_air_measurand
+  - intent: measurand_complete
     examples: |
       - ${data.join("\n      - ")}`;
 

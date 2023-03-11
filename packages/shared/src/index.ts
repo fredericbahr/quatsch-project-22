@@ -18,3 +18,5 @@ export * from "./interfaces/state";
 export * from "./maps/annotations";
 
 export * from "./defaults/lubw-data";
+
+export * from "./generics/domain-type";

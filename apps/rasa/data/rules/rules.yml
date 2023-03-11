@@ -26,4 +26,13 @@ rules:
     steps:
       - intent: vulgar_out_of_scope
       - action: utter_vulgar_out_of_scope
-  
+
+  - rule: Refine missing station
+    steps:
+      - intent: refine_station
+      - action: action_refine_station
+
+  - rule: Refine missing measurand
+    steps:
+      - intent: refine_measurand
+      - action: action_refine_measurand

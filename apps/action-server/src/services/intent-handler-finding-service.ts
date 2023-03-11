@@ -1,13 +1,13 @@
 import { IIntentHandler, IIntentHandlerMap, INTENTS } from "shared";
 
 import { NoIntentHandlerError } from "../errors/NoIntentHandlerError";
-import { measurandAirIntentHandler } from "../resources/measurand/air/measurand-air.intent-handler";
+import { measurandCompleteIntentHandler } from "../resources/measurand/complete/complete.intent-handler";
 import { StoringService } from "./storing-service";
 
 export class IntentHandlerFindingService {
   /** Map of all intent handlers */
   private static intentHandlerMap: IIntentHandlerMap = new Map<INTENTS, IIntentHandler>([
-    [INTENTS.ACTION_CONTEXT_AIR_MEASURAND, measurandAirIntentHandler],
+    [INTENTS.ACTION_MEASURAND_COMPLETE, measurandCompleteIntentHandler],
   ]);
 
   /**

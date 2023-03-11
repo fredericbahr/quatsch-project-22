@@ -17,7 +17,7 @@ describe("#Component generateNluYmlFileContent", () => {
 
 nlu:
   ## Creation of context
-  - intent: context_air_measurand
+  - intent: measurand_complete
     examples: |
       - Test data 1?
       - Test data 2 Ozon DEBW029?

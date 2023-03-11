@@ -1,7 +1,7 @@
 import { differenceInDays } from "date-fns";
 import {
+  AnnotationTypes,
   defaultLUBWData,
-  Domain,
   IFilteredAnnotations,
   ILUBWData,
   ILUBWDefaultData,
@@ -139,23 +139,23 @@ export class LUBWDataTransformationService {
    */
   private static filterAnnotations(annotations: Array<IQanaryAnnotation>): IFilteredAnnotations {
     const stationAnnotation: Array<IQanaryAnnotation> = annotations.filter((annotation) =>
-      this.filterAnnotationsByAnnotationType(annotation, Domain.Station),
+      this.filterAnnotationsByAnnotationType(annotation, AnnotationTypes.Station),
     );
 
     const measurandAnnotation: Array<IQanaryAnnotation> = annotations.filter((annotation) =>
-      this.filterAnnotationsByAnnotationType(annotation, Domain.Measurand),
+      this.filterAnnotationsByAnnotationType(annotation, AnnotationTypes.Measurand),
     );
 
     const representationAnnotation: Array<IQanaryAnnotation> = annotations.filter((annotation) =>
-      this.filterAnnotationsByAnnotationType(annotation, Domain.Representation),
+      this.filterAnnotationsByAnnotationType(annotation, AnnotationTypes.Representation),
     );
 
     const calculationAnnotation: Array<IQanaryAnnotation> = annotations.filter((annotation) =>
-      this.filterAnnotationsByAnnotationType(annotation, Domain.Calculation),
+      this.filterAnnotationsByAnnotationType(annotation, AnnotationTypes.Calculation),
     );
 
     const timeAnnotation: Array<IQanaryAnnotation> = annotations.filter((annotation) =>
-      this.filterAnnotationsByAnnotationType(annotation, Domain.Time),
+      this.filterAnnotationsByAnnotationType(annotation, AnnotationTypes.Time),
     );
 
     return {
@@ -175,6 +175,6 @@ export class LUBWDataTransformationService {
    * @returns true if annotation is of annotation type, false otherwise
    */
   private static filterAnnotationsByAnnotationType(annotation: IQanaryAnnotation, annotationType: string): boolean {
-    return annotation.annotatedBy.includes(annotationType);
+    return annotation.annotationType.includes(annotationType);
   }
 }
