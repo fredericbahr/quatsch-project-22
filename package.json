@@ -23,6 +23,7 @@
     "docker:up": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose --profile all up --build",
     "docker:up-slim": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose --profile slim up --build",
     "e2e": "docker-compose up -d && npm run e2e --workspace=e2e",
+    "rasa:lint": "npm run rasa:lint --workspace=rasa",
     "rasa:shell": "npm run rasa:shell --workspace=rasa",
     "rasa:test": "npm run rasa:test --workspace=rasa",
     "rasa:train": "npm run rasa:train --workspace=rasa",
