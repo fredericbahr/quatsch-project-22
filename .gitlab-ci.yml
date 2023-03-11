@@ -32,9 +32,8 @@ test:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - ls -la
-    - npm run test
-    - .bin/merge-coverage-reports.sh
+    - npm run test:ci
+    - /bin/sh .bin/merge-coverage-reports.sh
   artifacts:
     paths:
       - "**/coverage"
