@@ -5,6 +5,7 @@ stages:
   - lint
   - test
   - rasa
+  - rasa_test
 
 build:
   stage: build
@@ -62,7 +63,7 @@ lint_rasa:
     - rasa data validate
 
 test_rasa:
-  stage: rasa
+  stage: rasa_test
   image:
     name: rasa/rasa:3.4.0
     entrypoint: [""]
