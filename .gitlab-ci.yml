@@ -32,12 +32,13 @@ test:
     - apk add --no-cache libc6-compat
     - apk update
     - npm run init
-    - npm run test
+    - npm run test:ci
+    - /bin/sh .bin/merge-coverage-reports.sh
   artifacts:
     paths:
       - "**/coverage"
     expire_in: 5 day
-  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  coverage: /Statements\s+:\s*([\d\.]+)/
 
 rasa_train:
   stage: rasa
