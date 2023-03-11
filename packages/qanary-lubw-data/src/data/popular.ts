@@ -31,14 +31,14 @@ export const popularStations: IStation[] = [
 export const popularIntents: Array<IPopularIntents> = [
   {
     title: "Messwert",
-    payload: "/action_measurand_complete",
+    payload: "/measurand_complete",
   },
   {
     title: "Grenzwert",
-    payload: "/action_measurand_threshold",
+    payload: "/measurand_threshold",
   },
   {
     title: "Maximum",
-    payload: "/action_measurand_max",
+    payload: "/measurand_max",
   },
 ];
