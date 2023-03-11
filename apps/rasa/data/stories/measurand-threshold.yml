@@ -5,11 +5,11 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: context_air_measurand
+      - intent: measurand_complete
         entities:
           - measurand
           - station
-      - action: action_context_air_measurand
+      - action: action_measurand_complete
       - intent: measurand_threshold
       - action: action_measurand_threshold
 
@@ -17,11 +17,11 @@ stories:
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: context_air_measurand
+      - intent: measurand_complete
         entities:
           - measurand
           - station
-      - action: action_context_air_measurand
+      - action: action_measurand_complete
       - intent: refine_station
       - action: action_refine_station
       - intent: refine_measurand

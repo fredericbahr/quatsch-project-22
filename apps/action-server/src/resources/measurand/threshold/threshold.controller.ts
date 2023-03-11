@@ -23,7 +23,7 @@ import { startQanaryPipeline } from "../../../utils/start-pipeline";
 import { mergeStateAndLubwData } from "./utils/merge-state-lubw-data";
 
 /**
- * Handles the intent/action of `action_context_air_measurand` by trying to answer the question with a Qanary pipeline.
+ * Handles the intent/action of `action_measurand_treshold` by trying to answer the question with a Qanary pipeline.
  * @param req Request Object
  * @param res Response Object
  */
@@ -64,11 +64,11 @@ export const measurandThresholdRequestHandler = async (req: RasaRequest, res: Ra
     const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(mergedState);
 
     /** Throws an {@link NoIntentHandlerError} if no intent handler was found */
-    const measurandAirHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(
+    const measurandThresholdHandler: IIntentHandler = IntentHandlerFindingService.findIntentHandlerByIntent(
       intent as INTENTS,
     );
 
-    const response: SuccessRasaResponse = await measurandAirHandler(verifiedLUBWData);
+    const response: SuccessRasaResponse = await measurandThresholdHandler(verifiedLUBWData);
     res.json(response);
   } catch (error: unknown) {
     console.error(error);

@@ -5,7 +5,7 @@ import { ResponseService } from "../../../services/response-service";
 import { ThresholdRepresentationService } from "./treshold.representation";
 
 /**
- * The intent handler for the intent `action_context_air_measurand`.
+ * The intent handler for the intent `action_measurand_threshold`.
  * @param lubwData the gathered LUBW data
  * @returns the answer to the question
  */

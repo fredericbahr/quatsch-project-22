@@ -105,8 +105,8 @@ describe("#Measurand Threshold controllers", () => {
   const mockGetCurrentState: jest.Mock = jest.fn().mockReturnValue(state);
   const mockStoreData: jest.Mock = jest.fn();
   const mockVerifyLUBWData: jest.Mock = jest.fn().mockReturnValue(lubwData);
-  const mockMeasurandAirIntentHandler: jest.Mock = jest.fn();
-  const mockFindIntentHandler: jest.Mock = jest.fn().mockReturnValue(mockMeasurandAirIntentHandler);
+  const mockMeasurandThresholdIntentHandler: jest.Mock = jest.fn();
+  const mockFindIntentHandler: jest.Mock = jest.fn().mockReturnValue(mockMeasurandThresholdIntentHandler);
   const mockHandleVerificationError: jest.Mock = jest.fn();
   const mockHandleNoIntentHandlerError: jest.Mock = jest.fn();
   const mockHandleDefaultError: jest.Mock = jest.fn();
@@ -221,7 +221,7 @@ describe("#Measurand Threshold controllers", () => {
     it("should call the intent handler with the correct data", async () => {
       await measurandThresholdRequestHandler(req, res);
 
-      expect(mockMeasurandAirIntentHandler).toHaveBeenCalledWith(lubwData);
+      expect(mockMeasurandThresholdIntentHandler).toHaveBeenCalledWith(lubwData);
     });
   });
 

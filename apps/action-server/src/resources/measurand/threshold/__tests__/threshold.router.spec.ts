@@ -1,6 +1,6 @@
 import { measurandThresholdRouter } from "../threshold.router";
 
-describe("#Measurand air router", () => {
+describe("#Measurand threshold router", () => {
   test("has crud routes", () => {
     const routes = [{ path: "/", method: "post" }];
 
