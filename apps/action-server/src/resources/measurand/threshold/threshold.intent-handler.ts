@@ -2,7 +2,7 @@ import { ILUBWData, ILUBWMeasurandData, IRepresentationData, SuccessRasaResponse
 
 import { LUBWQueryService } from "../../../services/lubw-query-service";
 import { ResponseService } from "../../../services/response-service";
-import { ThresholdRepresentationService } from "./treshold.representation";
+import { RepresentationServiceThreshold } from "./treshold.representation";
 
 /**
  * The intent handler for the intent `action_measurand_threshold`.
@@ -13,7 +13,7 @@ export const measurandThresholdIntentHandler = async (lubwData: ILUBWData): Prom
   try {
     const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
-    const representation: IRepresentationData = ThresholdRepresentationService.getRepresentation(measurandData);
+    const representation: IRepresentationData = RepresentationServiceThreshold.getRepresentation(measurandData);
 
     return ResponseService.getResponseByRepresentation(representation);
   } catch (error) {

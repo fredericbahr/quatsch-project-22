@@ -6,7 +6,7 @@ import { ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "sh
 /**
  * This service provides methods to transform lubw measurand data into different representations for the threshold intent.
  */
-export class ThresholdRepresentationService {
+export class RepresentationServiceThreshold {
   /**
    * Gets a representation of the given measurand data based on the given representation inside the measurand data.
    * @default If no representation is given, a textual representation is returned.

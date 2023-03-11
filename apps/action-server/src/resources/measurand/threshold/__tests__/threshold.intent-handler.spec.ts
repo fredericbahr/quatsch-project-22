@@ -3,7 +3,7 @@ import { ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
 import { ResponseService } from "../../../../services/response-service";
 import { measurandThresholdIntentHandler } from "../threshold.intent-handler";
-import { ThresholdRepresentationService } from "../treshold.representation";
+import { RepresentationServiceThreshold } from "../treshold.representation";
 
 jest.mock("../../../../services/lubw-query-service", () => ({
   LUBWQueryService: {
@@ -12,7 +12,7 @@ jest.mock("../../../../services/lubw-query-service", () => ({
 }));
 
 jest.mock("../treshold.representation", () => ({
-  ThresholdRepresentationService: {
+  RepresentationServiceThreshold: {
     getRepresentation: jest.fn(),
   },
 }));
@@ -54,7 +54,7 @@ describe("Measurand Threshold Intent Handler", () => {
 
   beforeEach(() => {
     (LUBWQueryService.queryLUBWAPI as jest.Mock) = mockQueryLUBWAPI;
-    (ThresholdRepresentationService.getRepresentation as jest.Mock) = mockGetRepresentation;
+    (RepresentationServiceThreshold.getRepresentation as jest.Mock) = mockGetRepresentation;
     (ResponseService.getResponseByRepresentation as jest.Mock) = mockGetResponseByRepresentation;
   });
 

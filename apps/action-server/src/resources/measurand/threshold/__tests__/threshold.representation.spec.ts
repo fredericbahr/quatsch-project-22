@@ -1,6 +1,6 @@
 import { ILUBWMeasurandData, REPRESENTATION_TYPE } from "shared";
 
-import { ThresholdRepresentationService } from "../treshold.representation";
+import { RepresentationServiceThreshold } from "../treshold.representation";
 
 describe("Threshold Representation Service", () => {
   let measurandData: ILUBWMeasurandData = {
@@ -25,7 +25,7 @@ describe("Threshold Representation Service", () => {
 
   describe("getRepresentation", () => {
     it("should get a textual representation", () => {
-      const representation = ThresholdRepresentationService.getRepresentation(measurandData);
+      const representation = RepresentationServiceThreshold.getRepresentation(measurandData);
 
       expect(representation).toEqual(
         expect.objectContaining({
@@ -37,7 +37,7 @@ describe("Threshold Representation Service", () => {
     it("should get a chart representation", () => {
       measurandData.representation = "graph";
 
-      const representation = ThresholdRepresentationService.getRepresentation(measurandData);
+      const representation = RepresentationServiceThreshold.getRepresentation(measurandData);
 
       expect(representation).toEqual(
         expect.objectContaining({
@@ -49,7 +49,7 @@ describe("Threshold Representation Service", () => {
     it("should get a table representation", () => {
       measurandData.representation = "table";
 
-      const representation = ThresholdRepresentationService.getRepresentation(measurandData);
+      const representation = RepresentationServiceThreshold.getRepresentation(measurandData);
 
       expect(representation).toEqual(
         expect.objectContaining({
@@ -61,7 +61,7 @@ describe("Threshold Representation Service", () => {
 
   describe("getTextualRepresentation", () => {
     it("should get the correct textual representation if no threshold is defined", () => {
-      const representation = ThresholdRepresentationService.getTextualRepresentation(measurandData);
+      const representation = RepresentationServiceThreshold.getTextualRepresentation(measurandData);
 
       expect(representation).toEqual({
         value: expect.stringContaining("Es liegen keine Grenzwerte für die Messart"),
@@ -75,7 +75,7 @@ describe("Threshold Representation Service", () => {
         measurand: "no2",
       };
 
-      const representation = ThresholdRepresentationService.getTextualRepresentation(measurandData);
+      const representation = RepresentationServiceThreshold.getTextualRepresentation(measurandData);
 
       expect(representation).toEqual({
         value: expect.stringContaining("Der Grenzwert für die Messart"),
@@ -89,7 +89,7 @@ describe("Threshold Representation Service", () => {
         measurand: "o3",
       };
 
-      const representation = ThresholdRepresentationService.getTextualRepresentation(measurandData);
+      const representation = RepresentationServiceThreshold.getTextualRepresentation(measurandData);
 
       expect(representation).toEqual({
         value: expect.stringContaining("Der Grenzwert 1 für die Messart"),
@@ -110,7 +110,7 @@ describe("Threshold Representation Service", () => {
         representation: "graph",
       };
 
-      ThresholdRepresentationService.getChartRepresentation(measurandData);
+      RepresentationServiceThreshold.getChartRepresentation(measurandData);
 
       expect(mockStringify).toHaveBeenCalledWith({
         type: "line",
@@ -141,7 +141,7 @@ describe("Threshold Representation Service", () => {
         representation: "graph",
       };
 
-      ThresholdRepresentationService.getChartRepresentation(measurandData);
+      RepresentationServiceThreshold.getChartRepresentation(measurandData);
 
       expect(mockStringify).toHaveBeenCalledWith({
         type: "line",
@@ -178,7 +178,7 @@ describe("Threshold Representation Service", () => {
         representation: "graph",
       };
 
-      ThresholdRepresentationService.getChartRepresentation(measurandData);
+      RepresentationServiceThreshold.getChartRepresentation(measurandData);
 
       expect(mockStringify).toHaveBeenCalledWith({
         type: "line",
@@ -223,7 +223,7 @@ describe("Threshold Representation Service", () => {
         representation: "table",
       };
 
-      ThresholdRepresentationService.getTableRepresentation(measurandData);
+      RepresentationServiceThreshold.getTableRepresentation(measurandData);
 
       expect(mockStringify).toHaveBeenCalledWith({
         title: expect.stringContaining("mit Grenzwerten"),
@@ -255,7 +255,7 @@ describe("Threshold Representation Service", () => {
         representation: "table",
       };
 
-      ThresholdRepresentationService.getTableRepresentation(measurandData);
+      RepresentationServiceThreshold.getTableRepresentation(measurandData);
 
       expect(mockStringify).toHaveBeenCalledWith({
         title: expect.stringContaining("mit Grenzwerten"),
@@ -293,7 +293,7 @@ describe("Threshold Representation Service", () => {
         representation: "table",
       };
 
-      ThresholdRepresentationService.getTableRepresentation(measurandData);
+      RepresentationServiceThreshold.getTableRepresentation(measurandData);
 
       expect(mockStringify).toHaveBeenCalledWith({
         title: expect.stringContaining("mit Grenzwerten"),
