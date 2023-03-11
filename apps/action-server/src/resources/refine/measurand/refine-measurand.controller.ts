@@ -30,7 +30,11 @@ export const refineMeasurandRequestHandler = async (req: RasaRequest, res: RasaR
   const question: string = req.body.tracker?.latest_message?.text ?? "";
   const senderId: string | undefined = req.body.sender_id;
 
-  const componentlist: Array<COMPONENT_LIST> = [COMPONENT_LIST.PATTERN_MATCHING_MEASURAND];
+  const componentlist: Array<COMPONENT_LIST> = [
+    COMPONENT_LIST.PATTERN_MATCHING_MEASURAND,
+    COMPONENT_LIST.NER_AUTOML,
+    COMPONENT_LIST.FUZZY_NER,
+  ];
 
   try {
     const qanaryMessage: IQanaryMessage = await startQanaryPipeline(question, componentlist);
