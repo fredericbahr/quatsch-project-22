@@ -5,7 +5,7 @@ import generateTrainingDataEntry from "./generateTrainingDataEntry";
 const { calculations, measurands, representations, stations } = generateLubwData();
 
 /**
- * Generates training data in provided variant for questions with station and measurand slots and adds data to lists
+ * Generates training data in provided variant for questions with station and measurand slots and adds data to lists.
  * @param variant data variant, either 'ner' or 'nlu'
  * @param questions array of training questions used as basis for training data
  * @param list ner or nlu data array where results will be added to
@@ -32,7 +32,7 @@ export const generateStationMeasurandData = (
 };
 
 /**
- * Generates training data in provided variant for questions with station, measurand and representation slots and adds data to lists
+ * Generates training data in provided variant for questions with station, measurand and representation slots and adds data to lists.
  * @param variant data variant, either 'ner' or 'nlu'
  * @param questions array of training questions used as basis for training data
  * @param list ner or nlu data array where results will be added to
@@ -67,7 +67,7 @@ export const generateStationMeasurandRepresentationData = (
 };
 
 /**
- * Generates training data in provided variant for questions with station, measurand and calculation slots and adds data to lists
+ * Generates training data in provided variant for questions with station, measurand and calculation slots and adds data to lists.
  * @param variant data variant, either 'ner' or 'nlu'
  * @param questions array of training questions used as basis for training data
  * @param list ner or nlu data array where results will be added to
@@ -102,7 +102,7 @@ export const generateStationMeasurandCalculationData = (
 };
 
 /**
- * Generates training data in provided variant for questions with station, measurand, representation and calculation slots and adds data to lists
+ * Generates training data in provided variant for questions with station, measurand, representation and calculation slots and adds data to lists.
  * @param variant data variant, either 'ner' or 'nlu'
  * @param questions array of training questions used as basis for training data
  * @param list ner or nlu data array where results will be added to
