@@ -24,7 +24,7 @@ const generateNerDomainBaseDataEntry = (domainEntry: string, entityKey: Domain):
 
 /**
  * Generates ner training data for for all base domain instances (all calculations, measurands, representations, stations).
- * @param list ner data array where results will be added to
+ * @returns generated ner training data array of base domain instances
  */
 const generateNerDomainBaseData = (): Array<NerTrainingData> => {
   const nerData: Array<NerTrainingData> = [];
