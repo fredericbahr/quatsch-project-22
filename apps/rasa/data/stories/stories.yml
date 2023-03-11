@@ -1,12 +1,49 @@
 version: "3.1"
 
 stories:
-  - story: Create context
+  - story: Create context 1
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: context_air_measurand
-        entities:
-          - measurand
-          - station
-      - action: action_context_air_measurand
+      - intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Missing station
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+      - action: action_measurand_complete
+      - intent: refine_station
+      - action: action_refine_station
+
+  - story: Missing measurand
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+      - action: action_measurand_complete
+      - intent: refine_measurand
+      - action: action_refine_measurand
+
+  - story: Missing mandatory data first station
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+      - action: action_measurand_complete
+      - intent: refine_station
+      - action: action_refine_station
+      - intent: refine_measurand
+      - action: action_refine_measurand
+
+  - story: Missing mandatory data first measurand
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+      - action: action_measurand_complete
+      - intent: refine_measurand
+      - action: action_refine_measurand
+      - intent: refine_station
+      - action: action_refine_station

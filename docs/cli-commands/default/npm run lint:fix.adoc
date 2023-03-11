@@ -1,0 +1,12 @@
+= npm run lint:fix
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run lint:fix` |Fixes the quality of the source files if possible
+// end::command[]
+|===
+
+include::partials/npm-run-script custom arguments.adoc[leveloffset=+1]
+include::partials/--filter.adoc[leveloffset=+2]

@@ -1,0 +1,49 @@
+{
+  "name": "qanary-component-fuzzy",
+  "version": "1.0.0",
+  "description": "This is a Qanary component for fuzzy matching lubw domain information in ner component result annotations, from posed question.",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf .turbo coverage dist",
+    "dev": "nodemon src/index.ts",
+    "format": "prettier --check src",
+    "format:fix": "prettier --write src",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "jest --coverage --detectOpenHandles"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "api": "*",
+    "fuse.js": "^6.6.2",
+    "qanary-component-core": "*",
+    "qanary-component-helpers": "*",
+    "shared": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "eslint": "^8.33.0",
+    "eslint-config-sdk": "*",
+    "jest": "^29.4.1",
+    "jest-config-sdk": "*",
+    "nodemon": "2.0.20",
+    "openapi-types": "12.1.0",
+    "prettier": "^2.8.3",
+    "prettier-config-sdk": "*",
+    "rimraf": "^4.1.2",
+    "ts-config-sdk": "*",
+    "typescript": "^4.9.5"
+  },
+  "jest": {
+    "preset": "jest-config-sdk"
+  },
+  "prettier": "prettier-config-sdk",
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

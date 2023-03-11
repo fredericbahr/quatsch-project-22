@@ -1,0 +1,12 @@
+= npm run clean
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run clean` |Removes the created artifacts and temporary files
+// end::command[]
+|===
+
+include::partials/npm-run-script custom arguments.adoc[leveloffset=+1]
+include::partials/--filter.adoc[leveloffset=+2]

@@ -7,21 +7,22 @@ services:
   # tag::qanary-pipeline[]
   qanary-pipeline:
     container_name: qanary-pipeline
-    image: qanary/qanary-pipeline:3.7.0
+    build:
+      context: ./apps/qanary-pipeline
     restart: unless-stopped
     networks:
       - rasa-network
     ports:
       - "$QANARY_PORT:$QANARY_PORT"
     environment:
-      - STARDOG_DATABASE=$STARDOG_DATABASE
-      - STARDOG_URL=$STARDOG_URL
-      - STARDOG_USERNAME=$STARDOG_USERNAME
-      - STARDOG_PASSWORD=$STARDOG_PASSWORD
-      - SERVER_HOST=$QANARY_HOST
-      - SERVER_PORT=$QANARY_PORT
-      - QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true
-    profiles: ["qanary", "all"]
+      - "STARDOG_DATABASE=$STARDOG_DATABASE"
+      - "STARDOG_URL=$STARDOG_URL"
+      - "STARDOG_USERNAME=$STARDOG_USERNAME"
+      - "STARDOG_PASSWORD=$STARDOG_PASSWORD"
+      - "SERVER_HOST=$QANARY_HOST"
+      - "SERVER_PORT=$QANARY_PORT"
+      - "QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true"
+    profiles: ["qanary", "all", "slim", "qanary-ner"]
   # end::qanary-pipeline[]
 
   # qanary-component-example1:
@@ -35,13 +36,13 @@ services:
   #     context: .
   #     dockerfile: ./apps/qanary-component-example/Dockerfile
   #   environment:
-  #     - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
-  #     - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_PORT
+  #     - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+  #     - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_EXAMPLE_A_PORT"
   #   volumes:
   #     - ./apps/qanary-component-example:/app/apps/qanary-component-example
   #     - /app/apps/qanary-component-example/node_modules
   #     - /app/node_modules
-  #   profiles: ["qanary", "all"]
+  #   profiles: ["qanary", "all", "slim"]
 
   # tag::qanary-components[]
   # tag::qanary-component-pm[]
@@ -56,15 +57,15 @@ services:
       context: .
       dockerfile: ./apps/qanary-component-pm/Dockerfile
     environment:
-      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
-      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_PORT
-      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
-      - LUBW_DOMAIN=$PM_MEASURAND_DOMAIN
+      - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_MEASURAND_PORT"
+      - "QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT"
+      - "LUBW_DOMAIN=$PM_MEASURAND_DOMAIN"
     volumes:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "slim"]
   
   qanary-component-pm-station:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_NAME
@@ -77,15 +78,15 @@ services:
       context: .
       dockerfile: ./apps/qanary-component-pm/Dockerfile
     environment:
-      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
-      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_PORT
-      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
-      - LUBW_DOMAIN=$PM_STATION_DOMAIN
+      - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_PORT"
+      - "QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT"
+      - "LUBW_DOMAIN=$PM_STATION_DOMAIN"
     volumes:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "slim"]
 
   qanary-component-pm-calculation:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_NAME
@@ -98,15 +99,15 @@ services:
       context: .
       dockerfile: ./apps/qanary-component-pm/Dockerfile
     environment:
-      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
-      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_PORT
-      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
-      - LUBW_DOMAIN=$PM_CALCULATION_DOMAIN
+      - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_PORT"
+      - "QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT"
+      - "LUBW_DOMAIN=$PM_CALCULATION_DOMAIN"
     volumes:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "slim"]
 
   qanary-component-pm-representation:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_NAME
@@ -119,15 +120,15 @@ services:
       context: .
       dockerfile: ./apps/qanary-component-pm/Dockerfile
     environment:
-      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
-      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_PORT
-      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
-      - LUBW_DOMAIN=$PM_REPRESENTATION_DOMAIN
+      - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_PORT"
+      - "QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT"
+      - "LUBW_DOMAIN=$PM_REPRESENTATION_DOMAIN"
     volumes:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "slim"]
   # end::qanary-component-pm[]
 
   # tag::qanary-component-time[]
@@ -142,15 +143,92 @@ services:
       context: .
       dockerfile: ./apps/qanary-component-time/Dockerfile
     environment:
-      - SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL
-      - SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_BASE_URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_PORT
-      - QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT
+      - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_TIME_PORT"
+      - "QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT"
     volumes:
       - ./apps/qanary-component-time:/app/apps/qanary-component-time
       - /app/apps/qanary-component-time/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all"]
+    profiles: ["qanary", "all", "slim"]
   # end::qanary-component-time[]
+
+  # tag::qanary-component-ld-shuyo[]
+  qanary-component-ld-shuyo:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME
+    build:
+      context: ./apps/qanary-component-ld-shuyo
+    restart: unless-stopped
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_PORT:5555"
+    environment:
+      - "SERVER_HOST=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME"
+      - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_PORT"
+    profiles: ["qanary", "all", "slim"]
+  # end::qanary-component-ld-shuyo[]
+
+  # tag::qanary-component-ner-automl[]
+  qanary-component-ner-automl:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_NAME
+    networks:
+      - rasa-network
+    restart: unless-stopped
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT"
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-ner-automl/Dockerfile
+      args:
+        TRAININGDATA: ${QANARY_COMPONENT_NER_AUTOML_TRAININGDATA}
+        TESTDATA: ${QANARY_COMPONENT_NER_AUTOML_TESTDATA}
+        MODELTYPE: ${QANARY_COMPONENT_NER_AUTOML_MODELTYPE}
+        LANGUAGE: ${QANARY_COMPONENT_NER_AUTOML_MODELLANGUAGE}
+    environment:
+      - "SPRING_BOOT_ADMIN_URL=$QANARY_COMPONENT_NER_AUTOML_SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_USERNAME=$QANARY_COMPONENT_NER_AUTOML_SPRING_BOOT_ADMIN_USERNAME"
+      - "SPRING_BOOT_ADMIN_PASSWORD=$QANARY_COMPONENT_NER_AUTOML_SPRING_BOOT_ADMIN_PASSWORD"
+      - "SERVICE_HOST=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT"
+      - "SERVICE_PORT=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT"
+      - "SERVICE_NAME_COMPONENT=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_NAME"
+      - "SERVICE_DESCRIPTION_COMPONENT=$QANARY_COMPONENT_NER_AUTOML_SERVICE_DESCRIPTION"
+      - "PRODUCTION=True"
+    command: uvicorn qanarycomponent:app --host 0.0.0.0 --port=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT
+    volumes:
+      - ./apps/qanary-component-ner-automl:/app
+    deploy:
+        resources:
+          reservations:
+            devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    profiles: ["qanary", "all", "qanary-ner"]
+  # end::qanary-component-ner-automl[]
+
+  # tag::qanary-component-fuzzy[]
+  qanary-component-fuzzy:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_NAME
+    networks:
+      - rasa-network
+    ports:
+      - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_PORT"
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-fuzzy/Dockerfile
+    environment:
+      - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
+      - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_FUZZY_PORT"
+      - "QANARY_ORIGIN=$QANARY_HOST:$QANARY_PORT"
+    volumes:
+      - ./apps/qanary-component-fuzzy:/app/apps/qanary-component-fuzzy
+      - /app/apps/qanary-component-fuzzy/node_modules
+      - /app/node_modules
+    profiles: ["qanary", "all", "qanary-ner"]
+  # end::qanary-component-fuzzy[]
   # end::qanary-components[]
 
   # tag::rasa[]
@@ -164,7 +242,7 @@ services:
       context: ./apps/rasa
     command: >
       run --enable-api --cors "*"
-    profiles: ["rasa", "all"]
+    profiles: ["rasa", "all", "slim"]
   # end::rasa[]
 
   # tag::action-server[]
@@ -181,7 +259,7 @@ services:
       - ./apps/action-server:/app/apps/action-server
       - /app/apps/action-server/node_modules
       - /app/node_modules
-    profiles: ["rasa", "all"]
+    profiles: ["rasa", "all", "slim"]
   # end::action-server[]
 
   # tag::frontend[]
@@ -199,7 +277,7 @@ services:
       - "$FRONTEND_PORT:3000"
     networks:
       - rasa-network
-    profiles: ["rasa", "all"]
+    profiles: ["rasa", "all", "slim"]
   # end::frontend[]
 
 # tag::networks[]

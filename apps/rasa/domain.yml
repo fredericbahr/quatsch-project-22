@@ -1,29 +1,19 @@
 version: "3.1"
 
 intents:
+  # general
   - greet
   - goodbye
   - bot_challenge
-  - context_air_measurand
+  # contect
+  - measurand_complete
+  # refinement
+  - refine_station
+  - refine_measurand
+  # fallback
   - nlu_fallback
   - qanary_default_processing
   - vulgar_out_of_scope
-
-entities:
-  - measurand
-  - station
-
-slots:
-  measurand:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: measurand
-  station:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: station
 
 responses:
   utter_greet:
@@ -45,8 +35,11 @@ responses:
     - text: "Das war nicht sehr nett. Ich werde daher deine Anfrage nicht beantworten.\nVersuche es gerne mit einer netten Ausdrucksweise erneut."
 
 actions:
-  - action_context_air_measurand
-  # Fallback
+  - action_measurand_complete
+  # Refinements
+  - action_refine_station
+  - action_refine_measurand
+  # Rasa Fallback
   - action_default_qanary
   - action_default_ask_affirmation
 

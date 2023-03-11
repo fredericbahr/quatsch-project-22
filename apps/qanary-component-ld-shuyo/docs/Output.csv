@@ -1,0 +1,6 @@
+subject,predicate,object
+tag:stardog:api:0.19879097104143417,http://www.w3.org/1999/02/22-rdf-syntax-ns#type,http://www.wdaqua.eu/qa#AnnotationOfQuestionLanguage
+tag:stardog:api:0.19879097104143417,http://www.w3.org/ns/openannotation/core/hasTarget,http://qanary-pipeline:40111/question/stored-question__text_86d132cb-244e-4125-a966-27c481f177d5
+tag:stardog:api:0.19879097104143417,http://www.w3.org/ns/openannotation/core/hasBody,de
+tag:stardog:api:0.19879097104143417,http://www.w3.org/ns/openannotation/core/annotatedAt,2023-02-23T21:15:42.008Z
+tag:stardog:api:0.19879097104143417,http://www.w3.org/ns/openannotation/core/annotatedBy,urn:qanary:LD-Shuyo

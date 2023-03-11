@@ -2,7 +2,7 @@
   "name": "qanary-component-core",
   "version": "1.0.0",
   "description": "Base typescript qanary component",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
   "files": [
     "dist"

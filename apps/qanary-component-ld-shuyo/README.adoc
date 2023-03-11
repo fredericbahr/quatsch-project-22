@@ -1,0 +1,77 @@
+// tag::excerpt[]
+= Qanary Component LD-Shuyo
+:toc:
+
+A language classification component.
+
+.Example Question:
+[source,text]
+----
+Wie ist der Ozonwert in Ulm am 23.01.2023?
+└───────────────────┬────────────────────┘
+         AnnotationOfQuestionLanguage
+----
+// end::excerpt[]
+https://github.com/WDAqua/Qanary-question-answering-components/tree/master/qanary-component-LD-Shuyo[Read more]
+
+include::../../docs/Component Install.adoc[leveloffset=+1]
+include::../../docs/Component Environment Variables.adoc[leveloffset=+2]
+include::../../docs/Component Integration.adoc[leveloffset=+2]
+
+[source,yaml]
+----
+include::../../docker-compose.yml[tags=preamble;qanary-pipeline;qanary-component-ld-shuyo;networks]
+----
+
+Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
+
+[source,dotenv]
+----
+include::../../.env[tags=qanary-pipeline;qanary-component-core;qanary-component-ld-shuyo]
+----
+
+== Usage
+
+Usage, as with all Qanary components, is divided into two phases.
+In the first phase, an annotation is requested from the pipeline via the REST interface.
+In the second phase, we can get the annotation data via a SPARQL query.
+
+=== Request an annotation
+
+To use the component, you can make a request to the Qanary pipeline.
+In the following example, a question is asked to the pipeline in German and the language is determined.
+
+[source,httprequest]
+----
+include::docs/Usage.http[]
+----
+
+=== Receive annotation data
+
+This is a simple SPARQL query to view the annotations of the component.
+To execute it, the `endpoint` from the query must be used for annotation.
+Additionally, `YOUR_CURRENT_GRAPH_ID` must be replaced by the `inGraph` or `outGraph` of the response.
+
+[source,httprequest]
+----
+include::docs/Usage.rq[]
+----
+
+A client is required to execute this SPARQL query.
+
+=== Example Output
+
+A possible SPARQL client is https://jena.apache.org/documentation/tools/[Apache Jena].
+This allows to query the data with the following command line interface:
+
+[source,bash]
+----
+rsparql --file docs/Usage.rq --service http://qanary-pipeline:40111/sparql --results=CSV
+----
+
+For the HTTP query `Wie ist der Ozonwert in Ulm am 23.01.2023?` there are the following found annotations in the SPARQL query
+
+[%header,format=csv]
+|===
+include::docs/Output.csv[]
+|===

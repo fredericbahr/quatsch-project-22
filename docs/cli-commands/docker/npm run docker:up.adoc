@@ -1,0 +1,9 @@
+= npm run docker:build
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+// tag::command[]
+|`npm run docker:up` |Starts all services within the monorepo
+// end::command[]
+|===

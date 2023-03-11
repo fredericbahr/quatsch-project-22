@@ -1,0 +1,30 @@
+= Install with Docker (Recommended)
+
+include::partials/Prerequisites.adoc[leveloffset=+1]
+
+== Setup
+
+Qanary components cannot be run in local Docker containers if they are accessed via `localhost`.
+The problem is that the Qanary pipeline carries localhost as an address in the Qanary message object, which does not exist in the Docker container.
+
+[source,bash]
+----
+npm install dotenv
+node -r dotenv/config -e 'console.log(`\n`+Object.entries(process.env).filter(([key]) => key.match(/^(SPRING|RASA|ACTION|FRONTEND)(.*)NAME$/)).map(([, value]) => `127.0.0.1 ${value}`).join(`\n`));' >> ./hosts
+sudo sh -c 'cat ./hosts >> /etc/hosts'
+----
+
+This script adds all services used in this project to the `/etc/hosts` file.
+With this change the Qanary pipeline can be reached at http://qanary-pipeline:40111 instead of localhost.
+
+== Build the image
+
+* Run `npm run docker:build` to build the needed docker image of the repo.
+
+== Start the applications
+
+* Run `npm run docker:up` to start all services
+
+== Stop the applications
+
+* Run `npm run docker:down` to stop all services

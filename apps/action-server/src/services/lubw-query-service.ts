@@ -32,7 +32,7 @@ export class LUBWQueryService {
    * @param lubwData
    */
   private static async fetchLubwData(lubwData: ILUBWData): Promise<Array<LupoCloudApi.ILupoMeasuringData>> {
-    const airMetricAdapter = new Map([
+    const measurandMetricAdapter = new Map([
       ["luqx", LupoCloudApi.ILupoAirMetric.Luqx],
       ["no2", LupoCloudApi.ILupoAirMetric.No2],
       ["o3", LupoCloudApi.ILupoAirMetric.O3],
@@ -41,11 +41,10 @@ export class LUBWQueryService {
     ]);
 
     const lubwResonse = await LupoCloudApi.LUPOAirMetricControllerApiFactory().readMetric(
-      airMetricAdapter.get(lubwData.measurand) || LupoCloudApi.ILupoAirMetric.O3,
-      {
-        from: `${lubwData.time}-ago`,
-        labels: `station:${lubwData.station}`,
-      },
+      measurandMetricAdapter.get(lubwData.measurand) || LupoCloudApi.ILupoAirMetric.O3,
+      lubwData.time ? `${lubwData.time}-ago` : undefined,
+      undefined,
+      lubwData.station ? `station:${lubwData.station}` : undefined,
     );
 
     return lubwResonse.data;

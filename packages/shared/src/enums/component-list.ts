@@ -8,4 +8,6 @@ export enum COMPONENT_LIST {
   PATTERN_MATCHING_REPRESENTATION = "qanary-component-pm-representation",
   TIME_RECOGNITION = "qanary-component-time",
   LANGUAGE_RECOGNITION = "LD-Shuyo",
+  NER_AUTOML = "qanary-component-ner-automl",
+  FUZZY_NER = "qanary-component-fuzzy",
 }

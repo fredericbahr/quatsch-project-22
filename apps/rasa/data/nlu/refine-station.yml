@@ -1,0 +1,417 @@
+# Automatically generated file. Do not change the content
+version: "3.1"
+
+nlu:
+  # Refine intent for giving information about a station
+  - intent: refine_station
+    examples: |
+      - DEBW029
+      - Aalen
+      - Ich interessiere mich für die Station DEBW029
+      - Ich interessiere mich für die Station Aalen
+      - Die Station ist DEBW029
+      - Die Station ist Aalen
+      - Nimm die Station DEBW029
+      - Nimm die Station Aalen
+      - Wähle die Station DEBW029
+      - Wähle die Station Aalen
+      - DEBW076
+      - Baden-Baden
+      - Ich interessiere mich für die Station DEBW076
+      - Ich interessiere mich für die Station Baden-Baden
+      - Die Station ist DEBW076
+      - Die Station ist Baden-Baden
+      - Nimm die Station DEBW076
+      - Nimm die Station Baden-Baden
+      - Wähle die Station DEBW076
+      - Wähle die Station Baden-Baden
+      - DEBW042
+      - Bernhausen
+      - Ich interessiere mich für die Station DEBW042
+      - Ich interessiere mich für die Station Bernhausen
+      - Die Station ist DEBW042
+      - Die Station ist Bernhausen
+      - Nimm die Station DEBW042
+      - Nimm die Station Bernhausen
+      - Wähle die Station DEBW042
+      - Wähle die Station Bernhausen
+      - DEBW046
+      - Biberach
+      - Ich interessiere mich für die Station DEBW046
+      - Ich interessiere mich für die Station Biberach
+      - Die Station ist DEBW046
+      - Die Station ist Biberach
+      - Nimm die Station DEBW046
+      - Nimm die Station Biberach
+      - Wähle die Station DEBW046
+      - Wähle die Station Biberach
+      - DEBW004
+      - Eggenstein
+      - Ich interessiere mich für die Station DEBW004
+      - Ich interessiere mich für die Station Eggenstein
+      - Die Station ist DEBW004
+      - Die Station ist Eggenstein
+      - Nimm die Station DEBW004
+      - Nimm die Station Eggenstein
+      - Wähle die Station DEBW004
+      - Wähle die Station Eggenstein
+      - DEBW084
+      - Freiburg
+      - Ich interessiere mich für die Station DEBW084
+      - Ich interessiere mich für die Station Freiburg
+      - Die Station ist DEBW084
+      - Die Station ist Freiburg
+      - Nimm die Station DEBW084
+      - Nimm die Station Freiburg
+      - Wähle die Station DEBW084
+      - Wähle die Station Freiburg
+      - DEBW122
+      - Freiburg Schwarzwaldstraße
+      - Ich interessiere mich für die Station DEBW122
+      - Ich interessiere mich für die Station Freiburg Schwarzwaldstraße
+      - Die Station ist DEBW122
+      - Die Station ist Freiburg Schwarzwaldstraße
+      - Nimm die Station DEBW122
+      - Nimm die Station Freiburg Schwarzwaldstraße
+      - Wähle die Station DEBW122
+      - Wähle die Station Freiburg Schwarzwaldstraße
+      - DEBW038
+      - Friedrichshafen
+      - Ich interessiere mich für die Station DEBW038
+      - Ich interessiere mich für die Station Friedrichshafen
+      - Die Station ist DEBW038
+      - Die Station ist Friedrichshafen
+      - Nimm die Station DEBW038
+      - Nimm die Station Friedrichshafen
+      - Wähle die Station DEBW038
+      - Wähle die Station Friedrichshafen
+      - DEBW112
+      - Gärtringen
+      - Ich interessiere mich für die Station DEBW112
+      - Ich interessiere mich für die Station Gärtringen
+      - Die Station ist DEBW112
+      - Die Station ist Gärtringen
+      - Nimm die Station DEBW112
+      - Nimm die Station Gärtringen
+      - Wähle die Station DEBW112
+      - Wähle die Station Gärtringen
+      - DEBW009
+      - Heidelberg
+      - Ich interessiere mich für die Station DEBW009
+      - Ich interessiere mich für die Station Heidelberg
+      - Die Station ist DEBW009
+      - Die Station ist Heidelberg
+      - Nimm die Station DEBW009
+      - Nimm die Station Heidelberg
+      - Wähle die Station DEBW009
+      - Wähle die Station Heidelberg
+      - DEBW015
+      - Heilbronn
+      - Ich interessiere mich für die Station DEBW015
+      - Ich interessiere mich für die Station Heilbronn
+      - Die Station ist DEBW015
+      - Die Station ist Heilbronn
+      - Nimm die Station DEBW015
+      - Nimm die Station Heilbronn
+      - Wähle die Station DEBW015
+      - Wähle die Station Heilbronn
+      - DEBW152
+      - Heilbronn Weinsberger Straße-Ost
+      - Ich interessiere mich für die Station DEBW152
+      - Ich interessiere mich für die Station Heilbronn Weinsberger Straße-Ost
+      - Die Station ist DEBW152
+      - Die Station ist Heilbronn Weinsberger Straße-Ost
+      - Nimm die Station DEBW152
+      - Nimm die Station Heilbronn Weinsberger Straße-Ost
+      - Wähle die Station DEBW152
+      - Wähle die Station Heilbronn Weinsberger Straße-Ost
+      - DEBW081
+      - Karlsruhe-Nordwest
+      - Ich interessiere mich für die Station DEBW081
+      - Ich interessiere mich für die Station Karlsruhe-Nordwest
+      - Die Station ist DEBW081
+      - Die Station ist Karlsruhe-Nordwest
+      - Nimm die Station DEBW081
+      - Nimm die Station Karlsruhe-Nordwest
+      - Wähle die Station DEBW081
+      - Wähle die Station Karlsruhe-Nordwest
+      - DEBW080
+      - Karlsruhe Reinhold-Frank-Straße
+      - Ich interessiere mich für die Station DEBW080
+      - Ich interessiere mich für die Station Karlsruhe Reinhold-Frank-Straße
+      - Die Station ist DEBW080
+      - Die Station ist Karlsruhe Reinhold-Frank-Straße
+      - Nimm die Station DEBW080
+      - Nimm die Station Karlsruhe Reinhold-Frank-Straße
+      - Wähle die Station DEBW080
+      - Wähle die Station Karlsruhe Reinhold-Frank-Straße
+      - DEBW022
+      - Kehl
+      - Ich interessiere mich für die Station DEBW022
+      - Ich interessiere mich für die Station Kehl
+      - Die Station ist DEBW022
+      - Die Station ist Kehl
+      - Nimm die Station DEBW022
+      - Nimm die Station Kehl
+      - Wähle die Station DEBW022
+      - Wähle die Station Kehl
+      - DEBW052
+      - Konstanz
+      - Ich interessiere mich für die Station DEBW052
+      - Ich interessiere mich für die Station Konstanz
+      - Die Station ist DEBW052
+      - Die Station ist Konstanz
+      - Nimm die Station DEBW052
+      - Nimm die Station Konstanz
+      - Wähle die Station DEBW052
+      - Wähle die Station Konstanz
+      - DEBW120
+      - Leonberg Grabenstraße
+      - Ich interessiere mich für die Station DEBW120
+      - Ich interessiere mich für die Station Leonberg Grabenstraße
+      - Die Station ist DEBW120
+      - Die Station ist Leonberg Grabenstraße
+      - Nimm die Station DEBW120
+      - Nimm die Station Leonberg Grabenstraße
+      - Wähle die Station DEBW120
+      - Wähle die Station Leonberg Grabenstraße
+      - DEBW024
+      - Ludwigsburg
+      - Ich interessiere mich für die Station DEBW024
+      - Ich interessiere mich für die Station Ludwigsburg
+      - Die Station ist DEBW024
+      - Die Station ist Ludwigsburg
+      - Nimm die Station DEBW024
+      - Nimm die Station Ludwigsburg
+      - Wähle die Station DEBW024
+      - Wähle die Station Ludwigsburg
+      - DEBW241
+      - Ludwigsburg Schlossstraße
+      - Ich interessiere mich für die Station DEBW241
+      - Ich interessiere mich für die Station Ludwigsburg Schlossstraße
+      - Die Station ist DEBW241
+      - Die Station ist Ludwigsburg Schlossstraße
+      - Nimm die Station DEBW241
+      - Nimm die Station Ludwigsburg Schlossstraße
+      - Wähle die Station DEBW241
+      - Wähle die Station Ludwigsburg Schlossstraße
+      - DEBW098
+      - Mannheim Friedrichsring
+      - Ich interessiere mich für die Station DEBW098
+      - Ich interessiere mich für die Station Mannheim Friedrichsring
+      - Die Station ist DEBW098
+      - Die Station ist Mannheim Friedrichsring
+      - Nimm die Station DEBW098
+      - Nimm die Station Mannheim Friedrichsring
+      - Wähle die Station DEBW098
+      - Wähle die Station Mannheim Friedrichsring
+      - DEBW005
+      - Mannheim-Nord
+      - Ich interessiere mich für die Station DEBW005
+      - Ich interessiere mich für die Station Mannheim-Nord
+      - Die Station ist DEBW005
+      - Die Station ist Mannheim-Nord
+      - Nimm die Station DEBW005
+      - Nimm die Station Mannheim-Nord
+      - Wähle die Station DEBW005
+      - Wähle die Station Mannheim-Nord
+      - DEBW073
+      - Neuenburg
+      - Ich interessiere mich für die Station DEBW073
+      - Ich interessiere mich für die Station Neuenburg
+      - Die Station ist DEBW073
+      - Die Station ist Neuenburg
+      - Nimm die Station DEBW073
+      - Nimm die Station Neuenburg
+      - Wähle die Station DEBW073
+      - Wähle die Station Neuenburg
+      - DEBW125
+      - Pfinztal Karlsruher Straße
+      - Ich interessiere mich für die Station DEBW125
+      - Ich interessiere mich für die Station Pfinztal Karlsruher Straße
+      - Die Station ist DEBW125
+      - Die Station ist Pfinztal Karlsruher Straße
+      - Nimm die Station DEBW125
+      - Nimm die Station Pfinztal Karlsruher Straße
+      - Wähle die Station DEBW125
+      - Wähle die Station Pfinztal Karlsruher Straße
+      - DEBW033
+      - Pforzheim
+      - Ich interessiere mich für die Station DEBW033
+      - Ich interessiere mich für die Station Pforzheim
+      - Die Station ist DEBW033
+      - Die Station ist Pforzheim
+      - Nimm die Station DEBW033
+      - Nimm die Station Pforzheim
+      - Wähle die Station DEBW033
+      - Wähle die Station Pforzheim
+      - DEBW027
+      - Reutlingen
+      - Ich interessiere mich für die Station DEBW027
+      - Ich interessiere mich für die Station Reutlingen
+      - Die Station ist DEBW027
+      - Die Station ist Reutlingen
+      - Nimm die Station DEBW027
+      - Nimm die Station Reutlingen
+      - Wähle die Station DEBW027
+      - Wähle die Station Reutlingen
+      - DEBW147
+      - Reutlingen Lederstraße-Ost
+      - Ich interessiere mich für die Station DEBW147
+      - Ich interessiere mich für die Station Reutlingen Lederstraße-Ost
+      - Die Station ist DEBW147
+      - Die Station ist Reutlingen Lederstraße-Ost
+      - Nimm die Station DEBW147
+      - Nimm die Station Reutlingen Lederstraße-Ost
+      - Wähle die Station DEBW147
+      - Wähle die Station Reutlingen Lederstraße-Ost
+      - DEBW156
+      - Schramberg Oberndorfer Straße
+      - Ich interessiere mich für die Station DEBW156
+      - Ich interessiere mich für die Station Schramberg Oberndorfer Straße
+      - Die Station ist DEBW156
+      - Die Station ist Schramberg Oberndorfer Straße
+      - Nimm die Station DEBW156
+      - Nimm die Station Schramberg Oberndorfer Straße
+      - Wähle die Station DEBW156
+      - Wähle die Station Schramberg Oberndorfer Straße
+      - DEBW087
+      - Schwäbische Alb
+      - Ich interessiere mich für die Station DEBW087
+      - Ich interessiere mich für die Station Schwäbische Alb
+      - Die Station ist DEBW087
+      - Die Station ist Schwäbische Alb
+      - Nimm die Station DEBW087
+      - Nimm die Station Schwäbische Alb
+      - Wähle die Station DEBW087
+      - Wähle die Station Schwäbische Alb
+      - DEBW031
+      - Schwarzwald-Süd
+      - Ich interessiere mich für die Station DEBW031
+      - Ich interessiere mich für die Station Schwarzwald-Süd
+      - Die Station ist DEBW031
+      - Die Station ist Schwarzwald-Süd
+      - Nimm die Station DEBW031
+      - Nimm die Station Schwarzwald-Süd
+      - Wähle die Station DEBW031
+      - Wähle die Station Schwarzwald-Süd
+      - DEBW118
+      - Stuttgart Am Neckartor
+      - Ich interessiere mich für die Station DEBW118
+      - Ich interessiere mich für die Station Stuttgart Am Neckartor
+      - Die Station ist DEBW118
+      - Die Station ist Stuttgart Am Neckartor
+      - Nimm die Station DEBW118
+      - Nimm die Station Stuttgart Am Neckartor
+      - Wähle die Station DEBW118
+      - Wähle die Station Stuttgart Am Neckartor
+      - DEBW099
+      - Stuttgart Arnulf-Klett-Platz
+      - Ich interessiere mich für die Station DEBW099
+      - Ich interessiere mich für die Station Stuttgart Arnulf-Klett-Platz
+      - Die Station ist DEBW099
+      - Die Station ist Stuttgart Arnulf-Klett-Platz
+      - Nimm die Station DEBW099
+      - Nimm die Station Stuttgart Arnulf-Klett-Platz
+      - Wähle die Station DEBW099
+      - Wähle die Station Stuttgart Arnulf-Klett-Platz
+      - DEBW013
+      - Stuttgart-Bad Cannstatt
+      - Ich interessiere mich für die Station DEBW013
+      - Ich interessiere mich für die Station Stuttgart-Bad Cannstatt
+      - Die Station ist DEBW013
+      - Die Station ist Stuttgart-Bad Cannstatt
+      - Nimm die Station DEBW013
+      - Nimm die Station Stuttgart-Bad Cannstatt
+      - Wähle die Station DEBW013
+      - Wähle die Station Stuttgart-Bad Cannstatt
+      - LUBW082
+      - Stuttgart Hauptstätter Straße
+      - Ich interessiere mich für die Station LUBW082
+      - Ich interessiere mich für die Station Stuttgart Hauptstätter Straße
+      - Die Station ist LUBW082
+      - Die Station ist Stuttgart Hauptstätter Straße
+      - Nimm die Station LUBW082
+      - Nimm die Station Stuttgart Hauptstätter Straße
+      - Wähle die Station LUBW082
+      - Wähle die Station Stuttgart Hauptstätter Straße
+      - DEBW116
+      - Stuttgart Hohenheimer Straße
+      - Ich interessiere mich für die Station DEBW116
+      - Ich interessiere mich für die Station Stuttgart Hohenheimer Straße
+      - Die Station ist DEBW116
+      - Die Station ist Stuttgart Hohenheimer Straße
+      - Nimm die Station DEBW116
+      - Nimm die Station Stuttgart Hohenheimer Straße
+      - Wähle die Station DEBW116
+      - Wähle die Station Stuttgart Hohenheimer Straße
+      - DEBW059
+      - Tauberbischofsheim
+      - Ich interessiere mich für die Station DEBW059
+      - Ich interessiere mich für die Station Tauberbischofsheim
+      - Die Station ist DEBW059
+      - Die Station ist Tauberbischofsheim
+      - Nimm die Station DEBW059
+      - Nimm die Station Tauberbischofsheim
+      - Wähle die Station DEBW059
+      - Wähle die Station Tauberbischofsheim
+      - DEBW107
+      - Tübingen
+      - Ich interessiere mich für die Station DEBW107
+      - Ich interessiere mich für die Station Tübingen
+      - Die Station ist DEBW107
+      - Die Station ist Tübingen
+      - Nimm die Station DEBW107
+      - Nimm die Station Tübingen
+      - Wähle die Station DEBW107
+      - Wähle die Station Tübingen
+      - DEBW136
+      - Tübingen Mühlstraße
+      - Ich interessiere mich für die Station DEBW136
+      - Ich interessiere mich für die Station Tübingen Mühlstraße
+      - Die Station ist DEBW136
+      - Die Station ist Tübingen Mühlstraße
+      - Nimm die Station DEBW136
+      - Nimm die Station Tübingen Mühlstraße
+      - Wähle die Station DEBW136
+      - Wähle die Station Tübingen Mühlstraße
+      - DEBW019
+      - Ulm
+      - Ich interessiere mich für die Station DEBW019
+      - Ich interessiere mich für die Station Ulm
+      - Die Station ist DEBW019
+      - Die Station ist Ulm
+      - Nimm die Station DEBW019
+      - Nimm die Station Ulm
+      - Wähle die Station DEBW019
+      - Wähle die Station Ulm
+      - DEBW039
+      - Villingen-Schwenningen
+      - Ich interessiere mich für die Station DEBW039
+      - Ich interessiere mich für die Station Villingen-Schwenningen
+      - Die Station ist DEBW039
+      - Die Station ist Villingen-Schwenningen
+      - Nimm die Station DEBW039
+      - Nimm die Station Villingen-Schwenningen
+      - Wähle die Station DEBW039
+      - Wähle die Station Villingen-Schwenningen
+      - DEBW023
+      - Weil am Rhein
+      - Ich interessiere mich für die Station DEBW023
+      - Ich interessiere mich für die Station Weil am Rhein
+      - Die Station ist DEBW023
+      - Die Station ist Weil am Rhein
+      - Nimm die Station DEBW023
+      - Nimm die Station Weil am Rhein
+      - Wähle die Station DEBW023
+      - Wähle die Station Weil am Rhein
+      - DEBW010
+      - Wiesloch
+      - Ich interessiere mich für die Station DEBW010
+      - Ich interessiere mich für die Station Wiesloch
+      - Die Station ist DEBW010
+      - Die Station ist Wiesloch
+      - Nimm die Station DEBW010
+      - Nimm die Station Wiesloch
+      - Wähle die Station DEBW010
+      - Wähle die Station Wiesloch

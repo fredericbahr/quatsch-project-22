@@ -2,7 +2,7 @@
   "name": "qanary-component-time",
   "version": "1.0.0",
   "description": "This is a Qanary component for determining time values, in posed questions.",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN LICENSE",
   "main": "dist/index.js",
   "files": [
     "dist"

@@ -147,11 +147,13 @@ export const LUPOAirMetricControllerApiAxiosParamCreator = function (configurati
          * Returns air quality index data
          * @summary LUQX Data
          * @param {ILupoAirMetric} metric The measurand of interest
-         * @param {ILupoMeasuringURLSearchParams} [searchParams] Filter for time start dates
+         * @param {string} [from] Filter for time start dates
+         * @param {string} [to] Filter for time end dates
+         * @param {string} [labels] Filter for label contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readMetric: async (metric: ILupoAirMetric, searchParams?: ILupoMeasuringURLSearchParams, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        readMetric: async (metric: ILupoAirMetric, from?: string, to?: string, labels?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'metric' is not null or undefined
             assertParamExists('readMetric', 'metric', metric)
             const localVarPath = `/air/metric/{metric}`
@@ -167,8 +169,16 @@ export const LUPOAirMetricControllerApiAxiosParamCreator = function (configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (searchParams !== undefined) {
-                localVarQueryParameter['searchParams'] = searchParams;
+            if (from !== undefined) {
+                localVarQueryParameter['from'] = from;
+            }
+
+            if (to !== undefined) {
+                localVarQueryParameter['to'] = to;
+            }
+
+            if (labels !== undefined) {
+                localVarQueryParameter['labels'] = labels;
             }
 
 
@@ -196,12 +206,14 @@ export const LUPOAirMetricControllerApiFp = function(configuration?: Configurati
          * Returns air quality index data
          * @summary LUQX Data
          * @param {ILupoAirMetric} metric The measurand of interest
-         * @param {ILupoMeasuringURLSearchParams} [searchParams] Filter for time start dates
+         * @param {string} [from] Filter for time start dates
+         * @param {string} [to] Filter for time end dates
+         * @param {string} [labels] Filter for label contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async readMetric(metric: ILupoAirMetric, searchParams?: ILupoMeasuringURLSearchParams, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ILupoMeasuringData>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.readMetric(metric, searchParams, options);
+        async readMetric(metric: ILupoAirMetric, from?: string, to?: string, labels?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ILupoMeasuringData>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.readMetric(metric, from, to, labels, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -218,12 +230,14 @@ export const LUPOAirMetricControllerApiFactory = function (configuration?: Confi
          * Returns air quality index data
          * @summary LUQX Data
          * @param {ILupoAirMetric} metric The measurand of interest
-         * @param {ILupoMeasuringURLSearchParams} [searchParams] Filter for time start dates
+         * @param {string} [from] Filter for time start dates
+         * @param {string} [to] Filter for time end dates
+         * @param {string} [labels] Filter for label contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        readMetric(metric: ILupoAirMetric, searchParams?: ILupoMeasuringURLSearchParams, options?: any): AxiosPromise<Array<ILupoMeasuringData>> {
-            return localVarFp.readMetric(metric, searchParams, options).then((request) => request(axios, basePath));
+        readMetric(metric: ILupoAirMetric, from?: string, to?: string, labels?: string, options?: any): AxiosPromise<Array<ILupoMeasuringData>> {
+            return localVarFp.readMetric(metric, from, to, labels, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -239,13 +253,15 @@ export class LUPOAirMetricControllerApi extends BaseAPI {
      * Returns air quality index data
      * @summary LUQX Data
      * @param {ILupoAirMetric} metric The measurand of interest
-     * @param {ILupoMeasuringURLSearchParams} [searchParams] Filter for time start dates
+     * @param {string} [from] Filter for time start dates
+     * @param {string} [to] Filter for time end dates
+     * @param {string} [labels] Filter for label contents
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof LUPOAirMetricControllerApi
      */
-    public readMetric(metric: ILupoAirMetric, searchParams?: ILupoMeasuringURLSearchParams, options?: AxiosRequestConfig) {
-        return LUPOAirMetricControllerApiFp(this.configuration).readMetric(metric, searchParams, options).then((request) => request(this.axios, this.basePath));
+    public readMetric(metric: ILupoAirMetric, from?: string, to?: string, labels?: string, options?: AxiosRequestConfig) {
+        return LUPOAirMetricControllerApiFp(this.configuration).readMetric(metric, from, to, labels, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
