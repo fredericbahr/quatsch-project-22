@@ -1,0 +1,21 @@
+{
+    "qanary": {
+        "system_url": "http://qanary-pipeline:40111/startquestionansweringwithtextquestion",
+        "componentlist": [
+            "qanary-component-time"
+        ],
+        "additionalTriples": ""
+    },
+    "validation-sparql-templates": [
+        "0_was-any-instance-identified.sparql",
+        "1_was-the-expected-instance-recognized.sparql"
+    ],
+    "tests": [
+        {
+            "question": "Wie ist der Ozonwert in Ulm am 23.01.2023?",
+            "replacements": {
+                "<BODY>": {"text":"23.01.2023","start":"2023-01-23T12:00:00.000Z"}
+            }
+        }
+    ]
+}
