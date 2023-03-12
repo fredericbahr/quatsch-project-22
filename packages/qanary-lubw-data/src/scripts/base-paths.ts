@@ -10,4 +10,5 @@ export const basePaths = {
   measurandCompleteYML: `${APP_RASA}/data/nlu/measurand-complete.yml`,
   measurandMaxYML: `${APP_RASA}/data/nlu/measurand-max.yml`,
   measurandMinYML: `${APP_RASA}/data/nlu/measurand-min.yml`,
+  measurandThresholdYML: `${APP_RASA}/data/nlu/measurand-threshold.yml`,
 };
