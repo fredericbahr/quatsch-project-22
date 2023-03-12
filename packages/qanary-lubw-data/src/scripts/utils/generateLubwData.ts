@@ -9,6 +9,8 @@ const additionalCalculationEntries: Array<string> = [
   "maximal",
   "durchschnittlich",
   "kritisch",
+  "höchste",
+  "niedrigste",
 ];
 
 /**

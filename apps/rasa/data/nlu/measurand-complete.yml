@@ -1,3 +1,5 @@
+# Automatically generated file. Do not change the content
+
 version: "3.1"
 
 nlu:
@@ -5,349 +7,329 @@ nlu:
   - intent: measurand_complete
     examples: |
       - Wie ist der Stickstoffdioxid in DEBW029?
-      - Wie ist der no2 in Aalen?
-      - Wie ist der Stickstoffdioxid in Aalen?
-      - Wie ist der pm10 in Aalen?
-      - Wie ist der no2 in DEBW076?
+      - Wie ist der o3 in DEBW029?
+      - Wie ist der pm10 in DEBW029?
+      - Wie ist der Ozon in Aalen?
+      - Wie ist der pm25k in Aalen?
       - Wie ist der Stickstoffdioxid in DEBW076?
+      - Wie ist der o3 in DEBW076?
       - Wie ist der Ozon in DEBW076?
       - Wie ist der pm10 in DEBW076?
       - Wie ist der luqx in Baden-Baden?
-      - Wie ist der Luftqualitätsindex in Baden-Baden?
-      - Wie ist der Ozon in Baden-Baden?
-      - Wie ist der no2 in DEBW042?
-      - Wie ist der pm10 in Bernhausen?
-      - Wie ist der Luftqualitätsindex in Biberach?
-      - Wie ist der no2 in Biberach?
-      - Wie ist der no2 in Eggenstein?
-      - Wie ist der o3 in Eggenstein?
-      - Wie ist der Luftqualitätsindex in Freiburg?
-      - Wie ist der no2 in Freiburg?
-      - Wie ist der Stickstoffdioxid in Freiburg?
-      - Wie ist der pm10 in Freiburg?
-      - Wie ist der pm25k in Freiburg?
-      - Wie ist der Ozon in DEBW122?
+      - Wie ist der no2 in Baden-Baden?
+      - Wie ist der Stickstoffdioxid in Baden-Baden?
+      - Wie ist der luqx in DEBW042?
+      - Wie ist der Ozon in DEBW042?
+      - Wie ist der pm10 in DEBW042?
+      - Wie ist der pm25k in DEBW042?
+      - Wie ist der pm25k in Bernhausen?
+      - Wie ist der no2 in DEBW046?
+      - Wie ist der pm10 in DEBW046?
+      - Wie ist der Stickstoffdioxid in Biberach?
+      - Wie ist der o3 in Biberach?
+      - Wie ist der Ozon in Biberach?
+      - Wie ist der pm25k in Biberach?
+      - Wie ist der pm10 in DEBW004?
+      - Wie ist der luqx in Eggenstein?
+      - Wie ist der Stickstoffdioxid in Eggenstein?
+      - Wie ist der pm10 in DEBW084?
+      - Wie ist der o3 in Freiburg?
+      - Wie ist der Ozon in Freiburg?
+      - Wie ist der Stickstoffdioxid in DEBW122?
+      - Wie ist der pm25k in DEBW122?
       - Wie ist der luqx in Freiburg Schwarzwaldstraße?
+      - Wie ist der no2 in Freiburg Schwarzwaldstraße?
       - Wie ist der Stickstoffdioxid in Freiburg Schwarzwaldstraße?
-      - Wie ist der pm10 in Freiburg Schwarzwaldstraße?
-      - Wie ist der luqx in DEBW038?
-      - Wie ist der Luftqualitätsindex in DEBW038?
+      - Wie ist der Ozon in Freiburg Schwarzwaldstraße?
+      - Wie ist der pm25k in Freiburg Schwarzwaldstraße?
       - Wie ist der o3 in DEBW038?
-      - Wie ist der Ozon in DEBW038?
-      - Wie ist der Luftqualitätsindex in Friedrichshafen?
-      - Wie ist der pm10 in DEBW112?
-      - Wie ist der no2 in Gärtringen?
-      - Wie ist der Ozon in Gärtringen?
-      - Wie ist der pm25k in Gärtringen?
-      - Wie ist der no2 in Heidelberg?
-      - Wie ist der o3 in DEBW015?
-      - Wie ist der pm10 in DEBW015?
+      - Wie ist der pm10 in Friedrichshafen?
+      - Wie ist der Ozon in DEBW112?
+      - Wie ist der Luftqualitätsindex in Gärtringen?
+      - Wie ist der Stickstoffdioxid in Gärtringen?
+      - Wie ist der pm10 in Gärtringen?
+      - Wie ist der luqx in DEBW009?
+      - Wie ist der Stickstoffdioxid in DEBW009?
+      - Wie ist der Luftqualitätsindex in Heidelberg?
+      - Wie ist der Stickstoffdioxid in Heidelberg?
+      - Wie ist der o3 in Heidelberg?
+      - Wie ist der Ozon in Heidelberg?
+      - Wie ist der pm25k in Heidelberg?
+      - Wie ist der luqx in DEBW015?
+      - Wie ist der Ozon in DEBW015?
       - Wie ist der luqx in Heilbronn?
-      - Wie ist der no2 in Heilbronn?
-      - Wie ist der Stickstoffdioxid in Heilbronn?
-      - Wie ist der o3 in Heilbronn?
-      - Wie ist der Ozon in DEBW152?
+      - Wie ist der pm10 in Heilbronn?
+      - Wie ist der luqx in DEBW152?
+      - Wie ist der pm10 in DEBW152?
       - Wie ist der Stickstoffdioxid in Heilbronn Weinsberger Straße-Ost?
       - Wie ist der pm10 in Heilbronn Weinsberger Straße-Ost?
-      - Wie ist der Stickstoffdioxid in DEBW081?
-      - Wie ist der Luftqualitätsindex in Karlsruhe-Nordwest?
+      - Wie ist der Luftqualitätsindex in DEBW081?
       - Wie ist der no2 in Karlsruhe-Nordwest?
-      - Wie ist der Stickstoffdioxid in DEBW080?
-      - Wie ist der o3 in DEBW080?
-      - Wie ist der Ozon in DEBW080?
-      - Wie ist der pm10 in DEBW080?
+      - Wie ist der Ozon in Karlsruhe-Nordwest?
+      - Wie ist der pm25k in DEBW080?
+      - Wie ist der luqx in Karlsruhe Reinhold-Frank-Straße?
+      - Wie ist der Luftqualitätsindex in Karlsruhe Reinhold-Frank-Straße?
       - Wie ist der no2 in Karlsruhe Reinhold-Frank-Straße?
-      - Wie ist der Stickstoffdioxid in Karlsruhe Reinhold-Frank-Straße?
-      - Wie ist der pm10 in Karlsruhe Reinhold-Frank-Straße?
-      - Wie ist der no2 in DEBW022?
-      - Wie ist der luqx in Kehl?
-      - Wie ist der Stickstoffdioxid in Kehl?
-      - Wie ist der Ozon in Kehl?
-      - Wie ist der Luftqualitätsindex in DEBW052?
+      - Wie ist der luqx in DEBW022?
+      - Wie ist der Luftqualitätsindex in DEBW022?
+      - Wie ist der pm25k in DEBW022?
+      - Wie ist der no2 in DEBW052?
       - Wie ist der luqx in Konstanz?
-      - Wie ist der Stickstoffdioxid in Konstanz?
+      - Wie ist der o3 in Konstanz?
+      - Wie ist der Ozon in Konstanz?
       - Wie ist der pm10 in Konstanz?
-      - Wie ist der pm25k in Konstanz?
-      - Wie ist der luqx in Leonberg Grabenstraße?
+      - Wie ist der Luftqualitätsindex in DEBW120?
+      - Wie ist der Luftqualitätsindex in Leonberg Grabenstraße?
       - Wie ist der Ozon in Leonberg Grabenstraße?
-      - Wie ist der pm25k in Leonberg Grabenstraße?
-      - Wie ist der no2 in DEBW024?
-      - Wie ist der Ozon in DEBW024?
+      - Wie ist der luqx in DEBW024?
       - Wie ist der pm25k in DEBW024?
-      - Wie ist der Luftqualitätsindex in Ludwigsburg?
-      - Wie ist der no2 in Ludwigsburg?
-      - Wie ist der pm25k in Ludwigsburg?
+      - Wie ist der Stickstoffdioxid in Ludwigsburg?
+      - Wie ist der Stickstoffdioxid in DEBW241?
+      - Wie ist der o3 in DEBW241?
       - Wie ist der pm25k in DEBW241?
-      - Wie ist der no2 in Ludwigsburg Schlossstraße?
-      - Wie ist der pm25k in Ludwigsburg Schlossstraße?
-      - Wie ist der no2 in Mannheim Friedrichsring?
+      - Wie ist der no2 in DEBW098?
+      - Wie ist der luqx in Mannheim Friedrichsring?
+      - Wie ist der Luftqualitätsindex in Mannheim Friedrichsring?
+      - Wie ist der Stickstoffdioxid in Mannheim Friedrichsring?
       - Wie ist der pm10 in Mannheim Friedrichsring?
-      - Wie ist der luqx in DEBW005?
-      - Wie ist der pm25k in DEBW005?
-      - Wie ist der luqx in Mannheim-Nord?
-      - Wie ist der no2 in Mannheim-Nord?
-      - Wie ist der Stickstoffdioxid in Neuenburg?
-      - Wie ist der o3 in DEBW125?
+      - Wie ist der pm25k in Mannheim Friedrichsring?
+      - Wie ist der o3 in DEBW005?
+      - Wie ist der pm10 in DEBW005?
+      - Wie ist der pm10 in Mannheim-Nord?
+      - Wie ist der Stickstoffdioxid in DEBW073?
+      - Wie ist der o3 in DEBW073?
       - Wie ist der Ozon in DEBW125?
       - Wie ist der pm10 in DEBW125?
-      - Wie ist der luqx in Pfinztal Karlsruher Straße?
-      - Wie ist der no2 in Pfinztal Karlsruher Straße?
-      - Wie ist der pm10 in Pfinztal Karlsruher Straße?
-      - Wie ist der Stickstoffdioxid in DEBW033?
-      - Wie ist der Ozon in Pforzheim?
-      - Wie ist der pm25k in Pforzheim?
-      - Wie ist der Luftqualitätsindex in DEBW027?
+      - Wie ist der pm25k in Pfinztal Karlsruher Straße?
+      - Wie ist der Luftqualitätsindex in DEBW033?
+      - Wie ist der Ozon in DEBW033?
+      - Wie ist der pm25k in DEBW033?
       - Wie ist der pm10 in DEBW027?
-      - Wie ist der luqx in Reutlingen?
-      - Wie ist der no2 in DEBW147?
+      - Wie ist der Luftqualitätsindex in DEBW147?
+      - Wie ist der Stickstoffdioxid in DEBW147?
       - Wie ist der Ozon in DEBW147?
+      - Wie ist der luqx in Reutlingen Lederstraße-Ost?
       - Wie ist der Stickstoffdioxid in Reutlingen Lederstraße-Ost?
+      - Wie ist der o3 in Reutlingen Lederstraße-Ost?
       - Wie ist der luqx in DEBW156?
-      - Wie ist der Stickstoffdioxid in DEBW156?
-      - Wie ist der pm25k in DEBW156?
+      - Wie ist der Luftqualitätsindex in DEBW156?
       - Wie ist der Luftqualitätsindex in Schramberg Oberndorfer Straße?
+      - Wie ist der no2 in Schramberg Oberndorfer Straße?
+      - Wie ist der luqx in DEBW087?
       - Wie ist der Stickstoffdioxid in DEBW087?
-      - Wie ist der luqx in Schwäbische Alb?
-      - Wie ist der luqx in DEBW031?
-      - Wie ist der o3 in DEBW031?
-      - Wie ist der Ozon in DEBW031?
-      - Wie ist der pm25k in DEBW031?
-      - Wie ist der no2 in Schwarzwald-Süd?
+      - Wie ist der pm25k in DEBW087?
+      - Wie ist der Luftqualitätsindex in DEBW031?
+      - Wie ist der Stickstoffdioxid in Schwarzwald-Süd?
       - Wie ist der o3 in Schwarzwald-Süd?
-      - Wie ist der pm25k in Schwarzwald-Süd?
-      - Wie ist der no2 in DEBW118?
-      - Wie ist der pm25k in DEBW118?
-      - Wie ist der Ozon in Stuttgart Am Neckartor?
-      - Wie ist der pm10 in Stuttgart Am Neckartor?
+      - Wie ist der pm10 in Schwarzwald-Süd?
+      - Wie ist der pm25k in Stuttgart Am Neckartor?
       - Wie ist der no2 in DEBW099?
-      - Wie ist der pm10 in Stuttgart Arnulf-Klett-Platz?
-      - Wie ist der pm25k in Stuttgart Arnulf-Klett-Platz?
-      - Wie ist der o3 in DEBW013?
+      - Wie ist der Stickstoffdioxid in DEBW099?
+      - Wie ist der pm10 in DEBW099?
+      - Wie ist der pm25k in DEBW099?
+      - Wie ist der no2 in Stuttgart Arnulf-Klett-Platz?
+      - Wie ist der o3 in Stuttgart Arnulf-Klett-Platz?
+      - Wie ist der Luftqualitätsindex in DEBW013?
+      - Wie ist der Stickstoffdioxid in DEBW013?
       - Wie ist der no2 in Stuttgart-Bad Cannstatt?
-      - Wie ist der luqx in LUBW082?
       - Wie ist der Luftqualitätsindex in LUBW082?
-      - Wie ist der Stickstoffdioxid in LUBW082?
       - Wie ist der o3 in LUBW082?
-      - Wie ist der Luftqualitätsindex in Stuttgart Hauptstätter Straße?
+      - Wie ist der pm10 in LUBW082?
       - Wie ist der o3 in Stuttgart Hauptstätter Straße?
-      - Wie ist der pm10 in Stuttgart Hauptstätter Straße?
-      - Wie ist der Ozon in DEBW116?
-      - Wie ist der pm10 in DEBW116?
-      - Wie ist der Ozon in Stuttgart Hohenheimer Straße?
       - Wie ist der pm10 in Stuttgart Hohenheimer Straße?
-      - Wie ist der luqx in DEBW059?
+      - Wie ist der pm25k in Stuttgart Hohenheimer Straße?
       - Wie ist der no2 in DEBW059?
-      - Wie ist der o3 in DEBW059?
       - Wie ist der Ozon in DEBW059?
-      - Wie ist der pm10 in DEBW059?
-      - Wie ist der pm25k in DEBW059?
-      - Wie ist der luqx in Tauberbischofsheim?
-      - Wie ist der pm10 in Tauberbischofsheim?
-      - Wie ist der no2 in DEBW107?
+      - Wie ist der no2 in Tauberbischofsheim?
+      - Wie ist der o3 in DEBW107?
+      - Wie ist der Luftqualitätsindex in Tübingen?
       - Wie ist der no2 in Tübingen?
+      - Wie ist der pm10 in Tübingen?
       - Wie ist der pm25k in Tübingen?
-      - Wie ist der Luftqualitätsindex in DEBW136?
-      - Wie ist der Luftqualitätsindex in Tübingen Mühlstraße?
-      - Wie ist der no2 in Tübingen Mühlstraße?
-      - Wie ist der Ozon in Tübingen Mühlstraße?
-      - Wie ist der luqx in DEBW019?
+      - Wie ist der luqx in DEBW136?
+      - Wie ist der Stickstoffdioxid in DEBW136?
+      - Wie ist der Stickstoffdioxid in DEBW019?
+      - Wie ist der Ozon in DEBW019?
       - Wie ist der pm10 in DEBW019?
-      - Wie ist der o3 in Ulm?
+      - Wie ist der Ozon in Ulm?
       - Wie ist der o3 in DEBW039?
-      - Wie ist der luqx in Villingen-Schwenningen?
-      - Wie ist der Stickstoffdioxid in Villingen-Schwenningen?
-      - Wie ist der o3 in Villingen-Schwenningen?
-      - Wie ist der Ozon in DEBW023?
-      - Wie ist der no2 in Weil am Rhein?
-      - Wie ist der pm10 in Weil am Rhein?
-      - Wie ist der Stickstoffdioxid in DEBW010?
-      - Wie ist der Luftqualitätsindex in Wiesloch?
-      - Wie ist der Stickstoffdioxid in Wiesloch?
-      - Wie ist der pm25k in Wiesloch?
-      - Wie ist der no2 Wert in DEBW029?
-      - Wie ist der pm25k Wert in Aalen?
-      - Wie ist der pm25k Wert in DEBW076?
-      - Wie ist der no2 Wert in Baden-Baden?
-      - Wie ist der o3 Wert in Baden-Baden?
-      - Wie ist der no2 Wert in Bernhausen?
+      - Wie ist der Ozon in DEBW039?
+      - Wie ist der pm10 in DEBW023?
+      - Wie ist der Luftqualitätsindex in Weil am Rhein?
+      - Wie ist der Stickstoffdioxid in Weil am Rhein?
+      - Wie ist der Ozon in Weil am Rhein?
+      - Wie ist der Luftqualitätsindex in DEBW010?
+      - Wie ist der no2 in DEBW010?
+      - Wie ist der pm10 in Wiesloch?
+      - Wie ist der luqx Wert in DEBW029?
+      - Wie ist der pm25k Wert in DEBW029?
+      - Wie ist der pm10 Wert in Aalen?
+      - Wie ist der no2 Wert in DEBW076?
+      - Wie ist der o3 Wert in DEBW076?
+      - Wie ist der luqx Wert in DEBW042?
       - Wie ist der o3 Wert in Bernhausen?
-      - Wie ist der no2 Wert in DEBW046?
-      - Wie ist der pm10 Wert in Biberach?
-      - Wie ist der o3 Wert in DEBW004?
-      - Wie ist der pm25k Wert in Eggenstein?
-      - Wie ist der o3 Wert in DEBW084?
-      - Wie ist der pm10 Wert in DEBW084?
-      - Wie ist der pm25k Wert in Freiburg?
-      - Wie ist der luqx Wert in DEBW122?
-      - Wie ist der o3 Wert in DEBW122?
+      - Wie ist der luqx Wert in Biberach?
+      - Wie ist der no2 Wert in Biberach?
+      - Wie ist der pm10 Wert in Eggenstein?
+      - Wie ist der luqx Wert in DEBW084?
+      - Wie ist der no2 Wert in DEBW084?
+      - Wie ist der luqx Wert in Freiburg?
+      - Wie ist der no2 Wert in DEBW122?
       - Wie ist der luqx Wert in Freiburg Schwarzwaldstraße?
-      - Wie ist der pm10 Wert in Freiburg Schwarzwaldstraße?
-      - Wie ist der pm25k Wert in Freiburg Schwarzwaldstraße?
-      - Wie ist der luqx Wert in Friedrichshafen?
-      - Wie ist der pm10 Wert in Friedrichshafen?
-      - Wie ist der pm25k Wert in DEBW112?
-      - Wie ist der luqx Wert in Gärtringen?
+      - Wie ist der no2 Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der no2 Wert in Friedrichshafen?
+      - Wie ist der luqx Wert in DEBW112?
+      - Wie ist der no2 Wert in DEBW112?
       - Wie ist der o3 Wert in Gärtringen?
-      - Wie ist der pm10 Wert in Gärtringen?
-      - Wie ist der no2 Wert in DEBW009?
-      - Wie ist der pm25k Wert in DEBW009?
-      - Wie ist der luqx Wert in DEBW015?
+      - Wie ist der pm25k Wert in Gärtringen?
+      - Wie ist der luqx Wert in DEBW009?
+      - Wie ist der o3 Wert in DEBW009?
       - Wie ist der no2 Wert in DEBW015?
-      - Wie ist der no2 Wert in Heilbronn?
-      - Wie ist der no2 Wert in DEBW152?
+      - Wie ist der pm10 Wert in Heilbronn?
+      - Wie ist der pm10 Wert in DEBW152?
       - Wie ist der pm25k Wert in DEBW152?
-      - Wie ist der pm10 Wert in Heilbronn Weinsberger Straße-Ost?
-      - Wie ist der no2 Wert in Karlsruhe-Nordwest?
-      - Wie ist der pm25k Wert in Karlsruhe-Nordwest?
-      - Wie ist der no2 Wert in DEBW080?
-      - Wie ist der o3 Wert in Karlsruhe Reinhold-Frank-Straße?
-      - Wie ist der pm10 Wert in Karlsruhe Reinhold-Frank-Straße?
-      - Wie ist der pm25k Wert in DEBW022?
-      - Wie ist der no2 Wert in Kehl?
-      - Wie ist der o3 Wert in Kehl?
-      - Wie ist der luqx Wert in DEBW052?
-      - Wie ist der pm25k Wert in DEBW052?
+      - Wie ist der o3 Wert in Heilbronn Weinsberger Straße-Ost?
+      - Wie ist der pm25k Wert in DEBW081?
+      - Wie ist der o3 Wert in Karlsruhe-Nordwest?
+      - Wie ist der luqx Wert in DEBW080?
+      - Wie ist der pm10 Wert in DEBW080?
+      - Wie ist der no2 Wert in Karlsruhe Reinhold-Frank-Straße?
+      - Wie ist der pm25k Wert in Karlsruhe Reinhold-Frank-Straße?
+      - Wie ist der luqx Wert in DEBW022?
+      - Wie ist der luqx Wert in Kehl?
+      - Wie ist der no2 Wert in DEBW052?
+      - Wie ist der no2 Wert in Konstanz?
+      - Wie ist der o3 Wert in Konstanz?
       - Wie ist der luqx Wert in DEBW120?
-      - Wie ist der pm10 Wert in DEBW120?
-      - Wie ist der luqx Wert in Leonberg Grabenstraße?
-      - Wie ist der o3 Wert in Leonberg Grabenstraße?
-      - Wie ist der no2 Wert in DEBW024?
-      - Wie ist der pm10 Wert in Ludwigsburg Schlossstraße?
-      - Wie ist der luqx Wert in DEBW098?
-      - Wie ist der no2 Wert in DEBW098?
-      - Wie ist der o3 Wert in DEBW098?
+      - Wie ist der no2 Wert in DEBW120?
+      - Wie ist der pm10 Wert in Leonberg Grabenstraße?
+      - Wie ist der luqx Wert in DEBW024?
+      - Wie ist der o3 Wert in DEBW241?
+      - Wie ist der pm25k Wert in DEBW241?
+      - Wie ist der pm10 Wert in DEBW098?
       - Wie ist der no2 Wert in Mannheim Friedrichsring?
-      - Wie ist der o3 Wert in Mannheim Friedrichsring?
-      - Wie ist der pm25k Wert in Mannheim Friedrichsring?
-      - Wie ist der luqx Wert in DEBW005?
-      - Wie ist der o3 Wert in DEBW005?
+      - Wie ist der no2 Wert in DEBW005?
       - Wie ist der pm10 Wert in DEBW005?
-      - Wie ist der luqx Wert in Neuenburg?
-      - Wie ist der pm25k Wert in Neuenburg?
-      - Wie ist der luqx Wert in DEBW125?
-      - Wie ist der pm10 Wert in DEBW125?
-      - Wie ist der no2 Wert in Pfinztal Karlsruher Straße?
+      - Wie ist der luqx Wert in Mannheim-Nord?
+      - Wie ist der no2 Wert in DEBW073?
+      - Wie ist der o3 Wert in DEBW125?
+      - Wie ist der pm25k Wert in DEBW125?
       - Wie ist der no2 Wert in DEBW033?
-      - Wie ist der pm10 Wert in Pforzheim?
-      - Wie ist der no2 Wert in DEBW027?
-      - Wie ist der pm10 Wert in DEBW027?
-      - Wie ist der pm25k Wert in DEBW027?
-      - Wie ist der o3 Wert in Reutlingen?
+      - Wie ist der no2 Wert in Pforzheim?
       - Wie ist der pm10 Wert in Reutlingen?
+      - Wie ist der no2 Wert in DEBW147?
+      - Wie ist der no2 Wert in Reutlingen Lederstraße-Ost?
       - Wie ist der o3 Wert in Reutlingen Lederstraße-Ost?
       - Wie ist der o3 Wert in DEBW156?
+      - Wie ist der pm25k Wert in DEBW156?
       - Wie ist der luqx Wert in Schramberg Oberndorfer Straße?
-      - Wie ist der pm10 Wert in Schramberg Oberndorfer Straße?
-      - Wie ist der pm25k Wert in DEBW087?
-      - Wie ist der no2 Wert in DEBW118?
-      - Wie ist der no2 Wert in Stuttgart Am Neckartor?
-      - Wie ist der no2 Wert in Stuttgart Arnulf-Klett-Platz?
-      - Wie ist der pm25k Wert in Stuttgart-Bad Cannstatt?
+      - Wie ist der o3 Wert in DEBW087?
+      - Wie ist der pm10 Wert in DEBW087?
+      - Wie ist der pm10 Wert in Schwäbische Alb?
+      - Wie ist der no2 Wert in DEBW031?
+      - Wie ist der pm25k Wert in Schwarzwald-Süd?
+      - Wie ist der o3 Wert in DEBW118?
+      - Wie ist der luqx Wert in Stuttgart Am Neckartor?
+      - Wie ist der pm25k Wert in Stuttgart Am Neckartor?
+      - Wie ist der luqx Wert in DEBW099?
+      - Wie ist der pm10 Wert in DEBW013?
+      - Wie ist der luqx Wert in LUBW082?
+      - Wie ist der o3 Wert in LUBW082?
       - Wie ist der pm25k Wert in LUBW082?
-      - Wie ist der no2 Wert in Stuttgart Hauptstätter Straße?
       - Wie ist der pm10 Wert in Stuttgart Hauptstätter Straße?
-      - Wie ist der pm25k Wert in Stuttgart Hauptstätter Straße?
-      - Wie ist der luqx Wert in DEBW116?
-      - Wie ist der no2 Wert in DEBW116?
-      - Wie ist der pm25k Wert in DEBW116?
-      - Wie ist der pm25k Wert in Stuttgart Hohenheimer Straße?
-      - Wie ist der pm10 Wert in DEBW059?
-      - Wie ist der o3 Wert in Tauberbischofsheim?
-      - Wie ist der pm10 Wert in Tauberbischofsheim?
-      - Wie ist der luqx Wert in DEBW107?
-      - Wie ist der no2 Wert in DEBW107?
-      - Wie ist der luqx Wert in Tübingen?
+      - Wie ist der no2 Wert in Stuttgart Hohenheimer Straße?
+      - Wie ist der o3 Wert in Stuttgart Hohenheimer Straße?
+      - Wie ist der luqx Wert in DEBW059?
+      - Wie ist der pm25k Wert in Tauberbischofsheim?
+      - Wie ist der pm10 Wert in DEBW107?
+      - Wie ist der pm25k Wert in Tübingen?
       - Wie ist der no2 Wert in DEBW136?
-      - Wie ist der o3 Wert in DEBW136?
-      - Wie ist der pm10 Wert in DEBW136?
-      - Wie ist der pm10 Wert in Ulm?
-      - Wie ist der pm25k Wert in Ulm?
+      - Wie ist der no2 Wert in DEBW019?
+      - Wie ist der luqx Wert in DEBW039?
+      - Wie ist der pm10 Wert in DEBW039?
       - Wie ist der pm25k Wert in DEBW039?
-      - Wie ist der no2 Wert in Villingen-Schwenningen?
-      - Wie ist der pm10 Wert in DEBW023?
-      - Wie ist der pm25k Wert in DEBW023?
-      - Wie ist der pm10 Wert in Weil am Rhein?
-      - Wie ist der luqx Wert in DEBW010?
-      - Wie ist der Wert des Stickstoffdioxids in DEBW076?
-      - Wie ist der Wert des Stickstoffdioxids in DEBW042?
-      - Wie ist der Wert des Ozons in DEBW004?
-      - Wie ist der Wert des Ozons in Eggenstein?
-      - Wie ist der Wert des Stickstoffdioxids in DEBW038?
-      - Wie ist der Wert des Ozons in DEBW038?
-      - Wie ist der Wert des Ozons in Friedrichshafen?
-      - Wie ist der Wert des Ozons in Gärtringen?
-      - Wie ist der Wert des Ozons in DEBW009?
+      - Wie ist der o3 Wert in Villingen-Schwenningen?
+      - Wie ist der o3 Wert in DEBW023?
+      - Wie ist der luqx Wert in Weil am Rhein?
+      - Wie ist der o3 Wert in Weil am Rhein?
+      - Wie ist der no2 Wert in DEBW010?
+      - Wie ist der pm10 Wert in DEBW010?
+      - Wie ist der no2 Wert in Wiesloch?
+      - Wie ist der Wert des Stickstoffdioxids in DEBW029?
+      - Wie ist der Wert des Ozons in DEBW029?
+      - Wie ist der Wert des Ozons in DEBW076?
+      - Wie ist der Wert des Stickstoffdioxids in Biberach?
+      - Wie ist der Wert des Ozons in Biberach?
+      - Wie ist der Wert des Stickstoffdioxids in Friedrichshafen?
+      - Wie ist der Wert des Stickstoffdioxids in Gärtringen?
       - Wie ist der Wert des Ozons in DEBW015?
-      - Wie ist der Wert des Stickstoffdioxids in DEBW152?
-      - Wie ist der Wert des Stickstoffdioxids in Heilbronn Weinsberger Straße-Ost?
-      - Wie ist der Wert des Stickstoffdioxids in DEBW081?
+      - Wie ist der Wert des Ozons in Heilbronn Weinsberger Straße-Ost?
+      - Wie ist der Wert des Stickstoffdioxids in Karlsruhe-Nordwest?
+      - Wie ist der Wert des Ozons in Karlsruhe-Nordwest?
       - Wie ist der Wert des Stickstoffdioxids in DEBW080?
-      - Wie ist der Wert des Ozons in DEBW052?
-      - Wie ist der Wert des Ozons in DEBW120?
-      - Wie ist der Wert des Stickstoffdioxids in Leonberg Grabenstraße?
-      - Wie ist der Wert des Ozons in Leonberg Grabenstraße?
-      - Wie ist der Wert des Ozons in DEBW024?
-      - Wie ist der Wert des Ozons in DEBW241?
+      - Wie ist der Wert des Stickstoffdioxids in Karlsruhe Reinhold-Frank-Straße?
+      - Wie ist der Wert des Ozons in Konstanz?
+      - Wie ist der Wert des Stickstoffdioxids in DEBW024?
+      - Wie ist der Wert des Ozons in Ludwigsburg Schlossstraße?
       - Wie ist der Wert des Stickstoffdioxids in Mannheim Friedrichsring?
-      - Wie ist der Wert des Ozons in Neuenburg?
-      - Wie ist der Wert des Stickstoffdioxids in Pfinztal Karlsruher Straße?
+      - Wie ist der Wert des Ozons in Mannheim Friedrichsring?
+      - Wie ist der Wert des Stickstoffdioxids in DEBW125?
+      - Wie ist der Wert des Stickstoffdioxids in DEBW033?
+      - Wie ist der Wert des Stickstoffdioxids in Pforzheim?
+      - Wie ist der Wert des Ozons in Pforzheim?
       - Wie ist der Wert des Ozons in Reutlingen?
-      - Wie ist der Wert des Stickstoffdioxids in DEBW087?
-      - Wie ist der Wert des Stickstoffdioxids in Schwäbische Alb?
-      - Wie ist der Wert des Stickstoffdioxids in DEBW031?
-      - Wie ist der Wert des Stickstoffdioxids in Stuttgart Am Neckartor?
-      - Wie ist der Wert des Stickstoffdioxids in Stuttgart Arnulf-Klett-Platz?
-      - Wie ist der Wert des Ozons in Stuttgart-Bad Cannstatt?
-      - Wie ist der Wert des Ozons in Stuttgart Hauptstätter Straße?
-      - Wie ist der Wert des Ozons in DEBW116?
+      - Wie ist der Wert des Ozons in Schwäbische Alb?
+      - Wie ist der Wert des Stickstoffdioxids in Schwarzwald-Süd?
+      - Wie ist der Wert des Ozons in Stuttgart Arnulf-Klett-Platz?
       - Wie ist der Wert des Stickstoffdioxids in Stuttgart Hohenheimer Straße?
-      - Wie ist der Wert des Ozons in Stuttgart Hohenheimer Straße?
-      - Wie ist der Wert des Stickstoffdioxids in DEBW107?
-      - Wie ist der Wert des Stickstoffdioxids in Tübingen?
-      - Wie ist der Wert des Ozons in Tübingen Mühlstraße?
-      - Wie ist der Wert des Ozons in Ulm?
+      - Wie ist der Wert des Ozons in DEBW107?
+      - Wie ist der Wert des Ozons in Tübingen?
+      - Wie ist der Wert des Ozons in DEBW136?
+      - Wie ist der Wert des Stickstoffdioxids in DEBW019?
+      - Wie ist der Wert des Stickstoffdioxids in Ulm?
       - Wie ist der Wert des Stickstoffdioxids in DEBW039?
-      - Wie ist der Wert des Stickstoffdioxids in Villingen-Schwenningen?
-      - Wie ist der Wert des Ozons in Weil am Rhein?
+      - Wie ist der Wert des Stickstoffdioxids in DEBW023?
+      - Wie ist der Wert des Ozons in Wiesloch?
       - Wie ist der Stickstoffdioxidwert in Aalen?
-      - Wie ist der Ozonwert in Aalen?
-      - Wie ist der Stickstoffdioxidwert in DEBW046?
-      - Wie ist der Stickstoffdioxidwert in Eggenstein?
-      - Wie ist der Stickstoffdioxidwert in DEBW084?
-      - Wie ist der Stickstoffdioxidwert in DEBW122?
-      - Wie ist der Ozonwert in Freiburg Schwarzwaldstraße?
-      - Wie ist der Stickstoffdioxidwert in DEBW038?
-      - Wie ist der Ozonwert in DEBW038?
-      - Wie ist der Stickstoffdioxidwert in DEBW112?
-      - Wie ist der Stickstoffdioxidwert in DEBW015?
-      - Wie ist der Ozonwert in DEBW015?
-      - Wie ist der Stickstoffdioxidwert in Heilbronn?
-      - Wie ist der Ozonwert in Heilbronn?
-      - Wie ist der Ozonwert in DEBW152?
-      - Wie ist der Stickstoffdioxidwert in Heilbronn Weinsberger Straße-Ost?
-      - Wie ist der Stickstoffdioxidwert in DEBW081?
-      - Wie ist der Ozonwert in DEBW081?
+      - Wie ist der Stickstoffdioxidwert in DEBW076?
+      - Wie ist der Stickstoffdioxidwert in Bernhausen?
+      - Wie ist der Ozonwert in Bernhausen?
+      - Wie ist der Stickstoffdioxidwert in DEBW004?
+      - Wie ist der Ozonwert in DEBW122?
+      - Wie ist der Stickstoffdioxidwert in Freiburg Schwarzwaldstraße?
+      - Wie ist der Ozonwert in DEBW112?
+      - Wie ist der Ozonwert in Gärtringen?
+      - Wie ist der Stickstoffdioxidwert in DEBW152?
+      - Wie ist der Ozonwert in Karlsruhe-Nordwest?
+      - Wie ist der Stickstoffdioxidwert in DEBW080?
+      - Wie ist der Ozonwert in Karlsruhe Reinhold-Frank-Straße?
       - Wie ist der Ozonwert in DEBW022?
       - Wie ist der Ozonwert in Kehl?
+      - Wie ist der Stickstoffdioxidwert in DEBW052?
+      - Wie ist der Ozonwert in DEBW052?
+      - Wie ist der Stickstoffdioxidwert in DEBW120?
+      - Wie ist der Ozonwert in DEBW024?
       - Wie ist der Stickstoffdioxidwert in Ludwigsburg Schlossstraße?
+      - Wie ist der Ozonwert in Ludwigsburg Schlossstraße?
       - Wie ist der Stickstoffdioxidwert in DEBW098?
+      - Wie ist der Stickstoffdioxidwert in DEBW005?
       - Wie ist der Ozonwert in DEBW005?
-      - Wie ist der Ozonwert in Mannheim-Nord?
-      - Wie ist der Ozonwert in DEBW073?
-      - Wie ist der Stickstoffdioxidwert in Neuenburg?
-      - Wie ist der Ozonwert in DEBW125?
+      - Wie ist der Stickstoffdioxidwert in Mannheim-Nord?
+      - Wie ist der Stickstoffdioxidwert in DEBW125?
       - Wie ist der Stickstoffdioxidwert in DEBW033?
-      - Wie ist der Stickstoffdioxidwert in Reutlingen?
-      - Wie ist der Ozonwert in Reutlingen?
-      - Wie ist der Stickstoffdioxidwert in Reutlingen Lederstraße-Ost?
-      - Wie ist der Ozonwert in DEBW031?
-      - Wie ist der Stickstoffdioxidwert in DEBW118?
+      - Wie ist der Ozonwert in DEBW033?
+      - Wie ist der Stickstoffdioxidwert in DEBW147?
+      - Wie ist der Stickstoffdioxidwert in DEBW156?
+      - Wie ist der Ozonwert in DEBW156?
+      - Wie ist der Stickstoffdioxidwert in DEBW087?
+      - Wie ist der Stickstoffdioxidwert in Schwarzwald-Süd?
+      - Wie ist der Ozonwert in Stuttgart Am Neckartor?
+      - Wie ist der Stickstoffdioxidwert in DEBW099?
       - Wie ist der Ozonwert in Stuttgart Arnulf-Klett-Platz?
-      - Wie ist der Ozonwert in DEBW116?
-      - Wie ist der Ozonwert in Stuttgart Hohenheimer Straße?
-      - Wie ist der Stickstoffdioxidwert in Tauberbischofsheim?
-      - Wie ist der Ozonwert in Tauberbischofsheim?
-      - Wie ist der Stickstoffdioxidwert in Tübingen?
+      - Wie ist der Ozonwert in LUBW082?
+      - Wie ist der Stickstoffdioxidwert in DEBW107?
       - Wie ist der Ozonwert in DEBW136?
-      - Wie ist der Stickstoffdioxidwert in Ulm?
-      - Wie ist der Ozonwert in Wiesloch?
+      - Wie ist der Stickstoffdioxidwert in Tübingen Mühlstraße?
+      - Wie ist der Stickstoffdioxidwert in DEBW023?
+      - Wie ist der Stickstoffdioxidwert in DEBW010?
+      - Wie ist der Stickstoffdioxidwert in Wiesloch?

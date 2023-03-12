@@ -1,5 +1,6 @@
 import * as fs from "fs";
 
+import { basePaths } from "./base-paths";
 import generateNerCsvFileContent from "./generateFileContent/generateNerCsvFileContent";
 import generateNerDomainBaseData from "./generateTrainingData/generateNerDomainBaseData";
 import { generateNerTrainingData } from "./generateTrainingData/generateNerTrainingData";
@@ -16,18 +17,18 @@ const writeCsvFile = (data: Array<NerTrainingData>, baseData: Array<NerTrainingD
   const trainCsv = generateNerCsvFileContent([...baseData, ...trainData]);
   const testCsv = generateNerCsvFileContent([...baseData, ...testData]);
 
-  fs.writeFile("trainingdata/train.csv", trainCsv, (err) => {
+  fs.writeFile(basePaths.trainCSV, trainCsv, (err) => {
     if (err) {
       console.error(err);
     } else {
-      console.log("qanary ner component training data written to 'trainingdata/train.csv'");
+      console.log(`qanary ner component training data written to '${basePaths.trainCSV}'`);
     }
   });
-  fs.writeFile("trainingdata/test.csv", testCsv, (err) => {
+  fs.writeFile(basePaths.testCSV, testCsv, (err) => {
     if (err) {
       console.error(err);
     } else {
-      console.log("qanary ner component testing data written to 'trainingdata/test.csv'");
+      console.log(`qanary ner component testing data written to '${basePaths.testCSV}'`);
     }
   });
 };

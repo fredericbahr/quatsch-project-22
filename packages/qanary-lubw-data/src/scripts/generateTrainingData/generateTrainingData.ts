@@ -18,7 +18,7 @@ export const generateStationMeasurandData = (
   questions.forEach((question) => {
     stations.forEach((station) => {
       measurands
-        .filter((measurand) => question.measurandAllowList?.includes(measurand))
+        .filter((measurand) => (question.measurandAllowList ? question.measurandAllowList.includes(measurand) : true))
         .forEach((measurand) => {
           const trainingData: NerTrainingData | NluTrainingData = generateTrainingDataEntry(
             question,
@@ -45,10 +45,12 @@ export const generateStationMeasurandRepresentationData = (
   questions.forEach((question) => {
     stations.forEach((station) => {
       measurands
-        .filter((measurand) => question.measurandAllowList?.includes(measurand))
+        .filter((measurand) => (question.measurandAllowList ? question.measurandAllowList.includes(measurand) : true))
         .forEach((measurand) => {
           representations
-            .filter((representation) => question.representationAllowList?.includes(representation))
+            .filter((representation) =>
+              question.representationAllowList ? question.representationAllowList.includes(representation) : true,
+            )
             .forEach((representation) => {
               const trainingData: NerTrainingData | NluTrainingData = generateTrainingDataEntry(
                 question,
@@ -80,10 +82,12 @@ export const generateStationMeasurandCalculationData = (
   questions.forEach((question) => {
     stations.forEach((station) => {
       measurands
-        .filter((measurand) => question.measurandAllowList?.includes(measurand))
+        .filter((measurand) => (question.measurandAllowList ? question.measurandAllowList.includes(measurand) : true))
         .forEach((measurand) => {
           calculations
-            .filter((calculation) => question.calculationAllowList?.includes(calculation))
+            .filter((calculation) =>
+              question.calculationAllowList ? question.calculationAllowList.includes(calculation) : true,
+            )
             .forEach((calculation) => {
               const trainingData: NerTrainingData | NluTrainingData = generateTrainingDataEntry(
                 question,
@@ -115,13 +119,17 @@ export const generateStationMeasurandRepresentationCalculationData = (
   questions.forEach((question) => {
     stations.forEach((station) => {
       measurands
-        .filter((measurand) => question.measurandAllowList?.includes(measurand))
+        .filter((measurand) => (question.measurandAllowList ? question.measurandAllowList.includes(measurand) : true))
         .forEach((measurand) => {
           representations
-            .filter((representation) => question.representationAllowList?.includes(representation))
+            .filter((representation) =>
+              question.representationAllowList ? question.representationAllowList.includes(representation) : true,
+            )
             .forEach((representation) => {
               calculations
-                .filter((calculation) => question.calculationAllowList?.includes(calculation))
+                .filter((calculation) =>
+                  question.calculationAllowList ? question.calculationAllowList.includes(calculation) : true,
+                )
                 .forEach((calculation) => {
                   const trainingData: NerTrainingData | NluTrainingData = generateTrainingDataEntry(
                     question,

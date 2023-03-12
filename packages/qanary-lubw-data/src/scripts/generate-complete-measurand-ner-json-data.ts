@@ -1,5 +1,6 @@
 import * as fs from "fs";
 
+import { basePaths } from "./base-paths";
 import generateNerJsonFileContent from "./generateFileContent/generateNerJsonFileContent";
 import generateNerDomainBaseData from "./generateTrainingData/generateNerDomainBaseData";
 import { generateNerTrainingData } from "./generateTrainingData/generateNerTrainingData";
@@ -16,18 +17,18 @@ const writeJsonFile = (data: Array<NerTrainingData>, baseData: Array<NerTraining
   const trainJson = generateNerJsonFileContent([...baseData, ...trainData], "trainingdata");
   const testJson = generateNerJsonFileContent([...baseData, ...testData], "testingdata");
 
-  fs.writeFile("trainingdata/train.json", trainJson, (err) => {
+  fs.writeFile(basePaths.trainJSON, trainJson, (err) => {
     if (err) {
       console.error(err);
     } else {
-      console.log("qanary ner component training data written to 'trainingdata/train.json'");
+      console.log(`qanary ner component training data written to '${basePaths.trainJSON}'`);
     }
   });
-  fs.writeFile("trainingdata/test.json", testJson, (err) => {
+  fs.writeFile(basePaths.testJSON, testJson, (err) => {
     if (err) {
       console.error(err);
     } else {
-      console.log("qanary ner component testing data written to 'trainingdata/test.json'");
+      console.log(`qanary ner component training data written to '${basePaths.testJSON}'`);
     }
   });
 };
