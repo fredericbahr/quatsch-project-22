@@ -12,7 +12,7 @@ describe("#Component generateNluYmlFileContent", () => {
   };
 
   it("should return csv file content string", async () => {
-    const nerCsvFileContent = generateNluYmlFileContent(genNluTrainingData());
+    const nerCsvFileContent = generateNluYmlFileContent(genNluTrainingData(), "test");
     expect(nerCsvFileContent).toStrictEqual(`version: "3.1"
 
 nlu:

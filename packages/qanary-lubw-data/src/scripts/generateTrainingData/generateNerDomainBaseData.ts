@@ -1,5 +1,3 @@
-import { Domain } from "shared";
-
 import { NerTrainingData } from "../types";
 import generateLubwData from "../utils/generateLubwData";
 
@@ -22,7 +20,7 @@ const { calculations, measurands, representations, stations } = generateLubwData
  * @param entityKey
  * @returns ner training data object for base domain entry
  */
-const generateNerDomainBaseDataEntry = (domainEntry: string, entityKey: Domain): NerTrainingData => {
+const generateNerDomainBaseDataEntry = (domainEntry: string, entityKey: string): NerTrainingData => {
   const trainingDataNer: NerTrainingData = {
     text: domainEntry,
     language: "de",
@@ -42,22 +40,22 @@ const generateNerDomainBaseData = (): Array<NerTrainingData> => {
   const nerData: Array<NerTrainingData> = [];
 
   stations.forEach((station) => {
-    const trainingDataNer: NerTrainingData = generateNerDomainBaseDataEntry(station, "station" as Domain);
+    const trainingDataNer: NerTrainingData = generateNerDomainBaseDataEntry(station, "station");
     nerData.push(trainingDataNer);
   });
 
   measurands.forEach((measurand) => {
-    const trainingDataNer: NerTrainingData = generateNerDomainBaseDataEntry(measurand, "measurand" as Domain);
+    const trainingDataNer: NerTrainingData = generateNerDomainBaseDataEntry(measurand, "measurand");
     nerData.push(trainingDataNer);
   });
 
   calculations.forEach((calculation) => {
-    const trainingDataNer: NerTrainingData = generateNerDomainBaseDataEntry(calculation, "calculation" as Domain);
+    const trainingDataNer: NerTrainingData = generateNerDomainBaseDataEntry(calculation, "calculation");
     nerData.push(trainingDataNer);
   });
 
   representations.forEach((representation) => {
-    const trainingDataNer: NerTrainingData = generateNerDomainBaseDataEntry(representation, "representation" as Domain);
+    const trainingDataNer: NerTrainingData = generateNerDomainBaseDataEntry(representation, "representation");
     nerData.push(trainingDataNer);
   });
 

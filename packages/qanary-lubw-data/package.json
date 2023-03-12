@@ -23,8 +23,6 @@
     "generate:yml-measurand-min": "ts-node src/scripts/generate-measurand-min-nlu-yml-data.ts"
   },
   "types": "dist/index.d.ts",
-  "dependencies": {
-  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "eslint": "^8.33.0",

@@ -1,4 +1,7 @@
-import { calculations, measurands, representations, stations } from "qanary-lubw-data";
+import { calculations } from "../../data/calculations";
+import { measurands } from "../../data/measurands";
+import { representations } from "../../data/representations";
+import { stations } from "../../data/stations";
 
 type Key = "id" | "label";
 
