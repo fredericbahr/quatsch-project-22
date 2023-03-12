@@ -1,4 +1,5 @@
-import { ILUBWData, ILUBWDataKey, RasaResponse } from "shared";
+import { IMeasurand, IStation, measurands, popularIntents, popularStations } from "qanary-lubw-data";
+import { ILUBWDataKey, RasaResponse } from "shared";
 
 import { VerificationError } from "../errors/VerificationError";
 
@@ -16,9 +17,9 @@ export class ErrorHandlingService {
 
     switch (invalidProperty) {
       case ILUBWDataKey.Station:
-        return this.handleStationError(res, error);
+        return this.handleStationError(res);
       case ILUBWDataKey.Measurand:
-        return this.handleMeasurandError(res, error);
+        return this.handleMeasurandError(res);
       default:
         return this.handleDefaultError(res);
     }
@@ -32,8 +33,9 @@ export class ErrorHandlingService {
     return res.json({
       responses: [
         {
-          text: "Ich konnte den letzten Intent nicht finden. Bitte gebe deine Ursprungsfrage erneut ein. Bereits erkannte Daten wurden zurückgesetzt.",
           response: "",
+          text: "Ich konnte den letzten Intent nicht finden. Bitte gebe deine Ursprungsfrage erneut ein.",
+          buttons: popularIntents,
         },
       ],
     });
@@ -60,14 +62,16 @@ export class ErrorHandlingService {
    * @param error the verification error
    * @returns a response to rasa
    */
-  private static handleStationError(res: RasaResponse, error: VerificationError): RasaResponse {
-    const unvalidLUBWData: Partial<ILUBWData> | null = error.unvalidLUBWData;
-
+  private static handleStationError(res: RasaResponse): RasaResponse {
     return res.json({
       responses: [
         {
-          text: "Ich konnte keine Messstation finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messstation an",
           response: "",
+          text: "Ich konnte keine Messstation finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messstation an.",
+          buttons: popularStations.map((popularStation: IStation) => ({
+            title: popularStation.label,
+            payload: `Ich interessiere mich für die Station ${popularStation.label}.`,
+          })),
         },
       ],
     });
@@ -79,14 +83,16 @@ export class ErrorHandlingService {
    * @param error the verification error
    * @returns a response to rasa
    */
-  private static handleMeasurandError(res: RasaResponse, error: VerificationError): RasaResponse {
-    const unvalidLUBWData: Partial<ILUBWData> | null = error.unvalidLUBWData;
-
+  private static handleMeasurandError(res: RasaResponse): RasaResponse {
     return res.json({
       responses: [
         {
-          text: "Ich konnte keine Messgröße finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messgröße an",
           response: "",
+          text: "Ich konnte keine Messgröße finden. Diese wird aber zwinged benötigt. Bitte gib eine gültige Messgröße an.",
+          buttons: measurands.map((measurand: IMeasurand) => ({
+            title: measurand.label,
+            payload: `Ich interessiere mich für die Messart ${measurand.label}.`,
+          })),
         },
       ],
     });
