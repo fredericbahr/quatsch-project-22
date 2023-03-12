@@ -22,8 +22,9 @@ describe("Error Handling Service", () => {
         expect(res.json).toHaveBeenCalledWith({
           responses: [
             {
-              text: expect.stringContaining("Messstation"),
               response: "",
+              text: expect.stringContaining("Messstation"),
+              buttons: expect.any(Array),
             },
           ],
         });
@@ -40,8 +41,9 @@ describe("Error Handling Service", () => {
         expect(res.json).toHaveBeenCalledWith({
           responses: [
             {
-              text: expect.stringContaining("Messgröße"),
               response: "",
+              text: expect.stringContaining("Messgröße"),
+              buttons: expect.any(Array),
             },
           ],
         });
@@ -75,8 +77,9 @@ describe("Error Handling Service", () => {
       expect(res.json).toHaveBeenCalledWith({
         responses: [
           {
-            text: expect.stringContaining("Ich konnte den letzten Intent nicht finden"),
             response: "",
+            text: expect.stringContaining("Ich konnte den letzten Intent nicht finden"),
+            buttons: expect.any(Array),
           },
         ],
       });

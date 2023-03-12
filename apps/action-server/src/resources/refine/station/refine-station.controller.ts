@@ -5,6 +5,7 @@ import {
   ILUBWDataKey,
   IQanaryAnnotation,
   IQanaryMessage,
+  IState,
   RasaRequest,
   RasaResponse,
   SuccessRasaResponse,
@@ -44,16 +45,24 @@ export const refineStationRequestHandler = async (req: RasaRequest, res: RasaRes
       AnnotationTypes.Station,
     );
 
-    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, false);
+    const storedState: Partial<IState> | null = await StoringService.getCurrentState(senderId);
+
+    const isStateNull: boolean = storedState === null;
+
+    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, isStateNull);
 
     const station: string | undefined = lubwData.station;
 
-    await StoringService.changeStateEntry(senderId, ILUBWDataKey.Station, station);
+    if (storedState === null) {
+      await StoringService.storeCurrentState({ senderId, intent: undefined, lubwData });
+    } else {
+      await StoringService.changeStateEntry(senderId, ILUBWDataKey.Station, station);
+    }
 
-    const stateLUBWData: Partial<ILUBWData> | null = await StoringService.getCurrentState(senderId);
+    const currentState: Partial<ILUBWData> = isStateNull ? lubwData : { ...storedState, station };
 
     /** Throws an {@link VerificationError} if verification fails */
-    const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(stateLUBWData);
+    const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(currentState);
 
     /** Throws an {@link NoIntentHandlerError} if no intent handler was found */
     const intentHandler: IIntentHandler = await IntentHandlerFindingService.findIntentHandlerInState(senderId);
