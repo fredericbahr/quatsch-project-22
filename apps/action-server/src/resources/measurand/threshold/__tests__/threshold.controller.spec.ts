@@ -1,4 +1,14 @@
-import { ILUBWData, ILUBWDataKey, IQanaryAnnotation, IQanaryMessage, IState, RasaRequest, RasaResponse } from "shared";
+import {
+  CALCULATION_TYPE,
+  ILUBWData,
+  ILUBWDataKey,
+  IQanaryAnnotation,
+  IQanaryMessage,
+  IState,
+  RasaRequest,
+  RasaResponse,
+  REPRESENTATION_TYPE,
+} from "shared";
 
 import { NoIntentHandlerError } from "../../../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../../../errors/VerificationError";
@@ -9,16 +19,16 @@ import { StoringService } from "../../../../services/storing-service";
 import { LUBWDataTransformationService } from "../../../../services/transformation-service";
 import { VerificationService } from "../../../../services/verification-service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { startQanaryPipeline } from "../../../../utils/start-pipeline";
-import { measurandThresholdRequestHandler } from "../threshold.controller";
+import { mergeStateAndLubwData } from "../../../../utils/merge-state-lubw-data";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { mergeStateAndLubwData } from "../utils/merge-state-lubw-data";
+import { startQanaryPipeline } from "../../../../utils/start-pipeline";
+import { thresholdRequestHandler } from "../threshold.controller";
 
 jest.mock("../../../../utils/start-pipeline", () => ({
   startQanaryPipeline: jest.fn(),
 }));
 
-jest.mock("../utils/merge-state-lubw-data", () => ({
+jest.mock("../../../../utils/merge-state-lubw-data", () => ({
   mergeStateAndLubwData: jest.fn(),
 }));
 
@@ -82,11 +92,11 @@ describe("#Measurand Threshold controllers", () => {
     },
   ];
   const lubwData: ILUBWData = {
-    calculation: "average",
+    calculation: CALCULATION_TYPE.Average,
     measurand: "luqx",
     station: "DEBW0081",
     time: "1d",
-    representation: "text",
+    representation: REPRESENTATION_TYPE.Text,
   };
   const state: IState = {
     ...lubwData,
@@ -129,13 +139,13 @@ describe("#Measurand Threshold controllers", () => {
 
   describe("Qanary Pipeline", () => {
     it("should start the qanary pipeline with given question", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(text, expect.any(Array));
     });
 
     it("should start the qanary pipeline with correct components", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(
         expect.any(String),
@@ -152,7 +162,7 @@ describe("#Measurand Threshold controllers", () => {
 
   describe("Annotation Extraction", () => {
     it("should extract all annotation", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockExtractAllAnnotations).toHaveBeenCalledWith(qanaryMessage);
     });
@@ -160,7 +170,7 @@ describe("#Measurand Threshold controllers", () => {
 
   describe("Getting State", () => {
     it("should get the current state", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockGetCurrentState).toHaveBeenCalledWith(senderId);
     });
@@ -168,7 +178,7 @@ describe("#Measurand Threshold controllers", () => {
 
   describe("Transformation", () => {
     it("should transform the annotations and do not merge with defaults", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.objectContaining(annotations), false);
     });
@@ -176,13 +186,13 @@ describe("#Measurand Threshold controllers", () => {
     it("should transform the annotations and merge with defaults", async () => {
       mockGetCurrentState.mockReturnValueOnce(null);
 
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.objectContaining(annotations), true);
     });
 
     it("should merge the current state with the transformed data", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockMergeStateAndLubwData).toHaveBeenCalledWith(
         expect.objectContaining(state),
@@ -193,7 +203,7 @@ describe("#Measurand Threshold controllers", () => {
 
   describe("Storing", () => {
     it("should store the current data and intent", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockStoreData).toHaveBeenCalledWith({
         senderId: expect.any(String),
@@ -205,7 +215,7 @@ describe("#Measurand Threshold controllers", () => {
 
   describe("Verification", () => {
     it("should call the verification service with the merged state", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockVerifyLUBWData).toHaveBeenCalledWith(expect.objectContaining(lubwData));
     });
@@ -213,13 +223,13 @@ describe("#Measurand Threshold controllers", () => {
 
   describe("Intent Handling", () => {
     it("should find the correct intent handler", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockFindIntentHandler).toHaveBeenCalledWith(intent);
     });
 
     it("should call the intent handler with the correct data", async () => {
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockMeasurandThresholdIntentHandler).toHaveBeenCalledWith(lubwData);
     });
@@ -232,7 +242,7 @@ describe("#Measurand Threshold controllers", () => {
         throw verificationErrror;
       });
 
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockHandleVerificationError).toHaveBeenCalledWith(res, verificationErrror);
     });
@@ -245,7 +255,7 @@ describe("#Measurand Threshold controllers", () => {
         throw noIntentHandlerError;
       });
 
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockHandleNoIntentHandlerError).toHaveBeenCalledWith(res);
     });
@@ -253,7 +263,7 @@ describe("#Measurand Threshold controllers", () => {
     it("should handle unexpected errors occordingly", async () => {
       mockStartQanaryPipeline.mockRejectedValue(new Error("Error"));
 
-      await measurandThresholdRequestHandler(req, res);
+      await thresholdRequestHandler(req, res);
 
       expect(mockHandleDefaultError).toHaveBeenCalledWith(res);
     });

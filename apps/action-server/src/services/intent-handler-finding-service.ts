@@ -2,7 +2,7 @@ import { IIntentHandler, IIntentHandlerMap, INTENTS } from "shared";
 
 import { NoIntentHandlerError } from "../errors/NoIntentHandlerError";
 import { abstractIntentHandler } from "../resources/measurand/abstract/abstract.intent-handler";
-import { measurandThresholdIntentHandler } from "../resources/measurand/threshold/threshold.intent-handler";
+import { thresholdIntentHandler } from "../resources/measurand/threshold/threshold.intent-handler";
 import { StoringService } from "./storing-service";
 
 export class IntentHandlerFindingService {
@@ -11,7 +11,7 @@ export class IntentHandlerFindingService {
     [INTENTS.ACTION_MEASURAND_COMPLETE, abstractIntentHandler],
     [INTENTS.ACTION_MEASURAND_MAX, abstractIntentHandler],
     [INTENTS.ACTION_MEASURAND_MIN, abstractIntentHandler],
-    [INTENTS.ACTION_MEASURAND_THRESHOLD, measurandThresholdIntentHandler],
+    [INTENTS.ACTION_MEASURAND_THRESHOLD, thresholdIntentHandler],
   ]);
 
   /**

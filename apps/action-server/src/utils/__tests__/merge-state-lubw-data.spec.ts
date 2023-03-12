@@ -1,20 +1,20 @@
 import { ILUBWData, IState } from "shared";
 
-import { mergeStateAndLubwData } from "../../utils/merge-state-lubw-data";
+import { mergeStateAndLubwData } from "../merge-state-lubw-data";
 
 describe("mergeStateAndLubwData", () => {
   const defaultState: IState = {
     station: "station-state",
     measurand: "measurand-state",
-    calculation: "calculation-state",
-    representation: "representation-state",
+    calculation: "calculation-state" as any,
+    representation: "representation-state" as any,
     time: "time-state",
   };
   const defaultLubwData: Partial<ILUBWData> = {
     station: "station-lubw",
     measurand: "measurand-lubw",
-    calculation: "calculation-lubw",
-    representation: "representation-lubw",
+    calculation: "calculation-lubw" as any,
+    representation: "representation-lubw" as any,
     time: "time-lubw",
   };
 

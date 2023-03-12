@@ -3,29 +3,12 @@ import { de } from "date-fns/locale";
 import { IMeasurand, measurands } from "qanary-lubw-data";
 import { ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
+import { AbstractRepresentation } from "../abstract/abstract.representation";
+
 /**
  * This service provides methods to transform lubw measurand data into different representations for the threshold intent.
  */
-export class RepresentationServiceThreshold {
-  /**
-   * Gets a representation of the given measurand data based on the given representation inside the measurand data.
-   * @default If no representation is given, a textual representation is returned.
-   * @param measurandData the lubw measurand data to transform into a representation
-   * @returns the representation of the given measurand data
-   */
-  public static getRepresentation(measurandData: ILUBWMeasurandData): IRepresentationData {
-    switch (measurandData.representation) {
-      case REPRESENTATION_TYPE.Text:
-        return this.getTextualRepresentation(measurandData);
-      case REPRESENTATION_TYPE.Graph:
-        return this.getChartRepresentation(measurandData);
-      case REPRESENTATION_TYPE.Table:
-        return this.getTableRepresentation(measurandData);
-      default:
-        return this.getTextualRepresentation(measurandData);
-    }
-  }
-
+export class RepresentationServiceThreshold extends AbstractRepresentation {
   /**
    * Gets a textual representation of the given measurand data.
    * @param measurandData the lubw measurand data to transform into a textual representation
@@ -36,23 +19,29 @@ export class RepresentationServiceThreshold {
 
     if (!threshold) {
       return {
-        value: `Der Wert für die Messart ${measurandData.measurand} für die Station ${
-          measurandData.station
-        } beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })}: ${
-          measurandData.measurandData[0].values[0]
-        }.
-        
-        Es liegen keine Grenzwerte für die Messart ${measurandData.measurand} vor.`,
+        value: [
+          `Der ${measurandData.calculation}-Wert`,
+          `der Messart ${measurandData.measurand}`,
+          `für die Station ${measurandData.station}`,
+          `beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })}:`,
+          `${this.calculate(measurandData)}`,
+          "\n",
+          `Es liegen keine Grenzwerte für die Messart ${measurandData.measurand} vor.`,
+        ].join(" "),
         type: REPRESENTATION_TYPE.Text,
       };
     }
 
     return {
-      value: `Der Wert der Messart ${measurandData.measurand} für die Station ${
-        measurandData.station
-      } beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })}: ${
-        measurandData.measurandData[0].values[0]
-      }.\n${this.getThresholdMessage(measurandData, threshold)}`,
+      value: [
+        `Der ${measurandData.calculation}-Wert`,
+        `der Messart ${measurandData.measurand}`,
+        `für die Station ${measurandData.station}`,
+        `beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })}:`,
+        `${this.calculate(measurandData)}`,
+        "\n",
+        this.getThresholdMessage(measurandData, threshold),
+      ].join(" "),
       type: REPRESENTATION_TYPE.Text,
     };
   }

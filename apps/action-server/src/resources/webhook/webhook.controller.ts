@@ -4,7 +4,7 @@ import { askAffirmationRequestHandler, fallbackRequestHandler } from "../fallbac
 import { completeRequestHandler } from "../measurand/complete/complete.controller";
 import { maxRequestHandler } from "../measurand/max/max.controller";
 import { minRequestHandler } from "../measurand/min/min.controller";
-import { measurandThresholdRequestHandler } from "../measurand/threshold/threshold.controller";
+import { thresholdRequestHandler } from "../measurand/threshold/threshold.controller";
 import { refineMeasurandRequestHandler } from "../refine/measurand/refine-measurand.controller";
 import { refineStationRequestHandler } from "../refine/station/refine-station.controller";
 
@@ -24,7 +24,7 @@ export const webhookRequestHandler = async (req: RasaRequest, res: RasaResponse)
         await minRequestHandler(req, res);
         break;
       case INTENTS.ACTION_MEASURAND_THRESHOLD:
-        await measurandThresholdRequestHandler(req, res);
+        await thresholdRequestHandler(req, res);
         break;
       case INTENTS.ACTION_REFINE_STATION:
         await refineStationRequestHandler(req, res);

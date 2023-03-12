@@ -1,8 +1,8 @@
-import { ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
+import { CALCULATION_TYPE, ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
 import { ResponseService } from "../../../../services/response-service";
-import { measurandThresholdIntentHandler } from "../threshold.intent-handler";
+import { thresholdIntentHandler } from "../threshold.intent-handler";
 import { RepresentationServiceThreshold } from "../treshold.representation";
 
 jest.mock("../../../../services/lubw-query-service", () => ({
@@ -25,11 +25,11 @@ jest.mock("../../../../services/response-service", () => ({
 
 describe("Measurand Threshold Intent Handler", () => {
   const lubwData: ILUBWData = {
-    calculation: "average",
+    calculation: CALCULATION_TYPE.Average,
     measurand: "luqx",
     station: "DEBW0081",
     time: "1d",
-    representation: "text",
+    representation: REPRESENTATION_TYPE.Text,
   };
   const measurandData: ILUBWMeasurandData = {
     ...lubwData,
@@ -60,7 +60,7 @@ describe("Measurand Threshold Intent Handler", () => {
 
   describe("LUBW API Query", () => {
     it("should call the LUBW API with the correct data", async () => {
-      await measurandThresholdIntentHandler(lubwData);
+      await thresholdIntentHandler(lubwData);
 
       expect(mockQueryLUBWAPI).toHaveBeenCalledWith(lubwData);
     });
@@ -68,7 +68,7 @@ describe("Measurand Threshold Intent Handler", () => {
 
   describe("Representation Service", () => {
     it("should call the Threshold Representation Service with the correct data", async () => {
-      await measurandThresholdIntentHandler(lubwData);
+      await thresholdIntentHandler(lubwData);
 
       expect(mockGetRepresentation).toHaveBeenCalledWith(measurandData);
     });
@@ -76,7 +76,7 @@ describe("Measurand Threshold Intent Handler", () => {
 
   describe("Response", () => {
     it("should call the response service with the correct data", async () => {
-      await measurandThresholdIntentHandler(lubwData);
+      await thresholdIntentHandler(lubwData);
 
       expect(mockGetResponseByRepresentation).toHaveBeenCalledWith(representation);
     });
@@ -86,7 +86,7 @@ describe("Measurand Threshold Intent Handler", () => {
     it("should throw an error if the LUBW API query fails", async () => {
       mockQueryLUBWAPI.mockRejectedValue(new Error());
 
-      await expect(measurandThresholdIntentHandler(lubwData)).rejects.toThrowError();
+      await expect(thresholdIntentHandler(lubwData)).rejects.toThrowError();
     });
   });
 });

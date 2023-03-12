@@ -1,4 +1,4 @@
-import { ILUBWMeasurandData, REPRESENTATION_TYPE } from "shared";
+import { CALCULATION_TYPE, ILUBWMeasurandData, REPRESENTATION_TYPE } from "shared";
 
 import { RepresentationServiceThreshold } from "../treshold.representation";
 
@@ -6,7 +6,7 @@ describe("Threshold Representation Service", () => {
   let measurandData: ILUBWMeasurandData = {
     measurand: "luqx",
     station: "DEBW0081",
-    calculation: "average",
+    calculation: CALCULATION_TYPE.Average,
     time: '{start: "2023-02-21T00:00:00.000Z", end: "2023-02-21T23:59:59.999Z"}',
     measurandData: [
       {
@@ -14,7 +14,7 @@ describe("Threshold Representation Service", () => {
         times: [1677014666328],
       },
     ],
-    representation: "text",
+    representation: REPRESENTATION_TYPE.Text,
   };
 
   const mockStringify = jest.fn();
@@ -35,7 +35,7 @@ describe("Threshold Representation Service", () => {
     });
 
     it("should get a chart representation", () => {
-      measurandData.representation = "graph";
+      measurandData.representation = REPRESENTATION_TYPE.Graph;
 
       const representation = RepresentationServiceThreshold.getRepresentation(measurandData);
 
@@ -47,7 +47,7 @@ describe("Threshold Representation Service", () => {
     });
 
     it("should get a table representation", () => {
-      measurandData.representation = "table";
+      measurandData.representation = REPRESENTATION_TYPE.Table;
 
       const representation = RepresentationServiceThreshold.getRepresentation(measurandData);
 
@@ -107,7 +107,7 @@ describe("Threshold Representation Service", () => {
       measurandData = {
         ...measurandData,
         measurand: "luqx",
-        representation: "graph",
+        representation: REPRESENTATION_TYPE.Graph,
       };
 
       RepresentationServiceThreshold.getChartRepresentation(measurandData);
@@ -138,7 +138,7 @@ describe("Threshold Representation Service", () => {
       measurandData = {
         ...measurandData,
         measurand: "no2",
-        representation: "graph",
+        representation: REPRESENTATION_TYPE.Graph,
       };
 
       RepresentationServiceThreshold.getChartRepresentation(measurandData);
@@ -175,7 +175,7 @@ describe("Threshold Representation Service", () => {
       measurandData = {
         ...measurandData,
         measurand: "o3",
-        representation: "graph",
+        representation: REPRESENTATION_TYPE.Graph,
       };
 
       RepresentationServiceThreshold.getChartRepresentation(measurandData);
@@ -220,7 +220,7 @@ describe("Threshold Representation Service", () => {
       measurandData = {
         ...measurandData,
         measurand: "luqx",
-        representation: "table",
+        representation: REPRESENTATION_TYPE.Table,
       };
 
       RepresentationServiceThreshold.getTableRepresentation(measurandData);
@@ -252,7 +252,7 @@ describe("Threshold Representation Service", () => {
       measurandData = {
         ...measurandData,
         measurand: "no2",
-        representation: "table",
+        representation: REPRESENTATION_TYPE.Table,
       };
 
       RepresentationServiceThreshold.getTableRepresentation(measurandData);
@@ -290,7 +290,7 @@ describe("Threshold Representation Service", () => {
       measurandData = {
         ...measurandData,
         measurand: "o3",
-        representation: "table",
+        representation: REPRESENTATION_TYPE.Table,
       };
 
       RepresentationServiceThreshold.getTableRepresentation(measurandData);

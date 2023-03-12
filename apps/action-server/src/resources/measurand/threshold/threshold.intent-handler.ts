@@ -9,7 +9,7 @@ import { RepresentationServiceThreshold } from "./treshold.representation";
  * @param lubwData the gathered LUBW data
  * @returns the answer to the question
  */
-export const measurandThresholdIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
+export const thresholdIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
   try {
     const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 

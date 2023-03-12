@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { measurandThresholdRequestHandler } from "./threshold.controller";
+import { thresholdRequestHandler } from "./threshold.controller";
 
-export const measurandThresholdRouter: Router = Router();
+export const thresholdRouter: Router = Router();
 
-measurandThresholdRouter.post("/", measurandThresholdRequestHandler);
+thresholdRouter.post("/", thresholdRequestHandler);

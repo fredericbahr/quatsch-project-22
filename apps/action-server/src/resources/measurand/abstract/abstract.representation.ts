@@ -10,7 +10,7 @@ import { CalculationService } from "../../../services/calculation-service";
 export class AbstractRepresentation {
   /**
    * Gets a representation of the given measurand data based on the given representation inside the measurand data.
-   * @default If no representation is given, a textual representation is returned.
+   * @default representation if no representation is given, a textual representation is returned.
    * @param measurandData the lubw measurand data to transform into a representation
    * @returns the representation of the given measurand data
    */
