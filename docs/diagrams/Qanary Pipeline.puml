@@ -5,40 +5,38 @@ title Architecture Qanary Pipeline
 frame "Pattern Matching" {
 [Measurand PM]
 [Station PM]
-[Date PM]
+[Calculation PM]
+[Representation PM]
 }
 
-frame "Named Entity Recognition" {
-[DBpedia Spotlight]
-[Stanford NLP Tool]
+frame "Helpers" {
+[LD Shuyo]
 }
 
 frame "Advanced Recognition" {
-[Date AR]
-[Time Range AR]
 [Customized NER]
-}
-
-frame "Query" {
-[Query Builder/Executor]
+[Date AR]
+[Fuzzy AR]
 }
 
 
 database TripleStore
-start .> [Measurand PM]
+start .> [Station PM]
 start ..> TripleStore: seeding
 
-[Measurand PM] <.. TripleStore: measurands
 [Station PM] <.. TripleStore: stations
+[Measurand PM] <.. TripleStore: measurands
+[Calculation PM] <.. TripleStore: calculations
+[Representation PM] <.. TripleStore: representations
 
-[Measurand PM] -> [Station PM]
-[Station PM] -> [Date PM]
-[Date PM] -> [DBpedia Spotlight]
-[DBpedia Spotlight] -> [Stanford NLP Tool]
-[Stanford NLP Tool] -> [Customized NER]
-[Customized NER] -> [Date AR]
-[Date AR] -> [Time Range AR]
-[Time Range AR] -> [Query Builder/Executor]
+[Station PM] -> [Measurand PM]
+[Measurand PM] -> [Calculation PM]
+[Calculation PM] -> [Representation PM]
+[Representation PM] -> [LD Shuyo]
 
-[Query Builder/Executor] -> end
+[LD Shuyo] -> [Date AR]
+[Date AR] -> [Customized NER]
+[Customized NER] -> [Fuzzy AR]
+
+[Fuzzy AR] -> end
 @enduml
