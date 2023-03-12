@@ -14,11 +14,15 @@
     "lint:fix": "eslint src --fix",
     "prettier": "prettier --c src",
     "prettier:fix": "prettier --w src",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "generate:csv": "ts-node src/scripts/generate-complete-measurand-ner-csv-data.ts",
+    "generate:json": "ts-node src/scripts/generate-complete-measurand-ner-json-data.ts",
+    "generate:yml": "ts-node src/scripts/generate-complete-measurand-nlu-yml-data.ts",
+    "generate:yml-small": "ts-node src/scripts/generate-complete-measurand-small-nlu-yml-data.ts",
+    "generate:yml-measurand-max": "ts-node src/scripts/generate-measurand-max-nlu-yml-data.ts",
+    "generate:yml-measurand-min": "ts-node src/scripts/generate-measurand-min-nlu-yml-data.ts"
   },
   "types": "dist/index.d.ts",
-  "dependencies": {
-  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "eslint": "^8.33.0",

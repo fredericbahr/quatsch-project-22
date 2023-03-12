@@ -14,7 +14,7 @@ dotenv.config({ path: path.join(__dirname, "../../../.env") });
 const server: Express = express();
 const port = process.env.ACTION_SERVER_PORT || 8080;
 
-redisClient.connect();
+redisClient.connect().catch(console.error);
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));

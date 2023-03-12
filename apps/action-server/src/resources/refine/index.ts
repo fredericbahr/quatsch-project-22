@@ -8,5 +8,5 @@ import { refineStationRouter } from "./station/refine-station.router";
  */
 export const refineRouter: Router = Router();
 
-refineRouter.use("/", refineMeasurandRouter);
-refineRouter.use("/", refineStationRouter);
+refineRouter.use("/measurand", refineMeasurandRouter);
+refineRouter.use("/station", refineStationRouter);

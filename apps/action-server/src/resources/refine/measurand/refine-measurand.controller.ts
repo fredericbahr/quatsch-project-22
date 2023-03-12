@@ -1,10 +1,11 @@
 import {
-  COMPONENT_LIST,
+  COMPONENT,
   IIntentHandler,
   ILUBWData,
   ILUBWDataKey,
   IQanaryAnnotation,
   IQanaryMessage,
+  IState,
   RasaRequest,
   RasaResponse,
   SuccessRasaResponse,
@@ -22,7 +23,7 @@ import { VerificationService } from "../../../services/verification-service";
 import { startQanaryPipeline } from "../../../utils/start-pipeline";
 
 /**
- * Handler for refining the measurand if a validation error occured
+ * Handler for refining the measurand if a validation error occurred
  * @param req the request object
  * @param res the response object
  */
@@ -30,10 +31,10 @@ export const refineMeasurandRequestHandler = async (req: RasaRequest, res: RasaR
   const question: string = req.body.tracker?.latest_message?.text ?? "";
   const senderId: string | undefined = req.body.sender_id;
 
-  const componentlist: Array<COMPONENT_LIST> = [
-    COMPONENT_LIST.PATTERN_MATCHING_MEASURAND,
-    COMPONENT_LIST.NER_AUTOML,
-    COMPONENT_LIST.FUZZY_NER,
+  const componentlist: Array<COMPONENT> = [
+    COMPONENT.PATTERN_MATCHING_MEASURAND,
+    COMPONENT.NER_AUTOML,
+    COMPONENT.FUZZY_NER,
   ];
 
   try {
@@ -44,16 +45,24 @@ export const refineMeasurandRequestHandler = async (req: RasaRequest, res: RasaR
       AnnotationTypes.Measurand,
     );
 
-    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, false);
+    const storedState: Partial<IState> | null = await StoringService.getCurrentState(senderId);
+
+    const isStateNull: boolean = storedState === null;
+
+    const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(annotations, isStateNull);
 
     const measurand: string | undefined = lubwData.measurand;
 
-    await StoringService.changeStateEntry(senderId, ILUBWDataKey.Measurand, measurand);
+    if (storedState === null) {
+      await StoringService.storeCurrentState({ senderId, intent: undefined, lubwData });
+    } else {
+      await StoringService.changeStateEntry(senderId, ILUBWDataKey.Measurand, measurand);
+    }
 
-    const stateLUBWData: Partial<ILUBWData> | null = await StoringService.getCurrentState(senderId);
+    const currentState: Partial<ILUBWData> = isStateNull ? lubwData : { ...storedState, measurand };
 
     /** Throws an {@link VerificationError} if verification fails */
-    const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(stateLUBWData);
+    const verifiedLUBWData: ILUBWData = VerificationService.verifyLUBWData(currentState);
 
     /** Throws an {@link NoIntentHandlerError} if no intent handler was found */
     const intentHandler: IIntentHandler = await IntentHandlerFindingService.findIntentHandlerInState(senderId);

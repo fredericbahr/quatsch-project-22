@@ -15,7 +15,13 @@
     "prettier": "prettier --c src",
     "prettier:fix": "prettier --w src",
     "prepublishOnly": "npm run build",
-    "test": "jest --coverage --detectOpenHandles"
+    "test": "jest --coverage --detectOpenHandles",
+    "generate:station": "npx ts-node src/scripts/station-additonal-triples.ts",
+    "generate:measurand": "npx ts-node src/scripts/measurand-additional-triples.ts",
+    "generate:representations": "npx ts-node src/scripts/representation-additional-triples.ts",
+    "generate:calculations": "npx ts-node src/scripts/calculation-additional-triples.ts",
+    "generate:all": "npx ts-node src/scripts/all-additional-triples.ts",
+    "gen": "npm run generate:station && npm run generate:measurand && npm run generate:representations && npm run generate:calculations && npm run generate:all"
   },
   "types": "dist/index.d.ts",
   "dependencies": {

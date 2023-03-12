@@ -5,8 +5,10 @@ intents:
   - greet
   - goodbye
   - bot_challenge
-  # measurand
+  # Measurand related intents
   - measurand_complete
+  - measurand_max
+  - measurand_min
   - measurand_threshold
   # refinement
   - refine_station
@@ -36,8 +38,10 @@ responses:
     - text: "Das war nicht sehr nett. Ich werde daher deine Anfrage nicht beantworten.\nVersuche es gerne mit einer netten Ausdrucksweise erneut."
 
 actions:
-  # Measurands
+  # Measurand related questions
   - action_measurand_complete
+  - action_measurand_max
+  - action_measurand_min
   - action_measurand_threshold
   # Refinements
   - action_refine_station

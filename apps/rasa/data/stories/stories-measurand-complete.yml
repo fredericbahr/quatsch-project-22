@@ -1,0 +1,9 @@
+version: "3.1"
+
+stories:
+  - story: Create complete context
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+      - action: action_measurand_complete

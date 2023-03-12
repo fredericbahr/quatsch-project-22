@@ -77,8 +77,7 @@ end
 "Action Server" <--> "LUPO API" : RECEIVE lubw data
 
 |||
-"Action Server" --> "Representation Server" : GET data in representation format
-"Action Server" <-- "Representation Server" : RECEIVE representation
+"Action Server" --> "Action Server" : get representation for data
 
 "Rasa" <-- "Action Server" : Answer question
 
