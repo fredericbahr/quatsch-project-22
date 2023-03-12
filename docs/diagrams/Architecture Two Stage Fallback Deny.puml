@@ -5,51 +5,51 @@ skinparam BoxPadding 15
 
 title Architecture Two Stage Fallback
 
-actor "user"
+actor "User"
 
-"user" -> rasa: Hi
-"user" <-- rasa: Hi
+"User" -> Rasa: Hi
+"User" <-- Rasa: Hi
 
 |||
 
 group "First Fallback"
-"user" -> rasa: !#@?!
-rasa -> rasa: intent classification (confidence < threshold)
-rasa -> rasa: two_stage_fallback_action
+"User" -> Rasa: !#@?!
+Rasa -> Rasa: intent classification (confidence < threshold)
+Rasa -> Rasa: two_stage_fallback_action
 
 |||
 
-rasa -> webhook: action_default_ask_affirmation
-rasa <-- webhook: text + button(affirm/deny)
-"user" <-- rasa: text + button(affirm/deny)
+Rasa -> "Action Server": action_default_ask_affirmation
+Rasa <-- "Action Server": text + button(affirm/deny)
+"User" <-- Rasa: text + button(affirm/deny)
 
 |||
 
-"user" -> rasa: deny
-rasa -> rasa: utter_ask_rephrase
-"user" <-- rasa: Rephrase please
+"User" -> Rasa: deny
+Rasa -> Rasa: utter_ask_rephrase
+"User" <-- Rasa: Rephrase please
 end
 
 |||
 |||
 
 group "Second Fallback"
-"user" -> rasa: !#@?!
-rasa -> rasa: intent classification (confidence < threshold)
-rasa -> rasa: two_stage_fallback_action
+"User" -> Rasa: !#@?!
+Rasa -> Rasa: intent classification (confidence < threshold)
+Rasa -> Rasa: two_stage_fallback_action
 
 
 |||
 
-rasa -> webhook: action_default_ask_affirmation
-rasa <-- webhook: text + button(affirm/deny)
-"user" <-- rasa: text + button(affirm/deny)
+Rasa -> "Action Server": action_default_ask_affirmation
+Rasa <-- "Action Server": text + button(affirm/deny)
+"User" <-- Rasa: text + button(affirm/deny)
 
 |||
 
-"user" -> rasa: deny
-rasa -> rasa: default_fallback
-"user" <-- rasa: Could not understand you (restart)
+"User" -> Rasa: deny
+Rasa -> Rasa: default_fallback
+"User" <-- Rasa: Could not understand you (restart)
 end
 
 @enduml

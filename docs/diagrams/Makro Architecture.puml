@@ -7,53 +7,74 @@ title Architecture Overview
 
 actor "user"
 
-loop bis Faktenextraktion vollständig
+"user" -> Rasa: Wie ist der Ozonwert in Ulm am 23.01.2023\nverglichen mit den Durchschnittswerten\n der letzten 10 Jahre repräsentiert als Text?
 
-"user" -> rasa: Wie ist der Ozonwert in Ulm am 23.01.2023\nverglichen mit den Durchschnittswerten\n der letzten 10 Jahre repräsentiert als Text?
-
-rasa -> rasa: Intent-Klassifikation
+Rasa -> Rasa: Intent-Klassifikation
 
 alt Fehler
     autonumber stop
-    "rasa" -> "user": Fallback
+    "Rasa" -> "user": Fallback
 end
 
 autonumber 3
-rasa -> "action-server": action_water_measurand
-"action-server" -> "action-server": Speicherung des\nursprünglichen Intents
-"action-server"-> "action-server": Pipeline-Entscheidung
+Rasa -> "Action Server": action_for_intent
+
+database "State Database"
+"Action Server" -> "State Database": Speicherung des Intents
 
 |||
 
-"action-server" -> qanary: Pipeline
-"action-server" <-- qanary: Annotationen
+"Action Server" -> Qanary: Pipeline
 
-|||
-
-"action-server" -> "action-server": Fakten-Extraktion/Speicherung\nund Validierung
-
-alt Fehler
-    autonumber stop
-    "action-server" -> user: Füllen des ersten ungültigen aber notwendigen Slots
-end
+loop 
+Qanary -> "Qanary Component"
+Qanary <-- "Qanary Component"
 end
 
-autonumber 8
-"action-server" -> "action-server": Auslesen des\nursprünglichen Intents
+"Action Server" <-- Qanary: Annotationen
 
 |||
 
-database "database"
-"action-server" -> "database": Messwertabfrage
-"action-server" <-- "database": Messwerte
+"Action Server" -> "Action Server": Fakten-Extraktion und Fakten-Transformation
 
 |||
 
-"action-server" -> "representation-server": Repräsentations-Erstellung (Chart/Tabelle)
-"action-server" <-- "representation-server": Repreäsentation
+"Action Server" -> "State Database": State-Merging und \nState-Speicherung
 
 |||
 
-rasa <-- "action-server": Antwort-Response
-user <-- rasa: Antwort
+"Action Server" -> "Action Server": Verifikation
+
+|||
+
+alt Verifikationsfehler
+"Rasa" <-- "Action Server": Fehlerbenachrichtigung
+"user" <-- "Rasa": Fehlerbenachrichtigung
+end
+
+|||
+
+"Action Server" -> "Action Server": Auslesen des\nursprünglichen Intents
+
+|||
+
+alt Intentfehler
+"Rasa" <-- "Action Server": Fehlerbenachrichtigung
+"user" <-- "Rasa": Fehlerbenachrichtigung
+end
+
+|||
+
+database "LUPO-API"
+"Action Server" -> "LUPO-API": Messwertabfrage
+"Action Server" <-- "LUPO-API": Messwerte
+
+|||
+
+"Action Server" -> "Action Server": Repräsentations-Erstellung (Chart/Tabelle)
+
+|||
+
+Rasa <-- "Action Server": Antwort-Response
+user <-- Rasa: Antwort
 @enduml
