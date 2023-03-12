@@ -8,6 +8,6 @@ ASK
 FROM <GRAPHID>
 WHERE {
     ?annotation a qa:AnnotationOfStation.
-    ?annotation qa:hasBody "<STATION>".
+    ?annotation qa:bodyValue "<STATION>".
     ?annotation qa:score  "<SCORE>"^^xsd:double.
 }

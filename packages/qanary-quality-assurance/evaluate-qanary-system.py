@@ -82,7 +82,8 @@ def request_qanary_endpoint_for_question(logger, conf_qanary, question):
     """
     data = {
         "question": question,
-        "componentlist[]": conf_qanary.get("componentlist")
+        "componentlist[]": conf_qanary.get("componentlist"),
+        "additionalTriples": conf_qanary.get("additionalTriples")
     }
     url = conf_qanary.get("system_url")
     logger.info("request parameter for Qanary system:\n" +
