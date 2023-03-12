@@ -1,0 +1,7 @@
+version: "3.1"
+
+stories:
+  - story: What was the lowest measured value?
+    steps:
+      - intent: measurand_min
+      - action: action_measurand_min

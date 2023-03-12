@@ -1,0 +1,25 @@
+= Merge with defaults
+
+[source,plantuml]
+----
+include::diagrams/Merge with Defaults.puml[]
+----
+
+The four possible states and annotation combinations
+
+|===
+|State |Annotations
+
+|Absent
+|Absent
+
+|Present
+|Absent
+
+|Absent
+|Present
+
+|Present
+|Present
+|===
+

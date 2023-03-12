@@ -7,4 +7,4 @@ import { defaultFallbackRouter } from "./default/fallback.router";
  */
 export const fallbackRouter: Router = Router();
 
-fallbackRouter.use("/", defaultFallbackRouter);
+fallbackRouter.use("/default", defaultFallbackRouter);

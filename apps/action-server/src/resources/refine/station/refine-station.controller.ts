@@ -1,5 +1,5 @@
 import {
-  COMPONENT_LIST,
+  COMPONENT,
   IIntentHandler,
   ILUBWData,
   ILUBWDataKey,
@@ -30,10 +30,10 @@ export const refineStationRequestHandler = async (req: RasaRequest, res: RasaRes
   const question: string = req.body.tracker?.latest_message?.text ?? "";
   const senderId: string | undefined = req.body.sender_id;
 
-  const componentlist: Array<COMPONENT_LIST> = [
-    COMPONENT_LIST.PATTERN_MATCHING_STATION,
-    COMPONENT_LIST.NER_AUTOML,
-    COMPONENT_LIST.FUZZY_NER,
+  const componentlist: Array<COMPONENT> = [
+    COMPONENT.PATTERN_MATCHING_STATION,
+    COMPONENT.NER_AUTOML,
+    COMPONENT.FUZZY_NER,
   ];
 
   try {

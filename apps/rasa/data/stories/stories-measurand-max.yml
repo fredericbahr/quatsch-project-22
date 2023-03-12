@@ -1,0 +1,7 @@
+version: "3.1"
+
+stories:
+  - story: What was the highest measured value?
+    steps:
+      - intent: measurand_max
+      - action: action_measurand_max
