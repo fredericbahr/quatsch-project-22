@@ -12,7 +12,7 @@ describe("#Webhook controllers", () => {
     for (const intent in INTENTS) {
       const next_action: string = INTENTS[intent as keyof typeof INTENTS];
       const req = { body: { next_action } };
-      const res = { json: jest.fn(), end: jest.fn() };
+      const res = { json: jest.fn(), end: jest.fn(), status: jest.fn() };
 
       await webhookRequestHandler(req as unknown as RasaRequest, res as unknown as RasaResponse);
       expect(res.json).toHaveBeenCalled();

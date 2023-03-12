@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-import { measurandCompleteRequestHandler } from "./complete.controller";
+import { completeRequestHandler } from "./complete.controller";
 
-export const measurandCompleteRouter: Router = Router();
+export const completeRouter: Router = Router();
 
-measurandCompleteRouter.post("/", measurandCompleteRequestHandler);
+completeRouter.post("/", completeRequestHandler);

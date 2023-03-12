@@ -1,14 +1,15 @@
-import { ILUBWData } from "shared";
+import { ILUBWData, REPRESENTATION_TYPE } from "shared";
+import { CALCULATION_TYPE } from "shared";
 
 import { LUBWQueryService } from "../lubw-query-service";
 
 xdescribe("LUBW Query Service", () => {
   const lubwData: ILUBWData = {
-    calculation: "average",
+    calculation: CALCULATION_TYPE.Average,
     measurand: "luqx",
     station: "DEBW0081",
     time: "{start: '2021-03-18T13:00:00.000Z'}",
-    representation: "text",
+    representation: REPRESENTATION_TYPE.Text,
   };
   const measurandData = ["measurandData"];
 

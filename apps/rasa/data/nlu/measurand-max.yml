@@ -1,0 +1,136 @@
+# Automatically generated file. Do not change the content
+
+version: "3.1"
+
+nlu:
+  - intent: measurand_max
+    examples: |
+      - Was war der höchste Messwert?
+      - Welcher ist der maximale Messwert?
+      - Was war das Maximum?
+      - Welcher ist der maximale Messwert für no2 in Eggenstein?
+      - Welcher ist der maximale Messwert für pm10 in DEBW084?
+      - Welcher ist der maximale Messwert für Stickstoffdioxid in Freiburg?
+      - Welcher ist der maximale Messwert für pm25k in DEBW038?
+      - Welcher ist der maximale Messwert für Luftqualitätsindex in DEBW112?
+      - Welcher ist der maximale Messwert für pm10 in DEBW112?
+      - Welcher ist der maximale Messwert für luqx in Gärtringen?
+      - Welcher ist der maximale Messwert für no2 in Heidelberg?
+      - Welcher ist der maximale Messwert für o3 in Heidelberg?
+      - Welcher ist der maximale Messwert für o3 in DEBW015?
+      - Welcher ist der maximale Messwert für luqx in DEBW152?
+      - Welcher ist der maximale Messwert für Stickstoffdioxid in Heilbronn Weinsberger Straße-Ost?
+      - Welcher ist der maximale Messwert für o3 in Heilbronn Weinsberger Straße-Ost?
+      - Welcher ist der maximale Messwert für luqx in DEBW080?
+      - Welcher ist der maximale Messwert für Luftqualitätsindex in DEBW080?
+      - Welcher ist der maximale Messwert für luqx in Karlsruhe Reinhold-Frank-Straße?
+      - Welcher ist der maximale Messwert für Luftqualitätsindex in Karlsruhe Reinhold-Frank-Straße?
+      - Welcher ist der maximale Messwert für pm10 in DEBW241?
+      - Welcher ist der maximale Messwert für Luftqualitätsindex in Mannheim Friedrichsring?
+      - Welcher ist der maximale Messwert für Stickstoffdioxid in Mannheim Friedrichsring?
+      - Welcher ist der maximale Messwert für no2 in DEBW073?
+      - Welcher ist der maximale Messwert für o3 in DEBW033?
+      - Welcher ist der maximale Messwert für pm25k in DEBW027?
+      - Welcher ist der maximale Messwert für Luftqualitätsindex in Schramberg Oberndorfer Straße?
+      - Welcher ist der maximale Messwert für no2 in Schramberg Oberndorfer Straße?
+      - Welcher ist der maximale Messwert für o3 in Schramberg Oberndorfer Straße?
+      - Welcher ist der maximale Messwert für Stickstoffdioxid in Schwäbische Alb?
+      - Welcher ist der maximale Messwert für Feinstaub PM25 in DEBW118?
+      - Welcher ist der maximale Messwert für pm10 in DEBW099?
+      - Welcher ist der maximale Messwert für Stickstoffdioxid in Stuttgart Arnulf-Klett-Platz?
+      - Welcher ist der maximale Messwert für Ozon in Stuttgart Hauptstätter Straße?
+      - Welcher ist der maximale Messwert für Feinstaub PM25 in DEBW116?
+      - Welcher ist der maximale Messwert für Stickstoffdioxid in Tauberbischofsheim?
+      - Welcher ist der maximale Messwert für no2 in Tübingen?
+      - Welcher ist der maximale Messwert für o3 in Tübingen?
+      - Welcher ist der maximale Messwert für no2 in DEBW136?
+      - Welcher ist der maximale Messwert für pm25k in Tübingen Mühlstraße?
+      - Welcher ist der maximale Messwert für o3 in DEBW039?
+      - Welcher ist der maximale Messwert für Ozon in DEBW039?
+      - Welcher ist der maximale Messwert für Feinstaub PM25 in Villingen-Schwenningen?
+      - Welcher ist der maximale Messwert für Luftqualitätsindex in Wiesloch?
+      - Welcher ist der maximale Messwert für Feinstaub PM25 in Wiesloch?
+      - Was war der höchste Messwert für Ozon in DEBW029?
+      - Was war der höchste Messwert für luqx in Eggenstein?
+      - Was war der höchste Messwert für Ozon in Eggenstein?
+      - Was war der höchste Messwert für Luftqualitätsindex in DEBW084?
+      - Was war der höchste Messwert für Feinstaub PM10 in DEBW084?
+      - Was war der höchste Messwert für luqx in Freiburg?
+      - Was war der höchste Messwert für Feinstaub PM10 in Freiburg?
+      - Was war der höchste Messwert für Feinstaub PM10 in Gärtringen?
+      - Was war der höchste Messwert für pm10 in Heidelberg?
+      - Was war der höchste Messwert für no2 in Heilbronn?
+      - Was war der höchste Messwert für no2 in Heilbronn Weinsberger Straße-Ost?
+      - Was war der höchste Messwert für Luftqualitätsindex in DEBW022?
+      - Was war der höchste Messwert für Feinstaub PM10 in Konstanz?
+      - Was war der höchste Messwert für Stickstoffdioxid in Leonberg Grabenstraße?
+      - Was war der höchste Messwert für Luftqualitätsindex in DEBW024?
+      - Was war der höchste Messwert für pm10 in DEBW024?
+      - Was war der höchste Messwert für pm25k in Ludwigsburg?
+      - Was war der höchste Messwert für o3 in Ludwigsburg Schlossstraße?
+      - Was war der höchste Messwert für luqx in Mannheim-Nord?
+      - Was war der höchste Messwert für no2 in Mannheim-Nord?
+      - Was war der höchste Messwert für o3 in DEBW033?
+      - Was war der höchste Messwert für Feinstaub PM25 in Pforzheim?
+      - Was war der höchste Messwert für pm25k in DEBW027?
+      - Was war der höchste Messwert für o3 in DEBW147?
+      - Was war der höchste Messwert für o3 in Schramberg Oberndorfer Straße?
+      - Was war der höchste Messwert für pm25k in Schramberg Oberndorfer Straße?
+      - Was war der höchste Messwert für Luftqualitätsindex in DEBW118?
+      - Was war der höchste Messwert für luqx in DEBW099?
+      - Was war der höchste Messwert für Luftqualitätsindex in DEBW013?
+      - Was war der höchste Messwert für no2 in LUBW082?
+      - Was war der höchste Messwert für o3 in Stuttgart Hauptstätter Straße?
+      - Was war der höchste Messwert für Ozon in Stuttgart Hauptstätter Straße?
+      - Was war der höchste Messwert für Ozon in Stuttgart Hohenheimer Straße?
+      - Was war der höchste Messwert für Feinstaub PM25 in DEBW107?
+      - Was war der höchste Messwert für Luftqualitätsindex in Tübingen?
+      - Was war der höchste Messwert für Ozon in Tübingen?
+      - Was war der höchste Messwert für Feinstaub PM25 in Tübingen Mühlstraße?
+      - Was war der höchste Messwert für Luftqualitätsindex in DEBW019?
+      - Was war der höchste Messwert für o3 in DEBW019?
+      - Was war der höchste Messwert für pm25k in Ulm?
+      - Was war der höchste Messwert für Stickstoffdioxid in DEBW039?
+      - Was war der höchste Messwert für Stickstoffdioxid in Villingen-Schwenningen?
+      - Was war der höchste Messwert für no2 in Weil am Rhein?
+      - Was war der höchste Messwert für Ozon in Wiesloch?
+      - Was war das Maximum für no2 in Baden-Baden?
+      - Was war das Maximum für o3 in Baden-Baden?
+      - Was war das Maximum für Stickstoffdioxid in Eggenstein?
+      - Was war das Maximum für pm10 in DEBW084?
+      - Was war das Maximum für o3 in DEBW038?
+      - Was war das Maximum für Ozon in Heidelberg?
+      - Was war das Maximum für Luftqualitätsindex in Heilbronn?
+      - Was war das Maximum für Feinstaub PM25 in Heilbronn?
+      - Was war das Maximum für o3 in DEBW152?
+      - Was war das Maximum für pm10 in DEBW152?
+      - Was war das Maximum für Feinstaub PM10 in DEBW081?
+      - Was war das Maximum für luqx in Karlsruhe Reinhold-Frank-Straße?
+      - Was war das Maximum für pm25k in Leonberg Grabenstraße?
+      - Was war das Maximum für Luftqualitätsindex in Ludwigsburg?
+      - Was war das Maximum für Feinstaub PM10 in Mannheim Friedrichsring?
+      - Was war das Maximum für Feinstaub PM25 in Mannheim Friedrichsring?
+      - Was war das Maximum für o3 in DEBW005?
+      - Was war das Maximum für Feinstaub PM10 in DEBW073?
+      - Was war das Maximum für Feinstaub PM10 in Neuenburg?
+      - Was war das Maximum für Feinstaub PM25 in DEBW125?
+      - Was war das Maximum für Luftqualitätsindex in Pforzheim?
+      - Was war das Maximum für Luftqualitätsindex in DEBW027?
+      - Was war das Maximum für pm10 in Reutlingen?
+      - Was war das Maximum für Luftqualitätsindex in Reutlingen Lederstraße-Ost?
+      - Was war das Maximum für luqx in DEBW087?
+      - Was war das Maximum für pm10 in DEBW087?
+      - Was war das Maximum für luqx in Schwäbische Alb?
+      - Was war das Maximum für Stickstoffdioxid in Schwäbische Alb?
+      - Was war das Maximum für pm25k in Schwarzwald-Süd?
+      - Was war das Maximum für no2 in Stuttgart Am Neckartor?
+      - Was war das Maximum für Luftqualitätsindex in DEBW099?
+      - Was war das Maximum für Feinstaub PM10 in DEBW099?
+      - Was war das Maximum für Luftqualitätsindex in Stuttgart Hauptstätter Straße?
+      - Was war das Maximum für pm25k in DEBW116?
+      - Was war das Maximum für pm25k in DEBW059?
+      - Was war das Maximum für Feinstaub PM25 in DEBW059?
+      - Was war das Maximum für Ozon in Tübingen?
+      - Was war das Maximum für pm25k in Tübingen Mühlstraße?
+      - Was war das Maximum für Ozon in Villingen-Schwenningen?
+      - Was war das Maximum für no2 in Wiesloch?

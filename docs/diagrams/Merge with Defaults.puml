@@ -1,0 +1,54 @@
+@startuml
+
+autonumber
+skinparam BoxPadding 15
+
+"Rasa" --> "Action Server" : Q: Was war der höchste Messwert?
+
+|||
+"Action Server" --> "Qanary Pipeline": Request: Annotations
+"Action Server" <-- "Qanary Pipeline": Response: Qanary Message"
+|||
+
+
+"Action Server" --> "Qanary Pipeline" : GET Annotations
+"Action Server" <-- "Qanary Pipeline" : RECEIVE Annotations
+|||
+
+database "State Store"
+"Action Server" --> "State Store":  Request: Current state
+"Action Server" <-- "State Store":  Response: Current state
+
+|||
+
+alt "state is empty"
+
+"Action Server" --> "Action Server": Transform annotations with defaults (prefer annotations)
+|||
+
+else "state exists"
+
+"Action Server" --> "Action Server": Transform annotations without defaults
+"Action Server" --> "Action Server": Merge annotations with state (prefer annotations)
+
+end
+
+|||
+
+"Action Server" --> "State Store":  Set: New state
+
+"Action Server" --> "Action Server" : Verify data
+|||
+
+alt "data is invalid"
+
+"Action Server" --> "Action Server" : Trigger: refine logic
+|||
+
+else "data is valid"
+
+"Action Server" --> "Action Server" : Trigger: intent execution logic
+
+end
+
+@enduml

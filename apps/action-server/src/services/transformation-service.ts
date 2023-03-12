@@ -7,7 +7,9 @@ import {
   ILUBWDefaultData,
   IQanaryAnnotation,
   ITimeObject,
+  REPRESENTATION_TYPE,
 } from "shared";
+import { CALCULATION_TYPE } from "shared";
 /**
  * Service for transforming the annotations to the intermediate representation format.
  */
@@ -55,8 +57,8 @@ export class LUBWDataTransformationService {
     const transformedValues: Partial<ILUBWData> = {
       station: filteredAnnotations.stationAnnotation[firstAnnotation]?.hasBody,
       measurand: filteredAnnotations.measurandAnnotation[firstAnnotation]?.hasBody,
-      representation: filteredAnnotations.representationAnnotation[firstAnnotation]?.hasBody,
-      calculation: filteredAnnotations.calculationAnnotation[firstAnnotation]?.hasBody,
+      representation: filteredAnnotations.representationAnnotation[firstAnnotation]?.hasBody as REPRESENTATION_TYPE,
+      calculation: filteredAnnotations.calculationAnnotation[firstAnnotation]?.hasBody as CALCULATION_TYPE,
       time: this.transformTime(filteredAnnotations.timeAnnotation[firstAnnotation]?.hasBody),
     };
 
@@ -121,9 +123,10 @@ export class LUBWDataTransformationService {
    * @returns the merged values
    */
   private static mergeWithDefaults(
-    customValues: Partial<ILUBWData>,
+    customValues: Partial<ILUBWData> | null,
     defaultValues: ILUBWDefaultData,
   ): Partial<ILUBWData> {
+    customValues = customValues ?? {};
     return {
       ...customValues,
       representation: customValues.representation || defaultValues.representation,
@@ -169,7 +172,7 @@ export class LUBWDataTransformationService {
 
   /**
    * Checks whether the given annotation is of annotation type.
-   * @todo: TODO: change checking from producer to annnotation type
+   * @todo: TODO: change checking from producer to annotation type
    * @param annotation the annotation to check
    * @param annotationType the type to match
    * @returns true if annotation is of annotation type, false otherwise
