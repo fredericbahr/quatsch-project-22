@@ -6,7 +6,7 @@ PREFIX qa: <http://www.wdaqua.eu/qa#>
 ASK
 FROM <GRAPHID>
 WHERE {
-    ?annotationId rdf:type qa:AnnotationOfInstance.
+    ?annotationId rdf:type qa:AnnotationOfStation.
     ?annotationId oa:hasBody ?body.
     ?annotationId oa:hasTarget ?target.
     ?annotationId oa:annotatedAt ?date.

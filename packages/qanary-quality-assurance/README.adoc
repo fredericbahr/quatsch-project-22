@@ -43,7 +43,7 @@ python evaluate-qanary-system.py --directory=<DIRECTORYNAME>
 Example:
 
 ```bash
-python evaluate-qanary-system.py --directory=superhero-real-names
+python evaluate-qanary-system.py --directory=qanary-component-pm-station
 ```
 
 The script will create a *logfile*, a *JSON file* containing all test results in JSON format, and an *XLSX file* containing a tabular representation of the test results including a predefined chart showing visually the measured quality of your QA system.
@@ -134,7 +134,7 @@ def validate(test, logger, conf_qanary, connection, graphid):
     return False
 ```
 
-An example is available link:superhero-real-names/execute-on-dbpedia.py[here].
+An example is available link:qanary-component-pm-station/execute-on-dbpedia.py[here].
 
 ##### Section `tests`
 
@@ -154,14 +154,14 @@ The property `question` contains the textual question.
 The property `replacements` is an object defining *search* (placeholder) and *replace* (new value) structures. 
 They are applied to all ASK SPARQL queries individually depending on the currently processed question. 
 Hence, here an ASK query *templates* are transformed into an executable ASK query. 
-For examples see link:superhero-real-names/qanary-test-definition.json#L19[here].
+For examples see link:qanary-component-pm-station/qanary-test-definition.json#L19[here].
 
 #### Step 3. Create ASK query template files
 
 For each test template defined in the section `validation-sparql-templates` a file needs to be created. The file need to contain a ASK SPARQL query (i.e., each query need to return `True` or `False`).
 
 For details on ASK queries see https://www.futurelearn.com/info/courses/linked-data/0/steps/16094 or https://codyburleson.com/blog/sparql-examples-ask.
-For examples of a real test configuration see link:superhero-real-names/0_was-any-instance-identified.sparql[here], link:superhero-real-names/1_was-the-expected-instace-recognized.sparql[here] and link:superhero-real-names/2_was-a-sparql-query-computed-similar-as-expected.sparql[here].
+For examples of a real test configuration see link:qanary-component-pm-station/0_was-any-instance-identified.sparql[here], link:qanary-component-pm-station/1_was-the-expected-instace-recognized.sparql[here] and link:qanary-component-pm-station/2_was-a-sparql-query-computed-similar-as-expected.sparql[here].
 
 ## Evaluation
 
@@ -170,15 +170,15 @@ It will contain the output files:
 
 * The *logfile* contains a log of the actions during the tests.
 * The *JSON file* contain the complete test results in JSON format.
-* The *XLSX file* contains a tabular representation of the test results and an automatically created chart showing the quality visually. Example: image:./superhero-real-names/example-output/table.png[] image:./superhero-real-names/example-output/chart.png[]
+* The *XLSX file* contains a tabular representation of the test results and an automatically created chart showing the quality visually. Example: image:./qanary-component-pm-station/example-output/table.png[] image:./qanary-component-pm-station/example-output/chart.png[]
 
 Every file name contain the timestamp (datetime when the test was started). If the test is executed several times, then the files are not overwritten.
 
-See the stored link:superhero-real-names/example-output/[exemplary tests] for the output structure.
+See the stored link:qanary-component-pm-station/example-output/[exemplary tests] for the output structure.
 
 ## Complete Example
 
-See the folder link:superhero-real-names/[superhero-real-names] for a complete example.
+See the folder link:qanary-component-pm-station/[superhero-real-names] for a complete example.
 
 ## Limitations
 
