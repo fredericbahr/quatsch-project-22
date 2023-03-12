@@ -23,9 +23,11 @@
     "docker:up": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose --profile all up --build",
     "docker:up-slim": "COMPOSE_DOCKER_CLI_BUILD=1 docker compose --profile slim up --build",
     "e2e": "docker-compose up -d && npm run e2e --workspace=e2e",
-    "rasa:shell": "turbo run shell",
-    "rasa:train": "turbo run train",
-    "rasa:visualize": "turbo run visualize"
+    "rasa:lint": "npm run rasa:lint --workspace=rasa",
+    "rasa:shell": "npm run rasa:shell --workspace=rasa",
+    "rasa:test": "npm run rasa:test --workspace=rasa",
+    "rasa:train": "npm run rasa:train --workspace=rasa",
+    "rasa:visualize": "npm run rasa:visualize --workspace=rasa"
   },
   "workspaces": [
     "apps/*",
@@ -34,7 +36,7 @@
   ],
   "devDependencies": {
     "prettier": "^2.8.3",
-    "turbo": "^1.8.2"
+    "turbo": "^1.8.3"
   },
   "volta": {
     "node": "18.12.1",
