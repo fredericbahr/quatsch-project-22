@@ -1,0 +1,23 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>
+
+<urn:measurand> a <rdfs:Class> .
+<urn:station> a <rdfs:Class> .
+<urn:calculation> a <rdfs:Class> .
+<urn:representation> a <rdfs:Class> .
+<urn:time> a <rdfs:Class> .
+
+<urn:minimum> a <urn:calculation> ;
+  dc:identifier "minimum" ;
+  rdfs:label "Minimum" .
+<urn:maximum> a <urn:calculation> ;
+  dc:identifier "maximum" ;
+  rdfs:label "Maximum" .
+<urn:average> a <urn:calculation> ;
+  dc:identifier "average" ;
+  rdfs:label "Durchschnitt" .
+<urn:threshold> a <urn:calculation> ;
+  dc:identifier "threshold" ;
+  rdfs:label "Grenzwert" .
