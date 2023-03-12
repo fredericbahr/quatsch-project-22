@@ -34,7 +34,7 @@ export class ErrorHandlingService {
       responses: [
         {
           response: "",
-          text: "Ich konnte den letzten Intent nicht finden. Bitte gebe deine Ursprungsfrage erneut ein. Bereits erkannte Daten wurden zurückgesetzt.",
+          text: "Ich konnte den letzten Intent nicht finden. Bitte gebe deine Ursprungsfrage erneut ein.",
           buttons: popularIntents,
         },
       ],
