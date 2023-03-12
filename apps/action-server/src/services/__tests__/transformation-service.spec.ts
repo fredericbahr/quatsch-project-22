@@ -1,5 +1,6 @@
 import { differenceInDays } from "date-fns";
-import { ILUBWData, IQanaryAnnotation } from "shared";
+import { ILUBWData, IQanaryAnnotation, REPRESENTATION_TYPE } from "shared";
+import { CALCULATION_TYPE } from "shared";
 
 import { LUBWDataTransformationService } from "../transformation-service";
 
@@ -54,10 +55,10 @@ describe("TransformationService", () => {
     it("should transform the annotations", () => {
       const expectedLubwData: ILUBWData = {
         station: "DEBW0081",
-        calculation: "average",
+        calculation: CALCULATION_TYPE.Average,
         measurand: "luqx",
         time: "1d",
-        representation: "graph",
+        representation: REPRESENTATION_TYPE.Graph,
       };
 
       const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData(annotations);
@@ -68,10 +69,10 @@ describe("TransformationService", () => {
     it("should transform the annotations and merge with default values", () => {
       const expectedLubwData: ILUBWData = {
         station: "DEBW0081",
-        calculation: "average",
+        calculation: CALCULATION_TYPE.Average,
         measurand: "luqx",
         time: "1d",
-        representation: "text",
+        representation: REPRESENTATION_TYPE.Text,
       };
 
       const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData(uncompleteAnnotations, true);

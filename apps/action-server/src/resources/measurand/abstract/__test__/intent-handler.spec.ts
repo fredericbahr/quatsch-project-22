@@ -1,9 +1,10 @@
 import { ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
+import { CALCULATION_TYPE } from "shared";
 
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
-import { RepresentationService } from "../../../../services/representation-service";
 import { ResponseService } from "../../../../services/response-service";
-import { completeIntentHandler } from "../complete.intent-handler";
+import { abstractIntentHandler } from "../abstract.intent-handler";
+import { AbstractRepresentation } from "../abstract.representation";
 
 jest.mock("../../../../services/lubw-query-service", () => ({
   LUBWQueryService: {
@@ -11,8 +12,8 @@ jest.mock("../../../../services/lubw-query-service", () => ({
   },
 }));
 
-jest.mock("../../../../services/representation-service", () => ({
-  RepresentationService: {
+jest.mock("../abstract.representation", () => ({
+  AbstractRepresentation: {
     getRepresentation: jest.fn(),
   },
 }));
@@ -25,11 +26,11 @@ jest.mock("../../../../services/response-service", () => ({
 
 describe("Measurand Complete Intent Handler", () => {
   const lubwData: ILUBWData = {
-    calculation: "average",
+    calculation: CALCULATION_TYPE.Average,
     measurand: "luqx",
     station: "DEBW0081",
     time: "1d",
-    representation: "text",
+    representation: REPRESENTATION_TYPE.Text,
   };
   const measurandData: ILUBWMeasurandData = {
     ...lubwData,
@@ -54,13 +55,13 @@ describe("Measurand Complete Intent Handler", () => {
 
   beforeEach(() => {
     (LUBWQueryService.queryLUBWAPI as jest.Mock) = mockQueryLUBWAPI;
-    (RepresentationService.getRepresentation as jest.Mock) = mockGetRepresentation;
+    (AbstractRepresentation.getRepresentation as jest.Mock) = mockGetRepresentation;
     (ResponseService.getResponseByRepresentation as jest.Mock) = mockGetResponseByRepresentation;
   });
 
   describe("LUBW API Query", () => {
     it("should call the LUBW API with the correct data", async () => {
-      await completeIntentHandler(lubwData);
+      await abstractIntentHandler(lubwData);
 
       expect(mockQueryLUBWAPI).toHaveBeenCalledWith(lubwData);
     });
@@ -68,7 +69,7 @@ describe("Measurand Complete Intent Handler", () => {
 
   describe("Representation Service", () => {
     it("should call the Representation Service with the correct data", async () => {
-      await completeIntentHandler(lubwData);
+      await abstractIntentHandler(lubwData);
 
       expect(mockGetRepresentation).toHaveBeenCalledWith(measurandData);
     });
@@ -76,7 +77,7 @@ describe("Measurand Complete Intent Handler", () => {
 
   describe("Response", () => {
     it("should call the response utils with the correct data", async () => {
-      await completeIntentHandler(lubwData);
+      await abstractIntentHandler(lubwData);
 
       expect(mockGetResponseByRepresentation).toHaveBeenCalledWith(representation);
     });
@@ -86,7 +87,7 @@ describe("Measurand Complete Intent Handler", () => {
     it("should throw an error if the LUBW API query fails", async () => {
       mockQueryLUBWAPI.mockRejectedValue(new Error());
 
-      await expect(completeIntentHandler(lubwData)).rejects.toThrowError();
+      await expect(abstractIntentHandler(lubwData)).rejects.toThrowError();
     });
   });
 });

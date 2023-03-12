@@ -1,4 +1,14 @@
-import { ILUBWData, ILUBWDataKey, IQanaryAnnotation, IQanaryMessage, RasaRequest, RasaResponse } from "shared";
+import { expect } from "@jest/globals";
+import {
+  ILUBWData,
+  ILUBWDataKey,
+  IQanaryAnnotation,
+  IQanaryMessage,
+  RasaRequest,
+  RasaResponse,
+  REPRESENTATION_TYPE,
+} from "shared";
+import { CALCULATION_TYPE } from "shared";
 
 import { NoIntentHandlerError } from "../../../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../../../errors/VerificationError";
@@ -10,10 +20,16 @@ import { LUBWDataTransformationService } from "../../../../services/transformati
 import { VerificationService } from "../../../../services/verification-service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { startQanaryPipeline } from "../../../../utils/start-pipeline";
-import { completeRequestHandler } from "../complete.controller";
+import { abstractRequestHandler } from "../abstract.controller";
 
 jest.mock("../../../../utils/start-pipeline", () => ({
   startQanaryPipeline: jest.fn(),
+}));
+
+jest.mock("../../../../services/transformation-service", () => ({
+  LUBWDataTransformationService: {
+    getTransformedLUBWData: jest.fn(),
+  },
 }));
 
 jest.mock("../../../../services/extraction-service/extract-annotation-service", () => ({
@@ -25,6 +41,7 @@ jest.mock("../../../../services/extraction-service/extract-annotation-service", 
 jest.mock("../../../../services/storing-service", () => ({
   StoringService: {
     storeCurrentState: jest.fn(),
+    getCurrentState: jest.fn(),
   },
 }));
 
@@ -76,11 +93,11 @@ describe("#Measurand controllers", () => {
     },
   ];
   const lubwData: ILUBWData = {
-    calculation: "average",
+    calculation: CALCULATION_TYPE.Average,
     measurand: "luqx",
     station: "DEBW0081",
     time: "1d",
-    representation: "text",
+    representation: REPRESENTATION_TYPE.Text,
   };
 
   const req: RasaRequest = {
@@ -92,6 +109,7 @@ describe("#Measurand controllers", () => {
   const mockExtractAllAnnotations: jest.Mock = jest.fn().mockResolvedValue(annotations);
   const mockGetTransformedLUBWData: jest.Mock = jest.fn().mockReturnValue(lubwData);
   const mockStoreData: jest.Mock = jest.fn();
+  const mockGetCurrentState: jest.Mock = jest.fn();
   const mockVerifyLUBWData: jest.Mock = jest.fn().mockReturnValue(lubwData);
   const mockMeasurandCompleteIntentHandler: jest.Mock = jest.fn();
   const mockFindIntentHandler: jest.Mock = jest.fn().mockReturnValue(mockMeasurandCompleteIntentHandler);
@@ -103,6 +121,7 @@ describe("#Measurand controllers", () => {
     (startQanaryPipeline as jest.Mock) = mockStartQanaryPipeline;
     (AnnotationExtractionService.extractAllAnnotations as jest.Mock) = mockExtractAllAnnotations;
     (StoringService.storeCurrentState as jest.Mock) = mockStoreData;
+    (StoringService.getCurrentState as jest.Mock) = mockGetCurrentState;
     (LUBWDataTransformationService.getTransformedLUBWData as jest.Mock) = mockGetTransformedLUBWData;
     (VerificationService.verifyLUBWData as jest.Mock) = mockVerifyLUBWData;
     (IntentHandlerFindingService.findIntentHandlerByIntent as jest.Mock) = mockFindIntentHandler;
@@ -115,13 +134,13 @@ describe("#Measurand controllers", () => {
 
   describe("Qanary Pipeline", () => {
     it("should start the qanary pipeline with given question", async () => {
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(text, expect.any(Array));
     });
 
     it("should start the qanary pipeline with correct components", async () => {
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(
         expect.any(String),
@@ -138,7 +157,7 @@ describe("#Measurand controllers", () => {
 
   describe("Annotation Extraction", () => {
     it("should extract all annotation", async () => {
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
       expect(mockExtractAllAnnotations).toHaveBeenCalledWith(qanaryMessage);
     });
@@ -146,59 +165,61 @@ describe("#Measurand controllers", () => {
 
   describe("Transformation", () => {
     it("should transform the annotations", async () => {
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
-      expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.objectContaining(annotations));
+      expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.arrayContaining(annotations), expect.any(Boolean));
     });
   });
 
   describe("Storing", () => {
     it("should store the current data and intent", async () => {
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
       expect(mockStoreData).toHaveBeenCalledWith({
         senderId: expect.any(String),
         intent: expect.any(String),
-        lubwData: expect.objectContaining(lubwData),
+        lubwData: expect.objectContaining(lubwData as unknown as Record<string, string>),
       });
     });
   });
 
   describe("Verification", () => {
     it("should call the verification service with the lubwData", async () => {
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
-      expect(mockVerifyLUBWData).toHaveBeenCalledWith(expect.objectContaining(lubwData));
+      expect(mockVerifyLUBWData).toHaveBeenCalledWith(
+        expect.objectContaining(lubwData as unknown as Record<string, string>),
+      );
     });
   });
 
   describe("Intent Handling", () => {
     it("should find the correct intent handler", async () => {
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
       expect(mockFindIntentHandler).toHaveBeenCalledWith(intent);
     });
 
     it("should call the intent handler with the correct data", async () => {
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
       expect(mockMeasurandCompleteIntentHandler).toHaveBeenCalledWith(lubwData);
     });
   });
 
   describe("Error Handling", () => {
-    it("should handle Verifications errors occordingly", async () => {
-      const verificationErrror = new VerificationError("Error", null, ILUBWDataKey.Station);
+    it("should handle Verifications errors accordingly", async () => {
+      const verificationError = new VerificationError("Error", null, ILUBWDataKey.Station);
       mockVerifyLUBWData.mockImplementation(() => {
-        throw verificationErrror;
+        throw verificationError;
       });
 
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
-      expect(mockHandleVerificationError).toHaveBeenCalledWith(res, verificationErrror);
+      expect(mockHandleVerificationError).toHaveBeenCalledWith(res, verificationError);
     });
 
-    it("should handle no intent handler errors occordingly", async () => {
+    it("should handle no intent handler errors accordingly", async () => {
       mockVerifyLUBWData.mockReset();
 
       const noIntentHandlerError = new NoIntentHandlerError("Error");
@@ -206,15 +227,15 @@ describe("#Measurand controllers", () => {
         throw noIntentHandlerError;
       });
 
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
       expect(mockHandleNoIntentHandlerError).toHaveBeenCalledWith(res);
     });
 
-    it("should handle unexpected errors occordingly", async () => {
+    it("should handle unexpected errors accordingly", async () => {
       mockStartQanaryPipeline.mockRejectedValue(new Error("Error"));
 
-      await completeRequestHandler(req, res);
+      await abstractRequestHandler(req, res, {});
 
       expect(mockHandleDefaultError).toHaveBeenCalledWith(res);
     });

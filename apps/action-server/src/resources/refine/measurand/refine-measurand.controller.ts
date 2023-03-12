@@ -1,5 +1,5 @@
 import {
-  COMPONENT_LIST,
+  COMPONENT,
   IIntentHandler,
   ILUBWData,
   ILUBWDataKey,
@@ -22,7 +22,7 @@ import { VerificationService } from "../../../services/verification-service";
 import { startQanaryPipeline } from "../../../utils/start-pipeline";
 
 /**
- * Handler for refining the measurand if a validation error occured
+ * Handler for refining the measurand if a validation error occurred
  * @param req the request object
  * @param res the response object
  */
@@ -30,10 +30,10 @@ export const refineMeasurandRequestHandler = async (req: RasaRequest, res: RasaR
   const question: string = req.body.tracker?.latest_message?.text ?? "";
   const senderId: string | undefined = req.body.sender_id;
 
-  const componentlist: Array<COMPONENT_LIST> = [
-    COMPONENT_LIST.PATTERN_MATCHING_MEASURAND,
-    COMPONENT_LIST.NER_AUTOML,
-    COMPONENT_LIST.FUZZY_NER,
+  const componentlist: Array<COMPONENT> = [
+    COMPONENT.PATTERN_MATCHING_MEASURAND,
+    COMPONENT.NER_AUTOML,
+    COMPONENT.FUZZY_NER,
   ];
 
   try {

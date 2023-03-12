@@ -6,7 +6,9 @@ import {
   IQanaryMessage,
   RasaRequest,
   RasaResponse,
+  REPRESENTATION_TYPE,
 } from "shared";
+import { CALCULATION_TYPE } from "shared";
 
 import { NoIntentHandlerError } from "../../../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../../../errors/VerificationError";
@@ -85,11 +87,11 @@ describe("#Refine Station controllers", () => {
     representation: undefined,
   };
   const state: Partial<ILUBWData> = {
-    calculation: "average",
+    calculation: CALCULATION_TYPE.Average,
     measurand: "o3",
     station: "DEBW0081",
     time: "1d",
-    representation: "text",
+    representation: REPRESENTATION_TYPE.Text,
   };
 
   const req: RasaRequest = {

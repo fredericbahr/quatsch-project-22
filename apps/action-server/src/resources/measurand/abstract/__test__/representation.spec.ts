@@ -1,12 +1,13 @@
 import { ILUBWMeasurandData, REPRESENTATION_TYPE } from "shared";
+import { CALCULATION_TYPE } from "shared";
 
-import { RepresentationService } from "../representation-service";
+import { AbstractRepresentation } from "../abstract.representation";
 
 describe("Representation Service", () => {
   const measurandData: ILUBWMeasurandData = {
     measurand: "luqx",
     station: "DEBW0081",
-    calculation: "average",
+    calculation: CALCULATION_TYPE.Average,
     time: '{start: "2023-02-21T00:00:00.000Z", end: "2023-02-21T23:59:59.999Z"}',
     measurandData: [
       {
@@ -14,23 +15,23 @@ describe("Representation Service", () => {
         times: [1677014666328],
       },
     ],
-    representation: "text",
+    representation: REPRESENTATION_TYPE.Text,
   };
 
   describe("getRepresentation", () => {
     it("should get a textual representation", () => {
-      const representation = RepresentationService.getRepresentation(measurandData);
+      const representation = AbstractRepresentation.getRepresentation(measurandData);
 
       expect(representation).toEqual({
-        value: "Der Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023: 1",
+        value: "Der average-Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023: 1",
         type: REPRESENTATION_TYPE.Text,
       });
     });
 
     it("should get a chart representation", () => {
-      measurandData.representation = "graph";
+      measurandData.representation = REPRESENTATION_TYPE.Graph;
 
-      const representation = RepresentationService.getRepresentation(measurandData);
+      const representation = AbstractRepresentation.getRepresentation(measurandData);
 
       expect(representation).toEqual({
         value: new URL(
@@ -60,9 +61,9 @@ describe("Representation Service", () => {
     });
 
     it("should get a table representation", () => {
-      measurandData.representation = "table";
+      measurandData.representation = REPRESENTATION_TYPE.Table;
 
-      const representation = RepresentationService.getRepresentation(measurandData);
+      const representation = AbstractRepresentation.getRepresentation(measurandData);
 
       expect(representation).toEqual({
         value: new URL(
@@ -94,11 +95,11 @@ describe("Representation Service", () => {
 
   describe("getTextualRepresentation", () => {
     it("should get a textual representation", () => {
-      measurandData.representation = "text";
-      const representation = RepresentationService.getTextualRepresentation(measurandData);
+      measurandData.representation = REPRESENTATION_TYPE.Text;
+      const representation = AbstractRepresentation.getTextualRepresentation(measurandData);
 
       expect(representation).toEqual({
-        value: "Der Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023: 1",
+        value: "Der average-Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023: 1",
         type: REPRESENTATION_TYPE.Text,
       });
     });
@@ -106,8 +107,8 @@ describe("Representation Service", () => {
 
   describe("getChartRepresentation", () => {
     it("should get a chart representation", () => {
-      measurandData.representation = "graph";
-      const representation = RepresentationService.getChartRepresentation(measurandData);
+      measurandData.representation = REPRESENTATION_TYPE.Graph;
+      const representation = AbstractRepresentation.getChartRepresentation(measurandData);
 
       expect(representation).toEqual({
         value: new URL(
@@ -139,8 +140,8 @@ describe("Representation Service", () => {
 
   describe("getTableRepresentation", () => {
     it("should get a table representation", () => {
-      measurandData.representation = "table";
-      const representation = RepresentationService.getTableRepresentation(measurandData);
+      measurandData.representation = REPRESENTATION_TYPE.Table;
+      const representation = AbstractRepresentation.getTableRepresentation(measurandData);
 
       expect(representation).toEqual({
         value: new URL(

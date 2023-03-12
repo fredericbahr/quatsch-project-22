@@ -1,17 +1,15 @@
 import { IIntentHandler, IIntentHandlerMap, INTENTS } from "shared";
 
 import { NoIntentHandlerError } from "../errors/NoIntentHandlerError";
-import { completeIntentHandler } from "../resources/measurand/complete/complete.intent-handler";
-import { maxIntentHandler } from "../resources/measurand/max/max.intent-handler";
-import { minIntentHandler } from "../resources/measurand/min/min.intent-handler";
+import { abstractIntentHandler } from "../resources/measurand/abstract/abstract.intent-handler";
 import { StoringService } from "./storing-service";
 
 export class IntentHandlerFindingService {
   /** Map of all intent handlers */
   private static intentHandlerMap: IIntentHandlerMap = new Map<INTENTS, IIntentHandler>([
-    [INTENTS.ACTION_MEASURAND_COMPLETE, completeIntentHandler],
-    [INTENTS.ACTION_MEASURAND_MAX, maxIntentHandler],
-    [INTENTS.ACTION_MEASURAND_MIN, minIntentHandler],
+    [INTENTS.ACTION_MEASURAND_COMPLETE, abstractIntentHandler],
+    [INTENTS.ACTION_MEASURAND_MAX, abstractIntentHandler],
+    [INTENTS.ACTION_MEASURAND_MIN, abstractIntentHandler],
   ]);
 
   /**

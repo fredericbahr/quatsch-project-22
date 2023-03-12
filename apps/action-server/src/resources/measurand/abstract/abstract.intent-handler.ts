@@ -2,18 +2,18 @@ import { ILUBWData, ILUBWMeasurandData, IRepresentationData, SuccessRasaResponse
 
 import { LUBWQueryService } from "../../../services/lubw-query-service";
 import { ResponseService } from "../../../services/response-service";
-import { RepresentationServiceMin } from "./min.representation";
+import { AbstractRepresentation } from "./abstract.representation";
 
 /**
- * The intent handler for the intent `action_find_max`.
+ * The intent handler for the intent `action_measurand_complete`.
  * @param lubwData the gathered LUBW data
  * @returns the answer to the question
  */
-export const minIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
+export const abstractIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
   try {
     const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
-    const representation: IRepresentationData = RepresentationServiceMin.getRepresentation(measurandData);
+    const representation: IRepresentationData = AbstractRepresentation.getRepresentation(measurandData);
 
     return ResponseService.getResponseByRepresentation(representation);
   } catch {

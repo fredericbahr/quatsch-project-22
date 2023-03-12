@@ -2,10 +2,12 @@ import { format } from "date-fns";
 import { de } from "date-fns/locale";
 import { ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
+import { CalculationService } from "../../../services/calculation-service";
+
 /**
  * This service provides methods to transform lubw measurand data into different representations.
  */
-export class RepresentationService {
+export class AbstractRepresentation {
   /**
    * Gets a representation of the given measurand data based on the given representation inside the measurand data.
    * @default If no representation is given, a textual representation is returned.
@@ -25,6 +27,11 @@ export class RepresentationService {
     }
   }
 
+  public static calculate(measurandData: ILUBWMeasurandData): string {
+    const callback = CalculationService.getCalculationCallback(measurandData.calculation);
+    return callback(measurandData.measurandData[0].values).toString();
+  }
+
   /**
    * Gets a textual representation of the given measurand data.
    * @param measurandData the lubw measurand data to transform into a textual representation
@@ -32,11 +39,13 @@ export class RepresentationService {
    */
   public static getTextualRepresentation(measurandData: ILUBWMeasurandData): IRepresentationData {
     return {
-      value: `Der Wert der Messart ${measurandData.measurand} für die Station ${
-        measurandData.station
-      } beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })}: ${
-        measurandData.measurandData[0].values[0]
-      }`,
+      value: [
+        `Der ${measurandData.calculation}-Wert`,
+        `der Messart ${measurandData.measurand}`,
+        `für die Station ${measurandData.station}`,
+        `beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })}:`,
+        `${this.calculate(measurandData)}`,
+      ].join(" "),
       type: REPRESENTATION_TYPE.Text,
     };
   }
