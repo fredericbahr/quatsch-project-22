@@ -27,7 +27,7 @@ import { startQanaryPipeline } from "../../../utils/start-pipeline";
  * Handles the intent/action of `action_measurand_complete` by trying to answer the question with a Qanary pipeline.
  * @param req Request Object
  * @param res Response Object
- * @param enforcedLUBWData
+ * @param enforcedLUBWData LUBW data that will be overwritten at the end of the process
  */
 export const abstractRequestHandler = async (
   req: RasaRequest,
@@ -45,11 +45,11 @@ export const abstractRequestHandler = async (
 
     const storedState: Partial<ILUBWData> | null = await StoringService.getCurrentState(senderId);
 
-    const mergeWithDefaultState: boolean = storedState === null;
+    const isStateEmpty: boolean = storedState === null;
 
     const lubwData: Partial<ILUBWData> = LUBWDataTransformationService.getTransformedLUBWData(
       annotations,
-      mergeWithDefaultState,
+      isStateEmpty,
     );
 
     const mergedState: Partial<ILUBWData> = {

@@ -27,6 +27,10 @@ export class AbstractRepresentation {
     }
   }
 
+  /**
+   * Calculates depending on the calculation type from the LUBW Data
+   * @param measurandData the lubw measurand data containing the calculation type
+   */
   public static calculate(measurandData: ILUBWMeasurandData): string {
     const callback = CalculationService.getCalculationCallback(measurandData.calculation);
     return callback(measurandData.measurandData[0].values).toString();

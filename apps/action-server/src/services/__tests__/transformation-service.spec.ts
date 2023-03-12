@@ -1,6 +1,5 @@
 import { differenceInDays } from "date-fns";
-import { ILUBWData, IQanaryAnnotation, REPRESENTATION_TYPE } from "shared";
-import { CALCULATION_TYPE } from "shared";
+import { CALCULATION_TYPE, ILUBWData, IQanaryAnnotation, REPRESENTATION_TYPE } from "shared";
 
 import { LUBWDataTransformationService } from "../transformation-service";
 
