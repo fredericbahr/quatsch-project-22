@@ -1,0 +1,216 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>
+
+<urn:measurand> a <rdfs:Class> .
+<urn:station> a <rdfs:Class> .
+<urn:calculation> a <rdfs:Class> .
+<urn:representation> a <rdfs:Class> .
+<urn:time> a <rdfs:Class> .
+
+<urn:DEBW029> a <urn:station> ;
+  dc:identifier "DEBW029" ;
+  rdfs:label "Aalen" ;
+  geo:lat "48.84791111098396" ;
+  geo:long "10.096291667090522" .
+<urn:DEBW076> a <urn:station> ;
+  dc:identifier "DEBW076" ;
+  rdfs:label "Baden-Baden" ;
+  geo:lat "48.77307222207387" ;
+  geo:long "8.22021111117469" .
+<urn:DEBW042> a <urn:station> ;
+  dc:identifier "DEBW042" ;
+  rdfs:label "Bernhausen" ;
+  geo:lat "48.67808055559794" ;
+  geo:long "9.227625000211928" .
+<urn:DEBW046> a <urn:station> ;
+  dc:identifier "DEBW046" ;
+  rdfs:label "Biberach" ;
+  geo:lat "48.08985277758705" ;
+  geo:long "9.799872222476536" .
+<urn:DEBW004> a <urn:station> ;
+  dc:identifier "DEBW004" ;
+  rdfs:label "Eggenstein" ;
+  geo:lat "49.076555555131705" ;
+  geo:long "8.40666388882531" .
+<urn:DEBW084> a <urn:station> ;
+  dc:identifier "DEBW084" ;
+  rdfs:label "Freiburg" ;
+  geo:lat "48.00151666667726" ;
+  geo:long "7.832119444741143" .
+<urn:DEBW122> a <urn:station> ;
+  dc:identifier "DEBW122" ;
+  rdfs:label "Freiburg Schwarzwaldstraße" ;
+  geo:lat "47.988833333121406" ;
+  geo:long "7.859886111153497" .
+<urn:DEBW038> a <urn:station> ;
+  dc:identifier "DEBW038" ;
+  rdfs:label "Friedrichshafen" ;
+  geo:lat "47.660077777438694" ;
+  geo:long "9.485633333259157" .
+<urn:DEBW112> a <urn:station> ;
+  dc:identifier "DEBW112" ;
+  rdfs:label "Gärtringen" ;
+  geo:lat "48.64564166704814" ;
+  geo:long "8.904408333301545" .
+<urn:DEBW009> a <urn:station> ;
+  dc:identifier "DEBW009" ;
+  rdfs:label "Heidelberg" ;
+  geo:lat "49.41955277787314" ;
+  geo:long "8.67666388935513" .
+<urn:DEBW015> a <urn:station> ;
+  dc:identifier "DEBW015" ;
+  rdfs:label "Heilbronn" ;
+  geo:lat "49.16553333282471" ;
+  geo:long "9.224744444423251" .
+<urn:DEBW152> a <urn:station> ;
+  dc:identifier "DEBW152" ;
+  rdfs:label "Heilbronn Weinsberger Straße-Ost" ;
+  geo:lat "49.145997222264604" ;
+  geo:long "9.225897222095066" .
+<urn:DEBW081> a <urn:station> ;
+  dc:identifier "DEBW081" ;
+  rdfs:label "Karlsruhe-Nordwest" ;
+  geo:lat "49.028594444062975" ;
+  geo:long "8.355647222201029" .
+<urn:DEBW080> a <urn:station> ;
+  dc:identifier "DEBW080" ;
+  rdfs:label "Karlsruhe Reinhold-Frank-Straße" ;
+  geo:lat "49.00795833322737" ;
+  geo:long "8.387188888920678" .
+<urn:DEBW022> a <urn:station> ;
+  dc:identifier "DEBW022" ;
+  rdfs:label "Kehl" ;
+  geo:lat "48.57817777739631" ;
+  geo:long "7.802272222306993" .
+<urn:DEBW052> a <urn:station> ;
+  dc:identifier "DEBW052" ;
+  rdfs:label "Konstanz" ;
+  geo:lat "47.66436111132304" ;
+  geo:long "9.169288888772329" .
+<urn:DEBW120> a <urn:station> ;
+  dc:identifier "DEBW120" ;
+  rdfs:label "Leonberg Grabenstraße" ;
+  geo:lat "48.80101666669051" ;
+  geo:long "9.016522222095066" .
+<urn:DEBW024> a <urn:station> ;
+  dc:identifier "DEBW024" ;
+  rdfs:label "Ludwigsburg" ;
+  geo:lat "48.89923611111111" ;
+  geo:long "9.173002777629428" .
+<urn:DEBW241> a <urn:station> ;
+  dc:identifier "DEBW241" ;
+  rdfs:label "Ludwigsburg Schlossstraße" ;
+  geo:lat "48.89827777756585" ;
+  geo:long "9.193744444317288" .
+<urn:DEBW098> a <urn:station> ;
+  dc:identifier "DEBW098" ;
+  rdfs:label "Mannheim Friedrichsring" ;
+  geo:lat "49.49256388876174" ;
+  geo:long "8.472038888931275" .
+<urn:DEBW005> a <urn:station> ;
+  dc:identifier "DEBW005" ;
+  rdfs:label "Mannheim-Nord" ;
+  geo:lat "49.54407777786255" ;
+  geo:long "8.465280555089315" .
+<urn:DEBW073> a <urn:station> ;
+  dc:identifier "DEBW073" ;
+  rdfs:label "Neuenburg" ;
+  geo:lat "47.81905277782017" ;
+  geo:long "7.56791388882531" .
+<urn:DEBW125> a <urn:station> ;
+  dc:identifier "DEBW125" ;
+  rdfs:label "Pfinztal Karlsruher Straße" ;
+  geo:lat "49.00371111101575" ;
+  geo:long "8.526283333036636" .
+<urn:DEBW033> a <urn:station> ;
+  dc:identifier "DEBW033" ;
+  rdfs:label "Pforzheim" ;
+  geo:lat "48.88905555566152" ;
+  geo:long "8.665483333799575" .
+<urn:DEBW027> a <urn:station> ;
+  dc:identifier "DEBW027" ;
+  rdfs:label "Reutlingen" ;
+  geo:lat "48.48875833352407" ;
+  geo:long "9.2075" .
+<urn:DEBW147> a <urn:station> ;
+  dc:identifier "DEBW147" ;
+  rdfs:label "Reutlingen Lederstraße-Ost" ;
+  geo:lat "48.4893333334393" ;
+  geo:long "9.210786111619736" .
+<urn:DEBW156> a <urn:station> ;
+  dc:identifier "DEBW156" ;
+  rdfs:label "Schramberg Oberndorfer Straße" ;
+  geo:lat "48.229149999618535" ;
+  geo:long "8.390619444317288" .
+<urn:DEBW087> a <urn:station> ;
+  dc:identifier "DEBW087" ;
+  rdfs:label "Schwäbische Alb" ;
+  geo:lat "48.345775000254314" ;
+  geo:long "9.207633333206177" .
+<urn:DEBW031> a <urn:station> ;
+  dc:identifier "DEBW031" ;
+  rdfs:label "Schwarzwald-Süd" ;
+  geo:lat "47.80993055555555" ;
+  geo:long "7.764497221840752" .
+<urn:DEBW118> a <urn:station> ;
+  dc:identifier "DEBW118" ;
+  rdfs:label "Stuttgart Am Neckartor" ;
+  geo:lat "48.78811388863458" ;
+  geo:long "9.191005555788676" .
+<urn:DEBW099> a <urn:station> ;
+  dc:identifier "DEBW099" ;
+  rdfs:label "Stuttgart Arnulf-Klett-Platz" ;
+  geo:lat "48.78315000004238" ;
+  geo:long "9.180730555852254" .
+<urn:DEBW013> a <urn:station> ;
+  dc:identifier "DEBW013" ;
+  rdfs:label "Stuttgart-Bad Cannstatt" ;
+  geo:lat "48.808933333290945" ;
+  geo:long "9.229861111111111" .
+<urn:LUBW082> a <urn:station> ;
+  dc:identifier "LUBW082" ;
+  rdfs:label "Stuttgart Hauptstätter Straße" ;
+  geo:lat "48.76651111072964" ;
+  geo:long "9.171161111195882" .
+<urn:DEBW116> a <urn:station> ;
+  dc:identifier "DEBW116" ;
+  rdfs:label "Stuttgart Hohenheimer Straße" ;
+  geo:lat "48.7687111111482" ;
+  geo:long "9.18449166668786" .
+<urn:DEBW059> a <urn:station> ;
+  dc:identifier "DEBW059" ;
+  rdfs:label "Tauberbischofsheim" ;
+  geo:lat "49.634619444476236" ;
+  geo:long "9.658827777968513" .
+<urn:DEBW107> a <urn:station> ;
+  dc:identifier "DEBW107" ;
+  rdfs:label "Tübingen" ;
+  geo:lat "48.50773333337572" ;
+  geo:long "9.051144444412657" .
+<urn:DEBW136> a <urn:station> ;
+  dc:identifier "DEBW136" ;
+  rdfs:label "Tübingen Mühlstraße" ;
+  geo:lat "48.52023055553436" ;
+  geo:long "9.058019444677566" .
+<urn:DEBW019> a <urn:station> ;
+  dc:identifier "DEBW019" ;
+  rdfs:label "Ulm" ;
+  geo:lat "48.39686666700575" ;
+  geo:long "9.97897500038147" .
+<urn:DEBW039> a <urn:station> ;
+  dc:identifier "DEBW039" ;
+  rdfs:label "Villingen-Schwenningen" ;
+  geo:lat "48.04865555551317" ;
+  geo:long "8.463599999745686" .
+<urn:DEBW023> a <urn:station> ;
+  dc:identifier "DEBW023" ;
+  rdfs:label "Weil am Rhein" ;
+  geo:lat "47.58811666647593" ;
+  geo:long "7.633077778286404" .
+<urn:DEBW010> a <urn:station> ;
+  dc:identifier "DEBW010" ;
+  rdfs:label "Wiesloch" ;
+  geo:lat "49.30075833333863" ;
+  geo:long "8.700066666665176" .
