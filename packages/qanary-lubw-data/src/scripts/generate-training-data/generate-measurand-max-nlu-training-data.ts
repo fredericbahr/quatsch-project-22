@@ -1,4 +1,4 @@
-import { questionsStationMeasurandCalculationMeasurandMax } from "../data/measurandMaxQuestions";
+import { questionsStationMeasurandCalculationMeasurandMax } from "../data/measurand-max-questions";
 import { NluTrainingData } from "../types";
 import { generateStationMeasurandCalculationData } from "./generate-training-data";
 

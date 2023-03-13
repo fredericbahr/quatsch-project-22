@@ -10,6 +10,7 @@ intents:
   - measurand_max
   - measurand_min
   - measurand_threshold
+  - measurand_season
   # refinement
   - refine_station
   - refine_measurand
@@ -43,6 +44,7 @@ actions:
   - action_measurand_max
   - action_measurand_min
   - action_measurand_threshold
+  - action_measurand_season
   # Refinements
   - action_refine_station
   - action_refine_measurand

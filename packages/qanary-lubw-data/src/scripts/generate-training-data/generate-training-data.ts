@@ -1,5 +1,5 @@
 import { DataVariant, NerTrainingData, NluTrainingData, TrainingQuestion } from "../types";
-import generateLubwData from "../utils/generateLubwData";
+import generateLubwData from "../utils/generate-lubw-data";
 import generateTrainingDataEntry from "./generate-training-data-entry";
 
 const { calculations, measurands, representations, stations } = generateLubwData();

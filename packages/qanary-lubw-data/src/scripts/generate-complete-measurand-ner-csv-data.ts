@@ -5,7 +5,7 @@ import generateNerCsvFileContent from "./generate-file-content/generate-ner-csv-
 import generateNerDomainBaseData from "./generate-training-data/generate-ner-domain-base-data";
 import { generateNerTrainingData } from "./generate-training-data/generate-ner-training-data";
 import { NerTrainingData } from "./types";
-import randomSplitArray from "./utils/randomSplitArray";
+import randomSplitArray from "./utils/random-split-array";
 
 /**
  * Writes provided data with necessary structure for qanary ner component into trainingdata/train.csv and trainingdata/test.csv files.

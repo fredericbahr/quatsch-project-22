@@ -1,5 +1,5 @@
 import { NerTrainingData } from "../types";
-import generateLubwData from "../utils/generateLubwData";
+import generateLubwData from "../utils/generate-lubw-data";
 
 const { calculations, measurands, representations, stations } = generateLubwData();
 /**

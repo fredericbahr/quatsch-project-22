@@ -1,5 +1,5 @@
 import { DataVariant, DomainTemplate, NerTrainingData, NluTrainingData, TrainingQuestion } from "../types";
-import preAndSuffixString from "../utils/preAndSuffixString";
+import preAndSuffixString from "../utils/pre-and-suffix-string";
 
 /**
  * Generates ner training data object from question and provided domain strings.

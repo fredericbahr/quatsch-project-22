@@ -1,4 +1,4 @@
-import { questionsStationMeasurandCalculationMeasurandMin } from "../data/measurandMinQuestions";
+import { questionsStationMeasurandCalculationMeasurandMin } from "../data/measurand-min-questions";
 import { NluTrainingData } from "../types";
 import { generateStationMeasurandCalculationData } from "./generate-training-data";
 

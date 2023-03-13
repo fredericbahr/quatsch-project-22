@@ -36,6 +36,12 @@ export class AbstractRepresentation {
     return callback(measurandData.measurandData[0].values).toString();
   }
 
+  public static getLastValue(measurandData: ILUBWMeasurandData): unknown {
+    const valueLength = measurandData.measurandData[0].values.length;
+
+    return measurandData.measurandData[0].values[valueLength - 1];
+  }
+
   /**
    * Gets a textual representation of the given measurand data.
    * @param measurandData the lubw measurand data to transform into a textual representation

@@ -3,7 +3,7 @@ import {
   questionsStationMeasurandCalculation,
   questionsStationMeasurandRepresentation,
   questionsStationMeasurandRepresentationCalculation,
-} from "../data/trainingQuestions";
+} from "../data/training-questions";
 import { NluTrainingData } from "../types";
 import {
   generateStationMeasurandCalculationData,

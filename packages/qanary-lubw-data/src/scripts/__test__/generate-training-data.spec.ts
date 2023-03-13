@@ -5,7 +5,7 @@ import {
   generateStationMeasurandRepresentationData,
 } from "../generate-training-data/generate-training-data";
 import { NerTrainingData, NluTrainingData, TrainingQuestion } from "../types";
-import generateLubwData from "../utils/generateLubwData";
+import generateLubwData from "../utils/generate-lubw-data";
 
 const { stations } = generateLubwData();
 const FIRST_ENTRY = 0;

@@ -1,4 +1,4 @@
-import randomSplitArray from "../utils/randomSplitArray";
+import randomSplitArray from "../utils/random-split-array";
 
 describe("#Component randomSplitArray", () => {
   const genMockArray = () => {

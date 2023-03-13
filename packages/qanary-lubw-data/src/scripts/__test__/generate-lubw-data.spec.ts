@@ -1,4 +1,4 @@
-import generateLubwData from "../utils/generateLubwData";
+import generateLubwData from "../utils/generate-lubw-data";
 
 describe("#Component generateLubwData", () => {
   const genMockStationData = () => {

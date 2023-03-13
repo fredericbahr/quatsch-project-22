@@ -1,4 +1,4 @@
-import { questionsStationMeasurand } from "../data/trainingQuestions";
+import { questionsStationMeasurand } from "../data/training-questions";
 import { NluTrainingData } from "../types";
 import { generateStationMeasurandData } from "./generate-training-data";
 
