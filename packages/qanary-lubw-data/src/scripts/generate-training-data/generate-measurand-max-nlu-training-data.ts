@@ -1,6 +1,6 @@
 import { questionsStationMeasurandCalculationMeasurandMax } from "../data/measurandMaxQuestions";
 import { NluTrainingData } from "../types";
-import { generateStationMeasurandCalculationData } from "./generateTrainingData";
+import { generateStationMeasurandCalculationData } from "./generate-training-data";
 
 /**
  * Generates a training set for a rasa nlu for all lubw domains.

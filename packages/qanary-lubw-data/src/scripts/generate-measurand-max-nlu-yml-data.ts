@@ -1,6 +1,6 @@
 import { basePaths } from "./base-paths";
-import generateNluYmlFileContent from "./generateFileContent/generateNluYmlFileContent";
-import { generateMeasurandMaxNluTrainingData } from "./generateTrainingData/generateMeasurandMaxNluTrainingData";
+import generateNluYmlFileContent from "./generate-file-content/generate-nlu-yml-file-content";
+import { generateMeasurandMaxNluTrainingData } from "./generate-training-data/generate-measurand-max-nlu-training-data";
 import { writeYmlFileSlim } from "./utils/writeYmlFile";
 
 const baseData = ["Was war der höchste Messwert?", "Welcher ist der maximale Messwert?", "Was war das Maximum?"];

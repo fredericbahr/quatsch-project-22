@@ -1,6 +1,6 @@
 import { basePaths } from "./base-paths";
-import generateNluYmlFileContent from "./generateFileContent/generateNluYmlFileContent";
-import { generateMeasurandMinNluTrainingData } from "./generateTrainingData/generateMeasurandMinNluTrainingData";
+import generateNluYmlFileContent from "./generate-file-content/generate-nlu-yml-file-content";
+import { generateMeasurandMinNluTrainingData } from "./generate-training-data/generate-measurand-min-nlu-training-data";
 import { writeYmlFileSlim } from "./utils/writeYmlFile";
 
 const baseData = ["Was war der niedrigste Messwert?", "Welcher ist der minimale Messwert?", "Was war das Minimum?"];

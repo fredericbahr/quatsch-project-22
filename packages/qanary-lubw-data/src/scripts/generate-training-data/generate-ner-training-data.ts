@@ -10,7 +10,7 @@ import {
   generateStationMeasurandData,
   generateStationMeasurandRepresentationCalculationData,
   generateStationMeasurandRepresentationData,
-} from "./generateTrainingData";
+} from "./generate-training-data";
 
 /**
  * Generates a training set for a ner component for all lubw domains.

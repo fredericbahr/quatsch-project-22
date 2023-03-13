@@ -1,9 +1,9 @@
 import * as fs from "fs";
 
 import { basePaths } from "./base-paths";
-import generateNerCsvFileContent from "./generateFileContent/generateNerCsvFileContent";
-import generateNerDomainBaseData from "./generateTrainingData/generateNerDomainBaseData";
-import { generateNerTrainingData } from "./generateTrainingData/generateNerTrainingData";
+import generateNerCsvFileContent from "./generate-file-content/generate-ner-csv-file-content";
+import generateNerDomainBaseData from "./generate-training-data/generate-ner-domain-base-data";
+import { generateNerTrainingData } from "./generate-training-data/generate-ner-training-data";
 import { NerTrainingData } from "./types";
 import randomSplitArray from "./utils/randomSplitArray";
 

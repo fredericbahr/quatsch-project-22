@@ -1,4 +1,4 @@
-import generateNerCsvFileContent from "../generateFileContent/generateNerCsvFileContent";
+import generateNerCsvFileContent from "../generate-file-content/generate-ner-csv-file-content";
 import { NerTrainingData } from "../types";
 
 describe("#Component generateNerCsvFileContent", () => {

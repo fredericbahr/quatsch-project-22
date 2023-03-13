@@ -1,6 +1,6 @@
 import { basePaths } from "./base-paths";
-import generateNluYmlFileContent from "./generateFileContent/generateNluYmlFileContent";
-import { generateSmallNluTrainingData } from "./generateTrainingData/generateSmallNluTrainingData";
+import generateNluYmlFileContent from "./generate-file-content/generate-nlu-yml-file-content";
+import { generateSmallNluTrainingData } from "./generate-training-data/generate-small-nlu-training-data";
 import { writeYmlFileSlim } from "./utils/writeYmlFile";
 
 /**

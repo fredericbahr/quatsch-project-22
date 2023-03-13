@@ -1,4 +1,4 @@
-import generateNerDomainBaseData from "../generateTrainingData/generateNerDomainBaseData";
+import generateNerDomainBaseData from "../generate-training-data/generate-ner-domain-base-data";
 import generateLubwData from "../utils/generateLubwData";
 
 const { calculations, measurands, representations, stations } = generateLubwData();
