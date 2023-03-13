@@ -8,7 +8,7 @@ nlu:
       - Ist der Messwert extrem?
       - Ist der Messwert gefährlich?
       - Ist der Messwert grenzwertig?
-      - Liegt der Messwert über eienm Grenzwert?
+      - Liegt der Messwert über einem Grenzwert?
       - Ist der o3-Wert für die Station DEBW076 grenzwertig?
       - Ist der Feinstaub PM10-Wert für die Station DEBW076 grenzwertig?
       - Ist der Ozon-Wert für die Station Baden-Baden grenzwertig?
