@@ -21,23 +21,23 @@ const OTHER_ERROR = { code: "OTHERERROR" };
 jest.mock("net", () => {
   return {
     createServer: jest.fn().mockImplementation(() => {
-      const myEE: IMockServerType = new EventEmitter();
-      myEE.listen = jest.fn((port) => {
+      const mockServer: IMockServerType = new EventEmitter();
+      mockServer.listen = jest.fn((port) => {
         switch (port) {
           case IN_USE_PORT_1:
           case IN_USE_PORT_2:
-            myEE.emit("error", { code: "EADDRINUSE" });
+            mockServer.emit("error", { code: "EADDRINUSE" });
             break;
           case ERROR_PORT:
-            myEE.emit("error", OTHER_ERROR);
+            mockServer.emit("error", OTHER_ERROR);
             break;
           default:
-            myEE.emit("listening");
+            mockServer.emit("listening");
             break;
         }
       });
-      myEE.close = jest.fn((callback) => callback());
-      return myEE;
+      mockServer.close = jest.fn((callback) => callback());
+      return mockServer;
     }),
   };
 });
