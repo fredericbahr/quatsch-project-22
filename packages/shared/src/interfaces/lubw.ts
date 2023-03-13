@@ -23,7 +23,12 @@ export interface ILUBWData extends ILUBWDefaultData {
 export interface ILUBWDefaultData {
   [ILUBWDataKey.Calculation]: CALCULATION_TYPE;
   [ILUBWDataKey.Representation]: REPRESENTATION_TYPE;
-  [ILUBWDataKey.Time]: string;
+  [ILUBWDataKey.Time]: ILUBWDefaultDataTime;
+}
+
+export interface ILUBWDefaultDataTime {
+  start: Date;
+  end: Date;
 }
 
 /**

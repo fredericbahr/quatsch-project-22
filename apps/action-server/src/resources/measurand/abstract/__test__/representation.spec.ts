@@ -8,7 +8,10 @@ describe("Representation Service", () => {
     measurand: "luqx",
     station: "DEBW0081",
     calculation: CALCULATION_TYPE.Average,
-    time: '{start: "2023-02-21T00:00:00.000Z", end: "2023-02-21T23:59:59.999Z"}',
+    time: {
+      start: new Date("2023-02-21T00:00:00.000Z"),
+      end: new Date("2023-02-21T23:59:59.999Z"),
+    },
     measurandData: [
       {
         values: [1],

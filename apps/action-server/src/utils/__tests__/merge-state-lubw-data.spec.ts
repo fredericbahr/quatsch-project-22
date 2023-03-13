@@ -8,14 +8,20 @@ describe("mergeStateAndLubwData", () => {
     measurand: "measurand-state",
     calculation: "calculation-state" as any,
     representation: "representation-state" as any,
-    time: "time-state",
+    time: {
+      start: new Date("2023-02-21T00:00:00.000Z"),
+      end: new Date("2023-02-21T23:59:59.999Z"),
+    },
   };
   const defaultLubwData: Partial<ILUBWData> = {
     station: "station-lubw",
     measurand: "measurand-lubw",
     calculation: "calculation-lubw" as any,
     representation: "representation-lubw" as any,
-    time: "time-lubw",
+    time: {
+      start: new Date("2023-02-21T00:00:00.000Z"),
+      end: new Date("2023-02-21T23:59:59.999Z"),
+    },
   };
 
   it("should merge the state and the lubwData and keep lubw data", () => {

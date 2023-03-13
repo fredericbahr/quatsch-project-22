@@ -56,7 +56,10 @@ describe("TransformationService", () => {
         station: "DEBW0081",
         calculation: CALCULATION_TYPE.Average,
         measurand: "luqx",
-        time: "1d",
+        time: {
+          start: new Date("2023-02-21T00:00:00.000Z"),
+          end: new Date("2023-02-21T23:59:59.999Z"),
+        },
         representation: REPRESENTATION_TYPE.Graph,
       };
 
@@ -70,7 +73,10 @@ describe("TransformationService", () => {
         station: "DEBW0081",
         calculation: CALCULATION_TYPE.Average,
         measurand: "luqx",
-        time: "1d",
+        time: {
+          start: new Date("2023-02-21T00:00:00.000Z"),
+          end: new Date("2023-02-21T23:59:59.999Z"),
+        },
         representation: REPRESENTATION_TYPE.Text,
       };
 

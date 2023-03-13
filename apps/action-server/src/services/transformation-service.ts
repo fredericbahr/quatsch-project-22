@@ -1,15 +1,17 @@
-import { differenceInDays } from "date-fns";
 import {
   AnnotationTypes,
+  CALCULATION_TYPE,
   defaultLUBWData,
   IFilteredAnnotations,
   ILUBWData,
+  ILUBWDataKey,
   ILUBWDefaultData,
+  ILUBWDefaultDataTime,
   IQanaryAnnotation,
   ITimeObject,
   REPRESENTATION_TYPE,
 } from "shared";
-import { CALCULATION_TYPE } from "shared";
+
 /**
  * Service for transforming the annotations to the intermediate representation format.
  */
@@ -74,28 +76,28 @@ export class LUBWDataTransformationService {
    * @param time the annotated time as serialized JSON
    * @returns the difference between the start and end date in days or undefined if the transformation failed
    */
-  private static transformTime(time?: string): string | undefined {
+  private static transformTime(time?: string): ILUBWDefaultDataTime {
     try {
       if (!time) {
         console.error("The time annotation is missing. Fallback to default value.");
-        return undefined;
+        return defaultLUBWData[ILUBWDataKey.Time];
       }
 
       const timeObject: ITimeObject = JSON.parse(time) as ITimeObject;
 
       if (!timeObject.end) {
-        const [earlyDate, lateDate] = this.sortDates(timeObject.start, new Date().toISOString());
-        const dayDifference = differenceInDays(new Date(lateDate), new Date(earlyDate));
-
-        return `${dayDifference}d`;
+        return {
+          ...defaultLUBWData[ILUBWDataKey.Time],
+          start: new Date(timeObject.start),
+        };
       }
-
-      const dayDifference = differenceInDays(new Date(timeObject.end), new Date(timeObject.start));
-
-      return `${dayDifference}d`;
+      return {
+        start: new Date(timeObject.start),
+        end: new Date(timeObject.end),
+      };
     } catch (error) {
       console.error(error);
-      return undefined;
+      return defaultLUBWData[ILUBWDataKey.Time];
     }
   }
 
@@ -131,7 +133,10 @@ export class LUBWDataTransformationService {
       ...customValues,
       representation: customValues.representation || defaultValues.representation,
       calculation: customValues.calculation || defaultValues.calculation,
-      time: customValues.time || defaultValues.time,
+      time: {
+        ...defaultValues.time,
+        ...customValues.time,
+      },
     };
   }
 
