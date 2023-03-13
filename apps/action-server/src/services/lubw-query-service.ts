@@ -44,13 +44,13 @@ export class LUBWQueryService {
     const from = differenceInDays(new Date(), new Date(lubwData.time.start)) + "d-ago";
     const to = differenceInDays(new Date(), new Date(lubwData.time.end)) + "d-ago";
 
-    const lubwResonse = await LupoCloudApi.LUPOAirMetricControllerApiFactory().readMetric(
+    const lubwResponse = await LupoCloudApi.LUPOAirMetricControllerApiFactory().readMetric(
       measurandMetricAdapter.get(lubwData.measurand) || LupoCloudApi.ILupoAirMetric.O3,
       from,
       to,
       lubwData.station ? `station:${lubwData.station}` : undefined,
     );
-
-    return lubwResonse.data;
+    // lubwResponse.request
+    return lubwResponse.data;
   }
 }
