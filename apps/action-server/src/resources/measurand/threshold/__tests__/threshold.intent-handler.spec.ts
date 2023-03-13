@@ -1,3 +1,4 @@
+import { ILupoAirMetric } from "api/dist/lupo-cloud";
 import { CALCULATION_TYPE, ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
@@ -35,7 +36,7 @@ describe("Measurand Threshold Intent Handler", () => {
     ...lubwData,
     measurandData: [
       {
-        metric: "kit.iai.test.luqx",
+        metric: ILupoAirMetric.Luqx,
         labels: {},
         metaData: {},
         times: [1677003319],

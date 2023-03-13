@@ -1,5 +1,6 @@
 import {
   CALCULATION_TYPE,
+  COMPONENT,
   ILUBWData,
   ILUBWDataKey,
   IQanaryAnnotation,
@@ -150,11 +151,14 @@ describe("#Measurand Threshold controllers", () => {
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(
         expect.any(String),
         expect.arrayContaining([
-          "qanary-component-pm-station",
-          "qanary-component-pm-measurand",
-          "qanary-component-pm-representation",
-          "LD-Shuyo",
-          "qanary-component-time",
+          COMPONENT.PATTERN_MATCHING_STATION,
+          COMPONENT.PATTERN_MATCHING_MEASURAND,
+          COMPONENT.PATTERN_MATCHING_CALCULATION,
+          COMPONENT.PATTERN_MATCHING_REPRESENTATION,
+          COMPONENT.LANGUAGE_RECOGNITION,
+          COMPONENT.TIME_RECOGNITION,
+          COMPONENT.NER_AUTOML,
+          COMPONENT.FUZZY_NER,
         ]),
       );
     });
