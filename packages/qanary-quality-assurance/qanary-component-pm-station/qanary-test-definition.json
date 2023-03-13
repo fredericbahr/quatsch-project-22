@@ -12,10 +12,290 @@
     ],
     "tests": [
         {
-            "question": "Wie ist der Ozonwert in Aalen vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+            "question": "Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+            "replacements": {
+                "<STATION>": "DEBW019",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Aalen?",
             "replacements": {
                 "<STATION>": "DEBW029",
-                "<SCORE>": "1"
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Baden-Baden?",
+            "replacements": {
+                "<STATION>": "DEBW076",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Bernhausen?",
+            "replacements": {
+                "<STATION>": "DEBW042",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Biberach?",
+            "replacements": {
+                "<STATION>": "DEBW046",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Eggenstein?",
+            "replacements": {
+                "<STATION>": "DEBW004",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Freiburg?",
+            "replacements": {
+                "<STATION>": "DEBW084",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Freiburg Schwarzwaldstraße?",
+            "replacements": {
+                "<STATION>": "DEBW122",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Friedrichshafen?",
+            "replacements": {
+                "<STATION>": "DEBW038",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Gärtringen?",
+            "replacements": {
+                "<STATION>": "DEBW112",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Heidelberg?",
+            "replacements": {
+                "<STATION>": "DEBW009",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Heilbronn?",
+            "replacements": {
+                "<STATION>": "DEBW015",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Heilbronn Weinsberger Straße-Ost?",
+            "replacements": {
+                "<STATION>": "DEBW152",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Karlsruhe-Nordwest?",
+            "replacements": {
+                "<STATION>": "DEBW081",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Karlsruhe Reinhold-Frank-Straße?",
+            "replacements": {
+                "<STATION>": "DEBW080",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Kehl?",
+            "replacements": {
+                "<STATION>": "DEBW022",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Konstanz?",
+            "replacements": {
+                "<STATION>": "DEBW052",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Leonberg Grabenstraße?",
+            "replacements": {
+                "<STATION>": "DEBW120",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Ludwigsburg?",
+            "replacements": {
+                "<STATION>": "DEBW024",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Ludwigsburg Schlossstraße?",
+            "replacements": {
+                "<STATION>": "DEBW241",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Mannheim Friedrichsring?",
+            "replacements": {
+                "<STATION>": "DEBW098",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Mannheim-Nord?",
+            "replacements": {
+                "<STATION>": "DEBW005",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Neuenburg?",
+            "replacements": {
+                "<STATION>": "DEBW073",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Pfinztal Karlsruher Straße?",
+            "replacements": {
+                "<STATION>": "DEBW125",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Pforzheim?",
+            "replacements": {
+                "<STATION>": "DEBW033",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Reutlingen?",
+            "replacements": {
+                "<STATION>": "DEBW027",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Reutlingen Lederstraße-Ost?",
+            "replacements": {
+                "<STATION>": "DEBW147",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Schramberg Oberndorfer Straße?",
+            "replacements": {
+                "<STATION>": "DEBW156",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Schwäbische Alb?",
+            "replacements": {
+                "<STATION>": "DEBW087",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Schwarzwald-Süd?",
+            "replacements": {
+                "<STATION>": "DEBW031",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Stuttgart Am Neckartor?",
+            "replacements": {
+                "<STATION>": "DEBW118",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Stuttgart Arnulf-Klett-Platz?",
+            "replacements": {
+                "<STATION>": "DEBW099",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Stuttgart-Bad Cannstatt?",
+            "replacements": {
+                "<STATION>": "DEBW013",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Stuttgart Hauptstätter Straße?",
+            "replacements": {
+                "<STATION>": "LUBW082",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Stuttgart Hohenheimer Straße?",
+            "replacements": {
+                "<STATION>": "DEBW116",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Tauberbischofsheim?",
+            "replacements": {
+                "<STATION>": "DEBW059",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Tübingen?",
+            "replacements": {
+                "<STATION>": "DEBW107",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Tübingen Mühlstraße?",
+            "replacements": {
+                "<STATION>": "DEBW136",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Villingen-Schwenningen?",
+            "replacements": {
+                "<STATION>": "DEBW039",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Weil am Rhein?",
+            "replacements": {
+                "<STATION>": "DEBW023",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Wiesloch?",
+            "replacements": {
+                "<STATION>": "DEBW010",
+                "<SCORE>": "1.0"
             }
         }
     ]
