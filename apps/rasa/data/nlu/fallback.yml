@@ -5,3 +5,5 @@ nlu:
   - intent: qanary_default_processing
     examples: |
       - Ja, versuche die Anfrage über Qanary zu erkennen
+      - Bearbeite die Anfrage über Qanary
+      - Führe bitte eine Qanary-Pipeline aus

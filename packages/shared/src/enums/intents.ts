@@ -2,6 +2,7 @@
  * Enum for the intents that the webhook receives
  */
 export enum INTENTS {
+  ACTION_MEASURAND_THRESHOLD = "action_measurand_threshold",
   ACTION_DEFAULT_QANARY = "action_default_qanary",
   ACTION_MEASURAND_COMPLETE = "action_measurand_complete",
   ACTION_MEASURAND_MAX = "action_measurand_max",

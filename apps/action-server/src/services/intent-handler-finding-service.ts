@@ -1,7 +1,8 @@
-import { IIntentHandler, IIntentHandlerMap, INTENTS } from "shared";
+import { IIntentHandler, IIntentHandlerMap, ILUBWDefaultDataTime, INTENTS } from "shared";
 
 import { NoIntentHandlerError } from "../errors/NoIntentHandlerError";
 import { abstractIntentHandler } from "../resources/measurand/abstract/abstract.intent-handler";
+import { thresholdIntentHandler } from "../resources/measurand/threshold/threshold.intent-handler";
 import { StoringService } from "./storing-service";
 
 export class IntentHandlerFindingService {
@@ -10,6 +11,7 @@ export class IntentHandlerFindingService {
     [INTENTS.ACTION_MEASURAND_COMPLETE, abstractIntentHandler],
     [INTENTS.ACTION_MEASURAND_MAX, abstractIntentHandler],
     [INTENTS.ACTION_MEASURAND_MIN, abstractIntentHandler],
+    [INTENTS.ACTION_MEASURAND_THRESHOLD, thresholdIntentHandler],
   ]);
 
   /**
@@ -45,7 +47,7 @@ export class IntentHandlerFindingService {
    * @returns the found intent
    */
   private static async getIntent(senderId: string | undefined): Promise<INTENTS> {
-    const lastIntent: string | undefined = await StoringService.getStateEntry(senderId, "latestIntent");
+    const lastIntent: string | undefined = (await StoringService.getStateEntry(senderId, "latestIntent")) as string;
 
     if (!lastIntent) {
       throw new NoIntentHandlerError("No intent found");

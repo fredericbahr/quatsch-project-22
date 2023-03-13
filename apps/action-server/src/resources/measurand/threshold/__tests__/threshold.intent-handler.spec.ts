@@ -1,10 +1,10 @@
-import { ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
-import { CALCULATION_TYPE } from "shared";
+import { ILupoAirMetric } from "api/dist/lupo-cloud";
+import { CALCULATION_TYPE, ILUBWData, ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
 import { LUBWQueryService } from "../../../../services/lubw-query-service";
 import { ResponseService } from "../../../../services/response-service";
-import { abstractIntentHandler } from "../abstract.intent-handler";
-import { AbstractRepresentation } from "../abstract.representation";
+import { thresholdIntentHandler } from "../threshold.intent-handler";
+import { RepresentationServiceThreshold } from "../treshold.representation";
 
 jest.mock("../../../../services/lubw-query-service", () => ({
   LUBWQueryService: {
@@ -12,8 +12,8 @@ jest.mock("../../../../services/lubw-query-service", () => ({
   },
 }));
 
-jest.mock("../abstract.representation", () => ({
-  AbstractRepresentation: {
+jest.mock("../treshold.representation", () => ({
+  RepresentationServiceThreshold: {
     getRepresentation: jest.fn(),
   },
 }));
@@ -24,7 +24,7 @@ jest.mock("../../../../services/response-service", () => ({
   },
 }));
 
-describe("Measurand Complete Intent Handler", () => {
+describe("Measurand Threshold Intent Handler", () => {
   const lubwData: ILUBWData = {
     calculation: CALCULATION_TYPE.Average,
     measurand: "luqx",
@@ -39,7 +39,7 @@ describe("Measurand Complete Intent Handler", () => {
     ...lubwData,
     measurandData: [
       {
-        metric: "kit.iai.test.luqx",
+        metric: ILupoAirMetric.Luqx,
         labels: {},
         metaData: {},
         times: [1677003319],
@@ -48,7 +48,7 @@ describe("Measurand Complete Intent Handler", () => {
     ],
   };
   const representation: IRepresentationData = {
-    value: "Die Luftqualität in Aalen ist gut.",
+    value: "Der Messwert ist extrem.",
     type: REPRESENTATION_TYPE.Text,
   };
 
@@ -58,29 +58,29 @@ describe("Measurand Complete Intent Handler", () => {
 
   beforeEach(() => {
     (LUBWQueryService.queryLUBWAPI as jest.Mock) = mockQueryLUBWAPI;
-    (AbstractRepresentation.getRepresentation as jest.Mock) = mockGetRepresentation;
+    (RepresentationServiceThreshold.getRepresentation as jest.Mock) = mockGetRepresentation;
     (ResponseService.getResponseByRepresentation as jest.Mock) = mockGetResponseByRepresentation;
   });
 
   describe("LUBW API Query", () => {
     it("should call the LUBW API with the correct data", async () => {
-      await abstractIntentHandler(lubwData);
+      await thresholdIntentHandler(lubwData);
 
       expect(mockQueryLUBWAPI).toHaveBeenCalledWith(lubwData);
     });
   });
 
   describe("Representation Service", () => {
-    it("should call the Representation Service with the correct data", async () => {
-      await abstractIntentHandler(lubwData);
+    it("should call the Threshold Representation Service with the correct data", async () => {
+      await thresholdIntentHandler(lubwData);
 
       expect(mockGetRepresentation).toHaveBeenCalledWith(measurandData);
     });
   });
 
   describe("Response", () => {
-    it("should call the response utils with the correct data", async () => {
-      await abstractIntentHandler(lubwData);
+    it("should call the response service with the correct data", async () => {
+      await thresholdIntentHandler(lubwData);
 
       expect(mockGetResponseByRepresentation).toHaveBeenCalledWith(representation);
     });
@@ -90,7 +90,7 @@ describe("Measurand Complete Intent Handler", () => {
     it("should throw an error if the LUBW API query fails", async () => {
       mockQueryLUBWAPI.mockRejectedValue(new Error());
 
-      await expect(abstractIntentHandler(lubwData)).rejects.toThrowError();
+      await expect(thresholdIntentHandler(lubwData)).rejects.toThrowError();
     });
   });
 });

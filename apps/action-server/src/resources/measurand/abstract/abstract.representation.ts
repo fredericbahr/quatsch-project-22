@@ -10,7 +10,7 @@ import { CalculationService } from "../../../services/calculation-service";
 export class AbstractRepresentation {
   /**
    * Gets a representation of the given measurand data based on the given representation inside the measurand data.
-   * @default If no representation is given, a textual representation is returned.
+   * @default representation if no representation is given, a textual representation is returned.
    * @param measurandData the lubw measurand data to transform into a representation
    * @returns the representation of the given measurand data
    */
@@ -47,7 +47,8 @@ export class AbstractRepresentation {
         `Der ${measurandData.calculation}-Wert`,
         `der Messart ${measurandData.measurand}`,
         `für die Station ${measurandData.station}`,
-        `beträgt am ${format(new Date(measurandData.measurandData[0].times[0]), "P", { locale: de })}:`,
+        `zwischen dem ${format(new Date(measurandData.time.start), "P", { locale: de })}`,
+        `und dem ${format(new Date(measurandData.time.end), "P", { locale: de })} beträgt:`,
         `${this.calculate(measurandData)}`,
       ].join(" "),
       type: REPRESENTATION_TYPE.Text,

@@ -1,4 +1,5 @@
 import { LupoCloudApi } from "api";
+import { differenceInDays } from "date-fns";
 import { ILUBWData, ILUBWMeasurandData } from "shared";
 
 /**
@@ -40,13 +41,19 @@ export class LUBWQueryService {
       ["pm25k", LupoCloudApi.ILupoAirMetric.Pm25k],
     ]);
 
-    const lubwResonse = await LupoCloudApi.LUPOAirMetricControllerApiFactory().readMetric(
+    const from = differenceInDays(new Date(), new Date(lubwData.time.start));
+    const to = differenceInDays(new Date(), new Date(lubwData.time.end));
+
+    const lubwResponse = await LupoCloudApi.LUPOAirMetricControllerApiFactory().readMetric(
       measurandMetricAdapter.get(lubwData.measurand) || LupoCloudApi.ILupoAirMetric.O3,
-      lubwData.time ? `${lubwData.time}-ago` : undefined,
-      undefined,
+      from + "d-ago",
+      to ? to + "d-ago" : undefined,
       lubwData.station ? `station:${lubwData.station}` : undefined,
     );
 
-    return lubwResonse.data;
+    console.log("LUPO Cloud has been requested:");
+    console.log(lubwResponse.request?.res?.responseUrl);
+
+    return lubwResponse.data;
   }
 }

@@ -1,0 +1,48 @@
+version: "3.1"
+
+stories:
+  - story: Context question for extreme/threshold measurand
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+        entities:
+          - measurand
+          - station
+      - action: action_measurand_complete
+      - intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Context question for extreme/threshold measurand with invalid information
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+        entities:
+          - measurand
+          - station
+      - action: action_measurand_complete
+      - intent: refine_station
+      - action: action_refine_station
+      - intent: refine_measurand
+      - action: action_refine_measurand
+      - intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Start question for extreme/threshold measurand
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Start question for extrem/treshold with invalid information
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_threshold
+      - action: action_measurand_threshold
+      - intent: refine_station
+      - action: action_refine_station
+      - intent: refine_measurand
+      - action: action_refine_measurand

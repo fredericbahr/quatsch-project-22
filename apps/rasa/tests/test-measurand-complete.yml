@@ -10,7 +10,7 @@ stories:
       - action: utter_greet
       - user: |
           Wie ist der Luftqualitätsindex in Ulm?
-        intent: context_air_measurand
+        intent: measurand_complete
       - action: action_measurand_complete
 
 #  - story: create context with unavailable measured value but existing station

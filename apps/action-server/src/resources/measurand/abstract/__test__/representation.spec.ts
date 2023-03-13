@@ -8,7 +8,10 @@ describe("Representation Service", () => {
     measurand: "luqx",
     station: "DEBW0081",
     calculation: CALCULATION_TYPE.Average,
-    time: '{start: "2023-02-21T00:00:00.000Z", end: "2023-02-21T23:59:59.999Z"}',
+    time: {
+      start: new Date("2023-02-21"),
+      end: new Date("2023-02-22"),
+    },
     measurandData: [
       {
         values: [1],
@@ -23,7 +26,8 @@ describe("Representation Service", () => {
       const representation = AbstractRepresentation.getRepresentation(measurandData);
 
       expect(representation).toEqual({
-        value: "Der average-Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023: 1",
+        value:
+          "Der average-Wert der Messart luqx für die Station DEBW0081 zwischen dem 21.02.2023 und dem 22.02.2023 beträgt: 1",
         type: REPRESENTATION_TYPE.Text,
       });
     });
@@ -99,7 +103,8 @@ describe("Representation Service", () => {
       const representation = AbstractRepresentation.getTextualRepresentation(measurandData);
 
       expect(representation).toEqual({
-        value: "Der average-Wert der Messart luqx für die Station DEBW0081 beträgt am 21.02.2023: 1",
+        value:
+          "Der average-Wert der Messart luqx für die Station DEBW0081 zwischen dem 21.02.2023 und dem 22.02.2023 beträgt: 1",
         type: REPRESENTATION_TYPE.Text,
       });
     });
