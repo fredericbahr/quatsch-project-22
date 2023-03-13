@@ -23,7 +23,19 @@ export interface ILUBWData extends ILUBWDefaultData {
 export interface ILUBWDefaultData {
   [ILUBWDataKey.Calculation]: CALCULATION_TYPE;
   [ILUBWDataKey.Representation]: REPRESENTATION_TYPE;
-  [ILUBWDataKey.Time]: string;
+  [ILUBWDataKey.Time]: ILUBWDefaultDataTime;
+}
+
+/** Default lubw time data type */
+export interface ILUBWDefaultDataTime {
+  /**
+   * The earliest date in a time span
+   */
+  start: Date;
+  /**
+   * The latest date in a time span
+   */
+  end: Date;
 }
 
 /**

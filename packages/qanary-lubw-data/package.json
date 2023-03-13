@@ -24,6 +24,9 @@
     "generate:yml-measurand-threshold": "ts-node src/scripts/generate-measurand-threshold-nlu-yml-data.ts"
   },
   "types": "dist/index.d.ts",
+  "dependencies": {
+    "date-fns": "2.29.3"
+  },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "eslint": "^8.33.0",

@@ -1,5 +1,11 @@
-import { differenceInDays } from "date-fns";
-import { CALCULATION_TYPE, ILUBWData, IQanaryAnnotation, REPRESENTATION_TYPE } from "shared";
+import {
+  CALCULATION_TYPE,
+  defaultLUBWData,
+  ILUBWData,
+  ILUBWDataKey,
+  IQanaryAnnotation,
+  REPRESENTATION_TYPE,
+} from "shared";
 
 import { LUBWDataTransformationService } from "../transformation-service";
 
@@ -31,7 +37,7 @@ describe("TransformationService", () => {
     },
   ];
 
-  const uncompleteAnnotations: Array<IQanaryAnnotation> = [
+  const uncompletedAnnotations: Array<IQanaryAnnotation> = [
     {
       annotationType: "qa:AnnotationOfStation",
       hasBody: "DEBW0081",
@@ -56,7 +62,7 @@ describe("TransformationService", () => {
         station: "DEBW0081",
         calculation: CALCULATION_TYPE.Average,
         measurand: "luqx",
-        time: "1d",
+        time: defaultLUBWData[ILUBWDataKey.Time],
         representation: REPRESENTATION_TYPE.Graph,
       };
 
@@ -70,11 +76,11 @@ describe("TransformationService", () => {
         station: "DEBW0081",
         calculation: CALCULATION_TYPE.Average,
         measurand: "luqx",
-        time: "1d",
+        time: defaultLUBWData[ILUBWDataKey.Time],
         representation: REPRESENTATION_TYPE.Text,
       };
 
-      const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData(uncompleteAnnotations, true);
+      const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData(uncompletedAnnotations, true);
 
       expect(transformedAnnotations).toEqual(expectedLubwData);
     });
@@ -84,11 +90,14 @@ describe("TransformationService", () => {
         station: "DEBW0081",
         calculation: undefined,
         measurand: "luqx",
-        time: undefined,
+        time: defaultLUBWData[ILUBWDataKey.Time],
         representation: undefined,
       };
 
-      const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData(uncompleteAnnotations, false);
+      const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData(
+        uncompletedAnnotations,
+        false,
+      );
 
       expect(transformedAnnotations).toEqual(expectedLubwData);
     });
@@ -106,25 +115,16 @@ describe("TransformationService", () => {
         score: 1,
       };
 
-      it("should return undefined if no time is given", () => {
+      it("should return default if no time is given", () => {
         const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData(
-          uncompleteAnnotations,
+          uncompletedAnnotations,
           false,
         );
 
-        expect(transformedAnnotations.time).toBeUndefined();
+        expect(transformedAnnotations.time).toEqual(defaultLUBWData[ILUBWDataKey.Time]);
       });
 
-      it("should return days ago from today if only start time is given", () => {
-        const expectedDayDifference = differenceInDays(new Date(), startDate);
-        const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData([timeAnnotation], false);
-
-        expect(transformedAnnotations.time).toEqual(`${expectedDayDifference}d`);
-      });
-
-      it("should return difference in days between start and end time if both are given", () => {
-        const expectedDayDifference = differenceInDays(endDate, startDate);
-
+      it("should return specific time if time is given", () => {
         timeAnnotation = {
           ...timeAnnotation,
           hasBody: `{ "start": "${startDate.toISOString()}", "end": "${endDate.toISOString()}" }`,
@@ -132,7 +132,10 @@ describe("TransformationService", () => {
 
         const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData([timeAnnotation], false);
 
-        expect(transformedAnnotations.time).toEqual(`${expectedDayDifference}d`);
+        expect(transformedAnnotations.time).toEqual({
+          start: startDate,
+          end: endDate,
+        });
       });
     });
   });
