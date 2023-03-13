@@ -42,6 +42,7 @@ export class VerificationService {
     const propertyValue: string | ILUBWDefaultDataTime | undefined = data?.[propKey];
 
     if (typeof propertyValue === "object") {
+      // Todo: this could be a recursive check
       return propertyValue;
     }
 

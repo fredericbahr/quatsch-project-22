@@ -47,10 +47,7 @@ export class IntentHandlerFindingService {
    * @returns the found intent
    */
   private static async getIntent(senderId: string | undefined): Promise<INTENTS> {
-    const lastIntent: string | ILUBWDefaultDataTime | undefined = await StoringService.getStateEntry(
-      senderId,
-      "latestIntent",
-    );
+    const lastIntent: string | undefined = (await StoringService.getStateEntry(senderId, "latestIntent")) as string;
 
     if (!lastIntent) {
       throw new NoIntentHandlerError("No intent found");

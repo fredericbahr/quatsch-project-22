@@ -26,8 +26,15 @@ export interface ILUBWDefaultData {
   [ILUBWDataKey.Time]: ILUBWDefaultDataTime;
 }
 
+/** Default lubw time data type */
 export interface ILUBWDefaultDataTime {
+  /**
+   * The earliest date in a time span
+   */
   start: Date;
+  /**
+   * The latest date in a time span
+   */
   end: Date;
 }
 

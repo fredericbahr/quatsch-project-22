@@ -109,7 +109,7 @@ export class StoringService {
   public static async getStateEntry(
     senderId: string | undefined,
     property: keyof IState,
-  ): Promise<string | ILUBWDefaultDataTime | undefined> {
+  ): Promise<string | object | undefined> {
     if (!senderId) {
       return undefined;
     }
