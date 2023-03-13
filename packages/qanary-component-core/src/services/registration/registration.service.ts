@@ -30,7 +30,7 @@ let subscriptionStatus: SUBSCRIPTION_STATUS = SUBSCRIPTION_STATUS.UNKNOWN;
  * @param config the configuration of the component
  * @param registration the registration information of the component
  */
-const callAdminServer = async (config: QanaryComponentCoreServiceConfig, registration: RegistrationInfo) => {
+export const callAdminServer = async (config: QanaryComponentCoreServiceConfig, registration: RegistrationInfo) => {
   // the generated code from the OpenAPI specification
   SpringBootAdminServerApi.SpringBootAdminServerApiFactory(config.springBootAdminUrl.toConfiguration())
     .createInstances(registration)
@@ -70,5 +70,9 @@ export const registrationService = async (
   while (true) {
     await callAdminServer(config, registration);
     await sleep(interval);
+
+    if (process.env.NODE_ENV === "test") {
+      break;
+    }
   }
 };
