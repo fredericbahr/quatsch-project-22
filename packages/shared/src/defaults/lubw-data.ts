@@ -11,7 +11,7 @@ export const defaultLUBWData: ILUBWDefaultData = {
   representation: REPRESENTATION_TYPE.Text,
   calculation: CALCULATION_TYPE.Average,
   time: {
-    start: sub(new Date(), { days: 2 }),
-    end: sub(new Date(), { days: 1 }),
+    start: sub(new Date(), { days: 1 }),
+    end: new Date(),
   },
 };
