@@ -1,4 +1,4 @@
-import { IState, IStoreState } from "shared";
+import { ILUBWDefaultDataTime, IState, IStoreState } from "shared";
 
 import { redisClient } from "../redis/redis-client";
 
@@ -106,7 +106,10 @@ export class StoringService {
    * @param property the property to get
    * @returns the curent value of the property or undefined if no state/property was found
    */
-  public static async getStateEntry(senderId: string | undefined, property: keyof IState): Promise<string | undefined> {
+  public static async getStateEntry(
+    senderId: string | undefined,
+    property: keyof IState,
+  ): Promise<string | object | undefined> {
     if (!senderId) {
       return undefined;
     }

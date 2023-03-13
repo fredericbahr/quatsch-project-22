@@ -1,15 +1,17 @@
-import { differenceInDays } from "date-fns";
+import { compareAsc } from "date-fns";
 import {
   AnnotationTypes,
+  CALCULATION_TYPE,
   defaultLUBWData,
   IFilteredAnnotations,
   ILUBWData,
+  ILUBWDataKey,
   ILUBWDefaultData,
+  ILUBWDefaultDataTime,
   IQanaryAnnotation,
   ITimeObject,
   REPRESENTATION_TYPE,
 } from "shared";
-import { CALCULATION_TYPE } from "shared";
 /**
  * Service for transforming the annotations to the intermediate representation format.
  */
@@ -70,32 +72,46 @@ export class LUBWDataTransformationService {
   }
 
   /**
+   * Returns the earlier Date from two given dates
+   * @param dateLeft Date to compare
+   * @param dateRight Date to compare
+   * @returns the early date of two
+   */
+  private static getEarlierDate(dateLeft: Date, dateRight: Date): Date {
+    const compare = compareAsc(new Date(dateLeft), new Date(dateRight));
+    if ([-1, 0].includes(compare)) {
+      return dateLeft;
+    }
+    return dateRight;
+  }
+
+  /**
    * Transforms the time annotation to the interim internal format.
    * @param time the annotated time as serialized JSON
    * @returns the difference between the start and end date in days or undefined if the transformation failed
    */
-  private static transformTime(time?: string): string | undefined {
+  private static transformTime(time?: string): ILUBWDefaultDataTime {
     try {
       if (!time) {
         console.error("The time annotation is missing. Fallback to default value.");
-        return undefined;
+        return defaultLUBWData[ILUBWDataKey.Time];
       }
 
       const timeObject: ITimeObject = JSON.parse(time) as ITimeObject;
 
       if (!timeObject.end) {
-        const [earlyDate, lateDate] = this.sortDates(timeObject.start, new Date().toISOString());
-        const dayDifference = differenceInDays(new Date(lateDate), new Date(earlyDate));
-
-        return `${dayDifference}d`;
+        return {
+          ...defaultLUBWData[ILUBWDataKey.Time],
+          start: this.getEarlierDate(new Date(timeObject.start), defaultLUBWData[ILUBWDataKey.Time].start),
+        };
       }
-
-      const dayDifference = differenceInDays(new Date(timeObject.end), new Date(timeObject.start));
-
-      return `${dayDifference}d`;
+      return {
+        start: this.getEarlierDate(new Date(timeObject.start), defaultLUBWData[ILUBWDataKey.Time].start),
+        end: this.getEarlierDate(new Date(timeObject.end), defaultLUBWData[ILUBWDataKey.Time].end),
+      };
     } catch (error) {
       console.error(error);
-      return undefined;
+      return defaultLUBWData[ILUBWDataKey.Time];
     }
   }
 
@@ -131,7 +147,10 @@ export class LUBWDataTransformationService {
       ...customValues,
       representation: customValues.representation || defaultValues.representation,
       calculation: customValues.calculation || defaultValues.calculation,
-      time: customValues.time || defaultValues.time,
+      time: {
+        ...defaultValues.time,
+        ...customValues.time,
+      },
     };
   }
 

@@ -1,4 +1,4 @@
-import { ILUBWData, IState } from "shared";
+import { defaultLUBWData, ILUBWData, ILUBWDataKey, IState } from "shared";
 
 /**
  * Merges the state and the lubwData
@@ -15,6 +15,9 @@ export const mergeStateAndLubwData = (
     measurand: lubwData.measurand || state?.measurand,
     calculation: lubwData.calculation || state?.calculation,
     representation: lubwData.representation || state?.representation,
-    time: lubwData.time || state?.time,
+    time: {
+      start: lubwData.time?.start || state?.time?.start || defaultLUBWData.time.start,
+      end: lubwData.time?.end || state?.time?.end || defaultLUBWData.time.end,
+    },
   };
 };

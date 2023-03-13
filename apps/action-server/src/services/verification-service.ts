@@ -1,4 +1,4 @@
-import { ILUBWData, ILUBWDataKey } from "shared";
+import { ILUBWData, ILUBWDataKey, ILUBWDefaultDataTime } from "shared";
 
 import { VerificationError } from "../errors/VerificationError";
 
@@ -35,8 +35,16 @@ export class VerificationService {
    * @param propKey the property key of the data to validate
    * @returns the validated property
    */
-  private static validateProperty(data: Partial<ILUBWData> | null, propKey: keyof ILUBWData): string {
-    const propertyValue: string | undefined = data?.[propKey];
+  private static validateProperty(
+    data: Partial<ILUBWData> | null,
+    propKey: keyof ILUBWData,
+  ): string | ILUBWDefaultDataTime {
+    const propertyValue: string | ILUBWDefaultDataTime | undefined = data?.[propKey];
+
+    if (typeof propertyValue === "object") {
+      // Todo: this could be a recursive check
+      return propertyValue;
+    }
 
     if (this.isValidProperty(propertyValue)) {
       return propertyValue;
