@@ -14,8 +14,4 @@ export const calculations: ICalculation[] = [
     id: "average",
     label: "Durchschnitt",
   },
-  {
-    id: "threshold",
-    label: "Grenzwert",
-  },
 ];

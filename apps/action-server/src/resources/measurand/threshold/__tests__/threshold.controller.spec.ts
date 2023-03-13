@@ -1,15 +1,15 @@
-import { expect } from "@jest/globals";
 import {
+  CALCULATION_TYPE,
   COMPONENT,
   ILUBWData,
   ILUBWDataKey,
   IQanaryAnnotation,
   IQanaryMessage,
+  IState,
   RasaRequest,
   RasaResponse,
   REPRESENTATION_TYPE,
 } from "shared";
-import { CALCULATION_TYPE } from "shared";
 
 import { NoIntentHandlerError } from "../../../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../../../errors/VerificationError";
@@ -20,17 +20,17 @@ import { StoringService } from "../../../../services/storing-service";
 import { LUBWDataTransformationService } from "../../../../services/transformation-service";
 import { VerificationService } from "../../../../services/verification-service";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { mergeStateAndLubwData } from "../../../../utils/merge-state-lubw-data";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { startQanaryPipeline } from "../../../../utils/start-pipeline";
-import { abstractRequestHandler } from "../abstract.controller";
+import { thresholdRequestHandler } from "../threshold.controller";
 
 jest.mock("../../../../utils/start-pipeline", () => ({
   startQanaryPipeline: jest.fn(),
 }));
 
-jest.mock("../../../../services/transformation-service", () => ({
-  LUBWDataTransformationService: {
-    getTransformedLUBWData: jest.fn(),
-  },
+jest.mock("../../../../utils/merge-state-lubw-data", () => ({
+  mergeStateAndLubwData: jest.fn(),
 }));
 
 jest.mock("../../../../services/extraction-service/extract-annotation-service", () => ({
@@ -42,7 +42,6 @@ jest.mock("../../../../services/extraction-service/extract-annotation-service", 
 jest.mock("../../../../services/storing-service", () => ({
   StoringService: {
     storeCurrentState: jest.fn(),
-    getCurrentState: jest.fn(),
   },
 }));
 
@@ -66,9 +65,9 @@ jest.mock("../../../../services/error-handling-service", () => ({
   },
 }));
 
-describe("#Measurand controllers", () => {
+describe("#Measurand Threshold controllers", () => {
   const senderId = "test-sender-id";
-  const intent = "action_measurand_complete";
+  const intent = "action_measurand_threshold";
   const text = "Ich bin der Test-Text";
   const qanaryMessage: IQanaryMessage = {
     endpoint: "http://qanary-pipeline:40111/sparql",
@@ -100,6 +99,10 @@ describe("#Measurand controllers", () => {
     time: "1d",
     representation: REPRESENTATION_TYPE.Text,
   };
+  const state: IState = {
+    ...lubwData,
+    latestIntent: undefined,
+  };
 
   const req: RasaRequest = {
     body: { next_action: intent, sender_id: senderId, tracker: { latest_message: { text } } },
@@ -107,22 +110,24 @@ describe("#Measurand controllers", () => {
   const res: RasaResponse = { status: jest.fn(), end: jest.fn(), json: jest.fn() } as unknown as RasaResponse;
 
   const mockStartQanaryPipeline: jest.Mock = jest.fn().mockResolvedValue(qanaryMessage);
+  const mockMergeStateAndLubwData: jest.Mock = jest.fn().mockReturnValue(lubwData);
   const mockExtractAllAnnotations: jest.Mock = jest.fn().mockResolvedValue(annotations);
   const mockGetTransformedLUBWData: jest.Mock = jest.fn().mockReturnValue(lubwData);
+  const mockGetCurrentState: jest.Mock = jest.fn().mockReturnValue(state);
   const mockStoreData: jest.Mock = jest.fn();
-  const mockGetCurrentState: jest.Mock = jest.fn();
   const mockVerifyLUBWData: jest.Mock = jest.fn().mockReturnValue(lubwData);
-  const mockMeasurandCompleteIntentHandler: jest.Mock = jest.fn();
-  const mockFindIntentHandler: jest.Mock = jest.fn().mockReturnValue(mockMeasurandCompleteIntentHandler);
+  const mockMeasurandThresholdIntentHandler: jest.Mock = jest.fn();
+  const mockFindIntentHandler: jest.Mock = jest.fn().mockReturnValue(mockMeasurandThresholdIntentHandler);
   const mockHandleVerificationError: jest.Mock = jest.fn();
   const mockHandleNoIntentHandlerError: jest.Mock = jest.fn();
   const mockHandleDefaultError: jest.Mock = jest.fn();
 
   beforeEach(() => {
     (startQanaryPipeline as jest.Mock) = mockStartQanaryPipeline;
+    (mergeStateAndLubwData as jest.Mock) = mockMergeStateAndLubwData;
     (AnnotationExtractionService.extractAllAnnotations as jest.Mock) = mockExtractAllAnnotations;
-    (StoringService.storeCurrentState as jest.Mock) = mockStoreData;
     (StoringService.getCurrentState as jest.Mock) = mockGetCurrentState;
+    (StoringService.storeCurrentState as jest.Mock) = mockStoreData;
     (LUBWDataTransformationService.getTransformedLUBWData as jest.Mock) = mockGetTransformedLUBWData;
     (VerificationService.verifyLUBWData as jest.Mock) = mockVerifyLUBWData;
     (IntentHandlerFindingService.findIntentHandlerByIntent as jest.Mock) = mockFindIntentHandler;
@@ -135,13 +140,13 @@ describe("#Measurand controllers", () => {
 
   describe("Qanary Pipeline", () => {
     it("should start the qanary pipeline with given question", async () => {
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(text, expect.any(Array));
     });
 
     it("should start the qanary pipeline with correct components", async () => {
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
       expect(mockStartQanaryPipeline).toHaveBeenCalledWith(
         expect.any(String),
@@ -161,69 +166,92 @@ describe("#Measurand controllers", () => {
 
   describe("Annotation Extraction", () => {
     it("should extract all annotation", async () => {
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
       expect(mockExtractAllAnnotations).toHaveBeenCalledWith(qanaryMessage);
     });
   });
 
-  describe("Transformation", () => {
-    it("should transform the annotations", async () => {
-      await abstractRequestHandler(req, res, {});
+  describe("Getting State", () => {
+    it("should get the current state", async () => {
+      await thresholdRequestHandler(req, res);
 
-      expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.arrayContaining(annotations), expect.any(Boolean));
+      expect(mockGetCurrentState).toHaveBeenCalledWith(senderId);
+    });
+  });
+
+  describe("Transformation", () => {
+    it("should transform the annotations and do not merge with defaults", async () => {
+      await thresholdRequestHandler(req, res);
+
+      expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.objectContaining(annotations), false);
+    });
+
+    it("should transform the annotations and merge with defaults", async () => {
+      mockGetCurrentState.mockReturnValueOnce(null);
+
+      await thresholdRequestHandler(req, res);
+
+      expect(mockGetTransformedLUBWData).toHaveBeenCalledWith(expect.objectContaining(annotations), true);
+    });
+
+    it("should merge the current state with the transformed data", async () => {
+      await thresholdRequestHandler(req, res);
+
+      expect(mockMergeStateAndLubwData).toHaveBeenCalledWith(
+        expect.objectContaining(state),
+        expect.objectContaining(lubwData),
+      );
     });
   });
 
   describe("Storing", () => {
     it("should store the current data and intent", async () => {
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
       expect(mockStoreData).toHaveBeenCalledWith({
         senderId: expect.any(String),
         intent: expect.any(String),
-        lubwData: expect.objectContaining(lubwData as unknown as Record<string, string>),
+        lubwData: expect.objectContaining(lubwData),
       });
     });
   });
 
   describe("Verification", () => {
-    it("should call the verification service with the lubwData", async () => {
-      await abstractRequestHandler(req, res, {});
+    it("should call the verification service with the merged state", async () => {
+      await thresholdRequestHandler(req, res);
 
-      expect(mockVerifyLUBWData).toHaveBeenCalledWith(
-        expect.objectContaining(lubwData as unknown as Record<string, string>),
-      );
+      expect(mockVerifyLUBWData).toHaveBeenCalledWith(expect.objectContaining(lubwData));
     });
   });
 
   describe("Intent Handling", () => {
     it("should find the correct intent handler", async () => {
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
       expect(mockFindIntentHandler).toHaveBeenCalledWith(intent);
     });
 
     it("should call the intent handler with the correct data", async () => {
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
-      expect(mockMeasurandCompleteIntentHandler).toHaveBeenCalledWith(lubwData);
+      expect(mockMeasurandThresholdIntentHandler).toHaveBeenCalledWith(lubwData);
     });
   });
 
   describe("Error Handling", () => {
-    it("should handle Verifications errors accordingly", async () => {
-      const verificationError = new VerificationError("Error", null, ILUBWDataKey.Station);
+    it("should handle Verifications errors occordingly", async () => {
+      const verificationErrror = new VerificationError("Error", null, ILUBWDataKey.Station);
       mockVerifyLUBWData.mockImplementation(() => {
-        throw verificationError;
+        throw verificationErrror;
       });
 
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
-      expect(mockHandleVerificationError).toHaveBeenCalledWith(res, verificationError);
+      expect(mockHandleVerificationError).toHaveBeenCalledWith(res, verificationErrror);
     });
 
-    it("should handle no intent handler errors accordingly", async () => {
+    it("should handle no intent handler errors occordingly", async () => {
       mockVerifyLUBWData.mockReset();
 
       const noIntentHandlerError = new NoIntentHandlerError("Error");
@@ -231,15 +259,15 @@ describe("#Measurand controllers", () => {
         throw noIntentHandlerError;
       });
 
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
       expect(mockHandleNoIntentHandlerError).toHaveBeenCalledWith(res);
     });
 
-    it("should handle unexpected errors accordingly", async () => {
+    it("should handle unexpected errors occordingly", async () => {
       mockStartQanaryPipeline.mockRejectedValue(new Error("Error"));
 
-      await abstractRequestHandler(req, res, {});
+      await thresholdRequestHandler(req, res);
 
       expect(mockHandleDefaultError).toHaveBeenCalledWith(res);
     });
