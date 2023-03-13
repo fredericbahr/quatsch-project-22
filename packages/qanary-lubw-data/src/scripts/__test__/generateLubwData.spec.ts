@@ -112,7 +112,6 @@ describe("#Component generateLubwData", () => {
       "Minimum",
       "Maximum",
       "Durchschnitt",
-      "Grenzwert",
       "Minima",
       "minimal",
       "Maxima",

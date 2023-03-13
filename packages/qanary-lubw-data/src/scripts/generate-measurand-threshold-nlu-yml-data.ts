@@ -3,7 +3,12 @@ import generateNluYmlFileContent from "./generateFileContent/generateNluYmlFileC
 import { generateMeasurandThresholdNluTrainingData } from "./generateTrainingData/generateMeasruandThresholdNluTrainingData";
 import { writeYmlFileSlim } from "./utils/writeYmlFile";
 
-const baseData = ["Ist der Messwert extrem?", "Ist der Messwert gefährlich?", "Ist der Messwert grenzwertig?", "Liegt der Messwert über eienm Grenzwert?",];
+const baseData = [
+  "Ist der Messwert extrem?",
+  "Ist der Messwert gefährlich?",
+  "Ist der Messwert grenzwertig?",
+  "Liegt der Messwert über einem Grenzwert?",
+];
 
 writeYmlFileSlim({
   intent: "measurand_threshold",
