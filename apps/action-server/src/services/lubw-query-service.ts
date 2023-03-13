@@ -1,5 +1,6 @@
 import { LupoCloudApi } from "api";
 import { differenceInDays } from "date-fns";
+import { ClientRequest } from "http";
 import { ILUBWData, ILUBWMeasurandData } from "shared";
 
 /**
@@ -50,7 +51,10 @@ export class LUBWQueryService {
       to,
       lubwData.station ? `station:${lubwData.station}` : undefined,
     );
-    // lubwResponse.request
+
+    console.log("LUPO Cloud has been requested:");
+    console.log(lubwResponse.request?.res?.responseUrl);
+
     return lubwResponse.data;
   }
 }
