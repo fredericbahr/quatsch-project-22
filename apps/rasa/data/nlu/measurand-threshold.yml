@@ -1,0 +1,268 @@
+# Automatically generated file. Do not change the content
+
+version: "3.1"
+
+nlu:
+  - intent: measurand_threshold
+    examples: |
+      - Ist der Messwert extrem?
+      - Ist der Messwert gefährlich?
+      - Ist der Messwert grenzwertig?
+      - Liegt der Messwert über einem Grenzwert?
+      - Ist der o3-Wert für die Station DEBW076 grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW076 grenzwertig?
+      - Ist der Ozon-Wert für die Station Baden-Baden grenzwertig?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW042 grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station Bernhausen grenzwertig?
+      - Ist der o3-Wert für die Station DEBW046 grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW046 grenzwertig?
+      - Ist der Stickstoffdioxid-Wert für die Station Biberach grenzwertig?
+      - Ist der luqx-Wert für die Station Freiburg grenzwertig?
+      - Ist der Stickstoffdioxid-Wert für die Station Freiburg grenzwertig?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW122 grenzwertig?
+      - Ist der Feinstaub PM25-Wert für die Station Freiburg Schwarzwaldstraße grenzwertig?
+      - Ist der Stickstoffdioxid-Wert für die Station Friedrichshafen grenzwertig?
+      - Ist der Ozon-Wert für die Station DEBW112 grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW112 grenzwertig?
+      - Ist der luqx-Wert für die Station Gärtringen grenzwertig?
+      - Ist der Stickstoffdioxid-Wert für die Station Heidelberg grenzwertig?
+      - Ist der Ozon-Wert für die Station Heidelberg grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station Heidelberg grenzwertig?
+      - Ist der Stickstoffdioxid-Wert für die Station Heilbronn grenzwertig?
+      - Ist der luqx-Wert für die Station DEBW152 grenzwertig?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW152 grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station Heilbronn Weinsberger Straße-Ost grenzwertig?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW081 grenzwertig?
+      - Ist der luqx-Wert für die Station DEBW080 grenzwertig?
+      - Ist der luqx-Wert für die Station DEBW022 grenzwertig?
+      - Ist der Ozon-Wert für die Station Kehl grenzwertig?
+      - Ist der pm10-Wert für die Station Leonberg Grabenstraße grenzwertig?
+      - Ist der Luftqualitätsindex-Wert für die Station DEBW098 grenzwertig?
+      - Ist der Ozon-Wert für die Station DEBW005 grenzwertig?
+      - Ist der pm25k-Wert für die Station DEBW005 grenzwertig?
+      - Ist der pm25k-Wert für die Station Neuenburg grenzwertig?
+      - Ist der Ozon-Wert für die Station Pfinztal Karlsruher Straße grenzwertig?
+      - Ist der pm10-Wert für die Station Pfinztal Karlsruher Straße grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW033 grenzwertig?
+      - Ist der Ozon-Wert für die Station DEBW027 grenzwertig?
+      - Ist der o3-Wert für die Station Reutlingen Lederstraße-Ost grenzwertig?
+      - Ist der pm10-Wert für die Station Reutlingen Lederstraße-Ost grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station Reutlingen Lederstraße-Ost grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW156 grenzwertig?
+      - Ist der luqx-Wert für die Station Schramberg Oberndorfer Straße grenzwertig?
+      - Ist der pm25k-Wert für die Station Schramberg Oberndorfer Straße grenzwertig?
+      - Ist der Ozon-Wert für die Station DEBW087 grenzwertig?
+      - Ist der Luftqualitätsindex-Wert für die Station Stuttgart Am Neckartor grenzwertig?
+      - Ist der Feinstaub PM25-Wert für die Station Stuttgart Am Neckartor grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW099 grenzwertig?
+      - Ist der no2-Wert für die Station DEBW013 grenzwertig?
+      - Ist der pm25k-Wert für die Station DEBW013 grenzwertig?
+      - Ist der Luftqualitätsindex-Wert für die Station LUBW082 grenzwertig?
+      - Ist der o3-Wert für die Station Stuttgart Hauptstätter Straße grenzwertig?
+      - Ist der Luftqualitätsindex-Wert für die Station Stuttgart Hohenheimer Straße grenzwertig?
+      - Ist der pm10-Wert für die Station Stuttgart Hohenheimer Straße grenzwertig?
+      - Ist der Luftqualitätsindex-Wert für die Station DEBW059 grenzwertig?
+      - Ist der Ozon-Wert für die Station DEBW059 grenzwertig?
+      - Ist der no2-Wert für die Station DEBW107 grenzwertig?
+      - Ist der luqx-Wert für die Station DEBW019 grenzwertig?
+      - Ist der Luftqualitätsindex-Wert für die Station DEBW019 grenzwertig?
+      - Ist der no2-Wert für die Station DEBW039 grenzwertig?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW039 grenzwertig?
+      - Ist der luqx-Wert für die Station DEBW010 grenzwertig?
+      - Ist der o3-Wert für die Station Wiesloch grenzwertig?
+      - Ist der pm10-Wert für die Station Wiesloch grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station Wiesloch grenzwertig?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW029 extrem?
+      - Ist der pm25k-Wert für die Station Aalen extrem?
+      - Ist der pm25k-Wert für die Station DEBW076 extrem?
+      - Ist der Luftqualitätsindex-Wert für die Station DEBW042 extrem?
+      - Ist der Stickstoffdioxid-Wert für die Station Bernhausen extrem?
+      - Ist der Ozon-Wert für die Station Bernhausen extrem?
+      - Ist der pm10-Wert für die Station DEBW046 extrem?
+      - Ist der o3-Wert für die Station Biberach extrem?
+      - Ist der luqx-Wert für die Station Eggenstein extrem?
+      - Ist der pm10-Wert für die Station Eggenstein extrem?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW084 extrem?
+      - Ist der pm25k-Wert für die Station DEBW084 extrem?
+      - Ist der luqx-Wert für die Station Freiburg extrem?
+      - Ist der pm10-Wert für die Station DEBW122 extrem?
+      - Ist der luqx-Wert für die Station Gärtringen extrem?
+      - Ist der luqx-Wert für die Station DEBW009 extrem?
+      - Ist der Ozon-Wert für die Station Heidelberg extrem?
+      - Ist der no2-Wert für die Station DEBW015 extrem?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW015 extrem?
+      - Ist der Luftqualitätsindex-Wert für die Station Heilbronn extrem?
+      - Ist der pm25k-Wert für die Station Heilbronn Weinsberger Straße-Ost extrem?
+      - Ist der pm10-Wert für die Station Karlsruhe-Nordwest extrem?
+      - Ist der pm25k-Wert für die Station DEBW080 extrem?
+      - Ist der Luftqualitätsindex-Wert für die Station Karlsruhe Reinhold-Frank-Straße extrem?
+      - Ist der o3-Wert für die Station DEBW022 extrem?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW022 extrem?
+      - Ist der o3-Wert für die Station Kehl extrem?
+      - Ist der o3-Wert für die Station DEBW052 extrem?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW052 extrem?
+      - Ist der Luftqualitätsindex-Wert für die Station Konstanz extrem?
+      - Ist der no2-Wert für die Station Konstanz extrem?
+      - Ist der pm10-Wert für die Station Konstanz extrem?
+      - Ist der Feinstaub PM25-Wert für die Station Ludwigsburg extrem?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW098 extrem?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW098 extrem?
+      - Ist der Luftqualitätsindex-Wert für die Station Mannheim-Nord extrem?
+      - Ist der Ozon-Wert für die Station DEBW073 extrem?
+      - Ist der no2-Wert für die Station Pfinztal Karlsruher Straße extrem?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW033 extrem?
+      - Ist der o3-Wert für die Station Reutlingen extrem?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW147 extrem?
+      - Ist der Luftqualitätsindex-Wert für die Station Reutlingen Lederstraße-Ost extrem?
+      - Ist der Stickstoffdioxid-Wert für die Station Reutlingen Lederstraße-Ost extrem?
+      - Ist der Feinstaub PM25-Wert für die Station Reutlingen Lederstraße-Ost extrem?
+      - Ist der pm10-Wert für die Station DEBW156 extrem?
+      - Ist der pm10-Wert für die Station Schramberg Oberndorfer Straße extrem?
+      - Ist der no2-Wert für die Station Schwäbische Alb extrem?
+      - Ist der o3-Wert für die Station DEBW031 extrem?
+      - Ist der Ozon-Wert für die Station DEBW031 extrem?
+      - Ist der Ozon-Wert für die Station DEBW031 extrem?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW031 extrem?
+      - Ist der Feinstaub PM25-Wert für die Station Stuttgart Am Neckartor extrem?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW013 extrem?
+      - Ist der Luftqualitätsindex-Wert für die Station Stuttgart Hohenheimer Straße extrem?
+      - Ist der pm25k-Wert für die Station Stuttgart Hohenheimer Straße extrem?
+      - Ist der Ozon-Wert für die Station Tauberbischofsheim extrem?
+      - Ist der pm10-Wert für die Station Tübingen extrem?
+      - Ist der Luftqualitätsindex-Wert für die Station DEBW136 extrem?
+      - Ist der luqx-Wert für die Station DEBW019 extrem?
+      - Ist der o3-Wert für die Station Villingen-Schwenningen extrem?
+      - Ist der pm10-Wert für die Station Villingen-Schwenningen extrem?
+      - Ist der luqx-Wert für die Station Weil am Rhein extrem?
+      - Ist der pm25k-Wert für die Station Weil am Rhein extrem?
+      - Ist der Feinstaub PM25-Wert für die Station Wiesloch extrem?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW029 gefährlich?
+      - Ist der luqx-Wert für die Station DEBW076 gefährlich?
+      - Ist der Luftqualitätsindex-Wert für die Station Baden-Baden gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station Baden-Baden gefährlich?
+      - Ist der luqx-Wert für die Station DEBW046 gefährlich?
+      - Ist der pm10-Wert für die Station DEBW046 gefährlich?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW046 gefährlich?
+      - Ist der Ozon-Wert für die Station Biberach gefährlich?
+      - Ist der Luftqualitätsindex-Wert für die Station DEBW084 gefährlich?
+      - Ist der Ozon-Wert für die Station Friedrichshafen gefährlich?
+      - Ist der Feinstaub PM10-Wert für die Station Friedrichshafen gefährlich?
+      - Ist der luqx-Wert für die Station DEBW112 gefährlich?
+      - Ist der pm25k-Wert für die Station DEBW112 gefährlich?
+      - Ist der pm10-Wert für die Station DEBW009 gefährlich?
+      - Ist der no2-Wert für die Station DEBW015 gefährlich?
+      - Ist der pm10-Wert für die Station DEBW152 gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station Karlsruhe-Nordwest gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW080 gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station Karlsruhe Reinhold-Frank-Straße gefährlich?
+      - Ist der no2-Wert für die Station DEBW022 gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW022 gefährlich?
+      - Ist der pm25k-Wert für die Station Kehl gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station Kehl gefährlich?
+      - Ist der Luftqualitätsindex-Wert für die Station DEBW052 gefährlich?
+      - Ist der Feinstaub PM10-Wert für die Station Konstanz gefährlich?
+      - Ist der luqx-Wert für die Station Leonberg Grabenstraße gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station Leonberg Grabenstraße gefährlich?
+      - Ist der no2-Wert für die Station DEBW024 gefährlich?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW024 gefährlich?
+      - Ist der no2-Wert für die Station Ludwigsburg gefährlich?
+      - Ist der no2-Wert für die Station Ludwigsburg gefährlich?
+      - Ist der Luftqualitätsindex-Wert für die Station DEBW241 gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW241 gefährlich?
+      - Ist der Ozon-Wert für die Station Ludwigsburg Schlossstraße gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW098 gefährlich?
+      - Ist der luqx-Wert für die Station Mannheim Friedrichsring gefährlich?
+      - Ist der Feinstaub PM10-Wert für die Station Mannheim Friedrichsring gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW005 gefährlich?
+      - Ist der o3-Wert für die Station Neuenburg gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW125 gefährlich?
+      - Ist der o3-Wert für die Station Pfinztal Karlsruher Straße gefährlich?
+      - Ist der o3-Wert für die Station Pfinztal Karlsruher Straße gefährlich?
+      - Ist der Ozon-Wert für die Station DEBW033 gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW033 gefährlich?
+      - Ist der pm10-Wert für die Station Pforzheim gefährlich?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW147 gefährlich?
+      - Ist der o3-Wert für die Station Reutlingen Lederstraße-Ost gefährlich?
+      - Ist der pm25k-Wert für die Station DEBW087 gefährlich?
+      - Ist der Luftqualitätsindex-Wert für die Station Schwäbische Alb gefährlich?
+      - Ist der pm10-Wert für die Station Schwäbische Alb gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station Schwarzwald-Süd gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station Schwarzwald-Süd gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW118 gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station Stuttgart Am Neckartor gefährlich?
+      - Ist der luqx-Wert für die Station Stuttgart Arnulf-Klett-Platz gefährlich?
+      - Ist der no2-Wert für die Station DEBW013 gefährlich?
+      - Ist der Luftqualitätsindex-Wert für die Station LUBW082 gefährlich?
+      - Ist der o3-Wert für die Station LUBW082 gefährlich?
+      - Ist der luqx-Wert für die Station DEBW116 gefährlich?
+      - Ist der Ozon-Wert für die Station Tauberbischofsheim gefährlich?
+      - Ist der Feinstaub PM10-Wert für die Station DEBW107 gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW107 gefährlich?
+      - Ist der luqx-Wert für die Station Tübingen gefährlich?
+      - Ist der Luftqualitätsindex-Wert für die Station Tübingen gefährlich?
+      - Ist der pm25k-Wert für die Station Tübingen gefährlich?
+      - Ist der pm10-Wert für die Station Tübingen Mühlstraße gefährlich?
+      - Ist der pm25k-Wert für die Station Tübingen Mühlstraße gefährlich?
+      - Ist der o3-Wert für die Station Ulm gefährlich?
+      - Ist der no2-Wert für die Station Villingen-Schwenningen gefährlich?
+      - Ist der Stickstoffdioxid-Wert für die Station DEBW023 gefährlich?
+      - Ist der Feinstaub PM25-Wert für die Station DEBW010 gefährlich?
+      - Liegt der pm10-Wert für die Station DEBW029 über einem Grenzwert?
+      - Liegt der Stickstoffdioxid-Wert für die Station Aalen über einem Grenzwert?
+      - Liegt der o3-Wert für die Station DEBW076 über einem Grenzwert?
+      - Liegt der luqx-Wert für die Station DEBW042 über einem Grenzwert?
+      - Liegt der pm25k-Wert für die Station Bernhausen über einem Grenzwert?
+      - Liegt der Feinstaub PM25-Wert für die Station DEBW046 über einem Grenzwert?
+      - Liegt der no2-Wert für die Station Biberach über einem Grenzwert?
+      - Liegt der pm10-Wert für die Station Biberach über einem Grenzwert?
+      - Liegt der Luftqualitätsindex-Wert für die Station Eggenstein über einem Grenzwert?
+      - Liegt der no2-Wert für die Station DEBW122 über einem Grenzwert?
+      - Liegt der no2-Wert für die Station DEBW122 über einem Grenzwert?
+      - Liegt der no2-Wert für die Station DEBW122 über einem Grenzwert?
+      - Liegt der no2-Wert für die Station DEBW038 über einem Grenzwert?
+      - Liegt der no2-Wert für die Station DEBW112 über einem Grenzwert?
+      - Liegt der o3-Wert für die Station DEBW112 über einem Grenzwert?
+      - Liegt der Feinstaub PM10-Wert für die Station DEBW112 über einem Grenzwert?
+      - Liegt der o3-Wert für die Station Gärtringen über einem Grenzwert?
+      - Liegt der o3-Wert für die Station Gärtringen über einem Grenzwert?
+      - Liegt der pm25k-Wert für die Station DEBW009 über einem Grenzwert?
+      - Liegt der Stickstoffdioxid-Wert für die Station Heidelberg über einem Grenzwert?
+      - Liegt der luqx-Wert für die Station Heilbronn über einem Grenzwert?
+      - Liegt der no2-Wert für die Station Heilbronn über einem Grenzwert?
+      - Liegt der Feinstaub PM25-Wert für die Station Heilbronn über einem Grenzwert?
+      - Liegt der Ozon-Wert für die Station DEBW152 über einem Grenzwert?
+      - Liegt der Feinstaub PM10-Wert für die Station DEBW152 über einem Grenzwert?
+      - Liegt der o3-Wert für die Station DEBW022 über einem Grenzwert?
+      - Liegt der pm25k-Wert für die Station DEBW022 über einem Grenzwert?
+      - Liegt der Feinstaub PM25-Wert für die Station DEBW120 über einem Grenzwert?
+      - Liegt der no2-Wert für die Station Leonberg Grabenstraße über einem Grenzwert?
+      - Liegt der Feinstaub PM10-Wert für die Station Leonberg Grabenstraße über einem Grenzwert?
+      - Liegt der pm10-Wert für die Station DEBW024 über einem Grenzwert?
+      - Liegt der no2-Wert für die Station DEBW098 über einem Grenzwert?
+      - Liegt der luqx-Wert für die Station Mannheim Friedrichsring über einem Grenzwert?
+      - Liegt der no2-Wert für die Station Mannheim-Nord über einem Grenzwert?
+      - Liegt der Feinstaub PM25-Wert für die Station Pforzheim über einem Grenzwert?
+      - Liegt der Feinstaub PM25-Wert für die Station Schramberg Oberndorfer Straße über einem Grenzwert?
+      - Liegt der Ozon-Wert für die Station Schwäbische Alb über einem Grenzwert?
+      - Liegt der pm25k-Wert für die Station Schwarzwald-Süd über einem Grenzwert?
+      - Liegt der pm25k-Wert für die Station DEBW118 über einem Grenzwert?
+      - Liegt der o3-Wert für die Station Stuttgart Am Neckartor über einem Grenzwert?
+      - Liegt der pm25k-Wert für die Station DEBW099 über einem Grenzwert?
+      - Liegt der Stickstoffdioxid-Wert für die Station Stuttgart Arnulf-Klett-Platz über einem Grenzwert?
+      - Liegt der pm10-Wert für die Station DEBW013 über einem Grenzwert?
+      - Liegt der pm10-Wert für die Station DEBW013 über einem Grenzwert?
+      - Liegt der pm10-Wert für die Station Stuttgart-Bad Cannstatt über einem Grenzwert?
+      - Liegt der Feinstaub PM25-Wert für die Station LUBW082 über einem Grenzwert?
+      - Liegt der pm25k-Wert für die Station Stuttgart Hohenheimer Straße über einem Grenzwert?
+      - Liegt der pm10-Wert für die Station DEBW059 über einem Grenzwert?
+      - Liegt der luqx-Wert für die Station Tauberbischofsheim über einem Grenzwert?
+      - Liegt der pm10-Wert für die Station Tauberbischofsheim über einem Grenzwert?
+      - Liegt der Ozon-Wert für die Station DEBW107 über einem Grenzwert?
+      - Liegt der luqx-Wert für die Station Ulm über einem Grenzwert?
+      - Liegt der Ozon-Wert für die Station Ulm über einem Grenzwert?
+      - Liegt der Feinstaub PM10-Wert für die Station DEBW039 über einem Grenzwert?
+      - Liegt der Feinstaub PM10-Wert für die Station Villingen-Schwenningen über einem Grenzwert?
+      - Liegt der Stickstoffdioxid-Wert für die Station Weil am Rhein über einem Grenzwert?
+      - Liegt der luqx-Wert für die Station Wiesloch über einem Grenzwert?
+      - Liegt der no2-Wert für die Station Wiesloch über einem Grenzwert?
+      - Liegt der pm10-Wert für die Station Wiesloch über einem Grenzwert?
