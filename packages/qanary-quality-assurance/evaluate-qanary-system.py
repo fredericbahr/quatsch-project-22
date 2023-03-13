@@ -82,13 +82,14 @@ def request_qanary_endpoint_for_question(logger, conf_qanary, question):
     """
     data = {
         "question": question,
-        "componentlist[]": conf_qanary.get("componentlist"),
+        "componentlist": conf_qanary.get("componentlist"),
         "additionalTriples": conf_qanary.get("additionalTriples")
     }
+    logger.info("additionalTriples" + conf_qanary.get("additionalTriples"))
     url = conf_qanary.get("system_url")
     logger.info("request parameter for Qanary system:\n" +
                 pprint.pformat(data))
-    my_response = requests.post(url, data=data)
+    my_response = requests.post(url, json=data)
     logger.info("request as curl:\n" + curlify.to_curl(my_response.request))
 
     print(f"HTTP response code: {my_response.status_code}")
