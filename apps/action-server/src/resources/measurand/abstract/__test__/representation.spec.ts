@@ -9,8 +9,8 @@ describe("Representation Service", () => {
     station: "DEBW0081",
     calculation: CALCULATION_TYPE.Average,
     time: {
-      start: new Date("2023-02-21T00:00:00.000Z"),
-      end: new Date("2023-02-21T23:59:59.999Z"),
+      start: new Date("2023-02-21"),
+      end: new Date("2023-02-22"),
     },
     measurandData: [
       {
