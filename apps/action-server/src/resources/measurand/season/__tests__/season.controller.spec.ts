@@ -100,7 +100,7 @@ describe("#Measurand Season controllers", () => {
   const lubwData: ILUBWData = {
     calculation: CALCULATION_TYPE.Average,
     measurand: "luqx",
-    station: "DEBW0081",
+    station: "DEBW081",
     time: {
       start: expect.any(Date),
       end: expect.any(Date),

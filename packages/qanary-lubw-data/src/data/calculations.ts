@@ -15,3 +15,19 @@ export const calculations: ICalculation[] = [
     label: "Durchschnitt",
   },
 ];
+
+/** the calculation types for bot output */
+export const calculationLabels: ICalculation[] = [
+  {
+    id: "minimum",
+    label: "minimale",
+  },
+  {
+    id: "maximum",
+    label: "maximale",
+  },
+  {
+    id: "average",
+    label: "durchschnittliche",
+  },
+];

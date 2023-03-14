@@ -72,7 +72,7 @@ describe("#Refine Station controllers", () => {
   const annotations: Array<IQanaryAnnotation> = [
     {
       annotationType: "qa:AnnotationOfStation",
-      hasBody: "DEBW0081",
+      hasBody: "DEBW081",
       hasTarget: "b1",
       annotatedAt: "2021-03-18T13:00:00.000Z",
       annotatedBy: "<urn:qanary:station-pattern-matching>",
@@ -82,14 +82,14 @@ describe("#Refine Station controllers", () => {
   const lubwData: Partial<ILUBWData> = {
     calculation: undefined,
     measurand: undefined,
-    station: "DEBW0081",
+    station: "DEBW081",
     time: undefined,
     representation: undefined,
   };
   const state: Partial<ILUBWData> = {
     calculation: CALCULATION_TYPE.Average,
     measurand: "o3",
-    station: "DEBW0081",
+    station: "DEBW081",
     time: {
       start: new Date("2023-02-21T00:00:00.000Z"),
       end: new Date("2023-02-21T23:59:59.999Z"),
