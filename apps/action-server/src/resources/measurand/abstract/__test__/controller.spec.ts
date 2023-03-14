@@ -96,7 +96,7 @@ describe("#Measurand controllers", () => {
   const lubwData: ILUBWData = {
     calculation: CALCULATION_TYPE.Average,
     measurand: "luqx",
-    station: "DEBW0081",
+    station: "DEBW081",
     time: {
       start: new Date("2023-02-21T00:00:00.000Z"),
       end: new Date("2023-02-21T23:59:59.999Z"),

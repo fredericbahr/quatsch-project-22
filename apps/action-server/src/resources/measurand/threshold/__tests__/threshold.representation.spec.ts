@@ -5,7 +5,7 @@ import { RepresentationServiceThreshold } from "../treshold.representation";
 describe("Threshold Representation Service", () => {
   let measurandData: ILUBWMeasurandData = {
     measurand: "luqx",
-    station: "DEBW0081",
+    station: "DEBW081",
     calculation: CALCULATION_TYPE.Average,
     time: {
       start: new Date("2023-02-21T00:00:00.000Z"),

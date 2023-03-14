@@ -6,7 +6,7 @@ import { RepresentationServiceSeason } from "../season.representation";
 describe("Season Representation Service", () => {
   const measurandData: ILUBWMeasurandData = {
     measurand: "luqx",
-    station: "DEBW0081",
+    station: "DEBW081",
     calculation: CALCULATION_TYPE.Average,
     time: {
       start: sub(new Date(), { months: 3 }),
@@ -74,7 +74,7 @@ describe("Season Representation Service", () => {
 
       expect(representation).toEqual({
         value: expect.stringContaining(
-          "Der durchschnittliche Wert für die Station DEBW0081 der letzten drei Monate beträgt: 1.5",
+          "Der durchschnittliche Wert für die Station Karlsruhe-Nordwest der letzten drei Monate beträgt: 1.5",
         ),
         type: REPRESENTATION_TYPE.Text,
       });
@@ -104,7 +104,7 @@ describe("Season Representation Service", () => {
             options: {
               title: {
                 display: true,
-                text: "Messart luqx für die Station DEBW0081",
+                text: "Messart Luftqualitätsindex für die Station Karlsruhe-Nordwest",
               },
             },
           })}`,

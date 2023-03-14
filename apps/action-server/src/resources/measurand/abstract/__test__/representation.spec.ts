@@ -6,7 +6,7 @@ import { AbstractRepresentation } from "../abstract.representation";
 describe("Representation Service", () => {
   const measurandData: ILUBWMeasurandData = {
     measurand: "luqx",
-    station: "DEBW0081",
+    station: "DEBW081",
     calculation: CALCULATION_TYPE.Average,
     time: {
       start: new Date("2023-02-21"),
@@ -27,7 +27,7 @@ describe("Representation Service", () => {
 
       expect(representation).toEqual({
         value:
-          "Der average-Wert der Messart luqx für die Station DEBW0081 zwischen dem 21.02.2023 und dem 22.02.2023 beträgt: 1",
+          "Der durchschnittliche Wert der Messart Luftqualitätsindex für die Station Karlsruhe-Nordwest zwischen dem 21.02.2023 und dem 22.02.2023 beträgt: 1.00 µg/m³",
         type: REPRESENTATION_TYPE.Text,
       });
     });
@@ -55,7 +55,7 @@ describe("Representation Service", () => {
             options: {
               title: {
                 display: true,
-                text: "Messart luqx für die Station DEBW0081",
+                text: "Messart Luftqualitätsindex für die Station Karlsruhe-Nordwest",
               },
             },
           })}`,
@@ -72,7 +72,7 @@ describe("Representation Service", () => {
       expect(representation).toEqual({
         value: new URL(
           `https://api.quickchart.io/v1/table?data=${JSON.stringify({
-            title: `Messart ${measurandData.measurand} für die Station ${measurandData.station}`,
+            title: `Messart Luftqualitätsindex für die Station Karlsruhe-Nordwest`,
             columns: [
               {
                 title: "Datum",
@@ -104,7 +104,7 @@ describe("Representation Service", () => {
 
       expect(representation).toEqual({
         value:
-          "Der average-Wert der Messart luqx für die Station DEBW0081 zwischen dem 21.02.2023 und dem 22.02.2023 beträgt: 1",
+          "Der durchschnittliche Wert der Messart Luftqualitätsindex für die Station Karlsruhe-Nordwest zwischen dem 21.02.2023 und dem 22.02.2023 beträgt: 1.00 µg/m³",
         type: REPRESENTATION_TYPE.Text,
       });
     });
@@ -133,7 +133,7 @@ describe("Representation Service", () => {
             options: {
               title: {
                 display: true,
-                text: "Messart luqx für die Station DEBW0081",
+                text: "Messart Luftqualitätsindex für die Station Karlsruhe-Nordwest",
               },
             },
           })}`,
@@ -151,7 +151,7 @@ describe("Representation Service", () => {
       expect(representation).toEqual({
         value: new URL(
           `https://api.quickchart.io/v1/table?data=${JSON.stringify({
-            title: `Messart ${measurandData.measurand} für die Station ${measurandData.station}`,
+            title: `Messart Luftqualitätsindex für die Station Karlsruhe-Nordwest`,
             columns: [
               {
                 title: "Datum",

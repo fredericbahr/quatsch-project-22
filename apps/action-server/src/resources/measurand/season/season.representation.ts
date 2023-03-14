@@ -19,7 +19,7 @@ export class RepresentationServiceSeason extends AbstractRepresentation {
       value: [
         `Der Wert`,
         `der Messart ${this.findLableById(measurandData.measurand, measurands)}`,
-        `für die Station ${measurandData.station}`,
+        `für die Station ${this.findLableById(measurandData.station, stations)}`,
         `am ${format(new Date(measurandData.time.end), "P", { locale: de })} beträgt:`,
         `${this.getLastValue(measurandData)} µg/m³`,
         "\n",
