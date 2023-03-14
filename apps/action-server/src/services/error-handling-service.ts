@@ -42,6 +42,21 @@ export class ErrorHandlingService {
   }
 
   /**
+   * Handles an empty response error gracefully by returning a response to the user.
+   * @param res the response object
+   */
+  public static handleEmptyResponseError(res: RasaResponse): RasaResponse {
+    return res.json({
+      responses: [
+        {
+          text: "Für die angegebenen Daten wurden keine Ergebnisse gefunden.",
+          response: "",
+        },
+      ],
+    });
+  }
+
+  /**
    * Handles an error gracefully by returning a response to the user.
    * @param res the response object
    */
@@ -59,7 +74,6 @@ export class ErrorHandlingService {
   /**
    * Handles the VerificationError for an invalid station property.
    * @param res the response object
-   * @param error the verification error
    * @returns a response to rasa
    */
   private static handleStationError(res: RasaResponse): RasaResponse {
@@ -80,7 +94,6 @@ export class ErrorHandlingService {
   /**
    * Handles the VerificationError for an invalid measurand property.
    * @param res the response object
-   * @param error the verification error
    * @returns a response to rasa
    */
   private static handleMeasurandError(res: RasaResponse): RasaResponse {

@@ -10,14 +10,9 @@ import { RepresentationServiceSeason } from "./season.representation";
  * @returns the answer to the question
  */
 export const seasonIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
-  try {
-    const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
+  const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
-    const representation: IRepresentationData = RepresentationServiceSeason.getRepresentation(measurandData);
+  const representation: IRepresentationData = RepresentationServiceSeason.getRepresentation(measurandData);
 
-    return ResponseService.getResponseByRepresentation(representation);
-  } catch (error) {
-    console.error(error);
-    throw new Error("Something went wrong while determining the answer to the question.");
-  }
+  return ResponseService.getResponseByRepresentation(representation);
 };
