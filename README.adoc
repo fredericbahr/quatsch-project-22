@@ -1,6 +1,19 @@
 image:https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/badges/main/pipeline.svg[link="https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/-/commits/main",title="pipeline status"]
 image:https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/badges/main/coverage.svg[link="https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/-/commits/main",title="coverage status"]
 
+[.text-center]
+image:docs/KarlA.png[KarlA]
+
+[.float-group]
+--
+[.left]
+image:docs/logo-htwk.jpg[HTWK,100]
+
+[.right]
+image:docs/logo-lubw.gif[LUBW,110]
+--
+
+
 = QUAtsCH-project-22
 :toc:
 
