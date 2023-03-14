@@ -11,6 +11,7 @@ import {
   SuccessRasaResponse,
 } from "shared";
 
+import { EmptyResponseError } from "../../../errors/EmptyResponseError";
 import { NoIntentHandlerError } from "../../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../../errors/VerificationError";
 import { ErrorHandlingService } from "../../../services/error-handling-service";
@@ -76,6 +77,10 @@ export const abstractRequestHandler = async (
 
     if (error instanceof NoIntentHandlerError) {
       return ErrorHandlingService.handleNoIntentHandlerError(res);
+    }
+
+    if (error instanceof EmptyResponseError) {
+      return ErrorHandlingService.handleEmptyResponseError(res);
     }
 
     return ErrorHandlingService.handleDefaultError(res);

@@ -10,13 +10,9 @@ import { AbstractRepresentation } from "./abstract.representation";
  * @returns the answer to the question
  */
 export const abstractIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
-  try {
-    const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
+  const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
-    const representation: IRepresentationData = AbstractRepresentation.getRepresentation(measurandData);
+  const representation: IRepresentationData = AbstractRepresentation.getRepresentation(measurandData);
 
-    return ResponseService.getResponseByRepresentation(representation);
-  } catch {
-    throw new Error("Something went wrong while determining the answer to the question.");
-  }
+  return ResponseService.getResponseByRepresentation(representation);
 };

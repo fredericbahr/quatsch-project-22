@@ -86,6 +86,21 @@ describe("Error Handling Service", () => {
     });
   });
 
+  describe("handleEmptyResponseError", () => {
+    it("should return a response with the correct text", () => {
+      ErrorHandlingService.handleEmptyResponseError(res);
+
+      expect(res.json).toHaveBeenCalledWith({
+        responses: [
+          {
+            response: "",
+            text: expect.stringContaining("Für die angegebenen Daten wurden keine Ergebnisse gefunden."),
+          },
+        ],
+      });
+    });
+  });
+
   describe("handleDefaultError", () => {
     it("should return a response with the correct text", () => {
       ErrorHandlingService.handleDefaultError(res);
