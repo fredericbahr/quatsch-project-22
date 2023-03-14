@@ -1,5 +1,6 @@
 import { sub } from "date-fns";
 import {
+  AnnotationTypes,
   CALCULATION_TYPE,
   COMPONENT,
   ILUBWData,
@@ -77,7 +78,7 @@ describe("#Measurand Season controllers", () => {
   };
   const annotations: Array<IQanaryAnnotation> = [
     {
-      annotationType: "qa:AnnotationOfStation",
+      annotationType: AnnotationTypes.Station,
       hasBody: "Aalen",
       hasTarget: "b1",
       annotatedAt: "2021-03-18T13:00:00.000Z",
@@ -85,7 +86,7 @@ describe("#Measurand Season controllers", () => {
       score: 1,
     },
     {
-      annotationType: "qa:AnnotationOfTime",
+      annotationType: AnnotationTypes.Time,
       hasBody: JSON.stringify({
         start: new Date("2022-12-12T15:22:08.508Z"),
         end: new Date("2022-12-12T17:22:08.508Z"),
