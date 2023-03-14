@@ -1,0 +1,48 @@
+version: "3.1"
+
+stories:
+  - story: Context question for season measurand
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+        entities:
+          - measurand
+          - station
+      - action: action_measurand_complete
+      - intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Context question for season measurand with invalid information
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_complete
+        entities:
+          - measurand
+          - station
+      - action: action_measurand_complete
+      - intent: refine_station
+      - action: action_refine_station
+      - intent: refine_measurand
+      - action: action_refine_measurand
+      - intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Start question for season measurand
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Start question for extrem/treshold with invalid information
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: measurand_season
+      - action: action_measurand_season
+      - intent: refine_station
+      - action: action_refine_station
+      - intent: refine_measurand
+      - action: action_refine_measurand

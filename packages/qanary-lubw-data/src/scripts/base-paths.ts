@@ -11,4 +11,5 @@ export const basePaths = {
   measurandMaxYML: `${APP_RASA}/data/nlu/measurand-max.yml`,
   measurandMinYML: `${APP_RASA}/data/nlu/measurand-min.yml`,
   measurandThresholdYML: `${APP_RASA}/data/nlu/measurand-threshold.yml`,
+  measurandSeasonYML: `${APP_RASA}/data/nlu/measurand-season.yml`,
 };

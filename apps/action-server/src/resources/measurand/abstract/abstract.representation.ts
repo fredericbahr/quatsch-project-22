@@ -37,6 +37,17 @@ export class AbstractRepresentation {
   }
 
   /**
+   * Gets the last value from the given measurand data.
+   * @param measurandData the lubw measurand data to get the last value from
+   * @returns the last value from the given measurand data
+   */
+  public static getLastValue(measurandData: ILUBWMeasurandData): number | null {
+    const valueLength = measurandData.measurandData[0].values.length;
+
+    return measurandData.measurandData[0].values[valueLength - 1];
+  }
+
+  /**
    * Gets a textual representation of the given measurand data.
    * @param measurandData the lubw measurand data to transform into a textual representation
    * @returns the textual representation of the given measurand data

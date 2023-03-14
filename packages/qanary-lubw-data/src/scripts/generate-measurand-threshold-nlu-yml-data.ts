@@ -1,7 +1,7 @@
 import { basePaths } from "./base-paths";
-import generateNluYmlFileContent from "./generateFileContent/generateNluYmlFileContent";
-import { generateMeasurandThresholdNluTrainingData } from "./generateTrainingData/generateMeasurandThresholdNluTrainingData";
-import { writeYmlFileSlim } from "./utils/writeYmlFile";
+import generateNluYmlFileContent from "./generate-file-content/generate-nlu-yml-file-content";
+import { generateMeasurandThresholdNluTrainingData } from "./generate-training-data/generate-measurand-threshold-nlu-training-data.ts";
+import { writeYmlFileSlim } from "./utils/write-yml-file";
 
 const baseData = [
   "Ist der Messwert extrem?",
