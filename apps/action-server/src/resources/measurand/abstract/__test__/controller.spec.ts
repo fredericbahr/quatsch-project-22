@@ -11,6 +11,7 @@ import {
 } from "shared";
 import { CALCULATION_TYPE } from "shared";
 
+import { EmptyResponseError } from "../../../../errors/EmptyResponseError";
 import { NoIntentHandlerError } from "../../../../errors/NoIntentHandlerError";
 import { VerificationError } from "../../../../errors/VerificationError";
 import { ErrorHandlingService } from "../../../../services/error-handling-service";
@@ -63,6 +64,7 @@ jest.mock("../../../../services/error-handling-service", () => ({
     handleNoIntentHandlerError: jest.fn(),
     handleVerificationError: jest.fn(),
     handleDefaultError: jest.fn(),
+    handleEmptyResponseError: jest.fn(),
   },
 }));
 
@@ -119,6 +121,7 @@ describe("#Measurand controllers", () => {
   const mockFindIntentHandler: jest.Mock = jest.fn().mockReturnValue(mockMeasurandCompleteIntentHandler);
   const mockHandleVerificationError: jest.Mock = jest.fn();
   const mockHandleNoIntentHandlerError: jest.Mock = jest.fn();
+  const mockHandleEmptyResponseError: jest.Mock = jest.fn();
   const mockHandleDefaultError: jest.Mock = jest.fn();
 
   beforeEach(() => {
@@ -131,6 +134,7 @@ describe("#Measurand controllers", () => {
     (IntentHandlerFindingService.findIntentHandlerByIntent as jest.Mock) = mockFindIntentHandler;
     (ErrorHandlingService.handleVerificationError as jest.Mock) = mockHandleVerificationError;
     (ErrorHandlingService.handleNoIntentHandlerError as jest.Mock) = mockHandleNoIntentHandlerError;
+    (ErrorHandlingService.handleEmptyResponseError as jest.Mock) = mockHandleEmptyResponseError;
     (ErrorHandlingService.handleDefaultError as jest.Mock) = mockHandleDefaultError;
   });
 
@@ -237,6 +241,21 @@ describe("#Measurand controllers", () => {
       await abstractRequestHandler(req, res, {});
 
       expect(mockHandleNoIntentHandlerError).toHaveBeenCalledWith(res);
+    });
+
+    it("should handle empty response errors accordingly", async () => {
+      mockVerifyLUBWData.mockReset();
+
+      const emptyResponseError = new EmptyResponseError("Error");
+      mockFindIntentHandler.mockImplementation(() => {
+        return () => {
+          throw emptyResponseError;
+        };
+      });
+
+      await abstractRequestHandler(req, res, {});
+
+      expect(mockHandleEmptyResponseError).toHaveBeenCalledWith(res);
     });
 
     it("should handle unexpected errors accordingly", async () => {
