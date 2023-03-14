@@ -3,7 +3,7 @@ import { NluTrainingData } from "../types";
 import { generateStationMeasurandData } from "./generateTrainingData";
 
 /**
- * Generates a training set for a rasa nlu for all lubw domains.
+ * Generates a small training set for a rasa nlu with only basic question.
  * @returns generated nlu training data array
  */
 export const generateSmallNluTrainingData = (): Array<NluTrainingData> => {
