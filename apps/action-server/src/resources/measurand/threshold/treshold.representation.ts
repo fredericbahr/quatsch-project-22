@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
-import { IMeasurand, measurands } from "qanary-lubw-data";
+import { calculationLabels, IMeasurand, measurands, stations } from "qanary-lubw-data";
 import { ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
 import { AbstractRepresentation } from "../abstract/abstract.representation";
@@ -20,14 +20,14 @@ export class RepresentationServiceThreshold extends AbstractRepresentation {
     if (!threshold) {
       return {
         value: [
-          `Der ${measurandData.calculation}-Wert`,
-          `der Messart ${measurandData.measurand}`,
-          `für die Station ${measurandData.station}`,
+          `Der ${this.findLableById(measurandData.calculation, calculationLabels)} Wert`,
+          `der Messart ${this.findLableById(measurandData.measurand, measurands)}`,
+          `für die Station ${this.findLableById(measurandData.station, stations)}`,
           `zwischen dem ${format(new Date(measurandData.time.start), "P", { locale: de })}`,
           `und dem ${format(new Date(measurandData.time.end), "P", { locale: de })} beträgt:`,
-          `${this.calculate(measurandData)}`,
+          `${this.calculate(measurandData)} µg/m³`,
           "\n",
-          `Es liegen keine Grenzwerte für die Messart ${measurandData.measurand} vor.`,
+          `Es liegen keine Grenzwerte für die Messart ${this.findLableById(measurandData.measurand, measurands)} vor.`,
         ].join(" "),
         type: REPRESENTATION_TYPE.Text,
       };
@@ -35,12 +35,12 @@ export class RepresentationServiceThreshold extends AbstractRepresentation {
 
     return {
       value: [
-        `Der ${measurandData.calculation}-Wert`,
-        `der Messart ${measurandData.measurand}`,
-        `für die Station ${measurandData.station}`,
+        `Der ${this.findLableById(measurandData.calculation, calculationLabels)} Wert`,
+        `der Messart ${this.findLableById(measurandData.measurand, measurands)}`,
+        `für die Station ${this.findLableById(measurandData.station, stations)}`,
         `zwischen dem ${format(new Date(measurandData.time.start), "P", { locale: de })}`,
         `und dem ${format(new Date(measurandData.time.end), "P", { locale: de })} beträgt:`,
-        `${this.calculate(measurandData)}`,
+        `${this.calculate(measurandData)} µg/m³`,
         "\n",
         this.getThresholdMessage(measurandData, threshold),
       ].join(" "),
@@ -67,7 +67,10 @@ export class RepresentationServiceThreshold extends AbstractRepresentation {
           options: {
             title: {
               display: true,
-              text: `Messart ${measurandData.measurand} für die Station ${measurandData.station} mit Grenzwerten`,
+              text: `Messart ${this.findLableById(
+                measurandData.measurand,
+                measurands,
+              )} für die Station ${this.findLableById(measurandData.station, stations)} mit Grenzwerten`,
             },
           },
         })}`,
@@ -85,7 +88,10 @@ export class RepresentationServiceThreshold extends AbstractRepresentation {
     return {
       value: new URL(
         `https://api.quickchart.io/v1/table?data=${JSON.stringify({
-          title: `Messart ${measurandData.measurand} für die Station ${measurandData.station} mit Grenzwerten`,
+          title: `Messart ${this.findLableById(
+            measurandData.measurand,
+            measurands,
+          )} für die Station ${this.findLableById(measurandData.station, stations)} mit Grenzwerten`,
           columns: this.getTableColumns(measurandData),
           dataSource: ["-", ...this.getTableSources(measurandData)],
         })}`,
@@ -109,7 +115,7 @@ export class RepresentationServiceThreshold extends AbstractRepresentation {
     }
 
     return measurandType.threshold.map((threshold: number) => {
-      return measurandData.measurandData[0].values[0] > threshold;
+      return parseFloat(this.getLastValue(measurandData)) > threshold;
     });
   }
 
@@ -133,23 +139,24 @@ export class RepresentationServiceThreshold extends AbstractRepresentation {
   /**
    * Gets the threshold message for the given measurand data.
    * @param measurandData the measurand data to get the threshold message for
-   * @param threshold the threshold for the measurand data
+   * @param thresholds the threshold for the measurand data
    * @returns the threshold message for the given measurand data
    */
-  private static getThresholdMessage(measurandDate: ILUBWMeasurandData, thresholds: Array<number>): string {
-    const isAboveThreshold: Array<boolean> = this.isAboveThreshold(measurandDate);
+  private static getThresholdMessage(measurandData: ILUBWMeasurandData, thresholds: Array<number>): string {
+    const isAboveThreshold: Array<boolean> = this.isAboveThreshold(measurandData);
 
     if (thresholds.length === 1) {
-      return `Der Grenzwert für die Messart ${measurandDate.measurand} beträgt ${
+      return `Der Grenzwert für die Messart ${this.findLableById(measurandData.measurand, measurands)} beträgt ${
         thresholds[0]
       } µg/m³. Der aktuelle Wert liegt somit ${isAboveThreshold[0] ? "über" : "unter"} dem Grenzwert.`;
     }
 
     return thresholds
       .map((threshold: number, index: number) => {
-        return `Der Grenzwert ${index + 1} für die Messart ${
-          measurandDate.measurand
-        } beträgt ${threshold} µg/m³. Der aktuelle Wert liegt somit ${
+        return `Der Grenzwert ${index + 1} für die Messart ${this.findLableById(
+          measurandData.measurand,
+          measurands,
+        )} beträgt ${threshold} µg/m³. Der aktuelle Wert liegt somit ${
           isAboveThreshold[index] ? "über" : "unter"
         } dem Grenzwert.`;
       })
