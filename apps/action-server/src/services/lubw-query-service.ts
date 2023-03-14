@@ -2,6 +2,8 @@ import { LupoCloudApi } from "api";
 import { differenceInDays } from "date-fns";
 import { ILUBWData, ILUBWMeasurandData } from "shared";
 
+import { EmptyResponseError } from "../errors/EmptyResponseError";
+
 /**
  * Service for querying the LUBW API.
  */
@@ -51,8 +53,11 @@ export class LUBWQueryService {
       lubwData.station ? `station:${lubwData.station}` : undefined,
     );
 
-    console.log("LUPO Cloud has been requested:");
-    console.log(lubwResponse.request?.res?.responseUrl);
+    console.log("LUPO Cloud has been requested:", lubwResponse.request?.res?.responseUrl);
+
+    if (lubwResponse?.data?.length === 0) {
+      throw new EmptyResponseError("No data found");
+    }
 
     return lubwResponse.data;
   }

@@ -10,14 +10,9 @@ import { RepresentationServiceThreshold } from "./treshold.representation";
  * @returns the answer to the question
  */
 export const thresholdIntentHandler = async (lubwData: ILUBWData): Promise<SuccessRasaResponse> => {
-  try {
-    const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
+  const measurandData: ILUBWMeasurandData = await LUBWQueryService.queryLUBWAPI(lubwData);
 
-    const representation: IRepresentationData = RepresentationServiceThreshold.getRepresentation(measurandData);
+  const representation: IRepresentationData = RepresentationServiceThreshold.getRepresentation(measurandData);
 
-    return ResponseService.getResponseByRepresentation(representation);
-  } catch (error) {
-    console.error(error);
-    throw new Error("Something went wrong while determining the answer to the question.");
-  }
+  return ResponseService.getResponseByRepresentation(representation);
 };
