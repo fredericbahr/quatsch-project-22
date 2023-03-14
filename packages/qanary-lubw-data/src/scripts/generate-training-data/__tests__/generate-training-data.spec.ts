@@ -1,17 +1,6 @@
-import { NerTrainingData, NluTrainingData, TrainingQuestion } from "../../types";
-import generateLubwData from "../../utils/generateLubwData";
-import {
-  generateStationMeasurandCalculationData,
-  generateStationMeasurandData,
-  generateStationMeasurandRepresentationCalculationData,
-  generateStationMeasurandRepresentationData,
-<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generate-training-data.spec.ts
-} from "../generate-training-data/generate-training-data";
-import { NerTrainingData, NluTrainingData, TrainingQuestion } from "../types";
-import generateLubwData from "../utils/generate-lubw-data";
-========
-} from "../generateTrainingData";
->>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/generate-training-data/__tests__/generateTrainingData.spec.ts
+import { NerTrainingData, NluTrainingData,TrainingQuestion } from "../../types";
+import generateLubwData from "../../utils/generate-lubw-data";
+import { generateStationMeasurandCalculationData, generateStationMeasurandData, generateStationMeasurandRepresentationCalculationData,generateStationMeasurandRepresentationData } from "../generate-training-data";
 
 const { stations, measurands, calculations, representations } = generateLubwData();
 const FIRST_ENTRY = 0;

@@ -161,35 +161,6 @@ export const questionsStationMeasurandCalculation: Array<TrainingQuestion> = [
   },
   {
     text: ({ measurand, station, calculation }) =>
-      `Was ist der aktuelle ${measurand} Wert in ${station} im Vergleich zum ${calculation}?`,
-    measurandAllowList: [
-      "Luftqualitätsindex",
-      "Stickstoffdioxid",
-      "Ozon",
-      "Feinstaub",
-      "luqx",
-      "no2",
-      "o3",
-      "pm10",
-      "pm25k",
-    ],
-    calculationAllowList: ["Grenzwert"],
-  },
-  {
-    text: ({ measurand, station, calculation }) =>
-      `Was ist der aktuelle ${measurand} in ${station} im Vergleich zum ${calculation}?`,
-    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub"],
-    calculationAllowList: ["Grenzwert"],
-    measurandSuffix: "wert",
-  },
-  {
-    text: ({ measurand, station, calculation }) =>
-      `Was ist der aktuelle ${measurand} in ${station} im Vergleich zum ${calculation}?`,
-    measurandAllowList: ["Luftqualitätsindex", "luqx", "no2", "o3", "pm10", "pm25k"],
-    calculationAllowList: ["Grenzwert"],
-  },
-  {
-    text: ({ measurand, station, calculation }) =>
       `Ist der aktuelle Wert des ${measurand} in ${station} ${calculation}?`,
     measurandAllowList: ["Luftqualitätsindex", "luqx", "no2", "o3", "pm10", "pm25k"],
     calculationAllowList: ["kritisch"],

@@ -1,6 +1,6 @@
 import fs from "fs";
 
-import { IWriteCsvFile, writeCsvFile } from "../writeCsvFile";
+import { IWriteCsvFile, writeCsvFile } from "../write-csv-file";
 
 jest.mock("fs");
 

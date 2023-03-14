@@ -1,8 +1,8 @@
 import fs from "fs";
 
-import { DataKey } from "../generateFileContent/generateNerJsonFileContent";
+import { DataKey } from "../generate-file-content/generate-ner-json-file-content";
 import { NerTrainingData } from "../types";
-import randomSplitArray from "./randomSplitArray";
+import randomSplitArray from "./random-split-array";
 
 /**
  * Base option interface for `writeJsonFile` and `writeJsonFileTestAndTrain` functions.

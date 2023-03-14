@@ -1,6 +1,6 @@
 import fs from "fs";
 
-import { IWriteYmlFile, writeYmlFile } from "../writeYmlFile";
+import { IWriteYmlFile, writeYmlFile } from "../write-yml-file";
 
 jest.mock("fs");
 

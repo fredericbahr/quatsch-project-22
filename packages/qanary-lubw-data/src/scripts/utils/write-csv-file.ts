@@ -1,7 +1,7 @@
 import fs from "fs";
 
 import { NerTrainingData } from "../types";
-import randomSplitArray from "./randomSplitArray";
+import randomSplitArray from "./random-split-array";
 
 /**
  * Base option interface for `writeCsvFile` and `writeCsvFileTestAndTrain` functions.

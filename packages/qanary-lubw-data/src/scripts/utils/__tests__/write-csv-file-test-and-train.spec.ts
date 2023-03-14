@@ -1,7 +1,7 @@
 import fs from "fs";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { IWriteCsvFileTestAndTrain, writeCsvFile, writeCsvFileTestAndTrain } from "../writeCsvFile";
+import { IWriteCsvFileTestAndTrain, writeCsvFile, writeCsvFileTestAndTrain } from "../write-csv-file";
 
 jest.mock("fs");
 

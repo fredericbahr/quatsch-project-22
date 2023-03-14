@@ -1,7 +1,7 @@
 import fs from "fs";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { IWriteYmlFileSlim, writeYmlFile, writeYmlFileSlim } from "../writeYmlFile";
+import { IWriteYmlFileSlim, writeYmlFile, writeYmlFileSlim } from "../write-yml-file";
 
 jest.mock("fs");
 

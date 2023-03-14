@@ -1,6 +1,6 @@
 import fs from "fs";
 
-import { IWriteJsonFile, writeJsonFile } from "../writeJsonFile";
+import { IWriteJsonFile, writeJsonFile } from "../write-json-file";
 
 jest.mock("fs");
 

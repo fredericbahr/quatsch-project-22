@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/random-split-array.spec.ts
-import randomSplitArray from "../utils/random-split-array";
-========
-import randomSplitArray from "../randomSplitArray";
->>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/utils/__tests__/randomSplitArray.spec.ts
+import randomSplitArray from "../random-split-array";
 
 describe("#Component randomSplitArray", () => {
   const genMockArray = () => {

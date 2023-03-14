@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generate-lubw-data.spec.ts
-import generateLubwData from "../utils/generate-lubw-data";
-========
-import generateLubwData from "../generateLubwData";
->>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/utils/__tests__/generateLubwData.spec.ts
+import generateLubwData from "../generate-lubw-data";
 
 describe("#Component generateLubwData", () => {
   const genMockStationData = () => {

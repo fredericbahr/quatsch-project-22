@@ -1,10 +1,5 @@
-<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generate-nlu-yml-file-content.spec.ts
-import generateNluYmlFileContent from "../generate-file-content/generate-nlu-yml-file-content";
-import { NluTrainingData } from "../types";
-========
 import { NluTrainingData } from "../../types";
-import generateNluYmlFileContent from "../generateNluYmlFileContent";
->>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/generateFileContent/__tests__/generateNluYmlFileContent.spec.ts
+import generateNluYmlFileContent from "../generate-nlu-yml-file-content";
 
 describe("#Component generateNluYmlFileContent", () => {
   const genNluTrainingData = (): Array<NluTrainingData> => {

@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/pre-and-suffix-string.spec.ts
-import preAndSuffixString from "../utils/pre-and-suffix-string";
-========
-import preAndSuffixString from "../preAndSuffixString";
->>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/utils/__tests__/preAndSuffixString.spec.ts
+import preAndSuffixString from "../pre-and-suffix-string";
 
 describe("#Component preAndSuffixString", () => {
   it("should return the base string with added prefix and suffix", async () => {
