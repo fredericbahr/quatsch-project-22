@@ -1,6 +1,6 @@
 import { NerTrainingData } from "../types";
 
-type DataKey = "trainingdata" | "testingdata";
+export type DataKey = "trainingdata" | "testingdata";
 
 /**
  * Generates qanary ner component training data as json file content string

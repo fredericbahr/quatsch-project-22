@@ -1,5 +1,10 @@
+<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generatener-csv-file-content.spec.ts
 import generateNerCsvFileContent from "../generate-file-content/generate-ner-csv-file-content";
 import { NerTrainingData } from "../types";
+========
+import { NerTrainingData } from "../../types";
+import generateNerCsvFileContent from "../generateNerCsvFileContent";
+>>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/generateFileContent/__tests__/generateNerCsvFileContent.spec.ts
 
 describe("#Component generateNerCsvFileContent", () => {
   const genNerTrainingData = (): Array<NerTrainingData> => {

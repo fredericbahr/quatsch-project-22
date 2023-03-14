@@ -1,5 +1,10 @@
+<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generate-ner-domain-base-data.spec.ts
 import generateNerDomainBaseData from "../generate-training-data/generate-ner-domain-base-data";
 import generateLubwData from "../utils/generate-lubw-data";
+========
+import generateLubwData from "../../utils/generateLubwData";
+import generateNerDomainBaseData from "../generateNerDomainBaseData";
+>>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/generate-training-data/__tests__/generateNerDomainBaseData.spec.ts
 
 const { calculations, measurands, representations, stations } = generateLubwData();
 

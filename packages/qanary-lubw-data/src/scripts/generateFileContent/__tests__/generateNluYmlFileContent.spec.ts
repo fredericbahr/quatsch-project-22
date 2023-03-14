@@ -1,5 +1,10 @@
+<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generate-nlu-yml-file-content.spec.ts
 import generateNluYmlFileContent from "../generate-file-content/generate-nlu-yml-file-content";
 import { NluTrainingData } from "../types";
+========
+import { NluTrainingData } from "../../types";
+import generateNluYmlFileContent from "../generateNluYmlFileContent";
+>>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/generateFileContent/__tests__/generateNluYmlFileContent.spec.ts
 
 describe("#Component generateNluYmlFileContent", () => {
   const genNluTrainingData = (): Array<NluTrainingData> => {
@@ -13,11 +18,12 @@ describe("#Component generateNluYmlFileContent", () => {
 
   it("should return csv file content string", async () => {
     const nerCsvFileContent = generateNluYmlFileContent(genNluTrainingData(), "test");
-    expect(nerCsvFileContent).toStrictEqual(`version: "3.1"
+    expect(nerCsvFileContent).toStrictEqual(`# Automatically generated file. Do not change the content
+
+version: "3.1"
 
 nlu:
-  ## Creation of context
-  - intent: measurand_complete
+  - intent: test
     examples: |
       - Test data 1?
       - Test data 2 Ozon DEBW029?

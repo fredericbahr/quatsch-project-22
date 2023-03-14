@@ -1,5 +1,10 @@
+<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generate-ner-json-file-content.spec.ts
 import generateNerJsonFileContent from "../generate-file-content/generate-ner-json-file-content";
 import { NerTrainingData } from "../types";
+========
+import { NerTrainingData } from "../../types";
+import generateNerJsonFileContent from "../generateNerJsonFileContent";
+>>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/generateFileContent/__tests__/generateNerJsonFileContent.spec.ts
 
 describe("#Component generateNerJsonFileContent", () => {
   const genNerTrainingData = (): Array<NerTrainingData> => {

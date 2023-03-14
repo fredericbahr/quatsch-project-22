@@ -1,5 +1,10 @@
+<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generate-training-data-entry.spec.ts
 import generateTrainingDataEntry from "../generate-training-data/generate-training-data-entry";
 import { DomainTemplate, TrainingQuestion } from "../types";
+========
+import { DomainTemplate, TrainingQuestion } from "../../types";
+import generateTrainingDataEntry from "../generateTrainingDataEntry";
+>>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/generate-training-data/__tests__/generateTrainingDataEntry.spec.ts
 
 describe("#Component generateTrainingDataEntry", () => {
   const genMockQuestion = (): TrainingQuestion => {

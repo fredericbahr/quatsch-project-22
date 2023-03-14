@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:packages/qanary-lubw-data/src/scripts/generateTrainingData/__tests__/generate-lubw-data.spec.ts
 import generateLubwData from "../utils/generate-lubw-data";
+========
+import generateLubwData from "../generateLubwData";
+>>>>>>>> origin/main:packages/qanary-lubw-data/src/scripts/utils/__tests__/generateLubwData.spec.ts
 
 describe("#Component generateLubwData", () => {
   const genMockStationData = () => {
@@ -118,6 +122,8 @@ describe("#Component generateLubwData", () => {
       "maximal",
       "durchschnittlich",
       "kritisch",
+      "höchste",
+      "niedrigste",
     ];
   };
 
