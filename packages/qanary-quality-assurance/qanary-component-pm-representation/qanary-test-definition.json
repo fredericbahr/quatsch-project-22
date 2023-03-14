@@ -2,9 +2,9 @@
     "qanary": {
         "system_url": "http://qanary-pipeline:40111/startquestionansweringwithtextquestion",
         "componentlist": [
-            "qanary-component-pm-measurand"
+            "qanary-component-pm-representation"
         ],
-        "additionalTriples": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX dc: <http://purl.org/dc/elements/1.1/>\nPREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>\n\n<urn:measurand> a <rdfs:Class> .\n<urn:station> a <rdfs:Class> .\n<urn:calculation> a <rdfs:Class> .\n<urn:representation> a <rdfs:Class> .\n<urn:time> a <rdfs:Class> .\n\n<urn:luqx> a <urn:measurand> ;\n  dc:identifier \"luqx\" ;\n  rdfs:label \"Luftqualitätsindex\" .\n<urn:no2> a <urn:measurand> ;\n  dc:identifier \"no2\" ;\n  rdfs:label \"Stickstoffdioxid\" .\n<urn:o3> a <urn:measurand> ;\n  dc:identifier \"o3\" ;\n  rdfs:label \"Ozon\" .\n<urn:pm10> a <urn:measurand> ;\n  dc:identifier \"pm10\" ;\n  rdfs:label \"Feinstaub PM10\" .\n<urn:pm25k> a <urn:measurand> ;\n  dc:identifier \"pm25k\" ;\n  rdfs:label \"Feinstaub PM25\" ."
+        "additionalTriples": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX dc: <http://purl.org/dc/elements/1.1/>\nPREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>\n\n<urn:measurand> a <rdfs:Class> .\n<urn:station> a <rdfs:Class> .\n<urn:calculation> a <rdfs:Class> .\n<urn:representation> a <rdfs:Class> .\n<urn:time> a <rdfs:Class> .\n\n<urn:text> a <urn:representation> ;\n  dc:identifier \"text\" ;\n  rdfs:label \"Text\" .\n<urn:table> a <urn:representation> ;\n  dc:identifier \"table\" ;\n  rdfs:label \"Tabelle\" .\n<urn:list> a <urn:representation> ;\n  dc:identifier \"list\" ;\n  rdfs:label \"Liste\" .\n<urn:graph> a <urn:representation> ;\n  dc:identifier \"graph\" ;\n  rdfs:label \"Graph\" ."
     },
     "validation-sparql-templates": [
         "0_was-any-instance-identified.sparql",
@@ -12,37 +12,30 @@
     ],
     "tests": [
         {
+            "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Text?",
+            "replacements": {
+                "<REPRESENTATION>": "text",
+                "<SCORE>": "1.0"
+            }
+        },
+        {
             "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
             "replacements": {
-                "<MEASURAND>": "luqx",
+                "<REPRESENTATION>": "table",
                 "<SCORE>": "1.0"
             }
         },
         {
-            "question": "Wie ist der Stickstoffdioxidwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+            "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Liste?",
             "replacements": {
-                "<MEASURAND>": "no2",
+                "<REPRESENTATION>": "list",
                 "<SCORE>": "1.0"
             }
         },
         {
-            "question": "Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+            "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Graph?",
             "replacements": {
-                "<MEASURAND>": "o3",
-                "<SCORE>": "1.0"
-            }
-        },
-        {
-            "question": "Wie ist der Feinstaub PM10 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
-            "replacements": {
-                "<MEASURAND>": "pm10",
-                "<SCORE>": "1.0"
-            }
-        },
-        {
-            "question": "Wie ist der Feinstaub PM25 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
-            "replacements": {
-                "<MEASURAND>": "pm25k",
+                "<REPRESENTATION>": "graph",
                 "<SCORE>": "1.0"
             }
         }

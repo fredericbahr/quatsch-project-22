@@ -10,7 +10,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-# Qanary Tests for compontent "qanary-component-pm-measurand"
+# Qanary Tests for compontent "qanary-component-pm-representation"
 
 toc::[]
 
@@ -20,7 +20,7 @@ To execute the evaluation, you need to have a running Qanary system and need to 
 
 Here 1 component is used in the Qanary system:
 
-- qanary-component-pm-measurand
+- qanary-component-pm-representation
 
 ## Test Configuration
 
@@ -30,7 +30,7 @@ The configuration contains the following properties:
 . The configuration contains 2 tests expressed by SPAQRL queries (configured in the file `qanary-test-definition.json` by the property `validation-sparql-templates`)):
 
 .. *0_was-any-instance-identified.sparql:* Calculate the number of annotated entities and checks if there is at least one corresponding annotation.
-.. *1_was-the-expected-instance-recognized.sparql:* Validate if the pre-defined values for test-case-specific replacements/placeholders are available in the graph as annotation of type `AnnotationOfStation`.
+.. *1_was-the-expected-instance-recognized.sparql:* Validate if the pre-defined values for test-case-specific replacements/placeholders are available in the graph as annotation of type `AnnotationOfRepresentation`.
 
 ## Execution of Quality Evaluation Script
 
@@ -38,7 +38,7 @@ To execute the evaluation, use the following command in the *parent directory* o
 
 [,shell]
 ----
-python evaluate-qanary-system.py --directory=qanary-component-pm-measurand
+python evaluate-qanary-system.py --directory=qanary-component-pm-representation
 ----
 
 The results will be stored in the folder link:./output[`output`].

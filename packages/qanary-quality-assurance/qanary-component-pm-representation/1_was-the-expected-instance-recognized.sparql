@@ -7,8 +7,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 ASK
 FROM <GRAPHID>
 WHERE {
-    ?annotation a qa:AnnotationOfMeasurand .
-    ?annotation oa:hasBody '<MEASURAND>' .
+    ?annotation a qa:AnnotationOfRepresentation .
+    ?annotation oa:hasBody '<REPRESENTATION>' .
     ?annotation oa:score '<SCORE>'^^xsd:double .
-    ?annotation oa:annotatedBy <urn:qanary:measurand-pattern-matching> .
+    ?annotation oa:annotatedBy <urn:qanary:representation-pattern-matching> .
 }
