@@ -5,8 +5,8 @@ image:https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/badges/main/co
 image:docs/KarlA.png[KarlA]
 
 [.text-center]
-image:docs/logo-htwk.jpg[HTWK,100]
-image:docs/logo-lubw.gif[LUBW,110]
+image:docs/logo-htwk.png[HTWK,110]
+image:docs/logo-lubw.gif[LUBW,100]
 
 
 = QUAtsCH-project-22
