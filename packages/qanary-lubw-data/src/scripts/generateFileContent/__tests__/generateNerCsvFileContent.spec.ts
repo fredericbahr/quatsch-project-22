@@ -1,5 +1,5 @@
-import generateNerCsvFileContent from "../generateFileContent/generateNerCsvFileContent";
-import { NerTrainingData } from "../types";
+import { NerTrainingData } from "../../types";
+import generateNerCsvFileContent from "../generateNerCsvFileContent";
 
 describe("#Component generateNerCsvFileContent", () => {
   const genNerTrainingData = (): Array<NerTrainingData> => {

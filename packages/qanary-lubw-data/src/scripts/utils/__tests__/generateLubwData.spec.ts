@@ -1,4 +1,4 @@
-import generateLubwData from "../utils/generateLubwData";
+import generateLubwData from "../generateLubwData";
 
 describe("#Component generateLubwData", () => {
   const genMockStationData = () => {
@@ -118,6 +118,8 @@ describe("#Component generateLubwData", () => {
       "maximal",
       "durchschnittlich",
       "kritisch",
+      "höchste",
+      "niedrigste",
     ];
   };
 

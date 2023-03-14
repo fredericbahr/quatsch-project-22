@@ -1,5 +1,5 @@
-import generateNerJsonFileContent from "../generateFileContent/generateNerJsonFileContent";
-import { NerTrainingData } from "../types";
+import { NerTrainingData } from "../../types";
+import generateNerJsonFileContent from "../generateNerJsonFileContent";
 
 describe("#Component generateNerJsonFileContent", () => {
   const genNerTrainingData = (): Array<NerTrainingData> => {

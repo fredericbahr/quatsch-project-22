@@ -1,4 +1,4 @@
-import { generateNluTrainingData } from "../generateTrainingData/generateNluTrainingData";
+import { generateNluTrainingData } from "../generateNluTrainingData";
 
 describe("#Component generateNluTrainingData", () => {
   it("should return not empty nlu training data array", async () => {

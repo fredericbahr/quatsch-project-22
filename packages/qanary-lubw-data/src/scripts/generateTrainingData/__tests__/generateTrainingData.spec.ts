@@ -1,74 +1,74 @@
+import { NerTrainingData, NluTrainingData, TrainingQuestion } from "../../types";
+import generateLubwData from "../../utils/generateLubwData";
 import {
   generateStationMeasurandCalculationData,
   generateStationMeasurandData,
   generateStationMeasurandRepresentationCalculationData,
   generateStationMeasurandRepresentationData,
-} from "../generateTrainingData/generateTrainingData";
-import { NerTrainingData, NluTrainingData, TrainingQuestion } from "../types";
-import generateLubwData from "../utils/generateLubwData";
+} from "../generateTrainingData";
 
-const { stations } = generateLubwData();
+const { stations, measurands, calculations, representations } = generateLubwData();
 const FIRST_ENTRY = 0;
 
 describe("#Component generateTrainingData", () => {
-  const genMockStationMeasurandQuestions = (): Array<TrainingQuestion> => {
+  const genMockStationMeasurandQuestions = (addAllowLists = true): Array<TrainingQuestion> => {
     return [
       {
         text: ({ measurand, station }) => `Test question 1 ${measurand} ${station}?`,
-        measurandAllowList: ["Ozon"],
+        measurandAllowList: addAllowLists ? ["Ozon"] : undefined,
       },
       {
         text: ({ measurand, station }) => `Test question 2 ${measurand} ${station}?`,
-        measurandAllowList: ["luqx"],
+        measurandAllowList: addAllowLists ? ["luqx"] : undefined,
       },
     ];
   };
 
-  const genMockStationMeasurandCalculationQuestions = (): Array<TrainingQuestion> => {
+  const genMockStationMeasurandCalculationQuestions = (addAllowLists = true): Array<TrainingQuestion> => {
     return [
       {
         text: ({ measurand, station, calculation }) => `Test question 1 ${measurand} ${station} ${calculation}?`,
-        measurandAllowList: ["Ozon"],
-        calculationAllowList: ["maximal"],
+        measurandAllowList: addAllowLists ? ["Ozon"] : undefined,
+        calculationAllowList: addAllowLists ? ["maximal"] : undefined,
       },
       {
         text: ({ measurand, station, calculation }) => `Test question 2 ${measurand} ${station} ${calculation}?`,
-        measurandAllowList: ["luqx"],
-        calculationAllowList: ["Durchschnitt"],
+        measurandAllowList: addAllowLists ? ["luqx"] : undefined,
+        calculationAllowList: addAllowLists ? ["Durchschnitt"] : undefined,
       },
     ];
   };
 
-  const genMockStationMeasurandRepresentationQuestions = (): Array<TrainingQuestion> => {
+  const genMockStationMeasurandRepresentationQuestions = (addAllowLists = true): Array<TrainingQuestion> => {
     return [
       {
         text: ({ measurand, station, representation }) => `Test question 1 ${measurand} ${station} ${representation}?`,
-        measurandAllowList: ["Ozon"],
-        representationAllowList: ["Tabelle"],
+        measurandAllowList: addAllowLists ? ["Ozon"] : undefined,
+        representationAllowList: addAllowLists ? ["Tabelle"] : undefined,
       },
       {
         text: ({ measurand, station, representation }) => `Test question 2 ${measurand} ${station} ${representation}?`,
-        measurandAllowList: ["luqx"],
-        representationAllowList: ["Graph"],
+        measurandAllowList: addAllowLists ? ["luqx"] : undefined,
+        representationAllowList: addAllowLists ? ["Graph"] : undefined,
       },
     ];
   };
 
-  const genMockStationMeasurandRepresentationCalculationQuestions = (): Array<TrainingQuestion> => {
+  const genMockStationMeasurandRepresentationCalculationQuestions = (addAllowLists = true): Array<TrainingQuestion> => {
     return [
       {
         text: ({ measurand, station, representation, calculation }) =>
           `Test question 1 ${measurand} ${station} ${representation} ${calculation}?`,
-        measurandAllowList: ["Ozon"],
-        representationAllowList: ["Tabelle"],
-        calculationAllowList: ["maximal"],
+        measurandAllowList: addAllowLists ? ["Ozon"] : undefined,
+        representationAllowList: addAllowLists ? ["Tabelle"] : undefined,
+        calculationAllowList: addAllowLists ? ["maximal"] : undefined,
       },
       {
         text: ({ measurand, station, representation, calculation }) =>
           `Test question 2 ${measurand} ${station} ${representation} ${calculation}?`,
-        measurandAllowList: ["luqx"],
-        representationAllowList: ["Graph"],
-        calculationAllowList: ["Durchschnitt"],
+        measurandAllowList: addAllowLists ? ["luqx"] : undefined,
+        representationAllowList: addAllowLists ? ["Graph"] : undefined,
+        calculationAllowList: addAllowLists ? ["Durchschnitt"] : undefined,
       },
     ];
   };
@@ -109,6 +109,15 @@ describe("#Component generateTrainingData", () => {
     });
   });
 
+  it("should use full measurand list if no allowList provided", async () => {
+    const nerData: Array<NerTrainingData> = [];
+    const mockQuestions = genMockStationMeasurandQuestions(false);
+
+    generateStationMeasurandData("ner", mockQuestions, nerData);
+
+    expect(nerData).toHaveLength(stations.length * measurands.length * mockQuestions.length);
+  });
+
   it("should return a ner training data array for questions with station, measurand and calculation", async () => {
     const nerData: Array<NerTrainingData> = [];
     const mockQuestions = genMockStationMeasurandCalculationQuestions();
@@ -143,6 +152,15 @@ describe("#Component generateTrainingData", () => {
         representation: undefined,
       },
     });
+  });
+
+  it("should use full measurand and calculation lists if no allowLists provided", async () => {
+    const nerData: Array<NerTrainingData> = [];
+    const mockQuestions = genMockStationMeasurandCalculationQuestions(false);
+
+    generateStationMeasurandCalculationData("ner", mockQuestions, nerData);
+
+    expect(nerData).toHaveLength(stations.length * measurands.length * calculations.length * mockQuestions.length);
   });
 
   it("should return a ner training data array for questions with station, measurand and representation", async () => {
@@ -181,6 +199,15 @@ describe("#Component generateTrainingData", () => {
     });
   });
 
+  it("should use full measurand and representation lists if no allowLists provided", async () => {
+    const nerData: Array<NerTrainingData> = [];
+    const mockQuestions = genMockStationMeasurandRepresentationQuestions(false);
+
+    generateStationMeasurandRepresentationData("ner", mockQuestions, nerData);
+
+    expect(nerData).toHaveLength(stations.length * measurands.length * representations.length * mockQuestions.length);
+  });
+
   it("should return a ner training data array for questions with station, measurand, representation and calculation", async () => {
     const nerData: Array<NerTrainingData> = [];
     const mockQuestions = genMockStationMeasurandRepresentationCalculationQuestions();
@@ -215,6 +242,17 @@ describe("#Component generateTrainingData", () => {
         representation: "Graph",
       },
     });
+  });
+
+  it("should use full measurand, representation and calculation lists if no allowLists provided", async () => {
+    const nerData: Array<NerTrainingData> = [];
+    const mockQuestions = genMockStationMeasurandRepresentationCalculationQuestions(false);
+
+    generateStationMeasurandRepresentationCalculationData("ner", mockQuestions, nerData);
+
+    expect(nerData).toHaveLength(
+      stations.length * measurands.length * representations.length * calculations.length * mockQuestions.length,
+    );
   });
 
   it("should return a nlu training data array for questions with station and measurand", async () => {

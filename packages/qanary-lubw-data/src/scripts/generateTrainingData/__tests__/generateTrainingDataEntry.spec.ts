@@ -1,5 +1,5 @@
-import generateTrainingDataEntry from "../generateTrainingData/generateTrainingDataEntry";
-import { DomainTemplate, TrainingQuestion } from "../types";
+import { DomainTemplate, TrainingQuestion } from "../../types";
+import generateTrainingDataEntry from "../generateTrainingDataEntry";
 
 describe("#Component generateTrainingDataEntry", () => {
   const genMockQuestion = (): TrainingQuestion => {
