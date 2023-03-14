@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
-import { IMeasurand, measurands } from "qanary-lubw-data";
+import { measurands, stations } from "qanary-lubw-data";
 import { ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
 import { AbstractRepresentation } from "../abstract/abstract.representation";
@@ -17,13 +17,17 @@ export class RepresentationServiceSeason extends AbstractRepresentation {
   public static getTextualRepresentation(measurandData: ILUBWMeasurandData): IRepresentationData {
     return {
       value: [
-        `Der Wert der Messart ${measurandData.measurand}`,
-        `für die Station ${measurandData.station}`,
+        `Der Wert`,
+        `der Messart ${this.findLableById(measurandData.measurand, measurands)}`,
+        `für die Station ${this.findLableById(measurandData.station, stations)}`,
         `am ${format(new Date(measurandData.time.end), "P", { locale: de })} beträgt:`,
-        `${this.getLastValue(measurandData)}`,
+        `${this.getLastValue(measurandData)} µg/m³`,
         "\n",
-        `Der durchschnittliche Wert für die Station ${measurandData.station} der letzten drei Monate beträgt:`,
-        `${this.calculate(measurandData)}`,
+        `Der durchschnittliche Wert für die Station ${this.findLableById(
+          measurandData.station,
+          stations,
+        )} der letzten drei Monate beträgt:`,
+        `${this.calculate(measurandData)} µg/m³`,
       ].join(" "),
       type: REPRESENTATION_TYPE.Text,
     };

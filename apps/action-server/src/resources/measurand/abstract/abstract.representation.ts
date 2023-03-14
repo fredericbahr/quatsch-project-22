@@ -1,5 +1,7 @@
 import { format } from "date-fns";
 import { de } from "date-fns/locale";
+import { calculationLabels, measurands, stations } from "qanary-lubw-data";
+import { IBase } from "qanary-lubw-data/dist/interfaces/base";
 import { ILUBWMeasurandData, IRepresentationData, REPRESENTATION_TYPE } from "shared";
 
 import { CalculationService } from "../../../services/calculation-service";
@@ -33,7 +35,8 @@ export class AbstractRepresentation {
    */
   public static calculate(measurandData: ILUBWMeasurandData): string {
     const callback = CalculationService.getCalculationCallback(measurandData.calculation);
-    return callback(measurandData.measurandData[0].values).toString();
+    const calculatedValue: number = callback(measurandData.measurandData[0].values);
+    return calculatedValue.toFixed(2).toString();
   }
 
   /**
@@ -41,10 +44,10 @@ export class AbstractRepresentation {
    * @param measurandData the lubw measurand data to get the last value from
    * @returns the last value from the given measurand data
    */
-  public static getLastValue(measurandData: ILUBWMeasurandData): number | null {
+  public static getLastValue(measurandData: ILUBWMeasurandData): string {
     const valueLength = measurandData.measurandData[0].values.length;
-
-    return measurandData.measurandData[0].values[valueLength - 1];
+    const calculationValue: number = measurandData.measurandData[0].values[valueLength - 1];
+    return calculationValue.toFixed(2).toString();
   }
 
   /**
@@ -55,15 +58,29 @@ export class AbstractRepresentation {
   public static getTextualRepresentation(measurandData: ILUBWMeasurandData): IRepresentationData {
     return {
       value: [
-        `Der ${measurandData.calculation}-Wert`,
-        `der Messart ${measurandData.measurand}`,
-        `für die Station ${measurandData.station}`,
+        `Der ${this.findLableById(measurandData.calculation, calculationLabels)} Wert`,
+        `der Messart ${this.findLableById(measurandData.measurand, measurands)}`,
+        `für die Station ${this.findLableById(measurandData.station, stations)}`,
         `zwischen dem ${format(new Date(measurandData.time.start), "P", { locale: de })}`,
         `und dem ${format(new Date(measurandData.time.end), "P", { locale: de })} beträgt:`,
-        `${this.calculate(measurandData)}`,
+        `${this.calculate(measurandData)} µg/m³`,
       ].join(" "),
       type: REPRESENTATION_TYPE.Text,
     };
+  }
+
+  /**
+   * Finds a corresponding label from a given ID
+   * @param id the id to search with
+   * @param array the searched array of objects
+   * @returns a corresponding label or the given ID
+   */
+  protected static findLableById(id: string, array: Array<IBase>): string {
+    const dataEntry: IBase | undefined = array.find((element) => {
+      return element.id === id;
+    });
+
+    return dataEntry?.label || id;
   }
 
   /**
@@ -92,7 +109,10 @@ export class AbstractRepresentation {
           options: {
             title: {
               display: true,
-              text: `Messart ${measurandData.measurand} für die Station ${measurandData.station}`,
+              text: `Messart ${this.findLableById(
+                measurandData.measurand,
+                measurands,
+              )} für die Station ${this.findLableById(measurandData.station, stations)}`,
             },
           },
         })}`,
@@ -110,7 +130,10 @@ export class AbstractRepresentation {
     return {
       value: new URL(
         `https://api.quickchart.io/v1/table?data=${JSON.stringify({
-          title: `Messart ${measurandData.measurand} für die Station ${measurandData.station}`,
+          title: `Messart ${this.findLableById(
+            measurandData.measurand,
+            measurands,
+          )} für die Station ${this.findLableById(measurandData.station, stations)}`,
           columns: [
             {
               title: "Datum",

@@ -13,7 +13,7 @@ describe("TransformationService", () => {
   const annotations: Array<IQanaryAnnotation> = [
     {
       annotationType: "qa:AnnotationOfStation",
-      hasBody: "DEBW0081",
+      hasBody: "DEBW081",
       hasTarget: "b1",
       annotatedAt: "2021-03-18T13:00:00.000Z",
       annotatedBy: "<urn:qanary:station-pattern-matching>",
@@ -40,7 +40,7 @@ describe("TransformationService", () => {
   const uncompletedAnnotations: Array<IQanaryAnnotation> = [
     {
       annotationType: "qa:AnnotationOfStation",
-      hasBody: "DEBW0081",
+      hasBody: "DEBW081",
       hasTarget: "b1",
       annotatedAt: "2021-03-18T13:00:00.000Z",
       annotatedBy: "<urn:qanary:station-pattern-matching>",
@@ -59,7 +59,7 @@ describe("TransformationService", () => {
   describe("Transform", () => {
     it("should transform the annotations", () => {
       const expectedLubwData: ILUBWData = {
-        station: "DEBW0081",
+        station: "DEBW081",
         calculation: CALCULATION_TYPE.Average,
         measurand: "luqx",
         time: defaultLUBWData[ILUBWDataKey.Time],
@@ -73,7 +73,7 @@ describe("TransformationService", () => {
 
     it("should transform the annotations and merge with default values", () => {
       const expectedLubwData: ILUBWData = {
-        station: "DEBW0081",
+        station: "DEBW081",
         calculation: CALCULATION_TYPE.Average,
         measurand: "luqx",
         time: defaultLUBWData[ILUBWDataKey.Time],
@@ -87,7 +87,7 @@ describe("TransformationService", () => {
 
     it("should transform the annotations and not merge with default values", () => {
       const expectedLubwData: Partial<ILUBWData> = {
-        station: "DEBW0081",
+        station: "DEBW081",
         calculation: undefined,
         measurand: "luqx",
         time: defaultLUBWData[ILUBWDataKey.Time],
