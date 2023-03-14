@@ -1,4 +1,4 @@
-import preAndSuffixString from "../utils/preAndSuffixString";
+import preAndSuffixString from "../preAndSuffixString";
 
 describe("#Component preAndSuffixString", () => {
   it("should return the base string with added prefix and suffix", async () => {

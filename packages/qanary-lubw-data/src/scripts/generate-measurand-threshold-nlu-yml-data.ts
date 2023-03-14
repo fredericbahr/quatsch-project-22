@@ -1,6 +1,6 @@
 import { basePaths } from "./base-paths";
 import generateNluYmlFileContent from "./generateFileContent/generateNluYmlFileContent";
-import { generateMeasurandThresholdNluTrainingData } from "./generateTrainingData/generateMeasruandThresholdNluTrainingData";
+import { generateMeasurandThresholdNluTrainingData } from "./generateTrainingData/generateMeasurandThresholdNluTrainingData";
 import { writeYmlFileSlim } from "./utils/writeYmlFile";
 
 const baseData = [

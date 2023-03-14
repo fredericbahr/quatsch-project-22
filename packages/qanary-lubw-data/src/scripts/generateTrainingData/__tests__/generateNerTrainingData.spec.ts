@@ -1,4 +1,4 @@
-import { generateNerTrainingData } from "../generateTrainingData/generateNerTrainingData";
+import { generateNerTrainingData } from "../generateNerTrainingData";
 
 describe("#Component generateNerTrainingData", () => {
   it("should return not empty ner training data array", async () => {
