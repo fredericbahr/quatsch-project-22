@@ -1,3 +1,5 @@
+import { LupoCloudApi } from "api";
+
 import { CALCULATION_TYPE } from "../enums/calculation";
 import { REPRESENTATION_TYPE } from "../enums/representation";
 

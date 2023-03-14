@@ -15,6 +15,7 @@ describe("#Webhook controllers", () => {
       const res = { json: jest.fn(), end: jest.fn(), status: jest.fn() };
 
       await webhookRequestHandler(req as unknown as RasaRequest, res as unknown as RasaResponse);
+
       expect(res.json).toHaveBeenCalled();
     }
   });

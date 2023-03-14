@@ -1,0 +1,226 @@
+# Automatically generated file. Do not change the content
+
+version: "3.1"
+
+nlu:
+  - intent: measurand_season
+    examples: |
+      - Ist dieser Wert typisch für die aktuelle Jahreszeit?
+      - Ist dies typisch für die aktuelle Jahreszeit?
+      - Was ist der typische luqx-Messwert in Aalen für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in Aalen für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in Aalen für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in DEBW076 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW042 für diese Jahreszeit?
+      - Was ist der typische luqx-Messwert in Bernhausen für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in DEBW046 für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in Biberach für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in Biberach für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW004 für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in Eggenstein für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in Eggenstein für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in Eggenstein für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in DEBW084 für diese Jahreszeit?
+      - Was ist der typische Ozon-Messwert in Freiburg Schwarzwaldstraße für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in Freiburg Schwarzwaldstraße für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in DEBW038 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW112 für diese Jahreszeit?
+      - Was ist der typische Ozon-Messwert in Gärtringen für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in Heidelberg für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in DEBW015 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW015 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW152 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW152 für diese Jahreszeit?
+      - Was ist der typische Luftqualitätsindex-Messwert in DEBW081 für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in DEBW081 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW081 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW081 für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in Karlsruhe-Nordwest für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in Karlsruhe-Nordwest für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in Karlsruhe-Nordwest für diese Jahreszeit?
+      - Was ist der typische Ozon-Messwert in DEBW080 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW022 für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in Kehl für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in Kehl für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in Kehl für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in DEBW052 für diese Jahreszeit?
+      - Was ist der typische Ozon-Messwert in DEBW052 für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in Leonberg Grabenstraße für diese Jahreszeit?
+      - Was ist der typische luqx-Messwert in DEBW024 für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in DEBW024 für diese Jahreszeit?
+      - Was ist der typische luqx-Messwert in DEBW241 für diese Jahreszeit?
+      - Was ist der typische luqx-Messwert in DEBW241 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW241 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW098 für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in Mannheim Friedrichsring für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in Mannheim Friedrichsring für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in Mannheim Friedrichsring für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in Mannheim Friedrichsring für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in DEBW005 für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in Mannheim-Nord für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in Mannheim-Nord für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in DEBW073 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW073 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW073 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in DEBW073 für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in Neuenburg für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in Neuenburg für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in DEBW125 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW125 für diese Jahreszeit?
+      - Was ist der typische Luftqualitätsindex-Messwert in Pfinztal Karlsruher Straße für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in Pfinztal Karlsruher Straße für diese Jahreszeit?
+      - Was ist der typische luqx-Messwert in DEBW033 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW033 für diese Jahreszeit?
+      - Was ist der typische luqx-Messwert in Pforzheim für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in Reutlingen für diese Jahreszeit?
+      - Was ist der typische Luftqualitätsindex-Messwert in DEBW147 für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in Reutlingen Lederstraße-Ost für diese Jahreszeit?
+      - Was ist der typische Ozon-Messwert in Reutlingen Lederstraße-Ost für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in Reutlingen Lederstraße-Ost für diese Jahreszeit?
+      - Was ist der typische Luftqualitätsindex-Messwert in DEBW156 für diese Jahreszeit?
+      - Was ist der typische Ozon-Messwert in Schramberg Oberndorfer Straße für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in Schwäbische Alb für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in Schwäbische Alb für diese Jahreszeit?
+      - Was ist der typische Ozon-Messwert in DEBW031 für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in DEBW031 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW031 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW031 für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in Schwarzwald-Süd für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in DEBW118 für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in Stuttgart Am Neckartor für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in Stuttgart Am Neckartor für diese Jahreszeit?
+      - Was ist der typische Luftqualitätsindex-Messwert in DEBW099 für diese Jahreszeit?
+      - Was ist der typische Stickstoffdioxid-Messwert in DEBW099 für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in Stuttgart Arnulf-Klett-Platz für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in Stuttgart Arnulf-Klett-Platz für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in DEBW013 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in Stuttgart-Bad Cannstatt für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in LUBW082 für diese Jahreszeit?
+      - Was ist der typische luqx-Messwert in DEBW059 für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in DEBW059 für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in DEBW059 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in DEBW059 für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in Tauberbischofsheim für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in Tauberbischofsheim für diese Jahreszeit?
+      - Was ist der typische luqx-Messwert in DEBW107 für diese Jahreszeit?
+      - Was ist der typische pm10-Messwert in DEBW107 für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM10-Messwert in DEBW107 für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in DEBW136 für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in Tübingen Mühlstraße für diese Jahreszeit?
+      - Was ist der typische Feinstaub PM25-Messwert in Tübingen Mühlstraße für diese Jahreszeit?
+      - Was ist der typische pm25k-Messwert in DEBW019 für diese Jahreszeit?
+      - Was ist der typische Luftqualitätsindex-Messwert in Ulm für diese Jahreszeit?
+      - Was ist der typische no2-Messwert in Ulm für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in DEBW023 für diese Jahreszeit?
+      - Was ist der typische Ozon-Messwert in DEBW010 für diese Jahreszeit?
+      - Was ist der typische o3-Messwert in Wiesloch für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in DEBW029 für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in Aalen für diese Jahreszeit?
+      - Wie hoch ist der typische luqx-Messwert in DEBW076 für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in DEBW076 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW076 für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in Baden-Baden für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in DEBW042 für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in DEBW042 für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in DEBW042 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in DEBW042 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in DEBW046 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW046 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Biberach für diese Jahreszeit?
+      - Wie hoch ist der typische Ozon-Messwert in Biberach für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in Biberach für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in DEBW004 für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in DEBW004 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in DEBW004 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Eggenstein für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in DEBW084 für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in DEBW084 für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in Gärtringen für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW009 für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in Heidelberg für diese Jahreszeit?
+      - Wie hoch ist der typische Ozon-Messwert in Heidelberg für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in Heidelberg für diese Jahreszeit?
+      - Wie hoch ist der typische luqx-Messwert in Heilbronn für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Heilbronn für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in Heilbronn für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in DEBW152 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in DEBW152 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in DEBW081 für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in Karlsruhe-Nordwest für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in Karlsruhe-Nordwest für diese Jahreszeit?
+      - Wie hoch ist der typische luqx-Messwert in DEBW080 für diese Jahreszeit?
+      - Wie hoch ist der typische Ozon-Messwert in DEBW080 für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in DEBW080 für diese Jahreszeit?
+      - Wie hoch ist der typische luqx-Messwert in DEBW022 für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in DEBW022 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Kehl für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in Kehl für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in Konstanz für diese Jahreszeit?
+      - Wie hoch ist der typische Ozon-Messwert in Konstanz für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in Leonberg Grabenstraße für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in Leonberg Grabenstraße für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in DEBW024 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW241 für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in Mannheim Friedrichsring für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in Mannheim Friedrichsring für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in DEBW005 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in Mannheim-Nord für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in DEBW073 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW073 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW073 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in DEBW125 für diese Jahreszeit?
+      - Wie hoch ist der typische luqx-Messwert in DEBW033 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in Pforzheim für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in DEBW027 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in DEBW027 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in DEBW027 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Reutlingen für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in Reutlingen für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in DEBW147 für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in Reutlingen Lederstraße-Ost für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in Reutlingen Lederstraße-Ost für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in DEBW087 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Schwäbische Alb für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in Schwäbische Alb für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in Schwäbische Alb für diese Jahreszeit?
+      - Wie hoch ist der typische Ozon-Messwert in Schwarzwald-Süd für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in DEBW118 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in DEBW118 für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in DEBW118 für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in DEBW118 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in Stuttgart Am Neckartor für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in DEBW099 für diese Jahreszeit?
+      - Wie hoch ist der typische Ozon-Messwert in DEBW099 für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in DEBW013 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in LUBW082 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in Stuttgart Hauptstätter Straße für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in Stuttgart Hauptstätter Straße für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in DEBW116 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in DEBW116 für diese Jahreszeit?
+      - Wie hoch ist der typische luqx-Messwert in Stuttgart Hohenheimer Straße für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Stuttgart Hohenheimer Straße für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in Stuttgart Hohenheimer Straße für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in DEBW059 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in DEBW059 für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in DEBW059 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Tauberbischofsheim für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in Tauberbischofsheim für diese Jahreszeit?
+      - Wie hoch ist der typische luqx-Messwert in Tübingen für diese Jahreszeit?
+      - Wie hoch ist der typische pm25k-Messwert in DEBW136 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW136 für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in Tübingen Mühlstraße für diese Jahreszeit?
+      - Wie hoch ist der typische Stickstoffdioxid-Messwert in Tübingen Mühlstraße für diese Jahreszeit?
+      - Wie hoch ist der typische o3-Messwert in DEBW019 für diese Jahreszeit?
+      - Wie hoch ist der typische Ozon-Messwert in Ulm für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in Ulm für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in DEBW023 für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in DEBW023 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in DEBW023 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW023 für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in DEBW023 für diese Jahreszeit?
+      - Wie hoch ist der typische Luftqualitätsindex-Messwert in Weil am Rhein für diese Jahreszeit?
+      - Wie hoch ist der typische no2-Messwert in Weil am Rhein für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in DEBW010 für diese Jahreszeit?
+      - Wie hoch ist der typische pm10-Messwert in Wiesloch für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM10-Messwert in Wiesloch für diese Jahreszeit?
+      - Wie hoch ist der typische Feinstaub PM25-Messwert in Wiesloch für diese Jahreszeit?

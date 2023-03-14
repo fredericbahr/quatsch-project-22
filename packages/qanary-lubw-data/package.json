@@ -22,6 +22,7 @@
     "generate:yml-measurand-max": "ts-node src/scripts/generate-measurand-max-nlu-yml-data.ts",
     "generate:yml-measurand-min": "ts-node src/scripts/generate-measurand-min-nlu-yml-data.ts",
     "generate:yml-measurand-threshold": "ts-node src/scripts/generate-measurand-threshold-nlu-yml-data.ts",
+    "generate:yml-measurand-season": "ts-node src/scripts/generate-measurand-season-nlu-yml-data.ts",
     "test": "jest --coverage --detectOpenHandles"
   },
   "types": "dist/index.d.ts",
