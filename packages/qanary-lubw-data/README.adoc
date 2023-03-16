@@ -2,3 +2,21 @@
 :toc:
 
 Specialized LUBW data needed in Qanary
+
+== Training Data
+
+Custom training data for this the Qanary NER component and the Rasa NLU can be generated. Lubw domain instances for stations, measurands, calculations and representations will be combined with a set of training questions.
+
+To generate usable training/testing data one of the following commands can be used:
+
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Command |Description
+|`npm run generate:csv` |generates NER training and testing data as CSV files for immediate training on container build
+|`npm run generate:json` |generates NER training and testing data as JSON files for retraining via `/retrain` route
+|`npm run generate:yml` |generates measurand complete NLU training data as YML file for Rasa NLU intent detection
+|`generate:yml-small` |generates limited measurand complete NLU training data as YML file for Rasa NLU intent detection (used for faster training)
+|`generate:yml-measurand-max` |generates measurand maximum NLU training data as YML file for Rasa NLU intent detection
+|`generate:yml-measurand-min` |generates measurand minimum NLU training data as YML file for Rasa NLU intent detection
+|`generate:yml-measurand-threshold` |generates measurand threshold NLU training data as YML file for Rasa NLU intent detection
+|===
