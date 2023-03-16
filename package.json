@@ -16,6 +16,7 @@
     "docker:all": "docker-compose --profile all up",
     "docker:slim": "docker-compose --profile slim up",
     "docker:build": "DOCKER_BUILDKIT=1 docker image build . --tag lubw:latest",
+    "docker:build-ner": "docker-compose --profile qanary-ner-training build",
     "docker:down": "docker compose down --remove-orphans",
     "docker:qanary": "docker-compose --profile qanary up",
     "docker:qanary-ner": "docker-compose --profile qanary-ner up",

@@ -179,13 +179,7 @@ services:
     ports:
       - "$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT"
     build:
-      context: .
-      dockerfile: ./apps/qanary-component-ner-automl/Dockerfile
-      args:
-        TRAININGDATA: ${QANARY_COMPONENT_NER_AUTOML_TRAININGDATA}
-        TESTDATA: ${QANARY_COMPONENT_NER_AUTOML_TESTDATA}
-        MODELTYPE: ${QANARY_COMPONENT_NER_AUTOML_MODELTYPE}
-        LANGUAGE: ${QANARY_COMPONENT_NER_AUTOML_MODELLANGUAGE}
+      context: ./apps/qanary-component-ner-automl
     environment:
       - "SPRING_BOOT_ADMIN_URL=$QANARY_COMPONENT_NER_AUTOML_SPRING_BOOT_ADMIN_URL"
       - "SPRING_BOOT_ADMIN_USERNAME=$QANARY_COMPONENT_NER_AUTOML_SPRING_BOOT_ADMIN_USERNAME"
@@ -196,15 +190,6 @@ services:
       - "SERVICE_DESCRIPTION_COMPONENT=$QANARY_COMPONENT_NER_AUTOML_SERVICE_DESCRIPTION"
       - "PRODUCTION=True"
     command: uvicorn qanarycomponent:app --host 0.0.0.0 --port=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT
-    volumes:
-      - ./apps/qanary-component-ner-automl:/app
-    deploy:
-        resources:
-          reservations:
-            devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
     profiles: ["qanary", "all", "qanary-ner"]
   # end::qanary-component-ner-automl[]
 
@@ -279,6 +264,30 @@ services:
       - rasa-network
     profiles: ["rasa", "all", "slim"]
   # end::frontend[]
+
+  # tag::qanary-component-ner-automl-training[]
+  qanary-component-ner-automl-training:
+    container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_TRAINING_NAME
+    build:
+      context: .
+      dockerfile: ./apps/qanary-component-ner-automl-training/Dockerfile
+      args:
+        TRAININGDATA: ${QANARY_COMPONENT_NER_AUTOML_TRAINING_TRAININGDATA}
+        TESTDATA: ${QANARY_COMPONENT_NER_AUTOML_TRAINING_TESTDATA}
+        MODELTYPE: ${QANARY_COMPONENT_NER_AUTOML_TRAINING_MODELTYPE}
+        LANGUAGE: ${QANARY_COMPONENT_NER_AUTOML_TRAINING_MODELLANGUAGE}
+    image: qanary-component-ner-automl-pretrained-lubw-data:latest
+    volumes:
+      - ./apps/qanary-component-ner-automl-training:/app
+    deploy:
+        resources:
+          reservations:
+            devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    profiles: ["qanary-ner-training"]
+  # end::qanary-component-ner-automl-training[]
 
 # tag::networks[]
 networks:
