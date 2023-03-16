@@ -1,0 +1,48 @@
+// tag::excerpt[]
+= Qanary Component NER-Automl Training
+:toc:
+
+Generates an image of the named entity recognition qanary component pretrained with lubw station, measurand, calculation and representation data. This image can then be published to docker hub to prevent time consuming retraining on different devices.
+// end::excerpt[]
+
+https://github.com/WSE-research/Qanary-NER-automl-component[Read more]
+
+include::../../docs/Component Install.adoc[leveloffset=+1]
+include::../../docs/Component Integration.adoc[leveloffset=+2]
+
+[source,yaml]
+----
+include::../../docker-compose.yml[tags=preamble;qanary-component-ner-automl-training]
+----
+
+Keywords prefixed with `$` represent variables and can either be preserved in a `.env` file or must be replaced by plain text.
+
+[source,dotenv]
+----
+include::../../.env[tags=qanary-component-ner-automl-training]
+----
+
+== Publishing
+
+The qanary NER component with pretrained models will be saved as a docker image called `qanary-component-ner-automl-pretrained-lubw-data` when built. To reuse that image across multiple devices it needs to be published to docker hub.
+
+The current version that is used by the `qanary-component-ner-automl` app is hosted on this https://hub.docker.com/r/sergidomenechguzy/qanary-component-ner-automl-pretrained-lubw-data[docker hub repository].
+
+To create a new version and publish it run the following commands:
+
+1. login with your docker credentials
++
+----      
+docker login
+----
+2. tag the local image with the remote repository and a version
++
+----      
+docker tag qanary-component-ner-automl-pretrained-lubw-data:latest <your-repository>/qanary-component-ner-automl-pretrained-lubw-data:<version>
+----
+
+3. push the local image to the docker hub repository
++
+----      
+docker push <your-repository>/qanary-component-ner-automl-pretrained-lubw-data:<version>
+----
