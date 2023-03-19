@@ -1,6 +1,7 @@
 image: node:alpine
 
 stages:
+  - docs
   - build
   - lint
   - test
@@ -75,3 +76,16 @@ test_rasa:
     paths:
       - apps/rasa/results
     expire_in: 5 day
+
+docs_summary:
+  stage: docs
+  image:
+    name: pandoc/latex
+    entrypoint: ["/bin/sh", "-c"]
+  script:
+    - mkdir output
+    - pandoc --standalone --output ./output/Summary.de.pdf ./docs/summary/*.de.md
+    - pandoc --standalone --output ./output/Summary.en.pdf ./docs/summary/*.en.md
+  artifacts:
+    paths:
+      - output
