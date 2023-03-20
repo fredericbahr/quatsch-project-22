@@ -1,5 +1,38 @@
 import { TrainingQuestion } from "../types";
 
+export const questionsCalculation: Array<TrainingQuestion> = [
+  {
+    text: ({ calculation }) => `Was war der ${calculation} Messwert?`,
+    calculationAllowList: ["höchste", "niedrigste"],
+  },
+  {
+    text: ({ calculation }) => `Was war der ${calculation} Messwert?`,
+    calculationAllowList: ["minimal", "maximal"],
+    calculationSuffix: "e",
+  },
+  {
+    text: ({ calculation }) => `Welcher ist der ${calculation} Messwert?`,
+    calculationAllowList: ["höchste", "niedrigste"],
+  },
+  {
+    text: ({ calculation }) => `Welcher ist der ${calculation} Messwert?`,
+    calculationAllowList: ["minimal", "maximal"],
+    calculationSuffix: "e",
+  },
+  {
+    text: ({ calculation }) => `Was war das ${calculation}?`,
+    calculationAllowList: ["Minimum", "Maximum"],
+  },
+  {
+    text: ({ calculation }) => `Ist der Messwert ${calculation}?`,
+    calculationAllowList: ["extrem", "gefährlich", "grenzwertig"],
+  },
+  {
+    text: ({ calculation }) => `Liegt der Messwert über einem ${calculation}?`,
+    calculationAllowList: ["Grenzwert"],
+  },
+];
+
 export const questionsStationMeasurand: Array<TrainingQuestion> = [
   {
     text: ({ measurand, station }) => `Wie ist der ${measurand} in ${station}?`,
@@ -7,7 +40,8 @@ export const questionsStationMeasurand: Array<TrainingQuestion> = [
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -21,12 +55,12 @@ export const questionsStationMeasurand: Array<TrainingQuestion> = [
   },
   {
     text: ({ measurand, station }) => `Wie ist der Wert des ${measurand} in ${station}?`,
-    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     measurandSuffix: "s",
   },
   {
     text: ({ measurand, station }) => `Wie ist der ${measurand} in ${station}?`,
-    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     measurandSuffix: "wert",
   },
 ];
@@ -39,7 +73,8 @@ export const questionsStationMeasurandRepresentation: Array<TrainingQuestion> = 
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -51,7 +86,7 @@ export const questionsStationMeasurandRepresentation: Array<TrainingQuestion> = 
   {
     text: ({ measurand, station, representation }) =>
       `Zeig mir eine ${representation} der ${measurand} der letzten Woche aus ${station}.`,
-    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     representationAllowList: ["Tabelle", "Liste"],
     measurandSuffix: "werte",
   },
@@ -62,7 +97,8 @@ export const questionsStationMeasurandRepresentation: Array<TrainingQuestion> = 
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -75,7 +111,7 @@ export const questionsStationMeasurandRepresentation: Array<TrainingQuestion> = 
   {
     text: ({ measurand, station, representation }) =>
       `Zeig mir einen ${representation} der ${measurand} der letzten Woche aus ${station}.`,
-    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     representationAllowList: ["Graph"],
     representationSuffix: "en",
     measurandSuffix: "werte",
@@ -87,7 +123,8 @@ export const questionsStationMeasurandRepresentation: Array<TrainingQuestion> = 
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -102,7 +139,7 @@ export const questionsStationMeasurandCalculation: Array<TrainingQuestion> = [
   {
     text: ({ measurand, station, calculation }) =>
       `Wie hoch war der ${measurand} in ${station} gestern im ${calculation}?`,
-    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     calculationAllowList: ["Minimum", "Maximum", "Durchschnitt"],
     measurandSuffix: "wert",
   },
@@ -119,7 +156,8 @@ export const questionsStationMeasurandCalculation: Array<TrainingQuestion> = [
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -131,7 +169,7 @@ export const questionsStationMeasurandCalculation: Array<TrainingQuestion> = [
   {
     text: ({ measurand, station, calculation }) =>
       `Wie hoch war gestern der ${calculation} ${measurand} in ${station}?`,
-    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     calculationAllowList: ["minimal", "maximal", "durchschnittlich"],
     measurandSuffix: "wert",
     calculationSuffix: "e",
@@ -150,7 +188,8 @@ export const questionsStationMeasurandCalculation: Array<TrainingQuestion> = [
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -168,9 +207,19 @@ export const questionsStationMeasurandCalculation: Array<TrainingQuestion> = [
   {
     text: ({ measurand, station, calculation }) =>
       `Ist der aktuelle Wert des ${measurand} in ${station} ${calculation}?`,
-    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     calculationAllowList: ["kritisch"],
     measurandSuffix: "s",
+  },
+  {
+    text: ({ measurand, station, calculation }) =>
+      `Ist der ${measurand}-Wert für die Station ${station} ${calculation}?`,
+    calculationAllowList: ["grenzwertig", "extrem", "gefährlich"],
+  },
+  {
+    text: ({ measurand, station, calculation }) =>
+      `Liegt der ${measurand}-Wert für die Station ${station} über einem ${calculation}?`,
+    calculationAllowList: ["Grenzwert"],
   },
 ];
 
@@ -178,7 +227,7 @@ export const questionsStationMeasurandRepresentationCalculation: Array<TrainingQ
   {
     text: ({ measurand, station, representation, calculation }) =>
       `Wie war der ${measurand} in ${station} am 23.01.2023, verglichen mit den ${calculation} der letzten 10 Jahre repräsentiert als ${representation}?`,
-    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     representationAllowList: ["Text", "Tabelle", "Liste", "Graph"],
     calculationAllowList: ["Minimum", "Maximum", "Durchschnitt"],
     measurandSuffix: "wert",
@@ -191,7 +240,8 @@ export const questionsStationMeasurandRepresentationCalculation: Array<TrainingQ
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -209,7 +259,8 @@ export const questionsStationMeasurandRepresentationCalculation: Array<TrainingQ
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -226,7 +277,8 @@ export const questionsStationMeasurandRepresentationCalculation: Array<TrainingQ
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -244,7 +296,8 @@ export const questionsStationMeasurandRepresentationCalculation: Array<TrainingQ
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -261,7 +314,8 @@ export const questionsStationMeasurandRepresentationCalculation: Array<TrainingQ
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",
@@ -275,7 +329,7 @@ export const questionsStationMeasurandRepresentationCalculation: Array<TrainingQ
   {
     text: ({ measurand, station, representation, calculation }) =>
       `Gib mir den ${calculation} ${measurand} in ${station} der letzten 4 Tage als ${representation}.`,
-    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub"],
+    measurandAllowList: ["Luftqualitätsindex", "Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     representationAllowList: ["Text", "Tabelle", "Liste", "Graph"],
     calculationAllowList: ["minimal", "maximal", "durchschnittlich"],
     measurandSuffix: "wert",
@@ -288,7 +342,8 @@ export const questionsStationMeasurandRepresentationCalculation: Array<TrainingQ
       "Luftqualitätsindex",
       "Stickstoffdioxid",
       "Ozon",
-      "Feinstaub",
+      "Feinstaub PM10",
+      "Feinstaub PM25",
       "luqx",
       "no2",
       "o3",

@@ -1,5 +1,5 @@
 const ROOT = "../..";
-const APP_NER = `${ROOT}/apps/qanary-component-ner-automl`;
+const APP_NER = `${ROOT}/apps/qanary-component-ner-automl-training`;
 const APP_RASA = `${ROOT}/apps/rasa`;
 
 export const basePaths = {

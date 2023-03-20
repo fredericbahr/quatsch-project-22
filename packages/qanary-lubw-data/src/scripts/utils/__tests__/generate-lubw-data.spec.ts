@@ -120,6 +120,10 @@ describe("#Component generateLubwData", () => {
       "kritisch",
       "höchste",
       "niedrigste",
+      "extrem",
+      "gefährlich",
+      "grenzwertig",
+      "Grenzwert",
     ];
   };
 

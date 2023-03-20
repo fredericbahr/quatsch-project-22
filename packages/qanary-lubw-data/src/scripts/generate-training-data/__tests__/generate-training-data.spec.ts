@@ -1,11 +1,30 @@
-import { NerTrainingData, NluTrainingData,TrainingQuestion } from "../../types";
+import { NerTrainingData, NluTrainingData, TrainingQuestion } from "../../types";
 import generateLubwData from "../../utils/generate-lubw-data";
-import { generateStationMeasurandCalculationData, generateStationMeasurandData, generateStationMeasurandRepresentationCalculationData,generateStationMeasurandRepresentationData } from "../generate-training-data";
+import {
+  generateCalculationData,
+  generateStationMeasurandCalculationData,
+  generateStationMeasurandData,
+  generateStationMeasurandRepresentationCalculationData,
+  generateStationMeasurandRepresentationData,
+} from "../generate-training-data";
 
 const { stations, measurands, calculations, representations } = generateLubwData();
 const FIRST_ENTRY = 0;
 
 describe("#Component generateTrainingData", () => {
+  const genMockCalculationQuestions = (addAllowLists = true): Array<TrainingQuestion> => {
+    return [
+      {
+        text: ({ calculation }) => `Test question 1 ${calculation}?`,
+        calculationAllowList: addAllowLists ? ["minimal"] : undefined,
+      },
+      {
+        text: ({ calculation }) => `Test question 2 ${calculation}?`,
+        calculationAllowList: addAllowLists ? ["Maximum"] : undefined,
+      },
+    ];
+  };
+
   const genMockStationMeasurandQuestions = (addAllowLists = true): Array<TrainingQuestion> => {
     return [
       {
@@ -67,6 +86,47 @@ describe("#Component generateTrainingData", () => {
       },
     ];
   };
+
+  it("should return a ner training data array for questions with calculation", async () => {
+    const nerData: Array<NerTrainingData> = [];
+    const mockQuestions = genMockCalculationQuestions();
+
+    generateCalculationData("ner", mockQuestions, nerData);
+
+    expect(nerData).toHaveLength(mockQuestions.length);
+
+    expect(nerData[FIRST_ENTRY]).toStrictEqual({
+      text: `Test question 1 minimal?`,
+      language: "de",
+      entities: {
+        station: undefined,
+        measurand: undefined,
+        calculation: "minimal",
+        representation: undefined,
+      },
+    });
+
+    const nerDataLastEntry = nerData.length - 1;
+    expect(nerData[nerDataLastEntry]).toStrictEqual({
+      text: `Test question 2 Maximum?`,
+      language: "de",
+      entities: {
+        station: undefined,
+        measurand: undefined,
+        calculation: "Maximum",
+        representation: undefined,
+      },
+    });
+  });
+
+  it("should use full calculation list if no allowList provided", async () => {
+    const nerData: Array<NerTrainingData> = [];
+    const mockQuestions = genMockCalculationQuestions(false);
+
+    generateCalculationData("ner", mockQuestions, nerData);
+
+    expect(nerData).toHaveLength(calculations.length * mockQuestions.length);
+  });
 
   it("should return a ner training data array for questions with station and measurand", async () => {
     const nerData: Array<NerTrainingData> = [];

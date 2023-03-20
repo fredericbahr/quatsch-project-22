@@ -14,6 +14,10 @@ const additionalCalculationEntries: Array<string> = [
   "kritisch",
   "höchste",
   "niedrigste",
+  "extrem",
+  "gefährlich",
+  "grenzwertig",
+  "Grenzwert",
 ];
 
 /**
