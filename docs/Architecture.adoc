@@ -2,6 +2,8 @@
 
 == Overview
 
+A brief architecture overview how all components are connected to each other and work together.
+
 [source,plantuml]
 ----
 include::diagrams/Makro Architecture.puml[]
@@ -9,10 +11,16 @@ include::diagrams/Makro Architecture.puml[]
 
 == Qanary Pipeline
 
+A brief overview of the Qanary Components and how these are connected to each other.
+
 [source,plantuml]
 ----
 include::diagrams/Qanary Pipeline.puml[]
 ----
+
+Important:
+- The LD Shuyo component is a helper component which detects the language of the question in order to recognized specific time expressions in various languages (e.g. "tomorrow", "2022/10/31" in English or "morgen", "31.10.2022" in German).
+- Fuzzy AR acts as a mapping of found NER annotations to the corresponding lubw specific annotation. It also maps the recognized string of the NER annotation to the corresponding ID of the lubw data by performing a fuzzy search.
 
 == Action Server
 
@@ -23,12 +31,16 @@ include::diagrams/Action Server.puml[]
 
 == Verification of mandatory data
 
+How the generic mechanism of verification of mandatory data works for every intent.
+
 [source,plantuml]
 ----
 include::diagrams/Architecture Verification Of Mandatory Data.puml[]
 ----
 
-== Merge with Default Values
+== Merge with stored data (default or context)
+
+How the generic mechanism of merging with stored data/values works for every intent.
 
 [source,plantuml]
 ----
@@ -37,6 +49,8 @@ include::diagrams/Merge with Defaults.puml[]
 
 
 == Two Stage Fallback (Default Rasa fallback)
+
+How the generic fallback mechanism of rasa works in this chatbot.
 
 [source,plantuml]
 ----

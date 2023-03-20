@@ -12,7 +12,7 @@ Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Du
                                       AnnotationOfTime                                                AnnotationOfTime
 ----
 
-.Example AnnotationOfTime as deserialized JSON:
+.Example AnnotationOfTime body value as deserialized JSON:
 [source,json]
 ----
 {"text":"03.01.2022 bis 29.01.2022","start":"2022-01-03T12:00:00.000Z","end":"2022-01-29T12:00:00.000Z"}

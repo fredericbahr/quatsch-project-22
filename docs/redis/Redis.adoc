@@ -1,6 +1,6 @@
 = Redis
 
-We use Redis to store session data inside the `action-server`. 
+We use Redis to store session data (context) inside the `action-server`. 
 
 == What is Redis?
 
@@ -8,8 +8,18 @@ Redis is an open-source in-memory data structure store, used as a database, cach
 
 == Usage
 
-We use redis to store related session data, that enhances the functionality of the `action-server` in order to provide a better user experience. 
+We use redis to store related session data (context), that enhances the functionality of the `action-server` in order to provide a better user experience. 
 
-We for example store the latest `session-id` from rasa and the latest `next-action` in order to handle fallbacks and automatically continue the conversation after a fallback.
+For example we store the latest `session-id` from rasa and the latest recognized intent in order to handle fallbacks and automatically continue the conversation after a fallback or refinement.
 
-We also store IP Lookup data in order to provide the user with a better experience by providing custom recommendations based on the user's location.
+This enables us to handle shortcuts for users and is the basis for our generic fallback mechanism if mandatory data are not provided.
+
+Shortcuts can look like this:
+
+1. Wie ist der Luftqualtitätsindex-Wert in Berlin als Graph? -> `Luftqualtitätsindex`, `Berlin`, `Graph`, `Messwertabfrage` are stored
+2. Wie ist es in Ulm? -> `Luftqualtitätsindex`, `Graph`, `Messwertabfrage` are retrieved from session and reused with `Ulm` as new location
+
+Refinements can look like this:
+1. Wie ist der Luftqualtitätsindex-Wert representiert als Graph? -> `Luftqualtitätsindex`,`Graph`, `Messwertabfrage` are stored, Station is missing
+2. Ich benötige die Station
+3. Die Station ist Berlin -> `Luftqualtitätsindex`,`Graph`, `Messwertabfrage` are retrieved and used with `Berlin` as new station to query results

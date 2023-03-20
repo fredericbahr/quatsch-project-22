@@ -1,0 +1,14 @@
+= Quicklinks
+
+== Rasa Chatbot Example
+
+* https://github.com/RasaHQ/rasa-demo
+
+== Helpful Links
+
+* https://www.youtube.com/watch?v=ZhRo3gfLk90[YouTube]
+* https://forum.rasa.com/t/which-rasa-chatbot-widget-to-use/48616[Rasa chatbot widgets selection]
+* https://botfront.io/[UI Tool]
+* https://github.com/RasaHQ/rasa-demo[Sara - Rasa Demo Bot]
+* https://lupo-cloud.de/air-app/stations[Stations]
+* https://lov.linkeddata.es/dataset/lov/terms?q=[RDF Finder]

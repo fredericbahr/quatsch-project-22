@@ -14,9 +14,9 @@ The component adds the following annotation to the knowledge graph:
         oa:end "${range-end}"^^xsd:nonNegativeInteger
     ]
 ] ;
-    oa:bodyValue "${annotation.value}" ;
+    oa:bodyValue "${annotation-value}" ;
     oa:score "${annotation-confidence}"^^xsd:double ;
     oa:annotatedBy <urn:qanary:${component-name}> ;
-    oa:annotatedAt ?time .
+    oa:annotatedAt ?annotation-time .
 }
 ----

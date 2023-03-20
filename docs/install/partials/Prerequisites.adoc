@@ -1,7 +1,7 @@
 = Prerequisites
 
 * You need to have a working installation of https://docs.docker.com/install/[Docker] and https://docs.docker.com/compose/install/[Docker Compose].
-* You need to have a working installation of https://docs.volta.sh/guide/getting-started[Volta].
+* You need to have a working installation of `Node v18.12.1` and `npm 8.19.2`.  We recommend the usage of https://docs.volta.sh/guide/getting-started[Volta].
 
 == Environment Variables
 
