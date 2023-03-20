@@ -113,13 +113,19 @@ describe("#Component generateLubwData", () => {
       "Maximum",
       "Durchschnitt",
       "Minima",
+      "Minimum",
       "minimal",
       "Maxima",
+      "Maximum",
       "maximal",
       "durchschnittlich",
       "kritisch",
       "höchste",
       "niedrigste",
+      "extrem",
+      "gefährlich",
+      "grenzwertig",
+      "Grenzwert",
     ];
   };
 

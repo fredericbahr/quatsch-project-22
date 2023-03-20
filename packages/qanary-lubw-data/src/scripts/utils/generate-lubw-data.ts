@@ -7,13 +7,19 @@ type Key = "id" | "label";
 
 const additionalCalculationEntries: Array<string> = [
   "Minima",
+  "Minimum",
   "minimal",
   "Maxima",
+  "Maximum",
   "maximal",
   "durchschnittlich",
   "kritisch",
   "höchste",
   "niedrigste",
+  "extrem",
+  "gefährlich",
+  "grenzwertig",
+  "Grenzwert",
 ];
 
 /**
