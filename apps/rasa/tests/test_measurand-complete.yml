@@ -1,0 +1,195 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+version: "3.1"
+
+stories:
+  - story: Ask measurand value with given station and measurand as first interaction
+    steps:
+      - user: |
+          Wie ist der Luftqualitätsindex-Wert in Ulm?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value with given station and measurand with hi
+    steps:
+      - user: |
+          Hallo
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Luftqualitätsindex-Wert in Ulm?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value with given station and measurand with hi and bye
+    steps:
+      - user: |
+          Hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Luftqualitätsindex-Wert in Ulm?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Bye
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: Ask measurand value with given station, measurand and representation
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Luftqualitätsindex-Wert in Ulm als Graph?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value with given station, measurand and caluclation
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Stickstoffdioxid-Wert in Aalen?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value with given station, measurand and time
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Feinstaub PM10-Wert in Aalen am 23.03.2022?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value with given station, measurand, representation, calculation and time
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Feinstaub PM25-Wert in Ulm am 23.03.2022?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value with wrong station and measurand value
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Hochwasserwert-Wert in Leipzig?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value with missing station information and refine station
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Luftqualitätsindex?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Ich interessiere mich für die Station Friedrichshafen.
+        intent: refine_station
+      - action: action_refine_station
+
+  - story: Ask measurand value with missing measurand information and refine measurand
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Luftqualitätsindex?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+
+  - story: Ask measurand value with missing station and measurand information and refine both
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Luftqualitätsindex?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Ich interessiere mich für die Station Ulm.
+        intent: refine_station
+      - action: action_refine_station
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+
+
+  - story: Ask measurand value with missing station and measurand information and refine both v2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Luftqualitätsindex?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+      - user: |
+          Ich interessiere mich für die Station Mannheim.
+        intent: refine_station
+      - action: action_refine_station
+
+  - story: Ask measurand value with given context information
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der maximale Ozonwert in Ulm?
+        intent: measurand_max
+      - action: action_measurand_max
+      - user: |
+          Wie ist der Luftqualitätsindex?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value with given context information v2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der maximale Ozonwert in Schwäbische Alb?
+        intent: measurand_max
+      - action: action_measurand_max
+      - user: |
+          Wie ist der minimale Wert?
+        intent: measurand_min
+      - action: action_measurand_min
+      - user: |
+          Wie ist der aktuelle Wert?
+        intent: measurand_complete
+      - action: action_measurand_complete

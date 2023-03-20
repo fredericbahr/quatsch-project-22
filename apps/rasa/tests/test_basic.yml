@@ -1,0 +1,91 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+version: "3.1"
+
+stories:
+  - story: say hi
+    steps:
+      - user: |
+          Hi
+        intent: greet
+      - action: utter_greet
+  - story: say hey
+    steps:
+      - user: |
+          Hey
+        intent: greet
+      - action: utter_greet
+  - story: say hallo
+    steps:
+      - user: |
+          Hallo
+        intent: greet
+      - action: utter_greet
+  - story: say hi
+    steps:
+      - user: |
+          Guten Abend
+        intent: greet
+      - action: utter_greet
+  - story: say greet
+    steps:
+      - user: |
+          Guten Morgen
+        intent: greet
+      - action: utter_greet
+  - story: say greet
+    steps:
+      - user: |
+          Moin
+        intent: greet
+      - action: utter_greet     
+
+  - story: say goodbye
+    steps:
+      - user: |
+          Auf Wiedersehen
+        intent: goodbye
+      - action: utter_goodbye
+  - story: say bye
+    steps:
+      - user: |
+          Bye
+        intent: goodbye
+      - action: utter_goodbye
+  - story: say tschüss
+    steps:
+      - user: |
+          Tschüss
+        intent: goodbye
+      - action: utter_goodbye
+  - story: say lebewohl
+    steps:
+      - user: |
+          Lebewohl
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: bot challenge 1
+    steps:
+      - user: |
+          Sind Sie ein Bot?
+        intent: bot_challenge
+      - action: utter_iamabot
+  - story: bot challenge 2
+    steps:
+      - user: |
+          Sind Sie ein Mesnch?
+        intent: bot_challenge
+      - action: utter_iamabot
+  - story: bot challenge 3
+    steps:
+      - user: |
+          Spreche ich mit einem Bot?
+        intent: bot_challenge
+      - action: utter_iamabot
+  - story: bot challenge 4
+    steps:
+      - user: |
+          Spreche ich mit einem Menschen?
+        intent: bot_challenge
+      - action: utter_iamabot      

@@ -1,0 +1,199 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+version: "3.1"
+
+stories:
+  - story: Ask measurand season with given station and measurand as first interaction
+    steps:
+      - user: |
+          Was ist der typische Luftqualitätsindex-Wert in Ulm für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season with given station and measurand with hi
+    steps:
+      - user: |
+          Hallo
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Was ist der typische Luftqualitätsindex-Wert in Ulm für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season with given station and measurand with hi and bye
+    steps:
+      - user: |
+          Hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Was ist der typische Ozonwert-Wert in Stuttgart für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+      - user: |
+          Bye
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: Ask measurand season with given station, measurand and representation
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie hoch ist der Luftqualitätsindex-Wert in Ulm für diese Jahreszeit als Graph?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season with given station, measurand and caluclation
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der typische Stickstoffdioxid-Wert in Aalen für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season with given station, measurand and time
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie hoch ist der Feinstaub PM10-Wert in Aalen am 23.03.2022 für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season with given station, measurand, representation, calculation and time
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie hoch ist der Feinstaub PM10-Wert in Karlsruhe am 23.03.2022 für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season with wrong station and measurand season
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der typische Hochwasserwert-Wert in Leipzig für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season with missing station information and refine station
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist dieser Wert typisch für die aktuelle Jahreszeit??
+        intent: measurand_season
+      - action: action_measurand_season
+      - user: |
+          Ich interessiere mich für die Station Friedrichshafen.
+        intent: refine_station
+      - action: action_refine_station
+
+  - story: Ask measurand season with missing measurand information and refine measurand
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist dies typisch für die aktuelle Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+
+  - story: Ask measurand season with missing station and measurand information and refine both
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist dies typisch für die aktuelle Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+      - user: |
+          Ich interessiere mich für die Station Ulm.
+        intent: refine_station
+      - action: action_refine_station
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+
+
+  - story: Ask measurand season with missing station and measurand information and refine both v2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist dieser Wert typisch für die aktuelle Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+      - user: |
+          Ich interessiere mich für die Station Mannheim.
+        intent: refine_station
+      - action: action_refine_station
+
+  - story: Ask measurand season with given context information
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der Luftqualitätsindex?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Wie hoch ist der Ozonwert in Ulm für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season with given context information v2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der maximale Ozonwert in Schwäbische Alb?
+        intent: measurand_max
+      - action: action_measurand_max
+      - user: |
+          Wie ist der minimale Wert?
+        intent: measurand_min
+      - action: action_measurand_min
+      - user: |
+          Wie ist der aktuelle Wert?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Ist dieser Wert typisch für die aktuelle Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season

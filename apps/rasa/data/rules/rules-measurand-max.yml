@@ -1,0 +1,7 @@
+version: "3.1"
+
+rules:
+  - rule: Measruand max value
+    steps:
+      - intent: measurand_max
+      - action: action_measurand_max

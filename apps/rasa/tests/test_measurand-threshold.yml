@@ -1,0 +1,195 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+version: "3.1"
+
+stories:
+  - story: Ask measurand threshold with given station and measurand as first interaction
+    steps:
+      - user: |
+          Ist der Luftqualitätsindex-Wert in Ulm grenzwert?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold with given station and measurand with hi
+    steps:
+      - user: |
+          Hallo
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist der Luftqualitätsindex-Wert in Ulm grenzwertig?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold with given station and measurand with hi and bye
+    steps:
+      - user: |
+          Hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist der Luftqualitätsindex-Wert in Ulm gefährlich?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+      - user: |
+          Bye
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: Ask measurand threshold with given station, measurand and representation
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist der Luftqualitätsindex-Wert in Ulm extrem als Graph?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold with given station, measurand and caluclation
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Liegt der Ozon-Wert in Aalen über einem Grenzwert?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold with given station, measurand and time
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Liegt der Feinstaub PM10-Wert in Aalen am 23.03.2022 über einem Grenzwert?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold with given station, measurand, representation, calculation and time
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist der Feinstaub PM25-Wert in Ulm am 23.03.2022 gefährlich?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold with wrong station and measurand threshold
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist der Hochwasserwert-Wert in Leipzig extrem?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold with missing station information and refine station
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist das extrem?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+      - user: |
+          Ich interessiere mich für die Station Friedrichshafen.
+        intent: refine_station
+      - action: action_refine_station
+
+  - story: Ask measurand threshold with missing measurand information and refine measurand
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist der Messwert gefährlich?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+
+  - story: Ask measurand threshold with missing station and measurand information and refine both
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Liegt der Messwert über einem Grenzwert?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+      - user: |
+          Ich interessiere mich für die Station Ulm.
+        intent: refine_station
+      - action: action_refine_station
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+
+
+  - story: Ask measurand threshold with missing station and measurand information and refine both v2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Ist der Luftqualitätsindex grenzwertig?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+      - user: |
+          Ich interessiere mich für die Station Mannheim.
+        intent: refine_station
+      - action: action_refine_station
+
+  - story: Ask measurand threshold with given context information
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der maximale Ozonwert in Ulm?
+        intent: measurand_max
+      - action: action_measurand_max
+      - user: |
+          Ist dieser Messwert gefährlich?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold with given context information v2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der maximale Ozonwert in Schwäbische Alb?
+        intent: measurand_max
+      - action: action_measurand_max
+      - user: |
+          Wie ist der aktuelle Wert?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Ist der Wert extrem?
+        intent: measurand_threshold
+      - action: action_measurand_threshold

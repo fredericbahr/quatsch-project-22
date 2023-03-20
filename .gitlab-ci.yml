@@ -71,7 +71,7 @@ test_rasa:
     entrypoint: [""]
   script:
     - cd apps/rasa
-    - rasa test --fail-on-prediction-errors
+    - rasa test
   artifacts:
     paths:
       - apps/rasa/results

@@ -1,7 +1,0 @@
-stories:
-  - story: Test "What was the highest measured value?"
-    steps:
-      - user: |
-          Was war der höchste Messwert?
-        intent: measurand_max
-      - action: action_measurand_max

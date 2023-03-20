@@ -6,6 +6,8 @@ nlu:
   ## Creation of context
   - intent: measurand_complete
     examples: |
+      - Wie ist der aktuelle Wert?
+      - Wie hoch ist der aktuelle Messwert?
       - Wie ist der Stickstoffdioxid in DEBW029?
       - Wie ist der o3 in DEBW029?
       - Wie ist der pm10 in DEBW029?
