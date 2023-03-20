@@ -1,0 +1,195 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+version: "3.1"
+
+stories:
+  - story: Ask measurand min value with given station and measurand as first interaction
+    steps:
+      - user: |
+          Wie ist der minimale Luftqualitätsindex-Wert in Ulm?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value with given station and measurand with hi
+    steps:
+      - user: |
+          Hallo
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Welcher ist der minimale Luftqualitätsindex-Wert für Aalen?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value with given station and measurand with hi and bye
+    steps:
+      - user: |
+          Hey
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Welcher ist der minimale Messwert für Ozon-Wert in Wiesloch?
+        intent: measurand_min
+      - action: action_measurand_min
+      - user: |
+          Bye
+        intent: goodbye
+      - action: utter_goodbye
+
+  - story: Ask measurand min value with given station, measurand and representation
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Was war das Minimum für Ozon in Ulm als Graph?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value with given station, measurand and caluclation
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Was war der niedrigste Luftqualitätsindex-Wert in Ulm?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value with given station, measurand and time
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der minimale Stickstoffdioxid-Wert in Ulm am 23.03.2022?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value with given station, measurand, representation, calculation and time
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Was ist der niedrigste Ozon-Wert in Karlsruhe am 23.03.2022?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value with wrong station and measurand value
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie hoch ist der minimale Hochwasserwert-Wert in Leipzig?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value with missing station information and refine station
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Welcher ist der minimale Messwert??
+        intent: measurand_min
+      - action: action_measurand_min
+      - user: |
+          Ich interessiere mich für die Station Aalen.
+        intent: refine_station
+      - action: action_refine_station
+
+  - story: Ask measurand min value with missing measurand information and refine measurand
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Was war der niedrigste Messwert?
+        intent: measurand_min
+      - action: action_measurand_min
+      - user: |
+          Ich interessiere mich für die Messart Stickstoffdioxid.
+        intent: refine_measurand
+      - action: action_refine_measurand
+
+  - story: Ask measurand min value with missing station and measurand information and refine both
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist das Minimum?
+        intent: measurand_min
+      - action: action_measurand_min
+      - user: |
+          Ich interessiere mich für die Station Ulm.
+        intent: refine_station
+      - action: action_refine_station
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+
+
+  - story: Ask measurand min value with missing station and measurand information and refine both v2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Was war der niedrigste Wert?
+        intent: measurand_min
+      - action: action_measurand_min
+      - user: |
+          Ich interessiere mich für die Messart Ozon.
+        intent: refine_measurand
+      - action: action_refine_measurand
+      - user: |
+          Ich interessiere mich für die Station Friedrichshafen.
+        intent: refine_station
+      - action: action_refine_station
+
+  - story: Ask measurand min value with given context information
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der aktuelle Ozonwert in Ulm?
+        intent: measurand_complete
+      - action: action_measurand_complete
+      - user: |
+          Was ist das Minimum?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value with given context information v2
+    steps:
+      - user: |
+          hi
+        intent: greet
+      - action: utter_greet
+      - user: |
+          Wie ist der minimale Ozonwert in Stuttgart?
+        intent: measurand_min
+      - action: action_measurand_min
+      - user: |
+          Was war der maximale Wert?
+        intent: measurand_max
+      - action: action_measurand_max
+      - user: |
+          Wie ist der minimale Wert?
+        intent: measurand_min
+      - action: action_measurand_min

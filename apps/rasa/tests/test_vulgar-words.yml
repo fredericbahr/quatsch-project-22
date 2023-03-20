@@ -1,5 +1,6 @@
 #### This file contains tests to evaluate that your bot behaves as expected.
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+version: "3.1"
 
 stories:
   - story: vulgar word 1
@@ -44,6 +45,25 @@ stories:
           Dreckige Hure
         intent: vulgar_out_of_scope
       - action: utter_vulgar_out_of_scope
+      - user: |
+          Spasti
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+
+  - story: vulgar word within conversation
+    steps:
+      - user: |
+          Was war der maximale Wert?
+        intent: measurand_max
+      - action: action_measurand_max
+      - user: |
+          Fick dich!
+        intent: vulgar_out_of_scope
+      - action: utter_vulgar_out_of_scope
+      - user: |
+          Wie ist der Luftqualitätsindex-Wert in Ulm?
+        intent: measurand_complete
+      - action: action_measurand_complete
       - user: |
           Spasti
         intent: vulgar_out_of_scope

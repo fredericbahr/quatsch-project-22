@@ -1,0 +1,7 @@
+version: "3.1"
+
+rules:
+  - rule: Measruand threshold value
+    steps:
+      - intent: measurand_threshold
+      - action: action_measurand_threshold
