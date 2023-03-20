@@ -1,4 +1,8 @@
+import { questionsStationMeasurandCalculationMeasurandMax } from "../data/measurand-max-questions";
+import { questionsStationMeasurandCalculationMeasurandMin } from "../data/measurand-min-questions";
+import { questionsStationMeasurandCalculationMeasurandSeason } from "../data/measurand-season-questions";
 import {
+  questionsCalculation,
   questionsStationMeasurand,
   questionsStationMeasurandCalculation,
   questionsStationMeasurandRepresentation,
@@ -6,6 +10,7 @@ import {
 } from "../data/training-questions";
 import { NerTrainingData } from "../types";
 import {
+  generateCalculationData,
   generateStationMeasurandCalculationData,
   generateStationMeasurandData,
   generateStationMeasurandRepresentationCalculationData,
@@ -19,6 +24,7 @@ import {
 export const generateNerTrainingData = (): Array<NerTrainingData> => {
   const nerData: Array<NerTrainingData> = [];
 
+  generateCalculationData("ner", questionsCalculation, nerData);
   generateStationMeasurandData("ner", questionsStationMeasurand, nerData);
   generateStationMeasurandRepresentationData("ner", questionsStationMeasurandRepresentation, nerData);
   generateStationMeasurandCalculationData("ner", questionsStationMeasurandCalculation, nerData);
@@ -27,6 +33,9 @@ export const generateNerTrainingData = (): Array<NerTrainingData> => {
     questionsStationMeasurandRepresentationCalculation,
     nerData,
   );
+  generateStationMeasurandCalculationData("ner", questionsStationMeasurandCalculationMeasurandMax, nerData);
+  generateStationMeasurandCalculationData("ner", questionsStationMeasurandCalculationMeasurandMin, nerData);
+  generateStationMeasurandData("ner", questionsStationMeasurandCalculationMeasurandSeason, nerData);
 
   return nerData;
 };

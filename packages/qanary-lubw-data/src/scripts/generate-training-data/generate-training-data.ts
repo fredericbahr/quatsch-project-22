@@ -5,6 +5,33 @@ import generateTrainingDataEntry from "./generate-training-data-entry";
 const { calculations, measurands, representations, stations } = generateLubwData();
 
 /**
+ * Generates training data in provided variant for questions with measurand slots and adds data to lists.
+ * @param variant data variant, either 'ner' or 'nlu'
+ * @param questions array of training questions used as basis for training data
+ * @param list ner or nlu data array where results will be added to
+ */
+export const generateCalculationData = (
+  variant: DataVariant,
+  questions: Array<TrainingQuestion>,
+  list: Array<NerTrainingData | NluTrainingData>,
+): void => {
+  questions.forEach((question) => {
+    calculations
+      .filter((calculation) =>
+        question.calculationAllowList ? question.calculationAllowList.includes(calculation) : true,
+      )
+      .forEach((calculation) => {
+        const trainingData: NerTrainingData | NluTrainingData = generateTrainingDataEntry(
+          question,
+          { calculation },
+          variant,
+        );
+        list.push(trainingData);
+      });
+  });
+};
+
+/**
  * Generates training data in provided variant for questions with station and measurand slots and adds data to lists.
  * @param variant data variant, either 'ner' or 'nlu'
  * @param questions array of training questions used as basis for training data
