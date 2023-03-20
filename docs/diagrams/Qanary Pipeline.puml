@@ -1,5 +1,4 @@
 @startuml
-
 title Architecture Qanary Pipeline
 
 frame "Pattern Matching" {
@@ -28,13 +27,14 @@ start ..> TripleStore: seeding
 [Measurand PM] <.. TripleStore: measurands
 [Calculation PM] <.. TripleStore: calculations
 [Representation PM] <.. TripleStore: representations
+[Fuzzy AR] <.. TripleStore: stations & measruands &\n calculations & representations
 
 [Station PM] -> [Measurand PM]
 [Measurand PM] -> [Calculation PM]
 [Calculation PM] -> [Representation PM]
 [Representation PM] -> [LD Shuyo]
 
-[LD Shuyo] -> [Date AR]
+[LD Shuyo] -down-> [Date AR]
 [Date AR] -> [Customized NER]
 [Customized NER] -> [Fuzzy AR]
 

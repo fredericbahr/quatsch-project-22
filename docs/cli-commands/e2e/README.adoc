@@ -1,7 +1,0 @@
-= e2e Commands
-
-[width="100%",cols="30%,70%",options="header",]
-|===
-|Command |Description
-include::npm run e2e.adoc[tags=command]
-|===

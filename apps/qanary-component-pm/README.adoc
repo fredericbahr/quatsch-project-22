@@ -5,6 +5,41 @@
 This is a Qanary component for checking via a regular expression if a given question contains specific lubw domain instances.
 The component receives the question via the knowledge graph.
 It also receives the domain knowledge via the knowledge graph, which get seeded when asking the question.
+
+For more information see the Architecture overview and documentation.
+
+.Example Question if configured with lubw domain `station`:
+[source,text]
+----
+Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?
+                        └┬┘
+                AnnotationOfStation
+----
+
+.Example Question if configured with lubw domain `measurand`:
+[source,text]
+----
+Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?
+            └───┬───┘
+         AnnotationOfMeasruand
+----
+
+.Example Question if configured with lubw domain `caluclation`:
+[source,text]
+----
+Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?
+                                                                              └─────────┬────────┘
+                                                                               AnnotationOfCalculation
+----
+
+.Example Question if configured with lubw domain `representation`:
+[source,text]
+----
+Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?
+                                                                                                                                        └───┬───┘
+                                                                                                                                AnnotationOfRepresentaion
+----
+
 // end::excerpt[]
 
 include::../../docs/Component Install.adoc[leveloffset=+1]
@@ -45,7 +80,7 @@ include::../../example.env[tags=qanary-pipeline;qanary-component-core;qanary-com
 
 == Functionality
 
-The component fetches every rdf triple of the a `<urn:domain>` class, maps it to an internal representation and checks if the question contains an domain isntance.
+The component fetches every rdf triple of the a `<urn:domain>` class inside the knowledge graph, maps it to an internal representation and checks if the question contains an domain instance.
 If so, it adds the domain instance as an annotation to the knowledge graph.
 
 Note that all matches are added to the knowledge graph.

@@ -1,6 +1,6 @@
 = Project Structure
 
-The project is structured as follows:
+The project is structured as a monorepo as follows:
 
 * `/apps/` contains all containerized services in this monorepo
 * `/packages/` contains the libraries services might use

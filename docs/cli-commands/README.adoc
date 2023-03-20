@@ -4,5 +4,4 @@ The following scripts are the main executable scripts in the umbrella package.
 
 include::default/README.adoc[leveloffset=+1]
 include::docker/README.adoc[leveloffset=+1]
-include::e2e/README.adoc[leveloffset=+1]
 include::rasa/README.adoc[leveloffset=+1]
