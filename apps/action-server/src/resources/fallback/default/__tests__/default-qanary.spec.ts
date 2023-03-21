@@ -4,7 +4,6 @@ import { RasaRequest, RasaResponse } from "shared";
 import { abstractRequestHandler } from "../../../measurand/abstract/abstract.controller";
 import { fallbackRequestHandler } from "../fallback.controller";
 
-
 jest.mock("../../../measurand/abstract/abstract.controller", () => ({
   abstractRequestHandler: jest.fn(),
 }));
