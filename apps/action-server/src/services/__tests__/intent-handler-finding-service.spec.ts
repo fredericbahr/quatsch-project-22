@@ -1,6 +1,6 @@
 import { INTENTS } from "shared";
 
-import { NoIntentHandlerError } from "../../errors/NoIntentHandlerError";
+import { NoIntentHandlerError } from "../../errors/no-intent-handler-error";
 import { IntentHandlerFindingService } from "../intent-handler-finding-service";
 import { StoringService } from "../storing-service";
 

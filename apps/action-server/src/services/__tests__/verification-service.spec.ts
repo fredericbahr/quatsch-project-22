@@ -1,6 +1,6 @@
 import { defaultLUBWData } from "shared";
 
-import { VerificationError } from "../../errors/VerificationError";
+import { VerificationError } from "../../errors/verification-error";
 import { VerificationService } from "../verification-service";
 
 describe("Verification Service", () => {

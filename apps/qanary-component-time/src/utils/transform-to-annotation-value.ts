@@ -1,6 +1,6 @@
 import { ParsedResult } from "chrono-node";
 
-import { transformToISOString } from "./transformToISOString";
+import { transformToISOString } from "./transform-to-iso-string";
 
 /**
  * Converts a ParsedResult into an annotation value of type RDF AnnotationOfTime, depending on the specified object a

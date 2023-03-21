@@ -2,7 +2,7 @@ import { LupoCloudApi } from "api";
 import { differenceInDays } from "date-fns";
 import { ILUBWData, ILUBWMeasurandData } from "shared";
 
-import { EmptyResponseError } from "../errors/EmptyResponseError";
+import { EmptyResponseError } from "../errors/empty-response-error";
 
 /**
  * Service for querying the LUBW API.

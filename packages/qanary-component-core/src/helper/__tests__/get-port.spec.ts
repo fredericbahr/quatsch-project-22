@@ -2,7 +2,7 @@ import EventEmitter from "events";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { createServer } from "net";
 
-import { getPort } from "../getPort";
+import { getPort } from "../get-port";
 
 interface IMockServerType extends EventEmitter {
   listen?: (port: number) => void;

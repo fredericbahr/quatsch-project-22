@@ -1,7 +1,7 @@
 import { ParsedResult } from "chrono-node";
 import { Component } from "chrono-node/src";
 
-import { calcConfidence } from "../utils/calcConfidence";
+import { calcConfidence } from "../utils/calc-confidence";
 
 describe("#Component calcConfidence", () => {
   const genMockStartParsedResult = (a: Record<"year" | "month" | "day", boolean>) => {

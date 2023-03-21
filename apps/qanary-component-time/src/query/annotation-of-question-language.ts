@@ -21,7 +21,7 @@ export type QuestionSparqlResponse = {
  * @param inGraph the inGraph attribute
  */
 const readQueryAnnotationOfQuestionLanguage = (inGraph: string): string => {
-  const queryPath: string = path.join(__dirname, "./annotationOfQuestionLanguage.rq");
+  const queryPath: string = path.join(__dirname, "./annotation-of-question-language.rq");
   return queryFileLoader(queryPath, [
     {
       keyword: RESERVED_KEYWORD_IN_SPARQL_QUERY.YOUR_CURRENT_GRAPH_ID,

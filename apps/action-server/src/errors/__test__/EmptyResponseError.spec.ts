@@ -1,4 +1,4 @@
-import { EmptyResponseError } from "../EmptyResponseError";
+import { EmptyResponseError } from "../empty-response-error";
 
 describe("Empty Response Data Error", () => {
   it("should create a new instance", () => {

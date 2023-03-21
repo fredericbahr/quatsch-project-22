@@ -2,8 +2,8 @@ import { IQanaryComponentMessageHandler } from "qanary-component-core";
 import { getQuestion } from "qanary-component-helpers";
 import { IQanaryMessage } from "shared";
 
-import { AnnotationOfInstance, getAnnotationsOfInstance } from "./query/annotationOfInstance";
-import { searchForDomainInstances } from "./utils/fuzzySearch";
+import { AnnotationOfInstance, getAnnotationsOfInstance } from "./query/annotation-of-instance";
+import { searchForDomainInstances } from "./utils/fuzzy-search";
 
 /**
  * An event handler for incoming messages of the Qanary pipeline

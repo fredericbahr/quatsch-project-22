@@ -3,10 +3,10 @@ import { getQuestion } from "qanary-component-helpers";
 import { IQanaryMessage } from "shared";
 
 import { handler } from "../handler";
-import { getAnnotationsOfInstance } from "../query/annotationOfInstance";
-import { searchForDomainInstances } from "../utils/fuzzySearch";
+import { getAnnotationsOfInstance } from "../query/annotation-of-instance";
+import { searchForDomainInstances } from "../utils/fuzzy-search";
 
-jest.mock("../utils/fuzzySearch", () => ({
+jest.mock("../utils/fuzzy-search", () => ({
   searchForDomainInstances: jest.fn(() => Promise.resolve()),
 }));
 

@@ -1,6 +1,6 @@
 import { ILUBWDataKey, RasaResponse } from "shared";
 
-import { VerificationError } from "../../errors/VerificationError";
+import { VerificationError } from "../../errors/verification-error";
 import { ErrorHandlingService } from "../error-handling-service";
 
 describe("Error Handling Service", () => {

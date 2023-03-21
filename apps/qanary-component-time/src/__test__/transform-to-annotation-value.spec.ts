@@ -1,6 +1,6 @@
 import { ParsedResult } from "chrono-node";
 
-import { transformToAnnotationValue } from "../utils/transformToAnnotationValue";
+import { transformToAnnotationValue } from "../utils/transform-to-annotation-value";
 
 describe("#Component transformToAnnotationValue", () => {
   const genMockParsedResult = () => {

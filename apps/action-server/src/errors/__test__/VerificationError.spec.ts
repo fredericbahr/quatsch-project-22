@@ -1,6 +1,6 @@
 import { ILUBWDataKey } from "shared";
 
-import { VerificationError } from "../VerificationError";
+import { VerificationError } from "../verification-error";
 
 describe("Verification Error", () => {
   const message = "message";
