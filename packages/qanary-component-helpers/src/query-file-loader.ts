@@ -12,7 +12,7 @@ export enum RESERVED_KEYWORD_IN_SPARQL_QUERY {
  * A replacement object that replaces the keyword with a text fragment when loading a SparQL file.
  */
 interface ISparqlQueryReplacement {
-  keyword: RESERVED_KEYWORD_IN_SPARQL_QUERY;
+  keyword: string;
   replacement: string;
 }
 
@@ -21,7 +21,7 @@ interface ISparqlQueryReplacement {
  * @param filePath the path of the file to read
  * @param sparqlQueryReplacements a list of text fragments to replace as objects
  */
-export const queryFileLoader = (filePath: string, sparqlQueryReplacements: Array<ISparqlQueryReplacement>) => {
+export const queryFileLoader = (filePath: string, sparqlQueryReplacements: Array<ISparqlQueryReplacement>): string => {
   let query: string = fs.readFileSync(filePath, "utf-8");
   for (const sparqlQueryReplacement of sparqlQueryReplacements) {
     query = query.replaceAll(sparqlQueryReplacement.keyword, sparqlQueryReplacement.replacement);

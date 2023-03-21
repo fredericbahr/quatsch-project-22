@@ -12,7 +12,7 @@ include::example.ts[]
 
 == API
 
-=== generateAdditionalTriples
+=== `generateAdditionalTriples`
 
 Generates additional triples for a Qanary pipeline with all the stations, measurands, calculations and representations encoded as rdf triples. The domains describe the above mentioned entities. Those are represented as rdf classes.
 
@@ -26,15 +26,15 @@ Generates additional triples for a Qanary pipeline with all the stations, measur
 |representations |Representation[] |An array of representations to generate triples for.
 |===
 
-=== getPrefixes
+=== `getPrefixes`
 
 Gets the prefixes for the rdf additioanl triples query.
 
-=== getClassDefinitions
+=== `getClassDefinitions`
 
 Gets the class definitions for the rdf additioanl triples by defining the domains as rdf classes.
 
-=== getStationTriples
+=== `getStationTriples`
 
 Gets the stations encoded as rdf triples
 
@@ -44,7 +44,7 @@ Gets the stations encoded as rdf triples
 |stations |Station[] |An array of stations to generate triples for.
 |===
 
-=== getMeasurandTriples
+=== `getMeasurandTriples`
 
 Gets the measurands encoded as rdf triples
 
@@ -54,7 +54,7 @@ Gets the measurands encoded as rdf triples
 |measurands |Measurand[] |An array of measurands to generate triples for.
 |===
 
-=== getCalculationTriples
+=== `getCalculationTriples`
 
 Gets the calculations encoded as rdf triples
 
@@ -64,7 +64,7 @@ Gets the calculations encoded as rdf triples
 |calculations |Calculation[] |An array of calculations to generate triples for.
 |===
 
-=== getRepresentationTriples
+=== `getRepresentationTriples`
 
 Gets the representations encoded as rdf triples
 
