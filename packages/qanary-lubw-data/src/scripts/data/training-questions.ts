@@ -35,7 +35,7 @@ export const questionsCalculation: Array<TrainingQuestion> = [
 
 export const questionsStationMeasurand: Array<TrainingQuestion> = [
   {
-    text: ({ measurand, station }) => `Wie ist der ${measurand} in ${station}?`,
+    text: ({ measurand, station }) => `Wie ist der ${measurand}-Wert in ${station}?`,
     measurandAllowList: [
       "Luftqualitätsindex",
       "Stickstoffdioxid",
@@ -50,18 +50,21 @@ export const questionsStationMeasurand: Array<TrainingQuestion> = [
     ],
   },
   {
-    text: ({ measurand, station }) => `Wie ist der ${measurand} Wert in ${station}?`,
-    measurandAllowList: ["luqx", "no2", "o3", "pm10", "pm25k"],
-  },
-  {
-    text: ({ measurand, station }) => `Wie ist der Wert des ${measurand} in ${station}?`,
+    text: ({ measurand, station }) => `Wie hoch ist der Wert des ${measurand} in ${station}?`,
     measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
     measurandSuffix: "s",
   },
   {
-    text: ({ measurand, station }) => `Wie ist der ${measurand} in ${station}?`,
+    text: ({ measurand, station }) => `Was ist der ${measurand} Wert in ${station}?`,
+    measurandAllowList: ["luqx", "no2", "o3", "pm10", "pm25k"],
+  },
+  {
+    text: ({ measurand, station }) => `Gib mir den ${measurand} in ${station}.`,
     measurandAllowList: ["Stickstoffdioxid", "Ozon", "Feinstaub PM10", "Feinstaub PM25"],
-    measurandSuffix: "wert",
+    measurandSuffix: "-Wert",
+  },
+  {
+    text: ({ measurand, station }) => `Wie ist der aktuelle ${measurand}-Wert in ${station}?`,
   },
 ];
 

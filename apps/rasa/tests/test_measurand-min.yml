@@ -193,3 +193,31 @@ stories:
           Wie ist der minimale Wert?
         intent: measurand_min
       - action: action_measurand_min
+
+  - story: Ask measurand min value v2
+    steps:
+      - user: |
+          Was war der niedrigste Messwert für Feinstaub PM25 in Karlsruhe-Nordwest?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value v3
+    steps:
+      - user: |
+          Was war der niedrigste Messwert für pm10 in DEBW147?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value v4
+    steps:
+      - user: |
+          Was war das Minimum für o3 in DEBW107?
+        intent: measurand_min
+      - action: action_measurand_min
+
+  - story: Ask measurand min value v5
+    steps:
+      - user: |
+          Was war das Minimum für den Luftqualitätsindex-Wert in Schramberg Oberndorfer Straße
+        intent: measurand_min
+      - action: action_measurand_min

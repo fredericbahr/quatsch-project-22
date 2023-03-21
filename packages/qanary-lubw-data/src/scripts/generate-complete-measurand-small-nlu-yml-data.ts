@@ -11,5 +11,5 @@ writeYmlFileSlim({
   baseData,
   generateNluYmlFileContent,
   path: basePaths.measurandCompleteYML,
-  threshold: 0.25,
+  threshold: 0.2,
 });

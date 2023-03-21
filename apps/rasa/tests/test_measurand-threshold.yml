@@ -193,3 +193,45 @@ stories:
           Ist der Wert extrem?
         intent: measurand_threshold
       - action: action_measurand_threshold
+
+  - story: Ask measurand threshold value v2
+    steps:
+      - user: |
+          Ist der Ozon-Wert für die Station Tauberbischofsheim gefährlich?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold value v3
+    steps:
+      - user: |
+          Ist der Ozon-Wert für die Station Tauberbischofsheim extrem?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold value v4
+    steps:
+      - user: |
+          Ist der Ozon-Wert für die Station Tauberbischofsheim grenzwertig?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold value v5
+    steps:
+      - user: |
+          Ist der o3-Wert für die Station Kehl extrem?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold value v6
+    steps:
+      - user: |
+          Liegt der pm10-Wert für die Station DEBW112 über einem Grenzwert?
+        intent: measurand_threshold
+      - action: action_measurand_threshold
+
+  - story: Ask measurand threshold value v5
+    steps:
+      - user: |
+          Liegt der Stickstoffdioxid-Wert für die Station Aalen über einem Grenzwert?
+        intent: measurand_threshold
+      - action: action_measurand_threshold

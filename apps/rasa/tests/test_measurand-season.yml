@@ -167,7 +167,7 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der Luftqualitätsindex?
+          Wie ist der aktuelle Luftqualitätsindex?
         intent: measurand_complete
       - action: action_measurand_complete
       - user: |
@@ -195,5 +195,33 @@ stories:
       - action: action_measurand_complete
       - user: |
           Ist dieser Wert typisch für die aktuelle Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season value v2
+    steps:
+      - user: |
+          Wie hoch ist der typische Ozon-Messwert in Biberach für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season value v3
+    steps:
+      - user: |
+          Wie hoch ist der typische no2-Messwert in DEBW084 für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season value v4
+    steps:
+      - user: |
+          Was ist der typische luqx-Messwert in DEBW241 für diese Jahreszeit?
+        intent: measurand_season
+      - action: action_measurand_season
+
+  - story: Ask measurand season value v5
+    steps:
+      - user: |
+          Was ist der typische Ozon-Messwert in Freiburg Schwarzwaldstraße für diese Jahreszeit?
         intent: measurand_season
       - action: action_measurand_season

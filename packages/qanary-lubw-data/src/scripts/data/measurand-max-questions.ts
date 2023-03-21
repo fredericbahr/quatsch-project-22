@@ -16,4 +16,7 @@ export const questionsStationMeasurandCalculationMeasurandMax: Array<TrainingQue
     text: ({ measurand, station, calculation }) => `Was war das ${calculation} für ${measurand} in ${station}?`,
     calculationAllowList: ["Maximum"],
   },
+  {
+    text: ({ measurand, station }) => `Wie ist der maximale ${measurand}-Wert in ${station}?`,
+  },
 ];
