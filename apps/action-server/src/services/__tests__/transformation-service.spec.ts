@@ -90,7 +90,7 @@ describe("TransformationService", () => {
         station: "DEBW081",
         calculation: undefined,
         measurand: "luqx",
-        time: defaultLUBWData[ILUBWDataKey.Time],
+        time: undefined,
         representation: undefined,
       };
 
@@ -115,13 +115,13 @@ describe("TransformationService", () => {
         score: 1,
       };
 
-      it("should return default if no time is given", () => {
+      it("should return undefined if no time is given and not merged with defaults", () => {
         const transformedAnnotations = LUBWDataTransformationService.getTransformedLUBWData(
           uncompletedAnnotations,
           false,
         );
 
-        expect(transformedAnnotations.time).toEqual(defaultLUBWData[ILUBWDataKey.Time]);
+        expect(transformedAnnotations.time).toEqual(undefined);
       });
 
       it("should return specific time if time is given", () => {
