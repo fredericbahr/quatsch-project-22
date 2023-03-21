@@ -43,16 +43,19 @@ export const handler: IQanaryComponentMessageHandler = async (message: IQanaryMe
   const previouslyDetectedLanguage: string | null = await getAnnotationOfQuestionLanguage(message);
   const languageCode: LanguageCode = getChronoLanguageCode(previouslyDetectedLanguage);
   const foundDates: Array<ParsedResult> = chrono[languageCode].parse(question);
-  const annotationInformations: Array<IAnnotationInformation> = foundDates.map(adapterAnnotationInformation);
+  const annotationInformationList: Array<IAnnotationInformation> = foundDates
+    .map(adapterAnnotationInformation)
+    .sort((a: IAnnotationInformation, b: IAnnotationInformation) => b.confidence - a.confidence);
 
   /** Update knowledge graph for each found */
-  for (const annotationInformation of annotationInformations) {
+  for (const annotationInformation of annotationInformationList) {
     await createAnnotationInKnowledgeGraph({
       message,
       componentName,
       annotation: annotationInformation,
       annotationType: annotationTypesMap.get(Domain.Time),
     });
+    console.log(`Found time at index: ${annotationInformation.range?.start}`, annotationInformation);
   }
 
   return message;

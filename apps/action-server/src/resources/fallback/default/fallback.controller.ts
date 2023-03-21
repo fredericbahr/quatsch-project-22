@@ -1,22 +1,14 @@
 import { RasaRequest, RasaResponse } from "shared";
 
+import { abstractRequestHandler } from "../../measurand/abstract/abstract.controller";
+
 /**
  * Handles the intent/action of `action_default_qanary` by trying to answer the question with a Qanary (default) pipeline.
  * @param req Request Object
  * @param res Response Object
  */
 export const fallbackRequestHandler = async (req: RasaRequest, res: RasaResponse) => {
-  // const question: string = req.body.tracker.latest_message.text;
-
-  res.json({
-    responses: [
-      {
-        text: "Anfrage wurde durch Qanary-Default-Pipeline beantwortet.",
-        response: "",
-      },
-    ],
-  });
-  res.end();
+  await abstractRequestHandler(req, res, {});
 };
 
 /**

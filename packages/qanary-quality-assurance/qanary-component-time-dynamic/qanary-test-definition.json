@@ -1,0 +1,104 @@
+{
+  "qanary": {
+    "system_url": "http://qanary-pipeline:40111/startquestionansweringwithtextquestion",
+    "componentlist": ["qanary-component-time"],
+    "additionalTriples": ""
+  },
+  "validation-sparql-templates": [
+    "0_was-any-instance-identified.sparql",
+    "1_was-the-expected-instance-recognized.sparql"
+  ],
+  "tests": [
+    {
+      "question": "Wie war gestern der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "1",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"gestern\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war vorgestern der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "1",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"vorgestern\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie wird morgen der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "1",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"morgen\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war letzten Montag der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.75",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Montag\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war letzten Dienstag der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.75",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Dienstag\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war letzten Mittwoch der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.75",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Mittwoch\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war letzten Donnerstag der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.75",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Donnerstag\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war letzten Freitag der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.75",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Freitag\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war letzten Samstag der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.75",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Samstag\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war letzten Sonntag der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.75",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Sonntag\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war letzte Woche der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.75",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzte Woche\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war im letzten Monat der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.8333333333333334",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Monat\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    },
+    {
+      "question": "Wie war im letzten Jahr der Ozonwert in Ulm?",
+      "replacements": {
+        "<SCORE>": "0.8333333333333334",
+        "<FILTER>": "'\\\"text\\\":\\\\s*\\\"letzten Jahr\\\",\\\\s*\\\"start\\\":\\\"\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}.\\\\d{3}Z\\\"'"
+      }
+    }
+  ]
+}

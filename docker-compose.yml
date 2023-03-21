@@ -2,7 +2,7 @@
 version: "3.5"
 
 services:
-# end::preamble[]
+  # end::preamble[]
 
   # tag::qanary-pipeline[]
   qanary-pipeline:
@@ -22,7 +22,7 @@ services:
       - "SERVER_HOST=$QANARY_HOST"
       - "SERVER_PORT=$QANARY_PORT"
       - "QANARY_PROCESS_ALLOW-ADDITIONAL-TRIPLES=true"
-    profiles: ["qanary", "all", "slim", "qanary-ner"]
+    profiles: ["all", "slim", "qanary", "qanary-ner", "qanary-slim"]
   # end::qanary-pipeline[]
 
   # qanary-component-example1:
@@ -65,8 +65,8 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all", "slim"]
-  
+    profiles: ["all", "slim", "qanary", "qanary-slim"]
+
   qanary-component-pm-station:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_STATION_NAME
     networks:
@@ -86,7 +86,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all", "slim"]
+    profiles: ["all", "slim", "qanary", "qanary-slim"]
 
   qanary-component-pm-calculation:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_CALCULATION_NAME
@@ -107,7 +107,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all", "slim"]
+    profiles: ["all", "slim", "qanary", "qanary-slim"]
 
   qanary-component-pm-representation:
     container_name: $SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_PM_REPRESENTATION_NAME
@@ -128,7 +128,7 @@ services:
       - ./apps/qanary-component-pm:/app/apps/qanary-component-pm
       - /app/apps/qanary-component-pm/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all", "slim"]
+    profiles: ["all", "slim", "qanary", "qanary-slim"]
   # end::qanary-component-pm[]
 
   # tag::qanary-component-time[]
@@ -150,7 +150,7 @@ services:
       - ./apps/qanary-component-time:/app/apps/qanary-component-time
       - /app/apps/qanary-component-time/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all", "slim"]
+    profiles: ["all", "slim", "qanary", "qanary-slim"]
   # end::qanary-component-time[]
 
   # tag::qanary-component-ld-shuyo[]
@@ -167,7 +167,7 @@ services:
       - "SERVER_HOST=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME"
       - "SPRING_BOOT_ADMIN_URL=$SPRING_BOOT_ADMIN_URL"
       - "SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE-BASE-URL=http://$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_NAME:$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_LD_SHUYO_PORT"
-    profiles: ["qanary", "all", "slim"]
+    profiles: ["all", "slim", "qanary", "qanary-slim"]
   # end::qanary-component-ld-shuyo[]
 
   # tag::qanary-component-ner-automl[]
@@ -190,7 +190,7 @@ services:
       - "SERVICE_DESCRIPTION_COMPONENT=$QANARY_COMPONENT_NER_AUTOML_SERVICE_DESCRIPTION"
       - "PRODUCTION=True"
     command: uvicorn qanarycomponent:app --host 0.0.0.0 --port=$SPRING_BOOT_ADMIN_CLIENT_INSTANCE_SERVICE_NER_AUTOML_PORT
-    profiles: ["qanary", "all", "qanary-ner"]
+    profiles: ["all", "qanary", "qanary-ner"]
   # end::qanary-component-ner-automl[]
 
   # tag::qanary-component-fuzzy[]
@@ -212,7 +212,7 @@ services:
       - ./apps/qanary-component-fuzzy:/app/apps/qanary-component-fuzzy
       - /app/apps/qanary-component-fuzzy/node_modules
       - /app/node_modules
-    profiles: ["qanary", "all", "qanary-ner"]
+    profiles: ["all", "qanary", "qanary-ner"]
   # end::qanary-component-fuzzy[]
   # end::qanary-components[]
 
@@ -227,7 +227,7 @@ services:
       context: ./apps/rasa
     command: >
       run --enable-api --cors "*"
-    profiles: ["rasa", "all", "slim"]
+    profiles: ["all", "slim", "rasa"]
   # end::rasa[]
 
   # tag::action-server[]
@@ -244,7 +244,7 @@ services:
       - ./apps/action-server:/app/apps/action-server
       - /app/apps/action-server/node_modules
       - /app/node_modules
-    profiles: ["rasa", "all", "slim"]
+    profiles: ["all", "slim", "rasa"]
   # end::action-server[]
 
   # tag::frontend[]
@@ -262,7 +262,7 @@ services:
       - "$FRONTEND_PORT:3000"
     networks:
       - rasa-network
-    profiles: ["rasa", "all", "slim"]
+    profiles: ["all", "slim", "rasa"]
   # end::frontend[]
 
   # tag::qanary-component-ner-automl-training[]
@@ -280,9 +280,9 @@ services:
     volumes:
       - ./apps/qanary-component-ner-automl-training:/app
     deploy:
-        resources:
-          reservations:
-            devices:
+      resources:
+        reservations:
+          devices:
             - driver: nvidia
               count: 1
               capabilities: [gpu]

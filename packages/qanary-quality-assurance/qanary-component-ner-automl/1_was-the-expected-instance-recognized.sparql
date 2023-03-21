@@ -1,0 +1,17 @@
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ASK
+FROM <GRAPHID>
+WHERE {
+    ?annotation a qa:AnnotationOfInstance ;
+        oa:hasBody '<BODY>' ;
+        oa:annotatedBy <urn:qanary:automl:qanary-component-ner-automl> .
+    ?annotation oa:hasTarget ?target .
+    ?target oa:hasSelector ?selector .
+    ?selector oa:start <START> ;
+        oa:end <END> .
+}
+HAVING (COUNT(distinct ?annotation) > 0)

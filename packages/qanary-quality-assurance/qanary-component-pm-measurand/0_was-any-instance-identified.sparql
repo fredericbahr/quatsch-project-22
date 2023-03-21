@@ -1,0 +1,15 @@
+# Calculate the number of annotated entities
+PREFIX oa: <http://www.w3.org/ns/openannotation/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX qa: <http://www.wdaqua.eu/qa#>
+
+ASK
+FROM <GRAPHID>
+WHERE {
+    ?annotation a qa:AnnotationOfMeasurand ;
+        oa:hasBody ?body ;
+        oa:hasTarget ?target ;
+        oa:annotatedAt ?date ;
+        oa:annotatedBy ?component .
+}
+HAVING (COUNT(distinct ?annotation) > 0)

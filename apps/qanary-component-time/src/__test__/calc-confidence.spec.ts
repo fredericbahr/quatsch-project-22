@@ -9,10 +9,8 @@ describe("#Component calcConfidence", () => {
       index: 0,
       refDate: undefined,
       start: {
-        isCertain: (component: Component) => {
-          return a[component];
-        },
-        get: () => null,
+        isCertain: (component: Component) => a[component],
+        get: (component: Component) => (a[component] ? 1 : 0),
         date: () => new Date(),
       },
       text: "",
@@ -27,17 +25,13 @@ describe("#Component calcConfidence", () => {
       index: 0,
       refDate: undefined,
       start: {
-        isCertain: (component: Component) => {
-          return a[component];
-        },
-        get: () => null,
+        isCertain: (component: Component) => a[component],
+        get: (component: Component) => (a[component] ? 1 : 0),
         date: () => new Date(),
       },
       end: {
-        isCertain: (component: Component) => {
-          return a[component];
-        },
-        get: () => null,
+        isCertain: (component: Component) => a[component],
+        get: (component: Component) => (a[component] ? 1 : 0),
         date: () => new Date(),
       },
       text: "",

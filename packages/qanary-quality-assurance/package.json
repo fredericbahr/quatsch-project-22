@@ -1,0 +1,26 @@
+{
+    "name": "qanary-quality-assurance",
+    "version": "1.0.0",
+    "description": "Qanary quality assurance tests for the Qanary pipeline and components",
+    "license" : "SEE LICENSE IN LICENSE",
+    "author": "",
+    "scripts": {
+      "qa:build": "docker build -t qanary_quality_assurance .",
+      "qa:all": "npm run qa:fuzzy && npm run qa:ner && npm run qa:pipeline && npm run qa:calculation && npm run qa:measurand && npm run qa:representation && npm run qa:station && npm run qa:time-dynamic && npm run qa:time-static",
+      "qa:ci": "npm run qa:calculation && npm run qa:measurand && npm run qa:representation && npm run qa:station && npm run qa:time-dynamic && npm run qa:time-static",
+      "qa:pipeline": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-pipeline:/app/qanary-pipeline qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-pipeline",
+      "qa:fuzzy": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-component-fuzzy:/app/qanary-component-fuzzy qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-component-fuzzy",
+      "qa:ner": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-component-ner-automl:/app/qanary-component-ner-automl qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-component-ner-automl",
+      "qa:calculation": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-component-pm-calculation:/app/qanary-component-pm-calculation qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-component-pm-calculation",
+      "qa:measurand": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-component-pm-measurand:/app/qanary-component-pm-measurand qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-component-pm-measurand",
+      "qa:representation": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-component-pm-representation:/app/qanary-component-pm-representation qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-component-pm-representation",
+      "qa:station": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-component-pm-station:/app/qanary-component-pm-station qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-component-pm-station",
+      "qa:time:dynamic": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-component-time-dynamic:/app/qanary-component-time-dynamic qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-component-time-dynamic",
+      "qa:time:static": "docker run --network=quatsch-project-22_rasa-network -v ${PWD}/qanary-component-time-static:/app/qanary-component-time-static qanary_quality_assurance python3 evaluate-qanary-system.py --directory=qanary-component-time-static"
+    },
+    "prettier": "prettier-config-sdk",
+    "volta": {
+      "extends": "../../package.json"
+    }
+  }
+  

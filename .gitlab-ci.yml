@@ -42,6 +42,35 @@ test:
     expire_in: 5 day
   coverage: /Statements\s+:\s*([\d\.]+)/
 
+# does not work as qanary-pipeline is not starting correctly
+# qanary-tests:
+#   stage: test
+#   image:
+#       name: docker:23.0.1-cli
+#       entrypoint: ["/bin/sh", "-c"]
+#   before_script:
+#     - apk update
+#     - apk add bash curl nodejs npm
+#     - apk add --no-cache libc6-compat
+#   script:
+#     - cp example.env .env
+#     - echo "127.0.0.1 qanary-pipeline" >> /etc/hosts
+#     - echo "0.0.0.0 qanary-pipeline" >> /etc/hosts
+#     - npm run init
+#     - docker compose down
+#     - npm run docker:build
+#     - npm run docker:qanary-slim -- --build
+#     - cd packages/qanary-quality-assurance
+#     - docker build -t qanary_quality_assurance .
+#     - docker ps -a
+#     # - bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' qanary-pipeline:40111)" != "200" ]]; do sleep 5; done'
+#     - npm run qa:ci
+#   artifacts:
+#     paths:
+#       - "**/output"
+#     expire_in: 5 day
+
+
 rasa_train:
   stage: rasa
   image:
