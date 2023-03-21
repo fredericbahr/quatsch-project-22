@@ -11,7 +11,7 @@ Eine Frage, die den vollständigen Informationskontext beinhaltet, kann in folge
 
 [source]
 ----
-Was ist das <Berechungsverfahren> des <Messgröße> in <Messstation> zwischen <Startzeit> und <Endzeit> repräsentiert als <Representation>?
+Was ist das <Berechungsverfahren> des <Messgröße> in <Messstation> von <Startzeit> bis <Endzeit> repräsentiert als <Representation>?
 ----
 
 Die Werte der Platzhalter können unter folgendem Link gefunden werden: https://gitlab.imn.htwk-leipzig.de/fbahr/quatsch-project-22/-/tree/main/packages/qanary-lubw-data/src/data
@@ -20,7 +20,7 @@ Eine beispielhafte Füllung des obigen Schemas könnte wie folgt aussehen:
 
 [source]
 ----
-Was ist das Maximum des Ozonwerts in Ulm zwischen 01.02.2023 und 15.02.2023 repräsentiert als Text?
+Was ist das Maximum des Ozonwerts in Ulm von 01.02.2023 bis 15.02.2023 repräsentiert als Text?
 ----
 
 Umstellungen der Satzstruktur sind natürlich zulässig.
