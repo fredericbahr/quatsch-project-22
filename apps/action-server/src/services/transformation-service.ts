@@ -90,11 +90,11 @@ export class LUBWDataTransformationService {
    * @param time the annotated time as serialized JSON
    * @returns the difference between the start and end date in days or undefined if the transformation failed
    */
-  private static transformTime(time?: string): ILUBWDefaultDataTime {
+  private static transformTime(time?: string): ILUBWDefaultDataTime | undefined {
     try {
       if (!time) {
         console.error("The time annotation is missing. Fallback to default value.");
-        return defaultLUBWData[ILUBWDataKey.Time];
+        return undefined;
       }
 
       const timeObject: ITimeObject = JSON.parse(time) as ITimeObject;
