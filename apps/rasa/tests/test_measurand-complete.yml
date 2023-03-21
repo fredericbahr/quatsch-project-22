@@ -6,7 +6,7 @@ stories:
   - story: Ask measurand value with given station and measurand as first interaction
     steps:
       - user: |
-          Wie ist der Luftqualitätsindex-Wert in Ulm?
+          Wie ist der aktuelle Luftqualitätsindex-Wert in Ulm?
         intent: measurand_complete
       - action: action_measurand_complete
 
@@ -54,7 +54,7 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der Stickstoffdioxid-Wert in Aalen?
+          Wie ist der aktuelle Stickstoffdioxid-Wert in Aalen?
         intent: measurand_complete
       - action: action_measurand_complete
 
@@ -87,7 +87,7 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der Hochwasserwert-Wert in Leipzig?
+          Wie ist der aktuelle Hochwasserwert-Wert in Leipzig?
         intent: measurand_complete
       - action: action_measurand_complete
 
@@ -98,7 +98,7 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der Luftqualitätsindex?
+          Wie ist der aktuelle Luftqualitätsindex?
         intent: measurand_complete
       - action: action_measurand_complete
       - user: |
@@ -113,7 +113,7 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der Luftqualitätsindex?
+          Wie ist der Luftqualitätsindex-Wert?
         intent: measurand_complete
       - action: action_measurand_complete
       - user: |
@@ -128,7 +128,7 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der Luftqualitätsindex?
+          Wie ist der Luftqualitätsindex-Wert?
         intent: measurand_complete
       - action: action_measurand_complete
       - user: |
@@ -148,7 +148,7 @@ stories:
         intent: greet
       - action: utter_greet
       - user: |
-          Wie ist der Luftqualitätsindex?
+          Wie ist der aktuelle Luftqualitätsindex?
         intent: measurand_complete
       - action: action_measurand_complete
       - user: |
@@ -171,7 +171,7 @@ stories:
         intent: measurand_max
       - action: action_measurand_max
       - user: |
-          Wie ist der Luftqualitätsindex?
+          Wie ist der Stickstoffdioxid-Wert?
         intent: measurand_complete
       - action: action_measurand_complete
 
@@ -191,5 +191,33 @@ stories:
       - action: action_measurand_min
       - user: |
           Wie ist der aktuelle Wert?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value v2
+    steps:
+      - user: |
+          Gib mir den Feinstaub PM10-Wert in Ludwigsburg Schlossstraße.
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value v3
+    steps:
+      - user: |
+          Gib mir den Ozon-Wert in DEBW156.
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value v4
+    steps:
+      - user: |
+          Wie hoch ist der Wert des Feinstaub PM25s in Aalen?
+        intent: measurand_complete
+      - action: action_measurand_complete
+
+  - story: Ask measurand value v5
+    steps:
+      - user: |
+          Wie hoch ist der Wert des Stickstoffdioxids in DEBW038?
         intent: measurand_complete
       - action: action_measurand_complete

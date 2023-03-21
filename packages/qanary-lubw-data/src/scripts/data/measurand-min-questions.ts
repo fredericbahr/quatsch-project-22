@@ -16,4 +16,7 @@ export const questionsStationMeasurandCalculationMeasurandMin: Array<TrainingQue
     text: ({ measurand, station, calculation }) => `Was war das ${calculation} für ${measurand} in ${station}?`,
     calculationAllowList: ["Minimum"],
   },
+  {
+    text: ({ measurand, station }) => `Wie ist der minimale ${measurand}-Wert in ${station}?`,
+  },
 ];

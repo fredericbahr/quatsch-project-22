@@ -79,6 +79,6 @@ stories:
         intent: out_of_scope
       - action: action_default_fallback
       - user: |
-          Wie ist der Luftqualitätsindex in Ulm?
+          Wie ist der Luftqualitätsindex-Wert in Ulm?
         intent: measurand_complete
       - action: action_measurand_complete

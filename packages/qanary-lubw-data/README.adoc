@@ -26,12 +26,11 @@ To generate usable training/testing data one of the following commands can be us
 [width="100%",cols="30%,70%",options="header",]
 |===
 |Command |Description
-|`npm run generate:csv` |generates NER training and testing data as CSV files for immediate training on container build
-|`npm run generate:json` |generates NER training and testing data as JSON files for retraining via `/retrain` route
-|`npm run generate:yml` |generates measurand complete NLU training data as YML file for Rasa NLU intent detection
-|`generate:yml-small` |generates limited measurand complete NLU training data as YML file for Rasa NLU intent detection (used for faster training)
-|`generate:yml-measurand-max` |generates measurand maximum NLU training data as YML file for Rasa NLU intent detection
-|`generate:yml-measurand-min` |generates measurand minimum NLU training data as YML file for Rasa NLU intent detection
-|`generate:yml-measurand-threshold` |generates measurand threshold NLU training data as YML file for Rasa NLU intent detection
-|`generate:yml-measurand-season` |generates measurand season NLU training data as YML file for Rasa NLU intent detection
+|`npm run generate:ner:csv` |generates NER training and testing data as CSV files for immediate training on container build
+|`npm run generate:ner:json` |generates NER training and testing data as JSON files for retraining via `/retrain` route
+|`npm run generate:nlu` |generates measurand complete NLU training data as YML file for Rasa NLU intent detection
+|`generate:nlu-small` |generates limited measurand complete NLU training data as YML file for Rasa NLU intent detection (used for faster training)
+|`generate:nlu-measurand-max` |generates measurand maximum NLU training data as YML file for Rasa NLU intent detection
+|`generate:nlu-measurand-min` |generates measurand minimum NLU training data as YML file for Rasa NLU intent detection
+|`generate:nlu-measurand-threshold` |generates measurand threshold NLU training data as YML file for Rasa NLU intent detection
 |===

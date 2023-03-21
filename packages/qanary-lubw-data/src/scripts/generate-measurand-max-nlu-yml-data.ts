@@ -11,5 +11,5 @@ writeYmlFileSlim({
   baseData,
   generateNluYmlFileContent,
   path: basePaths.measurandMaxYML,
-  threshold: 0.05,
+  threshold: 0.03,
 });

@@ -8,127 +8,430 @@ nlu:
       - Was war der niedrigste Messwert?
       - Welcher ist der minimale Messwert?
       - Was war das Minimum?
-      - Wie ist der maximale Wert?
-      - Welcher ist der minimale Messwert für luqx in DEBW076?
-      - Welcher ist der minimale Messwert für Ozon in DEBW076?
-      - Welcher ist der minimale Messwert für pm25k in Bernhausen?
-      - Welcher ist der minimale Messwert für Feinstaub PM10 in Biberach?
-      - Welcher ist der minimale Messwert für Feinstaub PM25 in DEBW004?
-      - Welcher ist der minimale Messwert für luqx in Freiburg?
-      - Welcher ist der minimale Messwert für Feinstaub PM10 in DEBW122?
-      - Welcher ist der minimale Messwert für Ozon in Freiburg Schwarzwaldstraße?
-      - Welcher ist der minimale Messwert für Luftqualitätsindex in Gärtringen?
-      - Welcher ist der minimale Messwert für o3 in Gärtringen?
-      - Welcher ist der minimale Messwert für Feinstaub PM10 in Heidelberg?
-      - Welcher ist der minimale Messwert für luqx in DEBW052?
-      - Welcher ist der minimale Messwert für Feinstaub PM10 in Konstanz?
-      - Welcher ist der minimale Messwert für pm10 in DEBW241?
-      - Welcher ist der minimale Messwert für o3 in DEBW098?
-      - Welcher ist der minimale Messwert für pm25k in Mannheim Friedrichsring?
-      - Welcher ist der minimale Messwert für o3 in Mannheim-Nord?
-      - Welcher ist der minimale Messwert für no2 in Neuenburg?
-      - Welcher ist der minimale Messwert für pm25k in Neuenburg?
-      - Welcher ist der minimale Messwert für o3 in DEBW033?
-      - Welcher ist der minimale Messwert für pm10 in DEBW027?
-      - Welcher ist der minimale Messwert für o3 in Reutlingen?
-      - Welcher ist der minimale Messwert für Stickstoffdioxid in Schwäbische Alb?
-      - Welcher ist der minimale Messwert für Ozon in Schwäbische Alb?
-      - Welcher ist der minimale Messwert für pm25k in Schwarzwald-Süd?
-      - Welcher ist der minimale Messwert für Feinstaub PM25 in Stuttgart Arnulf-Klett-Platz?
-      - Welcher ist der minimale Messwert für pm25k in Stuttgart-Bad Cannstatt?
-      - Welcher ist der minimale Messwert für Stickstoffdioxid in LUBW082?
-      - Welcher ist der minimale Messwert für luqx in DEBW059?
-      - Welcher ist der minimale Messwert für Stickstoffdioxid in DEBW107?
-      - Welcher ist der minimale Messwert für pm25k in Tübingen?
-      - Welcher ist der minimale Messwert für Luftqualitätsindex in DEBW136?
-      - Welcher ist der minimale Messwert für Ozon in DEBW136?
-      - Welcher ist der minimale Messwert für luqx in DEBW023?
-      - Welcher ist der minimale Messwert für Ozon in DEBW023?
-      - Welcher ist der minimale Messwert für luqx in Weil am Rhein?
-      - Welcher ist der minimale Messwert für Stickstoffdioxid in Weil am Rhein?
-      - Welcher ist der minimale Messwert für Ozon in Weil am Rhein?
-      - Was war der niedrigste Messwert für no2 in DEBW029?
-      - Was war der niedrigste Messwert für Stickstoffdioxid in Baden-Baden?
-      - Was war der niedrigste Messwert für o3 in Bernhausen?
-      - Was war der niedrigste Messwert für pm25k in DEBW046?
-      - Was war der niedrigste Messwert für Feinstaub PM25 in Freiburg?
-      - Was war der niedrigste Messwert für Stickstoffdioxid in DEBW038?
+      - Wie ist der minimale Wert?
+      - Welcher ist der minimale Messwert für no2 in DEBW042?
+      - Welcher ist der minimale Messwert für Feinstaub PM25 in Eggenstein?
+      - Welcher ist der minimale Messwert für Luftqualitätsindex in DEBW122?
+      - Welcher ist der minimale Messwert für Luftqualitätsindex in Karlsruhe-Nordwest?
+      - Welcher ist der minimale Messwert für o3 in DEBW024?
+      - Welcher ist der minimale Messwert für pm25k in DEBW241?
+      - Welcher ist der minimale Messwert für Luftqualitätsindex in DEBW005?
+      - Welcher ist der minimale Messwert für Feinstaub PM10 in DEBW125?
+      - Welcher ist der minimale Messwert für Stickstoffdioxid in DEBW027?
+      - Welcher ist der minimale Messwert für pm10 in DEBW031?
+      - Welcher ist der minimale Messwert für luqx in Stuttgart-Bad Cannstatt?
+      - Welcher ist der minimale Messwert für Feinstaub PM25 in DEBW059?
+      - Welcher ist der minimale Messwert für Feinstaub PM25 in DEBW107?
+      - Welcher ist der minimale Messwert für Feinstaub PM10 in DEBW136?
+      - Welcher ist der minimale Messwert für pm25k in DEBW019?
+      - Welcher ist der minimale Messwert für pm25k in Weil am Rhein?
+      - Was war der niedrigste Messwert für o3 in Baden-Baden?
+      - Was war der niedrigste Messwert für Feinstaub PM25 in DEBW042?
+      - Was war der niedrigste Messwert für Ozon in DEBW122?
+      - Was war der niedrigste Messwert für o3 in Freiburg Schwarzwaldstraße?
       - Was war der niedrigste Messwert für pm10 in DEBW038?
-      - Was war der niedrigste Messwert für Feinstaub PM10 in Friedrichshafen?
-      - Was war der niedrigste Messwert für Stickstoffdioxid in DEBW112?
-      - Was war der niedrigste Messwert für luqx in Gärtringen?
-      - Was war der niedrigste Messwert für Luftqualitätsindex in DEBW009?
-      - Was war der niedrigste Messwert für no2 in DEBW009?
-      - Was war der niedrigste Messwert für no2 in Heidelberg?
-      - Was war der niedrigste Messwert für no2 in DEBW152?
-      - Was war der niedrigste Messwert für o3 in Karlsruhe-Nordwest?
-      - Was war der niedrigste Messwert für Feinstaub PM25 in Karlsruhe-Nordwest?
-      - Was war der niedrigste Messwert für Feinstaub PM10 in DEBW080?
-      - Was war der niedrigste Messwert für pm25k in DEBW080?
-      - Was war der niedrigste Messwert für Stickstoffdioxid in Kehl?
-      - Was war der niedrigste Messwert für luqx in DEBW024?
-      - Was war der niedrigste Messwert für Ozon in DEBW098?
-      - Was war der niedrigste Messwert für Feinstaub PM25 in Pforzheim?
-      - Was war der niedrigste Messwert für Luftqualitätsindex in DEBW147?
-      - Was war der niedrigste Messwert für pm10 in DEBW147?
-      - Was war der niedrigste Messwert für o3 in Schramberg Oberndorfer Straße?
-      - Was war der niedrigste Messwert für Feinstaub PM10 in Schwäbische Alb?
-      - Was war der niedrigste Messwert für luqx in DEBW031?
-      - Was war der niedrigste Messwert für Luftqualitätsindex in DEBW031?
-      - Was war der niedrigste Messwert für no2 in Schwarzwald-Süd?
-      - Was war der niedrigste Messwert für Feinstaub PM10 in Stuttgart Am Neckartor?
-      - Was war der niedrigste Messwert für Ozon in DEBW099?
-      - Was war der niedrigste Messwert für Feinstaub PM10 in Stuttgart Arnulf-Klett-Platz?
-      - Was war der niedrigste Messwert für Feinstaub PM10 in DEBW013?
-      - Was war der niedrigste Messwert für Ozon in Stuttgart-Bad Cannstatt?
-      - Was war der niedrigste Messwert für pm25k in Stuttgart-Bad Cannstatt?
-      - Was war der niedrigste Messwert für Feinstaub PM25 in LUBW082?
-      - Was war der niedrigste Messwert für Stickstoffdioxid in DEBW116?
-      - Was war der niedrigste Messwert für o3 in DEBW116?
-      - Was war der niedrigste Messwert für Ozon in DEBW116?
-      - Was war der niedrigste Messwert für Stickstoffdioxid in Tauberbischofsheim?
-      - Was war der niedrigste Messwert für o3 in Tauberbischofsheim?
-      - Was war der niedrigste Messwert für Stickstoffdioxid in DEBW107?
-      - Was war der niedrigste Messwert für o3 in Tübingen?
-      - Was war der niedrigste Messwert für pm10 in DEBW019?
-      - Was war der niedrigste Messwert für Feinstaub PM25 in DEBW023?
-      - Was war der niedrigste Messwert für pm10 in Weil am Rhein?
-      - Was war das Minimum für pm25k in Biberach?
-      - Was war das Minimum für pm25k in Eggenstein?
-      - Was war das Minimum für pm25k in DEBW084?
-      - Was war das Minimum für no2 in Friedrichshafen?
-      - Was war das Minimum für Stickstoffdioxid in Friedrichshafen?
-      - Was war das Minimum für Feinstaub PM10 in Gärtringen?
-      - Was war das Minimum für pm25k in Heidelberg?
-      - Was war das Minimum für Feinstaub PM10 in DEBW015?
-      - Was war das Minimum für pm10 in Heilbronn Weinsberger Straße-Ost?
-      - Was war das Minimum für pm10 in DEBW080?
-      - Was war das Minimum für Stickstoffdioxid in DEBW120?
-      - Was war das Minimum für Feinstaub PM25 in Leonberg Grabenstraße?
-      - Was war das Minimum für Feinstaub PM25 in DEBW024?
-      - Was war das Minimum für Luftqualitätsindex in DEBW241?
-      - Was war das Minimum für Feinstaub PM10 in DEBW073?
-      - Was war das Minimum für Ozon in DEBW125?
-      - Was war das Minimum für Feinstaub PM10 in Pfinztal Karlsruher Straße?
-      - Was war das Minimum für no2 in DEBW033?
-      - Was war das Minimum für no2 in Pforzheim?
-      - Was war das Minimum für luqx in DEBW027?
-      - Was war das Minimum für pm25k in DEBW156?
-      - Was war das Minimum für luqx in Schramberg Oberndorfer Straße?
-      - Was war das Minimum für Luftqualitätsindex in Schwarzwald-Süd?
-      - Was war das Minimum für Ozon in Schwarzwald-Süd?
-      - Was war das Minimum für no2 in DEBW118?
-      - Was war das Minimum für Stickstoffdioxid in DEBW118?
-      - Was war das Minimum für luqx in Stuttgart Am Neckartor?
-      - Was war das Minimum für luqx in Stuttgart Arnulf-Klett-Platz?
-      - Was war das Minimum für o3 in Stuttgart-Bad Cannstatt?
-      - Was war das Minimum für Luftqualitätsindex in Tauberbischofsheim?
-      - Was war das Minimum für o3 in DEBW107?
-      - Was war das Minimum für no2 in DEBW136?
-      - Was war das Minimum für Stickstoffdioxid in DEBW136?
-      - Was war das Minimum für pm10 in DEBW136?
-      - Was war das Minimum für o3 in Tübingen Mühlstraße?
-      - Was war das Minimum für pm10 in Tübingen Mühlstraße?
-      - Was war das Minimum für luqx in DEBW019?
-      - Was war das Minimum für Feinstaub PM25 in DEBW019?
-      - Was war das Minimum für no2 in Wiesloch?
+      - Was war der niedrigste Messwert für no2 in Friedrichshafen?
+      - Was war der niedrigste Messwert für Feinstaub PM25 in DEBW152?
+      - Was war der niedrigste Messwert für Luftqualitätsindex in Heilbronn Weinsberger Straße-Ost?
+      - Was war der niedrigste Messwert für o3 in DEBW080?
+      - Was war der niedrigste Messwert für Ozon in DEBW052?
+      - Was war der niedrigste Messwert für Luftqualitätsindex in Leonberg Grabenstraße?
+      - Was war der niedrigste Messwert für no2 in DEBW024?
+      - Was war der niedrigste Messwert für pm10 in DEBW024?
+      - Was war der niedrigste Messwert für pm25k in Ludwigsburg Schlossstraße?
+      - Was war der niedrigste Messwert für Feinstaub PM10 in Mannheim Friedrichsring?
+      - Was war der niedrigste Messwert für pm10 in DEBW125?
+      - Was war der niedrigste Messwert für Luftqualitätsindex in DEBW033?
+      - Was war der niedrigste Messwert für Feinstaub PM10 in DEBW027?
+      - Was war der niedrigste Messwert für Feinstaub PM25 in Reutlingen Lederstraße-Ost?
+      - Was war der niedrigste Messwert für Ozon in DEBW156?
+      - Was war der niedrigste Messwert für Ozon in DEBW013?
+      - Was war der niedrigste Messwert für Luftqualitätsindex in Stuttgart Hohenheimer Straße?
+      - Was war der niedrigste Messwert für Feinstaub PM10 in Stuttgart Hohenheimer Straße?
+      - Was war der niedrigste Messwert für Feinstaub PM25 in Stuttgart Hohenheimer Straße?
+      - Was war der niedrigste Messwert für pm10 in DEBW059?
+      - Was war der niedrigste Messwert für Luftqualitätsindex in Tübingen Mühlstraße?
+      - Was war der niedrigste Messwert für Feinstaub PM10 in DEBW023?
+      - Was war der niedrigste Messwert für pm25k in DEBW023?
+      - Was war der niedrigste Messwert für pm25k in Weil am Rhein?
+      - Was war der niedrigste Messwert für Ozon in Wiesloch?
+      - Was war das Minimum für Feinstaub PM25 in Biberach?
+      - Was war das Minimum für luqx in Eggenstein?
+      - Was war das Minimum für Feinstaub PM25 in Freiburg?
+      - Was war das Minimum für no2 in Freiburg Schwarzwaldstraße?
+      - Was war das Minimum für o3 in DEBW152?
+      - Was war das Minimum für Ozon in Karlsruhe-Nordwest?
+      - Was war das Minimum für pm25k in DEBW080?
+      - Was war das Minimum für pm25k in DEBW022?
+      - Was war das Minimum für pm10 in Leonberg Grabenstraße?
+      - Was war das Minimum für pm10 in Ludwigsburg?
+      - Was war das Minimum für Stickstoffdioxid in Mannheim Friedrichsring?
+      - Was war das Minimum für Luftqualitätsindex in DEBW005?
+      - Was war das Minimum für no2 in DEBW005?
+      - Was war das Minimum für Luftqualitätsindex in Mannheim-Nord?
+      - Was war das Minimum für pm10 in DEBW125?
+      - Was war das Minimum für Stickstoffdioxid in Pfinztal Karlsruher Straße?
+      - Was war das Minimum für o3 in Reutlingen?
+      - Was war das Minimum für Ozon in Reutlingen Lederstraße-Ost?
+      - Was war das Minimum für pm25k in DEBW118?
+      - Was war das Minimum für Feinstaub PM25 in Stuttgart Hauptstätter Straße?
+      - Was war das Minimum für Feinstaub PM10 in DEBW116?
+      - Was war das Minimum für Stickstoffdioxid in Tübingen Mühlstraße?
+      - Was war das Minimum für no2 in Ulm?
+      - Was war das Minimum für pm25k in DEBW039?
+      - Was war das Minimum für luqx in Weil am Rhein?
+      - Wie ist der minimale no2-Wert in DEBW029?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW029?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW029?
+      - Wie ist der minimale Ozon-Wert in Aalen?
+      - Wie ist der minimale pm25k-Wert in Aalen?
+      - Wie ist der minimale o3-Wert in DEBW076?
+      - Wie ist der minimale pm25k-Wert in DEBW076?
+      - Wie ist der minimale luqx-Wert in Baden-Baden?
+      - Wie ist der minimale no2-Wert in Baden-Baden?
+      - Wie ist der minimale no2-Wert in Baden-Baden?
+      - Wie ist der minimale Ozon-Wert in Baden-Baden?
+      - Wie ist der minimale Feinstaub PM25-Wert in Baden-Baden?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW042?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW042?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW042?
+      - Wie ist der minimale no2-Wert in DEBW042?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW042?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW042?
+      - Wie ist der minimale luqx-Wert in Bernhausen?
+      - Wie ist der minimale pm10-Wert in Bernhausen?
+      - Wie ist der minimale Feinstaub PM10-Wert in Bernhausen?
+      - Wie ist der minimale Feinstaub PM25-Wert in Bernhausen?
+      - Wie ist der minimale Feinstaub PM25-Wert in Bernhausen?
+      - Wie ist der minimale Ozon-Wert in DEBW046?
+      - Wie ist der minimale luqx-Wert in Biberach?
+      - Wie ist der minimale no2-Wert in Biberach?
+      - Wie ist der minimale no2-Wert in Biberach?
+      - Wie ist der minimale Ozon-Wert in Biberach?
+      - Wie ist der minimale pm25k-Wert in Biberach?
+      - Wie ist der minimale pm25k-Wert in Biberach?
+      - Wie ist der minimale Feinstaub PM25-Wert in Biberach?
+      - Wie ist der minimale no2-Wert in DEBW004?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW004?
+      - Wie ist der minimale o3-Wert in DEBW004?
+      - Wie ist der minimale o3-Wert in DEBW004?
+      - Wie ist der minimale pm10-Wert in DEBW004?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW004?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Eggenstein?
+      - Wie ist der minimale Ozon-Wert in Eggenstein?
+      - Wie ist der minimale pm10-Wert in Eggenstein?
+      - Wie ist der minimale Feinstaub PM10-Wert in Eggenstein?
+      - Wie ist der minimale pm25k-Wert in Eggenstein?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW084?
+      - Wie ist der minimale no2-Wert in DEBW084?
+      - Wie ist der minimale no2-Wert in DEBW084?
+      - Wie ist der minimale o3-Wert in DEBW084?
+      - Wie ist der minimale Ozon-Wert in DEBW084?
+      - Wie ist der minimale pm25k-Wert in DEBW084?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW084?
+      - Wie ist der minimale luqx-Wert in Freiburg?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Freiburg?
+      - Wie ist der minimale no2-Wert in Freiburg?
+      - Wie ist der minimale Feinstaub PM10-Wert in Freiburg?
+      - Wie ist der minimale pm25k-Wert in Freiburg?
+      - Wie ist der minimale luqx-Wert in DEBW122?
+      - Wie ist der minimale no2-Wert in DEBW122?
+      - Wie ist der minimale pm10-Wert in DEBW122?
+      - Wie ist der minimale pm25k-Wert in DEBW122?
+      - Wie ist der minimale luqx-Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der minimale no2-Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der minimale Feinstaub PM10-Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der minimale Feinstaub PM25-Wert in Freiburg Schwarzwaldstraße?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW038?
+      - Wie ist der minimale o3-Wert in DEBW038?
+      - Wie ist der minimale Ozon-Wert in DEBW038?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW038?
+      - Wie ist der minimale Feinstaub PM25-Wert in Friedrichshafen?
+      - Wie ist der minimale o3-Wert in DEBW112?
+      - Wie ist der minimale o3-Wert in DEBW112?
+      - Wie ist der minimale pm10-Wert in DEBW112?
+      - Wie ist der minimale pm10-Wert in DEBW112?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW112?
+      - Wie ist der minimale pm25k-Wert in DEBW112?
+      - Wie ist der minimale Feinstaub PM25-Wert in Gärtringen?
+      - Wie ist der minimale Feinstaub PM25-Wert in Gärtringen?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW009?
+      - Wie ist der minimale no2-Wert in DEBW009?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW009?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW009?
+      - Wie ist der minimale luqx-Wert in Heidelberg?
+      - Wie ist der minimale Feinstaub PM10-Wert in Heidelberg?
+      - Wie ist der minimale Feinstaub PM10-Wert in Heidelberg?
+      - Wie ist der minimale Feinstaub PM25-Wert in Heidelberg?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW015?
+      - Wie ist der minimale Ozon-Wert in DEBW015?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW015?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW015?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW015?
+      - Wie ist der minimale no2-Wert in Heilbronn?
+      - Wie ist der minimale Ozon-Wert in Heilbronn?
+      - Wie ist der minimale pm10-Wert in Heilbronn?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW152?
+      - Wie ist der minimale o3-Wert in DEBW152?
+      - Wie ist der minimale o3-Wert in DEBW152?
+      - Wie ist der minimale Ozon-Wert in DEBW152?
+      - Wie ist der minimale pm10-Wert in DEBW152?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW152?
+      - Wie ist der minimale pm25k-Wert in DEBW152?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW152?
+      - Wie ist der minimale no2-Wert in Heilbronn Weinsberger Straße-Ost?
+      - Wie ist der minimale no2-Wert in Heilbronn Weinsberger Straße-Ost?
+      - Wie ist der minimale o3-Wert in Heilbronn Weinsberger Straße-Ost?
+      - Wie ist der minimale pm10-Wert in Heilbronn Weinsberger Straße-Ost?
+      - Wie ist der minimale Feinstaub PM25-Wert in Heilbronn Weinsberger Straße-Ost?
+      - Wie ist der minimale Ozon-Wert in DEBW081?
+      - Wie ist der minimale pm10-Wert in DEBW081?
+      - Wie ist der minimale pm10-Wert in DEBW081?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW081?
+      - Wie ist der minimale luqx-Wert in Karlsruhe-Nordwest?
+      - Wie ist der minimale Feinstaub PM25-Wert in Karlsruhe-Nordwest?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW080?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW080?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW080?
+      - Wie ist der minimale pm10-Wert in DEBW080?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW080?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW080?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW080?
+      - Wie ist der minimale luqx-Wert in Karlsruhe Reinhold-Frank-Straße?
+      - Wie ist der minimale luqx-Wert in Karlsruhe Reinhold-Frank-Straße?
+      - Wie ist der minimale o3-Wert in Karlsruhe Reinhold-Frank-Straße?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW022?
+      - Wie ist der minimale o3-Wert in DEBW022?
+      - Wie ist der minimale Ozon-Wert in DEBW022?
+      - Wie ist der minimale pm10-Wert in DEBW022?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW022?
+      - Wie ist der minimale luqx-Wert in Kehl?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Kehl?
+      - Wie ist der minimale no2-Wert in Kehl?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Kehl?
+      - Wie ist der minimale Ozon-Wert in Kehl?
+      - Wie ist der minimale Ozon-Wert in Kehl?
+      - Wie ist der minimale pm10-Wert in Kehl?
+      - Wie ist der minimale Feinstaub PM25-Wert in Kehl?
+      - Wie ist der minimale Feinstaub PM25-Wert in Kehl?
+      - Wie ist der minimale Feinstaub PM25-Wert in Kehl?
+      - Wie ist der minimale o3-Wert in DEBW052?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW052?
+      - Wie ist der minimale luqx-Wert in Konstanz?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Konstanz?
+      - Wie ist der minimale pm10-Wert in Konstanz?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW120?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW120?
+      - Wie ist der minimale pm10-Wert in DEBW120?
+      - Wie ist der minimale pm10-Wert in DEBW120?
+      - Wie ist der minimale pm25k-Wert in DEBW120?
+      - Wie ist der minimale pm25k-Wert in DEBW120?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Leonberg Grabenstraße?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Leonberg Grabenstraße?
+      - Wie ist der minimale o3-Wert in Leonberg Grabenstraße?
+      - Wie ist der minimale Ozon-Wert in Leonberg Grabenstraße?
+      - Wie ist der minimale pm25k-Wert in Leonberg Grabenstraße?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW024?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW024?
+      - Wie ist der minimale Ozon-Wert in DEBW024?
+      - Wie ist der minimale pm10-Wert in DEBW024?
+      - Wie ist der minimale pm10-Wert in DEBW024?
+      - Wie ist der minimale pm25k-Wert in DEBW024?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW024?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Ludwigsburg?
+      - Wie ist der minimale no2-Wert in Ludwigsburg?
+      - Wie ist der minimale no2-Wert in Ludwigsburg?
+      - Wie ist der minimale no2-Wert in Ludwigsburg?
+      - Wie ist der minimale luqx-Wert in DEBW241?
+      - Wie ist der minimale luqx-Wert in DEBW241?
+      - Wie ist der minimale pm10-Wert in DEBW241?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW241?
+      - Wie ist der minimale luqx-Wert in Ludwigsburg Schlossstraße?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Ludwigsburg Schlossstraße?
+      - Wie ist der minimale pm25k-Wert in Ludwigsburg Schlossstraße?
+      - Wie ist der minimale luqx-Wert in DEBW098?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW098?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Mannheim Friedrichsring?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Mannheim Friedrichsring?
+      - Wie ist der minimale o3-Wert in Mannheim Friedrichsring?
+      - Wie ist der minimale pm10-Wert in Mannheim Friedrichsring?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW005?
+      - Wie ist der minimale o3-Wert in DEBW005?
+      - Wie ist der minimale o3-Wert in DEBW005?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Mannheim-Nord?
+      - Wie ist der minimale o3-Wert in Mannheim-Nord?
+      - Wie ist der minimale pm10-Wert in Mannheim-Nord?
+      - Wie ist der minimale no2-Wert in DEBW073?
+      - Wie ist der minimale no2-Wert in DEBW073?
+      - Wie ist der minimale no2-Wert in DEBW073?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW073?
+      - Wie ist der minimale pm10-Wert in DEBW073?
+      - Wie ist der minimale pm25k-Wert in DEBW073?
+      - Wie ist der minimale Ozon-Wert in Neuenburg?
+      - Wie ist der minimale pm25k-Wert in Neuenburg?
+      - Wie ist der minimale Feinstaub PM25-Wert in Neuenburg?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW125?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW125?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW125?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW125?
+      - Wie ist der minimale pm25k-Wert in DEBW125?
+      - Wie ist der minimale luqx-Wert in Pfinztal Karlsruher Straße?
+      - Wie ist der minimale Ozon-Wert in Pfinztal Karlsruher Straße?
+      - Wie ist der minimale pm10-Wert in Pfinztal Karlsruher Straße?
+      - Wie ist der minimale pm25k-Wert in Pfinztal Karlsruher Straße?
+      - Wie ist der minimale luqx-Wert in DEBW033?
+      - Wie ist der minimale luqx-Wert in DEBW033?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW033?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW033?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW033?
+      - Wie ist der minimale no2-Wert in Pforzheim?
+      - Wie ist der minimale pm10-Wert in Pforzheim?
+      - Wie ist der minimale pm10-Wert in Pforzheim?
+      - Wie ist der minimale pm25k-Wert in Pforzheim?
+      - Wie ist der minimale Feinstaub PM25-Wert in Pforzheim?
+      - Wie ist der minimale pm10-Wert in DEBW027?
+      - Wie ist der minimale luqx-Wert in Reutlingen?
+      - Wie ist der minimale o3-Wert in Reutlingen?
+      - Wie ist der minimale Ozon-Wert in Reutlingen?
+      - Wie ist der minimale pm10-Wert in Reutlingen?
+      - Wie ist der minimale Feinstaub PM10-Wert in Reutlingen?
+      - Wie ist der minimale pm25k-Wert in Reutlingen?
+      - Wie ist der minimale no2-Wert in DEBW147?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW147?
+      - Wie ist der minimale luqx-Wert in Reutlingen Lederstraße-Ost?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Reutlingen Lederstraße-Ost?
+      - Wie ist der minimale o3-Wert in Reutlingen Lederstraße-Ost?
+      - Wie ist der minimale o3-Wert in Reutlingen Lederstraße-Ost?
+      - Wie ist der minimale Ozon-Wert in Reutlingen Lederstraße-Ost?
+      - Wie ist der minimale pm10-Wert in Reutlingen Lederstraße-Ost?
+      - Wie ist der minimale pm10-Wert in Reutlingen Lederstraße-Ost?
+      - Wie ist der minimale pm25k-Wert in Reutlingen Lederstraße-Ost?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW156?
+      - Wie ist der minimale Ozon-Wert in DEBW156?
+      - Wie ist der minimale pm10-Wert in DEBW156?
+      - Wie ist der minimale pm10-Wert in DEBW156?
+      - Wie ist der minimale pm10-Wert in DEBW156?
+      - Wie ist der minimale pm25k-Wert in DEBW156?
+      - Wie ist der minimale pm25k-Wert in DEBW156?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Schramberg Oberndorfer Straße?
+      - Wie ist der minimale no2-Wert in Schramberg Oberndorfer Straße?
+      - Wie ist der minimale o3-Wert in Schramberg Oberndorfer Straße?
+      - Wie ist der minimale luqx-Wert in DEBW087?
+      - Wie ist der minimale no2-Wert in DEBW087?
+      - Wie ist der minimale no2-Wert in DEBW087?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW087?
+      - Wie ist der minimale o3-Wert in DEBW087?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW087?
+      - Wie ist der minimale pm25k-Wert in DEBW087?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Schwäbische Alb?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Schwäbische Alb?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Schwäbische Alb?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Schwäbische Alb?
+      - Wie ist der minimale Feinstaub PM10-Wert in Schwäbische Alb?
+      - Wie ist der minimale pm25k-Wert in Schwäbische Alb?
+      - Wie ist der minimale Feinstaub PM25-Wert in Schwäbische Alb?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW031?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW031?
+      - Wie ist der minimale no2-Wert in DEBW031?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Schwarzwald-Süd?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Schwarzwald-Süd?
+      - Wie ist der minimale Ozon-Wert in Schwarzwald-Süd?
+      - Wie ist der minimale pm10-Wert in Schwarzwald-Süd?
+      - Wie ist der minimale Feinstaub PM10-Wert in Schwarzwald-Süd?
+      - Wie ist der minimale no2-Wert in DEBW118?
+      - Wie ist der minimale no2-Wert in DEBW118?
+      - Wie ist der minimale pm10-Wert in Stuttgart Am Neckartor?
+      - Wie ist der minimale Feinstaub PM10-Wert in Stuttgart Am Neckartor?
+      - Wie ist der minimale Ozon-Wert in DEBW099?
+      - Wie ist der minimale luqx-Wert in Stuttgart Arnulf-Klett-Platz?
+      - Wie ist der minimale luqx-Wert in Stuttgart Arnulf-Klett-Platz?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Stuttgart Arnulf-Klett-Platz?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Stuttgart Arnulf-Klett-Platz?
+      - Wie ist der minimale Feinstaub PM10-Wert in Stuttgart Arnulf-Klett-Platz?
+      - Wie ist der minimale pm25k-Wert in Stuttgart Arnulf-Klett-Platz?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW013?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW013?
+      - Wie ist der minimale Ozon-Wert in DEBW013?
+      - Wie ist der minimale Feinstaub PM25-Wert in Stuttgart-Bad Cannstatt?
+      - Wie ist der minimale Luftqualitätsindex-Wert in LUBW082?
+      - Wie ist der minimale no2-Wert in LUBW082?
+      - Wie ist der minimale pm10-Wert in LUBW082?
+      - Wie ist der minimale Feinstaub PM10-Wert in LUBW082?
+      - Wie ist der minimale pm25k-Wert in LUBW082?
+      - Wie ist der minimale Feinstaub PM25-Wert in LUBW082?
+      - Wie ist der minimale luqx-Wert in Stuttgart Hauptstätter Straße?
+      - Wie ist der minimale no2-Wert in Stuttgart Hauptstätter Straße?
+      - Wie ist der minimale no2-Wert in Stuttgart Hauptstätter Straße?
+      - Wie ist der minimale o3-Wert in Stuttgart Hauptstätter Straße?
+      - Wie ist der minimale Ozon-Wert in Stuttgart Hauptstätter Straße?
+      - Wie ist der minimale Feinstaub PM10-Wert in Stuttgart Hauptstätter Straße?
+      - Wie ist der minimale Feinstaub PM25-Wert in Stuttgart Hauptstätter Straße?
+      - Wie ist der minimale Feinstaub PM25-Wert in Stuttgart Hauptstätter Straße?
+      - Wie ist der minimale no2-Wert in DEBW116?
+      - Wie ist der minimale pm10-Wert in DEBW116?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW116?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW116?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW116?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Stuttgart Hohenheimer Straße?
+      - Wie ist der minimale Feinstaub PM25-Wert in Stuttgart Hohenheimer Straße?
+      - Wie ist der minimale Feinstaub PM25-Wert in Stuttgart Hohenheimer Straße?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW059?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Tauberbischofsheim?
+      - Wie ist der minimale no2-Wert in Tauberbischofsheim?
+      - Wie ist der minimale Feinstaub PM10-Wert in Tauberbischofsheim?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW107?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW107?
+      - Wie ist der minimale no2-Wert in DEBW107?
+      - Wie ist der minimale o3-Wert in DEBW107?
+      - Wie ist der minimale Ozon-Wert in DEBW107?
+      - Wie ist der minimale pm25k-Wert in DEBW107?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW107?
+      - Wie ist der minimale o3-Wert in Tübingen?
+      - Wie ist der minimale Feinstaub PM10-Wert in Tübingen?
+      - Wie ist der minimale no2-Wert in DEBW136?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW136?
+      - Wie ist der minimale luqx-Wert in Tübingen Mühlstraße?
+      - Wie ist der minimale no2-Wert in Tübingen Mühlstraße?
+      - Wie ist der minimale o3-Wert in Tübingen Mühlstraße?
+      - Wie ist der minimale pm10-Wert in Tübingen Mühlstraße?
+      - Wie ist der minimale Feinstaub PM25-Wert in Tübingen Mühlstraße?
+      - Wie ist der minimale Luftqualitätsindex-Wert in DEBW019?
+      - Wie ist der minimale o3-Wert in DEBW019?
+      - Wie ist der minimale Ozon-Wert in DEBW019?
+      - Wie ist der minimale pm25k-Wert in DEBW019?
+      - Wie ist der minimale Feinstaub PM25-Wert in DEBW019?
+      - Wie ist der minimale luqx-Wert in Ulm?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Ulm?
+      - Wie ist der minimale no2-Wert in Ulm?
+      - Wie ist der minimale no2-Wert in Ulm?
+      - Wie ist der minimale Feinstaub PM25-Wert in Ulm?
+      - Wie ist der minimale o3-Wert in DEBW039?
+      - Wie ist der minimale Ozon-Wert in DEBW039?
+      - Wie ist der minimale pm25k-Wert in DEBW039?
+      - Wie ist der minimale no2-Wert in Villingen-Schwenningen?
+      - Wie ist der minimale Ozon-Wert in Villingen-Schwenningen?
+      - Wie ist der minimale Ozon-Wert in Villingen-Schwenningen?
+      - Wie ist der minimale Feinstaub PM10-Wert in Villingen-Schwenningen?
+      - Wie ist der minimale pm25k-Wert in Villingen-Schwenningen?
+      - Wie ist der minimale luqx-Wert in DEBW023?
+      - Wie ist der minimale o3-Wert in DEBW023?
+      - Wie ist der minimale pm10-Wert in DEBW023?
+      - Wie ist der minimale Luftqualitätsindex-Wert in Weil am Rhein?
+      - Wie ist der minimale no2-Wert in Weil am Rhein?
+      - Wie ist der minimale o3-Wert in Weil am Rhein?
+      - Wie ist der minimale Ozon-Wert in Weil am Rhein?
+      - Wie ist der minimale Ozon-Wert in Weil am Rhein?
+      - Wie ist der minimale Stickstoffdioxid-Wert in DEBW010?
+      - Wie ist der minimale pm10-Wert in DEBW010?
+      - Wie ist der minimale Feinstaub PM10-Wert in DEBW010?
+      - Wie ist der minimale pm25k-Wert in DEBW010?
+      - Wie ist der minimale pm25k-Wert in DEBW010?
+      - Wie ist der minimale luqx-Wert in Wiesloch?
+      - Wie ist der minimale no2-Wert in Wiesloch?
+      - Wie ist der minimale no2-Wert in Wiesloch?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Wiesloch?
+      - Wie ist der minimale Stickstoffdioxid-Wert in Wiesloch?

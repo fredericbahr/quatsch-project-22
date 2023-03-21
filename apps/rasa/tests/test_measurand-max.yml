@@ -193,3 +193,31 @@ stories:
           Wie ist der maximale Wert?
         intent: measurand_max
       - action: action_measurand_max
+
+  - story: Ask measurand max value v2
+    steps:
+      - user: |
+          Was war der höchste Messwert für luqx in Freiburg?
+        intent: measurand_max
+      - action: action_measurand_max
+
+  - story: Ask measurand max value v3
+    steps:
+      - user: |
+          Was war der höchste Messwert für Feinstaub PM10 in Freiburg?
+        intent: measurand_max
+      - action: action_measurand_max
+
+  - story: Ask measurand max value v4
+    steps:
+      - user: |
+          Was war das Maximum für o3 in DEBW038?
+        intent: measurand_max
+      - action: action_measurand_max
+
+  - story: Ask measurand max value v5
+    steps:
+      - user: |
+          Was war das Maximum für Luftqualitätsindex in Ludwigsburg?
+        intent: measurand_max
+      - action: action_measurand_max
