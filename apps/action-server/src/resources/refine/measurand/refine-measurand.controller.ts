@@ -12,6 +12,7 @@ import {
 } from "shared";
 import { AnnotationTypes } from "shared/dist/enums/annotations";
 
+import { EmptyResponseError } from "../../../errors/empty-response-error";
 import { NoIntentHandlerError } from "../../../errors/no-intent-handler-error";
 import { VerificationError } from "../../../errors/verification-error";
 import { ErrorHandlingService } from "../../../services/error-handling-service";
@@ -79,6 +80,10 @@ export const refineMeasurandRequestHandler = async (req: RasaRequest, res: RasaR
 
     if (error instanceof NoIntentHandlerError) {
       return ErrorHandlingService.handleNoIntentHandlerError(res);
+    }
+
+    if (error instanceof EmptyResponseError) {
+      return ErrorHandlingService.handleEmptyResponseError(res);
     }
 
     return ErrorHandlingService.handleDefaultError(res);
