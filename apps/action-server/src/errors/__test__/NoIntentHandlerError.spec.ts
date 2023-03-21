@@ -1,4 +1,4 @@
-import { NoIntentHandlerError } from "../NoIntentHandlerError";
+import { NoIntentHandlerError } from "../no-intent-handler-error";
 
 describe("No Intent Handler Error", () => {
   it("should create a new instance", () => {

@@ -4,7 +4,7 @@ import { IQanaryMessage } from "shared";
 
 import { handler } from "../handler";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { getAnnotationOfQuestionLanguage } from "../query/annotationOfQuestionLanguage";
+import { getAnnotationOfQuestionLanguage } from "../query/annotation-of-question-language";
 
 jest.mock("qanary-component-helpers", () => ({
   ...jest.requireActual("qanary-component-helpers"),

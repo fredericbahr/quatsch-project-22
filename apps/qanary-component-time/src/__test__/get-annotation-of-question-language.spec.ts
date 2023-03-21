@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { selectSparql } from "qanary-component-helpers";
 
-import { getAnnotationOfQuestionLanguage } from "../query/annotationOfQuestionLanguage";
+import { getAnnotationOfQuestionLanguage } from "../query/annotation-of-question-language";
 
 jest.mock("qanary-component-helpers", () => ({
   ...jest.requireActual("qanary-component-helpers"),

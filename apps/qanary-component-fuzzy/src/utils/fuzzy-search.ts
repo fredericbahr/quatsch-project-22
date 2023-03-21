@@ -3,7 +3,7 @@ import { createAnnotationInKnowledgeGraph, getDomainInstances, IAnnotationInform
 import { annotationTypesMap, Domain, DomainType, IQanaryMessage } from "shared";
 
 import pkg from "../../package.json";
-import { AnnotationOfInstance } from "../query/annotationOfInstance";
+import { AnnotationOfInstance } from "../query/annotation-of-instance";
 
 /**
  * Creates a Fuse.js fuzzy search object with provided data.

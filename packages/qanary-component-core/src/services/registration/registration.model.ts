@@ -1,6 +1,6 @@
 import { SpringBootAdminServerApi } from "api";
 
-import { getPort } from "../../helper/getPort";
+import { getPort } from "../../helper/get-port";
 
 /**
  * An object to process the SpringBootAdminUrl

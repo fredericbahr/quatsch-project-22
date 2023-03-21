@@ -2,7 +2,7 @@
 import { selectSparql } from "qanary-component-helpers";
 import { Domain } from "shared";
 
-import { getAnnotationsOfInstance } from "../query/annotationOfInstance";
+import { getAnnotationsOfInstance } from "../query/annotation-of-instance";
 
 jest.mock("qanary-component-helpers", () => ({
   ...jest.requireActual("qanary-component-helpers"),

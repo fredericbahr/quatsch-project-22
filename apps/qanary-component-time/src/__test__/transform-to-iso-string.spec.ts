@@ -1,6 +1,6 @@
 import { ParsedComponents } from "chrono-node";
 
-import { transformToISOString } from "../utils/transformToISOString";
+import { transformToISOString } from "../utils/transform-to-iso-string";
 
 describe("#Component transformToISOString", () => {
   const genMockParsedComponents = () => {

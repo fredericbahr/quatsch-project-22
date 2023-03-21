@@ -1,6 +1,6 @@
-import { IIntentHandler, IIntentHandlerMap, ILUBWDefaultDataTime, INTENTS } from "shared";
+import { IIntentHandler, IIntentHandlerMap, INTENTS } from "shared";
 
-import { NoIntentHandlerError } from "../errors/NoIntentHandlerError";
+import { NoIntentHandlerError } from "../errors/no-intent-handler-error";
 import { abstractIntentHandler } from "../resources/measurand/abstract/abstract.intent-handler";
 import { seasonIntentHandler } from "../resources/measurand/season/season.intent-handler";
 import { thresholdIntentHandler } from "../resources/measurand/threshold/threshold.intent-handler";

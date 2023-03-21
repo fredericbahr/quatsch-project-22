@@ -3,8 +3,8 @@ import { createAnnotationInKnowledgeGraph, getDomainInstances, IAnnotationInform
 import { IStation } from "qanary-lubw-data";
 import { Domain, IQanaryMessage } from "shared";
 
-import { AnnotationOfInstance } from "../query/annotationOfInstance";
-import { invertFuseScore, searchForDomainInstances } from "../utils/fuzzySearch";
+import { AnnotationOfInstance } from "../query/annotation-of-instance";
+import { invertFuseScore, searchForDomainInstances } from "../utils/fuzzy-search";
 
 jest.mock("qanary-component-helpers", () => ({
   ...jest.requireActual("qanary-component-helpers"),

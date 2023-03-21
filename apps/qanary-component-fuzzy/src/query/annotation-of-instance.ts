@@ -33,7 +33,7 @@ export type AnnotationOfInstance = {
  * @returns sparql query string
  */
 const readQueryAnnotationOfInstance = (inGraph: string): string => {
-  const queryPath: string = path.join(__dirname, "./annotationOfInstance.rq");
+  const queryPath: string = path.join(__dirname, "./annotation-of-instance.rq");
   return queryFileLoader(queryPath, [
     {
       keyword: RESERVED_KEYWORD_IN_SPARQL_QUERY.YOUR_CURRENT_GRAPH_ID,

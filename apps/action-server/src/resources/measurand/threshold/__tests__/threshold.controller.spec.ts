@@ -11,8 +11,8 @@ import {
   REPRESENTATION_TYPE,
 } from "shared";
 
-import { NoIntentHandlerError } from "../../../../errors/NoIntentHandlerError";
-import { VerificationError } from "../../../../errors/VerificationError";
+import { NoIntentHandlerError } from "../../../../errors/no-intent-handler-error";
+import { VerificationError } from "../../../../errors/verification-error";
 import { ErrorHandlingService } from "../../../../services/error-handling-service";
 import { AnnotationExtractionService } from "../../../../services/extraction-service/extract-annotation-service";
 import { IntentHandlerFindingService } from "../../../../services/intent-handler-finding-service";

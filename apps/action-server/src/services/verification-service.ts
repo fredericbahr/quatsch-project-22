@@ -1,6 +1,6 @@
 import { ILUBWData, ILUBWDataKey, ILUBWDefaultDataTime } from "shared";
 
-import { VerificationError } from "../errors/VerificationError";
+import { VerificationError } from "../errors/verification-error";
 
 /**
  * Service for verifying fetched lubw data from the knowledge graph

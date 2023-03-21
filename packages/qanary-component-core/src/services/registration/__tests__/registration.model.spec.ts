@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SpringBootAdminServerApi } from "api";
 
-import { getPort } from "../../../helper/getPort";
+import { getPort } from "../../../helper/get-port";
 import {
   QanaryComponentCoreServiceConfig,
   RegistrationInfo,

@@ -1,4 +1,4 @@
-import { getChronoLanguageCode, LanguageCode } from "../utils/getChronoLanguageCode";
+import { getChronoLanguageCode, LanguageCode } from "../utils/get-chrono-language-code";
 
 describe("#Component getChronoLanguageCode", () => {
   it("should getChronoLanguageCode find langauge codes", async () => {

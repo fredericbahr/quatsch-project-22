@@ -1,7 +1,7 @@
 import { IMeasurand, IStation, measurands, popularIntents, popularStations } from "qanary-lubw-data";
 import { ILUBWDataKey, RasaResponse } from "shared";
 
-import { VerificationError } from "../errors/VerificationError";
+import { VerificationError } from "../errors/verification-error";
 
 /**
  * Service for handling verification errors that should be thrown if the LUBW data is not valid/complete.

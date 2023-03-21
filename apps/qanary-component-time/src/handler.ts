@@ -5,10 +5,10 @@ import { createAnnotationInKnowledgeGraph, getQuestion, IAnnotationInformation }
 import { annotationTypesMap, Domain, IQanaryMessage } from "shared";
 
 import pkg from "../package.json";
-import { getAnnotationOfQuestionLanguage } from "./query/annotationOfQuestionLanguage";
-import { calcConfidence } from "./utils/calcConfidence";
-import { getChronoLanguageCode, LanguageCode } from "./utils/getChronoLanguageCode";
-import { transformToAnnotationValue } from "./utils/transformToAnnotationValue";
+import { getAnnotationOfQuestionLanguage } from "./query/annotation-of-question-language";
+import { calcConfidence } from "./utils/calc-confidence";
+import { getChronoLanguageCode, LanguageCode } from "./utils/get-chrono-language-code";
+import { transformToAnnotationValue } from "./utils/transform-to-annotation-value";
 
 /**
  * This function maps a found date (ParsedResult) to an annotation
