@@ -1,4 +1,32 @@
 = Qanary Shared
 :toc:
 
-This package contains shared code for the qanary components.
+This package contains shared code across the Qanary components aswell as the action-server.
+
+== Defaults
+
+The following defaults are provided:
+
+- `defaultLUBWData` - data that can be assumed as default for queries to the LUBW API 
+
+== Enums
+
+The following enums are provided:
+
+- `AnnotationTypes` - the types of annotations that are used by the Qanary components
+- `CALCULATION_TYPE` - the types of calculations that can be performed by the Chatbot
+- `COMPONENT` - the components that can be used by the action-server
+- `Domain` - the domains in the lubw project
+- `INTENTS` - the intents that needs to be handled by the action-server
+- `RasaResponseType` - the types of responses that can be returned by the action-server
+- `REPRESENTATION_TYPE` - the types of representations that can be created by the Chatbot 
+
+== Interfaces
+
+Various intefaces for all shared logic are provided
+
+== Maps
+
+The following maps are provided:
+
+- `annotationTypesMap` - a map that maps the domains to the corresponding annotation type

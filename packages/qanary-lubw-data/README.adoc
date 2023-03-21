@@ -1,11 +1,25 @@
 = Qanary LUBW Data
 :toc:
 
-Specialized LUBW data needed in Qanary
+Specialized LUBW data needed in Chatbot applications.
+
+Interfaces for the LUBW data are provided, as well as the data itself and scripts to generate data for the Qanary NER component and the Rasa NLU.
+
+== Data
+
+The following data is provided:
+
+- `calculations`: a list of all possible and supported calculations
+- `calculationLabels`: a list of all possible and supported calculations with their corresponding labels
+- `measurands`: a list of all possible and supported measurands
+- `popularStations`: a list of all popular stations
+- `popularIntents`: a list of all popular intents
+- `representations`: a list of all possible and supported representations
+- `stations`: a list of all possible and supported stations
 
 == Training Data
 
-Custom training data for this the Qanary NER component and the Rasa NLU can be generated. Lubw domain instances for stations, measurands, calculations and representations will be combined with a set of training questions.
+Custom training data for the Qanary NER component and the Rasa NLU can be generated. Lubw domain instances for stations, measurands, calculations and representations will be combined with a set of training questions.
 
 To generate usable training/testing data one of the following commands can be used:
 
@@ -19,4 +33,5 @@ To generate usable training/testing data one of the following commands can be us
 |`generate:yml-measurand-max` |generates measurand maximum NLU training data as YML file for Rasa NLU intent detection
 |`generate:yml-measurand-min` |generates measurand minimum NLU training data as YML file for Rasa NLU intent detection
 |`generate:yml-measurand-threshold` |generates measurand threshold NLU training data as YML file for Rasa NLU intent detection
+|`generate:yml-measurand-season` |generates measurand season NLU training data as YML file for Rasa NLU intent detection
 |===
