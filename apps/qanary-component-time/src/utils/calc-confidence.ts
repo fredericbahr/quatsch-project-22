@@ -1,4 +1,4 @@
-import { ParsedResult } from "chrono-node";
+import { ParsedComponents, ParsedResult } from "chrono-node";
 import { Component } from "chrono-node/src";
 
 /**
@@ -14,8 +14,10 @@ enum ParsedResultKey {
  * The weight of a requested time information in the text fragment
  */
 enum TimeInformationWeight {
-  NOT_FOUND,
-  FOUND,
+  NOT_FOUND = 0,
+  IMPLIED = 0.5,
+  IMPLIED_UPGRADED = 0.75,
+  CERTAIN = 1,
 }
 
 /**
@@ -31,10 +33,35 @@ const requestedTimeInformationInTextFragment: Array<Component> = ["year", "month
  * @returns a value of 0 to 3 (possible findings of requestedTimeInformationInTextFragment)
  */
 const summarizeCertainFounds = (parsedResult: ParsedResult, parsedResultKey: ParsedResultKey): number => {
+  const list: Array<string> = [
+    "Montag",
+    "Dienstag",
+    "Mittwoch",
+    "Donnerstag",
+    "Freitag",
+    "Samstag",
+    "Sonntag",
+    "Woche",
+    "Jahr",
+  ];
+
   return requestedTimeInformationInTextFragment
-    .map((component: Component) => parsedResult[parsedResultKey]?.isCertain(component) || false)
-    .reduce((accumulator: number, currentValue: boolean) => {
-      return accumulator + (currentValue ? TimeInformationWeight.FOUND : TimeInformationWeight.NOT_FOUND);
+    .map((component: Component) => {
+      const parsedComponents: ParsedComponents | null = parsedResult[parsedResultKey];
+
+      if (parsedComponents?.isCertain(component)) {
+        return TimeInformationWeight.CERTAIN;
+      }
+      if (parsedComponents?.get(component)) {
+        if (list.some((keyWord) => parsedResult.text.match(new RegExp(keyWord, "i")))) {
+          return TimeInformationWeight.IMPLIED_UPGRADED;
+        }
+        return TimeInformationWeight.IMPLIED;
+      }
+      return TimeInformationWeight.NOT_FOUND;
+    })
+    .reduce((accumulator: TimeInformationWeight, currentValue: TimeInformationWeight) => {
+      return accumulator + currentValue;
     }, TimeInformationWeight.NOT_FOUND);
 };
 

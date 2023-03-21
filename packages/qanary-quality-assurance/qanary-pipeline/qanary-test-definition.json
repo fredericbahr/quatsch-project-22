@@ -1,0 +1,2277 @@
+{
+  "qanary": {
+    "system_url": "http://qanary-pipeline:40111/startquestionansweringwithtextquestion",
+    "componentlist": [
+      "qanary-component-pm-station",
+      "qanary-component-pm-measurand",
+      "qanary-component-pm-calculation",
+      "qanary-component-pm-representation",
+      "LD-Shuyo",
+      "qanary-component-time",
+      "qanary-component-ner-automl",
+      "qanary-component-fuzzy"
+    ],
+    "additionalTriples": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX dc: <http://purl.org/dc/elements/1.1/>\nPREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>\n\n<urn:measurand> a <rdfs:Class> .\n<urn:station> a <rdfs:Class> .\n<urn:calculation> a <rdfs:Class> .\n<urn:representation> a <rdfs:Class> .\n<urn:time> a <rdfs:Class> .\n\n<urn:DEBW029> a <urn:station> ;\n  dc:identifier \"DEBW029\" ;\n  rdfs:label \"Aalen\" ;\n  geo:lat \"48.84791111098396\" ;\n  geo:long \"10.096291667090522\" .\n<urn:DEBW076> a <urn:station> ;\n  dc:identifier \"DEBW076\" ;\n  rdfs:label \"Baden-Baden\" ;\n  geo:lat \"48.77307222207387\" ;\n  geo:long \"8.22021111117469\" .\n<urn:DEBW042> a <urn:station> ;\n  dc:identifier \"DEBW042\" ;\n  rdfs:label \"Bernhausen\" ;\n  geo:lat \"48.67808055559794\" ;\n  geo:long \"9.227625000211928\" .\n<urn:DEBW046> a <urn:station> ;\n  dc:identifier \"DEBW046\" ;\n  rdfs:label \"Biberach\" ;\n  geo:lat \"48.08985277758705\" ;\n  geo:long \"9.799872222476536\" .\n<urn:DEBW004> a <urn:station> ;\n  dc:identifier \"DEBW004\" ;\n  rdfs:label \"Eggenstein\" ;\n  geo:lat \"49.076555555131705\" ;\n  geo:long \"8.40666388882531\" .\n<urn:DEBW084> a <urn:station> ;\n  dc:identifier \"DEBW084\" ;\n  rdfs:label \"Freiburg\" ;\n  geo:lat \"48.00151666667726\" ;\n  geo:long \"7.832119444741143\" .\n<urn:DEBW122> a <urn:station> ;\n  dc:identifier \"DEBW122\" ;\n  rdfs:label \"Freiburg Schwarzwaldstraße\" ;\n  geo:lat \"47.988833333121406\" ;\n  geo:long \"7.859886111153497\" .\n<urn:DEBW038> a <urn:station> ;\n  dc:identifier \"DEBW038\" ;\n  rdfs:label \"Friedrichshafen\" ;\n  geo:lat \"47.660077777438694\" ;\n  geo:long \"9.485633333259157\" .\n<urn:DEBW112> a <urn:station> ;\n  dc:identifier \"DEBW112\" ;\n  rdfs:label \"Gärtringen\" ;\n  geo:lat \"48.64564166704814\" ;\n  geo:long \"8.904408333301545\" .\n<urn:DEBW009> a <urn:station> ;\n  dc:identifier \"DEBW009\" ;\n  rdfs:label \"Heidelberg\" ;\n  geo:lat \"49.41955277787314\" ;\n  geo:long \"8.67666388935513\" .\n<urn:DEBW015> a <urn:station> ;\n  dc:identifier \"DEBW015\" ;\n  rdfs:label \"Heilbronn\" ;\n  geo:lat \"49.16553333282471\" ;\n  geo:long \"9.224744444423251\" .\n<urn:DEBW152> a <urn:station> ;\n  dc:identifier \"DEBW152\" ;\n  rdfs:label \"Heilbronn Weinsberger Straße-Ost\" ;\n  geo:lat \"49.145997222264604\" ;\n  geo:long \"9.225897222095066\" .\n<urn:DEBW081> a <urn:station> ;\n  dc:identifier \"DEBW081\" ;\n  rdfs:label \"Karlsruhe-Nordwest\" ;\n  geo:lat \"49.028594444062975\" ;\n  geo:long \"8.355647222201029\" .\n<urn:DEBW080> a <urn:station> ;\n  dc:identifier \"DEBW080\" ;\n  rdfs:label \"Karlsruhe Reinhold-Frank-Straße\" ;\n  geo:lat \"49.00795833322737\" ;\n  geo:long \"8.387188888920678\" .\n<urn:DEBW022> a <urn:station> ;\n  dc:identifier \"DEBW022\" ;\n  rdfs:label \"Kehl\" ;\n  geo:lat \"48.57817777739631\" ;\n  geo:long \"7.802272222306993\" .\n<urn:DEBW052> a <urn:station> ;\n  dc:identifier \"DEBW052\" ;\n  rdfs:label \"Konstanz\" ;\n  geo:lat \"47.66436111132304\" ;\n  geo:long \"9.169288888772329\" .\n<urn:DEBW120> a <urn:station> ;\n  dc:identifier \"DEBW120\" ;\n  rdfs:label \"Leonberg Grabenstraße\" ;\n  geo:lat \"48.80101666669051\" ;\n  geo:long \"9.016522222095066\" .\n<urn:DEBW024> a <urn:station> ;\n  dc:identifier \"DEBW024\" ;\n  rdfs:label \"Ludwigsburg\" ;\n  geo:lat \"48.89923611111111\" ;\n  geo:long \"9.173002777629428\" .\n<urn:DEBW241> a <urn:station> ;\n  dc:identifier \"DEBW241\" ;\n  rdfs:label \"Ludwigsburg Schlossstraße\" ;\n  geo:lat \"48.89827777756585\" ;\n  geo:long \"9.193744444317288\" .\n<urn:DEBW098> a <urn:station> ;\n  dc:identifier \"DEBW098\" ;\n  rdfs:label \"Mannheim Friedrichsring\" ;\n  geo:lat \"49.49256388876174\" ;\n  geo:long \"8.472038888931275\" .\n<urn:DEBW005> a <urn:station> ;\n  dc:identifier \"DEBW005\" ;\n  rdfs:label \"Mannheim-Nord\" ;\n  geo:lat \"49.54407777786255\" ;\n  geo:long \"8.465280555089315\" .\n<urn:DEBW073> a <urn:station> ;\n  dc:identifier \"DEBW073\" ;\n  rdfs:label \"Neuenburg\" ;\n  geo:lat \"47.81905277782017\" ;\n  geo:long \"7.56791388882531\" .\n<urn:DEBW125> a <urn:station> ;\n  dc:identifier \"DEBW125\" ;\n  rdfs:label \"Pfinztal Karlsruher Straße\" ;\n  geo:lat \"49.00371111101575\" ;\n  geo:long \"8.526283333036636\" .\n<urn:DEBW033> a <urn:station> ;\n  dc:identifier \"DEBW033\" ;\n  rdfs:label \"Pforzheim\" ;\n  geo:lat \"48.88905555566152\" ;\n  geo:long \"8.665483333799575\" .\n<urn:DEBW027> a <urn:station> ;\n  dc:identifier \"DEBW027\" ;\n  rdfs:label \"Reutlingen\" ;\n  geo:lat \"48.48875833352407\" ;\n  geo:long \"9.2075\" .\n<urn:DEBW147> a <urn:station> ;\n  dc:identifier \"DEBW147\" ;\n  rdfs:label \"Reutlingen Lederstraße-Ost\" ;\n  geo:lat \"48.4893333334393\" ;\n  geo:long \"9.210786111619736\" .\n<urn:DEBW156> a <urn:station> ;\n  dc:identifier \"DEBW156\" ;\n  rdfs:label \"Schramberg Oberndorfer Straße\" ;\n  geo:lat \"48.229149999618535\" ;\n  geo:long \"8.390619444317288\" .\n<urn:DEBW087> a <urn:station> ;\n  dc:identifier \"DEBW087\" ;\n  rdfs:label \"Schwäbische Alb\" ;\n  geo:lat \"48.345775000254314\" ;\n  geo:long \"9.207633333206177\" .\n<urn:DEBW031> a <urn:station> ;\n  dc:identifier \"DEBW031\" ;\n  rdfs:label \"Schwarzwald-Süd\" ;\n  geo:lat \"47.80993055555555\" ;\n  geo:long \"7.764497221840752\" .\n<urn:DEBW118> a <urn:station> ;\n  dc:identifier \"DEBW118\" ;\n  rdfs:label \"Stuttgart Am Neckartor\" ;\n  geo:lat \"48.78811388863458\" ;\n  geo:long \"9.191005555788676\" .\n<urn:DEBW099> a <urn:station> ;\n  dc:identifier \"DEBW099\" ;\n  rdfs:label \"Stuttgart Arnulf-Klett-Platz\" ;\n  geo:lat \"48.78315000004238\" ;\n  geo:long \"9.180730555852254\" .\n<urn:DEBW013> a <urn:station> ;\n  dc:identifier \"DEBW013\" ;\n  rdfs:label \"Stuttgart-Bad Cannstatt\" ;\n  geo:lat \"48.808933333290945\" ;\n  geo:long \"9.229861111111111\" .\n<urn:LUBW082> a <urn:station> ;\n  dc:identifier \"LUBW082\" ;\n  rdfs:label \"Stuttgart Hauptstätter Straße\" ;\n  geo:lat \"48.76651111072964\" ;\n  geo:long \"9.171161111195882\" .\n<urn:DEBW116> a <urn:station> ;\n  dc:identifier \"DEBW116\" ;\n  rdfs:label \"Stuttgart Hohenheimer Straße\" ;\n  geo:lat \"48.7687111111482\" ;\n  geo:long \"9.18449166668786\" .\n<urn:DEBW059> a <urn:station> ;\n  dc:identifier \"DEBW059\" ;\n  rdfs:label \"Tauberbischofsheim\" ;\n  geo:lat \"49.634619444476236\" ;\n  geo:long \"9.658827777968513\" .\n<urn:DEBW107> a <urn:station> ;\n  dc:identifier \"DEBW107\" ;\n  rdfs:label \"Tübingen\" ;\n  geo:lat \"48.50773333337572\" ;\n  geo:long \"9.051144444412657\" .\n<urn:DEBW136> a <urn:station> ;\n  dc:identifier \"DEBW136\" ;\n  rdfs:label \"Tübingen Mühlstraße\" ;\n  geo:lat \"48.52023055553436\" ;\n  geo:long \"9.058019444677566\" .\n<urn:DEBW019> a <urn:station> ;\n  dc:identifier \"DEBW019\" ;\n  rdfs:label \"Ulm\" ;\n  geo:lat \"48.39686666700575\" ;\n  geo:long \"9.97897500038147\" .\n<urn:DEBW039> a <urn:station> ;\n  dc:identifier \"DEBW039\" ;\n  rdfs:label \"Villingen-Schwenningen\" ;\n  geo:lat \"48.04865555551317\" ;\n  geo:long \"8.463599999745686\" .\n<urn:DEBW023> a <urn:station> ;\n  dc:identifier \"DEBW023\" ;\n  rdfs:label \"Weil am Rhein\" ;\n  geo:lat \"47.58811666647593\" ;\n  geo:long \"7.633077778286404\" .\n<urn:DEBW010> a <urn:station> ;\n  dc:identifier \"DEBW010\" ;\n  rdfs:label \"Wiesloch\" ;\n  geo:lat \"49.30075833333863\" ;\n  geo:long \"8.700066666665176\" .\n<urn:luqx> a <urn:measurand> ;\n  dc:identifier \"luqx\" ;\n  rdfs:label \"Luftqualitätsindex\" .\n<urn:no2> a <urn:measurand> ;\n  dc:identifier \"no2\" ;\n  rdfs:label \"Stickstoffdioxid\" .\n<urn:o3> a <urn:measurand> ;\n  dc:identifier \"o3\" ;\n  rdfs:label \"Ozon\" .\n<urn:pm10> a <urn:measurand> ;\n  dc:identifier \"pm10\" ;\n  rdfs:label \"Feinstaub PM10\" .\n<urn:pm25k> a <urn:measurand> ;\n  dc:identifier \"pm25k\" ;\n  rdfs:label \"Feinstaub PM25\" .\n<urn:minimum> a <urn:calculation> ;\n  dc:identifier \"minimum\" ;\n  rdfs:label \"Minimum\" .\n<urn:maximum> a <urn:calculation> ;\n  dc:identifier \"maximum\" ;\n  rdfs:label \"Maximum\" .\n<urn:average> a <urn:calculation> ;\n  dc:identifier \"average\" ;\n  rdfs:label \"Durchschnitt\" .\n<urn:text> a <urn:representation> ;\n  dc:identifier \"text\" ;\n  rdfs:label \"Text\" .\n<urn:table> a <urn:representation> ;\n  dc:identifier \"table\" ;\n  rdfs:label \"Tabelle\" .\n<urn:list> a <urn:representation> ;\n  dc:identifier \"list\" ;\n  rdfs:label \"Liste\" .\n<urn:graph> a <urn:representation> ;\n  dc:identifier \"graph\" ;\n  rdfs:label \"Graph\" ."
+  },
+  "validation-sparql-templates": [
+    "0_was-any-instance-identified.sparql",
+    "1_was-the-expected-instance-recognized.sparql"
+  ],
+  "tests": [
+    {
+      "question": "Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW019"
+      }
+    },
+    {
+      "question": "Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ulm?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ulm?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW019"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Welcher ist der maximale Messwert?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Was war das Maximum?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Welcher ist der maksimale Messwert für luqs in DEBW152?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Welcher ist der maksimale Messwert für luqs in DEBW152?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Welcher ist der maksimale Messwert für luqs in DEBW152?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW152"
+      }
+    },
+    {
+      "question": "Welcher ist der maximale Messwert für Stickstoffdioxid in Schwäbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Welcher ist der maximale Messwert für Stickstoffdioxid in Schwäbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Welcher ist der maximale Messwert für Stickstoffdioxid in Schwäbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW087"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für Feinstaub PM10 in Freiburg?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für Feinstaub PM10 in Freiburg?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für Feinstaub PM10 in Freiburg?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW084"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für o3 in Schramberg Oberndorfer Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für o3 in Schramberg Oberndorfer Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für o3 in Schramberg Oberndorfer Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW156"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für Luftqualitätsindex in DEBW019?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für Luftqualitätsindex in DEBW019?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für Luftqualitätsindex in DEBW019?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW019"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Feinstaup PM25 in Heilbrönn?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Feinstaup PM25 in Heilbrönn?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm25k"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Feinstaup PM25 in Heilbrönn?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW015"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Ozon in Tübingen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Ozon in Tübingen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Ozon in Tübingen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW107"
+      }
+    },
+    {
+      "question": "Was war der niedrigste Messwert?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Was war das Minimum?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für Ozon in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für Ozon in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für Ozon in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW122"
+      }
+    },
+    {
+      "question": "Welcher ist der mimimale Messwert für Stickstoffoxid in Schwähbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Welcher ist der mimimale Messwert für Stickstoffoxid in Schwähbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Welcher ist der mimimale Messwert für Stickstoffoxid in Schwähbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW087"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für o3 in DEBW033?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für o3 in DEBW033?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für o3 in DEBW033?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW033"
+      }
+    },
+    {
+      "question": "Was war der niedrigste Messwert für pm25k in DEBW046?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Was war der niedrigste Messwert für pm25k in DEBW046?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm25k"
+      }
+    },
+    {
+      "question": "Was war der niedrigste Messwert für pm25k in DEBW046?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW046"
+      }
+    },
+    {
+      "question": "Was war der niedrigtse Messwert für no2 in Schwarwald-Süd?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Was war der niedrigtse Messwert für no2 in Schwarwald-Süd?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Was war der niedrigtse Messwert für no2 in Schwarwald-Süd?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW031"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Feinstaub PM10 in Pfinztal Karlsruher Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Feinstaub PM10 in Pfinztal Karlsruher Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Feinstaub PM10 in Pfinztal Karlsruher Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW125"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Stickstoffdioxid in DEBW118?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Stickstoffdioxid in DEBW118?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Stickstoffdioxid in DEBW118?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW118"
+      }
+    },
+    {
+      "question": "Ist der pm10-Wert für die Station Leonberg Grabenstraße grenzwertig?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Ist der pm10-Wert für die Station Leonberg Grabenstraße grenzwertig?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW120"
+      }
+    },
+    {
+      "question": "Ist der Ozon-Wert für die Station DEBW059 grenzwertig?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Ist der Ozon-Wert für die Station DEBW059 grenzwertig?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW059"
+      }
+    },
+    {
+      "question": "Ist der luqx-Wert für die Station Eggenstein extrem?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Ist der luqx-Wert für die Station Eggenstein extrem?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW004"
+      }
+    },
+    {
+      "question": "Ist der Feinstaub PM25-Wert für die Station Karlsruhe-Nordwest gefährlich?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm25k"
+      }
+    },
+    {
+      "question": "Ist der Feinstaub PM25-Wert für die Station Karlsruhe-Nordwest gefährlich?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW081"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des Luftqualitätsindex in Aalen kritisch?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des Luftqualitätsindex in Aalen kritisch?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW029"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des luqx in Freiburg Schwarzwaldstraße kritisch?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des luqx in Freiburg Schwarzwaldstraße kritisch?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW122"
+      }
+    },
+    {
+      "question": "Wiee ist der o3 Wert in Karlsrueh-Nordwesst?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Wiee ist der o3 Wert in Karlsrueh-Nordwesst?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW081"
+      }
+    },
+    {
+      "question": "Wie ist der no2 Wert in DEBW073?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Wie ist der no2 Wert in DEBW073?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW073"
+      }
+    },
+    {
+      "question": "Wie ist der pm10 Wert in Schwäbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Wie ist der pm10 Wert in Schwäbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW087"
+      }
+    },
+    {
+      "question": "Wie ist der luqx in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Wie ist der luqx in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW122"
+      }
+    },
+    {
+      "question": "Wie ist der Wert des Ozons in Pforzheim?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Wie ist der Wert des Ozons in Pforzheim?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW033"
+      }
+    },
+    {
+      "question": "Wie ist der Stickstofffdioxidwrt in Freiberg Schwarzwaldstrasse?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Wie ist der Stickstofffdioxidwrt in Freiberg Schwarzwaldstrasse?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW122"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in LUBW082?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in LUBW082?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "LUBW082"
+      }
+    },
+    {
+      "question": "Wie ist der o3 in Reutlingen Lederstraße-Ost?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Wie ist der o3 in Reutlingen Lederstraße-Ost?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW147"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Mannheim Friedrichsring?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Mannheim Friedrichsring?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW098"
+      }
+    },
+    {
+      "question": "Wie ist der Stickstoffdioxidwert in Aalen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Wie ist der Stickstoffdioxidwert in Aalen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW029"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste der Luftqualitätsindex Werte der letzten Woche aus Freiburg.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste der Luftqualitätsindex Werte der letzten Woche aus Freiburg.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste der Luftqualitätsindex Werte der letzten Woche aus Freiburg.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW084"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tablle der luqx Werte der letzten Woche aus Redrichshafen.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tablle der luqx Werte der letzten Woche aus Redrichshafen.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tablle der luqx Werte der letzten Woche aus Redrichshafen.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW038"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der no2 Werte der letzten Woche aus Karlsruhe-Nordwest.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der no2 Werte der letzten Woche aus Karlsruhe-Nordwest.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der no2 Werte der letzten Woche aus Karlsruhe-Nordwest.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW081"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der no2 Werte der letzten Woche aus LUBW082.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der no2 Werte der letzten Woche aus LUBW082.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der no2 Werte der letzten Woche aus LUBW082.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "LUBW082"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der Ozonwerte der letzten Woche aus DEBW080.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der Ozonwerte der letzten Woche aus DEBW080.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der Ozonwerte der letzten Woche aus DEBW080.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW080"
+      }
+    },
+    {
+      "question": "Welcher Ozom Wert wird gerade in Ahlen gemessen? Repräsentiert als Textg.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Welcher Ozom Wert wird gerade in Ahlen gemessen? Repräsentiert als Textg.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW029"
+      }
+    },
+    {
+      "question": "Welcher Ozom Wert wird gerade in Ahlen gemessen? Repräsentiert als Textg.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Welcher Luftqualitätsindex Wert wird gerade in DEBW004 gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Welcher Luftqualitätsindex Wert wird gerade in DEBW004 gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW004"
+      }
+    },
+    {
+      "question": "Welcher Luftqualitätsindex Wert wird gerade in DEBW004 gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Welcher pm24k Wert wird gerade in Freiburg Schwartzwaldstraße gemessen? Repräsentiert als Tex.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm25k"
+      }
+    },
+    {
+      "question": "Welcher pm24k Wert wird gerade in Freiburg Schwartzwaldstraße gemessen? Repräsentiert als Tex.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW122"
+      }
+    },
+    {
+      "question": "Welcher pm24k Wert wird gerade in Freiburg Schwartzwaldstraße gemessen? Repräsentiert als Tex.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Wie hoch war der pm10 in DEBW125 gestern im Minimum?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Wie hoch war der pm10 in DEBW125 gestern im Minimum?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW125"
+      }
+    },
+    {
+      "question": "Wie hoch war der pm10 in DEBW125 gestern im Minimum?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Wie hoch war der Luftqualitätsindex in DEBW027 gestern im Durchschnitt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Wie hoch war der Luftqualitätsindex in DEBW027 gestern im Durchschnitt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW027"
+      }
+    },
+    {
+      "question": "Wie hoch war der Luftqualitätsindex in DEBW027 gestern im Durchschnitt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der minimale luqx in DEBW059?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der minimale luqx in DEBW059?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der minimale luqx in DEBW059?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW059"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der durchchnittliche pm10 in BEBW107?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der durchchnittliche pm10 in BEBW107?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der durchchnittliche pm10 in BEBW107?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW107"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Minimum vom pm25k in Biberach des letzten Jahres.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Minimum vom pm25k in Biberach des letzten Jahres.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm25k"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Minimum vom pm25k in Biberach des letzten Jahres.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW046"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Maximum vom Ozon in Mannheim Friedrichsring des letzten Jahres.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Maximum vom Ozon in Mannheim Friedrichsring des letzten Jahres.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Maximum vom Ozon in Mannheim Friedrichsring des letzten Jahres.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW098"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des Ozons in Schwäbische Alb kritisch?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des Ozons in Schwäbische Alb kritisch?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW087"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Ztabelle für den Duchschnit der pm10 Werte von Bernhauen für die letzten 5 Jahre.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Ztabelle für den Duchschnit der pm10 Werte von Bernhauen für die letzten 5 Jahre.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Ztabelle für den Duchschnit der pm10 Werte von Bernhauen für die letzten 5 Jahre.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Ztabelle für den Duchschnit der pm10 Werte von Bernhauen für die letzten 5 Jahre.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW042"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für den Durchschnitt der Stickstoffdioxid Werte von LUBW082 für die letzten 5 Jahre.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für den Durchschnitt der Stickstoffdioxid Werte von LUBW082 für die letzten 5 Jahre.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für den Durchschnitt der Stickstoffdioxid Werte von LUBW082 für die letzten 5 Jahre.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für den Durchschnitt der Stickstoffdioxid Werte von LUBW082 für die letzten 5 Jahre.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "LUBW082"
+      }
+    },
+    {
+      "question": "Was waren die Minma der Stickstoffdioxit Messungen der letzten Woche in DEBW004, repräsentiert als Graf?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Was waren die Minma der Stickstoffdioxit Messungen der letzten Woche in DEBW004, repräsentiert als Graf?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Was waren die Minma der Stickstoffdioxit Messungen der letzten Woche in DEBW004, repräsentiert als Graf?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW004"
+      }
+    },
+    {
+      "question": "Was waren die Minma der Stickstoffdioxit Messungen der letzten Woche in DEBW004, repräsentiert als Graf?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in DEBW033, repräsentiert als Graph?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in DEBW033, repräsentiert als Graph?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in DEBW033, repräsentiert als Graph?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW033"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in DEBW033, repräsentiert als Graph?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Gib mir den maximalen Luftqualitätsindexwert in DEBW084 der letzten 4 Tage als Graph.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Gib mir den maximalen Luftqualitätsindexwert in DEBW084 der letzten 4 Tage als Graph.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Gib mir den maximalen Luftqualitätsindexwert in DEBW084 der letzten 4 Tage als Graph.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW084"
+      }
+    },
+    {
+      "question": "Gib mir den maximalen Luftqualitätsindexwert in DEBW084 der letzten 4 Tage als Graph.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Luftqualitätsindexwert in DEBW098 der letzten 4 Tage als Liste.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Luftqualitätsindexwert in DEBW098 der letzten 4 Tage als Liste.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Luftqualitätsindexwert in DEBW098 der letzten 4 Tage als Liste.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW098"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Luftqualitätsindexwert in DEBW098 der letzten 4 Tage als Liste.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnitswerte der Luftqaulitätsindex Messungen der letzten Woche in Fridrichshaven, repräsentiert als Tabbelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnitswerte der Luftqaulitätsindex Messungen der letzten Woche in Fridrichshaven, repräsentiert als Tabbelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnitswerte der Luftqaulitätsindex Messungen der letzten Woche in Fridrichshaven, repräsentiert als Tabbelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW038"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnitswerte der Luftqaulitätsindex Messungen der letzten Woche in Fridrichshaven, repräsentiert als Tabbelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Wie war das Minimum Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Wie war das Maximum Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Wie war der Durchschnitt Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Wie war der minimum Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Wie war der maximum Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Wie war der average Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Wie war der durchschnittliche Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 6 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Wie ist der Ozon Wert in DEBW136 vom 01.06.2022 bis 05.06.2023, verglichen mit den Maximumswerten der letzten 2 Jahre repräsentiert als Liste?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Wie ist der luqx in Weil am Rhein vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 3 Jahre repräsentiert als Graph?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 01.06.2022 bis 05.06.2023, verglichen mit den Minimumswerten der letzten 2 Jahre repräsentiert als table?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Reutlingen Lederstraße-Ost vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 5 Jahre repräsentiert als list?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der durchschnittlichen Feinstaub PM10 Werte der letzten Woche aus DEBW033.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste des Maximums der pm25k Werte des letzten Monats aus DEBW031.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste des Minimums der Feinstaub PM10 Werte des letzten Monats aus DEBW156.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der durchschnittlichen Stickstoffdioxid Werte der letzten Woche aus Stuttgart Hohenheimer Straße.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen für das Maximum der Luftqualitätsindex Werte des letzten Monats aus DEBW156.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen für das Minimum der Ozonwerte des letzten Monats aus Weil am Rhein.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Welcher no2 Wert wurde gestern in Tübingen im Maximum gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Welcher Ozon Wert wurde gestern durchschnittlich in Schwäbische Alb gemessen? Repräsentiert als text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Welcher Feinstaub PM25 Wert wurde gestern in Schramberg Oberndorfer Straße im Durchschnitt gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Welcher pm10 Wert wurde gestern in Freiburg Schwarzwaldstraße im Maximum gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für das Maximum der Ozon Werte von DEBW073 für die letzten 4 Wochen.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Erstelle mir einen Graphen für das Minimum der Luftqualitätsindex Werte von Reutlingen für die letzten 5 Wochen.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Tabelle für das Maximum der Feinstaub PM25 Werte von Schwarzwald-Süd für die letzten 7 Monate.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Was war das Minimum der no2 Messungen der letzten Woche in LUBW082?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Was war das Maximum der o3 Messungen der letzten Woche in Aalen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "maximum"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der pm25k Messungen der letzten Woche in DEBW033, repräsentiert als Liste?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in Pfinztal Karlsruher Straße, repräsentiert als text?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Gib mir das Minimum des no2 in DEBW039 der letzten 7 Tage als Liste.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Feinstaub PM25 Wert in Stuttgart Hohenheimer Straße der letzten 2 Wochen als Tabelle.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "average"
+      }
+    },
+    {
+      "question": "Gib mir das Minimum des Stickstoffdioxidwert in DEBW005 der letzten 2 Monate als Graph.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfCalculation",
+        "<BODY>": "minimum"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Wie ist der Stickstoffdioxidwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Wie ist der Feinstaub PM10 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Wie ist der Feinstaub PM25 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm25k"
+      }
+    },
+    {
+      "question": "Wie ist der luqx Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Wie ist der no2 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "no2"
+      }
+    },
+    {
+      "question": "Wie ist der o3 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "o3"
+      }
+    },
+    {
+      "question": "Wie ist der pm10 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Wie ist der pm25k Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm25k"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindexwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Wie ist der Feinstaub PM10-Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm10"
+      }
+    },
+    {
+      "question": "Wie ist der Feinstaub PM25-Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "pm25k"
+      }
+    },
+    {
+      "question": "Was war gestern der Luftqualitätsindex in Ullm im Durchschnitt repräsentiert als Txt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfMeasurand",
+        "<BODY>": "luqx"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Text?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Liste?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Graph?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als table?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als list?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Gib mir den minimalen Ozonwert in DEBW022 der letzten 4 Tage als Tabelle.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 6 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Wie ist der Ozon Wert in DEBW136 vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 2 Jahre repräsentiert als Liste?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Wie ist der luqx in Weil am Rhein vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 3 Jahre repräsentiert als Graph?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 2 Jahre repräsentiert als table?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Reutlingen Lederstraße-Ost vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 5 Jahre repräsentiert als list?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der Feinstaub PM10 Werte der letzten Woche aus DEBW033.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste der pm25k Werte des letzten Monats aus DEBW031.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste der Feinstaub PM10 Werte des letzten Monats aus DEBW156.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der Stickstoffdioxid Werte der letzten Woche aus Stuttgart Hohenheimer Straße.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der Luftqualitätsindex Werte des letzten Monats aus DEBW156.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der Ozonwerte des letzten Monats aus Weil am Rhein.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Welcher no2 Wert wurde gestern in Tübingen gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Welcher Ozon Wert wurde gestern in Schwäbische Alb gemessen? Repräsentiert als text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Welcher Feinstaub PM25 Wert wurde gestern in Schramberg Oberndorfer Straße gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Welcher pm10 Wert wurde gestern in Freiburg Schwarzwaldstraße gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für das Maximum der Ozon Werte von DEBW073 für die letzten 4 Wochen.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Erstelle mir einen Graphen für das Minimum der Luftqualitätsindex Werte von Reutlingen für die letzten 5 Wochen.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Tabelle für das Maximum der Feinstaub PM25 Werte von Schwarzwald-Süd für die letzten 7 Monate.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Was waren die Minima der no2 Messungen der letzten Woche in LUBW082, repräsentiert als Graph?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Was waren die Maxima der o3 Messungen der letzten Woche in Aalen, repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der pm25k Messungen der letzten Woche in DEBW033, repräsentiert als Liste?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in Pfinztal Karlsruher Straße, repräsentiert als text?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "text"
+      }
+    },
+    {
+      "question": "Gib mir den minimalen no2 in DEBW039 der letzten 7 Tage als Liste.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "list"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Feinstaub PM25 Wert in Stuttgart Hohenheimer Straße der letzten 2 Wochen als Tabelle.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "table"
+      }
+    },
+    {
+      "question": "Gib mir den minimalen Stickstoffdioxidwert in DEBW005 der letzten 2 Monate als Graph.",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfRepresentation",
+        "<BODY>": "graph"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW019"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Aalen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW029"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Baden-Baden?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW076"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Bernhausen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW042"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Biberach?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW046"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Eggenstein?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW004"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Freiburg?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW084"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW122"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Friedrichshafen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW038"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Gärtringen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW112"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Heidelberg?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW009"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Heilbronn?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW015"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Heilbronn Weinsberger Straße-Ost?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW152"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Karlsruhe-Nordwest?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW081"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Karlsruhe Reinhold-Frank-Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW080"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Kehl?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW022"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Konstanz?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW052"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Leonberg Grabenstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW120"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ludwigsburg?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW024"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ludwigsburg Schlossstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW241"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Mannheim Friedrichsring?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW098"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Mannheim-Nord?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW005"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Neuenburg?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW073"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Pfinztal Karlsruher Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW125"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Pforzheim?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW033"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Reutlingen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW027"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Reutlingen Lederstraße-Ost?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW147"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Schramberg Oberndorfer Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW156"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Schwäbische Alb?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW087"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Schwarzwald-Süd?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW031"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Stuttgart Am Neckartor?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW118"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Stuttgart Arnulf-Klett-Platz?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW099"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Stuttgart-Bad Cannstatt?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW013"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Stuttgart Hauptstätter Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "LUBW082"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Stuttgart Hohenheimer Straße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW116"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Tauberbischofsheim?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW059"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Tübingen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW107"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Tübingen Mühlstraße?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW136"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Villingen-Schwenningen?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW039"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Weil am Rhein?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW023"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Wiesloch?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW010"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW029?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW029"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW076?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW076"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW042?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW042"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW046?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW046"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW004?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW004"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW084?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW084"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW122?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW122"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW038?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW038"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW009?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW009"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW015?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW015"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW152?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW152"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW081?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW081"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW080?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW080"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW022?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW022"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW052?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW052"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW120?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW120"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW024?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW024"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW241?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW241"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW098?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW098"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW005?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW005"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW073?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW073"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW125?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW125"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW033?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW033"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW027?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW027"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW147?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW147"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW156?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW156"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW087?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW087"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW031?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW031"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW118?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW118"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW099?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW099"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW013?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW013"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in LUBW082?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "LUBW082"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW116?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW116"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW059?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW059"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW107?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW107"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW136?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW136"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW019?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW019"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW039?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW039"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW023?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW023"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in DEBW010?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfStation",
+        "<BODY>": "DEBW010"
+      }
+    },
+
+    {
+      "question": "Wie war gestern der Ozonwert in Ulm?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfTime",
+        "<BODY>": "{\"text\":\"23.01.2023 bis 29.01.2023\",\"start\":\"2023-01-23T12:00:00.000Z\",\"end\":\"2023-01-29T12:00:00.000Z\"}"
+      }
+    },
+    {
+      "question": "Wie war vorgestern der Ozonwert in Ulm?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfTime",
+        "<BODY>": "{\"text\":\"23.01.2023 bis 29.01.2023\",\"start\":\"2023-01-23T12:00:00.000Z\",\"end\":\"2023-01-29T12:00:00.000Z\"}"
+      }
+    },
+    {
+      "question": "Wie wird morgen der Ozonwert in Ulm?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfTime",
+        "<BODY>": "{\"text\":\"23.01.2023 bis 29.01.2023\",\"start\":\"2023-01-23T12:00:00.000Z\",\"end\":\"2023-01-29T12:00:00.000Z\"}"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ulm am 23.01.2023?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfTime",
+        "<BODY>": "{\"text\":\"23.01.2023\",\"start\":\"2023-01-23T12:00:00.000Z\"}"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023?",
+      "replacements": {
+        "<ANNOTATION>": "qa:AnnotationOfTime",
+        "<BODY>": "{\"text\":\"23.01.2023 bis 29.01.2023\",\"start\":\"2023-01-23T12:00:00.000Z\",\"end\":\"2023-01-29T12:00:00.000Z\"}"
+      }
+    }
+  ]
+}

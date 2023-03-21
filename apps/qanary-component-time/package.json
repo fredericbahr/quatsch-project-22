@@ -23,7 +23,7 @@
     "qanary-component-core": "*",
     "qanary-component-helpers": "*",
     "shared": "*",
-    "chrono-node": "2.5.0"
+    "chrono-node": "^2.6.1"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

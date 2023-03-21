@@ -1,0 +1,50 @@
+{
+    "qanary": {
+        "system_url": "http://qanary-pipeline:40111/startquestionansweringwithtextquestion",
+        "componentlist": [
+            "qanary-component-time"
+        ],
+        "additionalTriples": ""
+    },
+    "validation-sparql-templates": [
+        "0_was-any-instance-identified.sparql",
+        "1_was-the-expected-instance-recognized.sparql"
+    ],
+    "tests": [
+        {
+            "question": "Wie ist der Ozonwert in Ulm am 23.01.2023?",
+            "replacements": {
+                "<BODY>": "'{\"text\":\"23.01.2023\",\"start\":\"2023-01-23T12:00:00.000Z\"}'",
+                "<SCORE>": "1"
+            }
+        },
+        {
+            "question": "Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023?",
+            "replacements": {
+                "<BODY>": "'{\"text\":\"23.01.2023 bis 29.01.2023\",\"start\":\"2023-01-23T12:00:00.000Z\",\"end\":\"2023-01-29T12:00:00.000Z\"}'",
+                "<SCORE>": "1"
+            }
+        },
+        {
+            "question": "Ist der Ozonwert in Aalen am 24.06.2022 grenzwertig?",
+            "replacements": {
+                "<BODY>": "'{\"text\":\"24.06.2022\",\"start\":\"2022-06-24T12:00:00.000Z\"}'",
+                "<SCORE>": "1"
+            }
+        },
+        {
+            "question": "Wie ist minimale der Luftqualitätsindex-Wert in Karlsruhe-Nordwest vom 01.01.2021 bis 31.01.2023?",
+            "replacements": {
+                "<BODY>": "'{\"text\":\"01.01.2021 bis 31.01.2023\",\"start\":\"2021-01-01T12:00:00.000Z\",\"end\":\"2023-01-31T12:00:00.000Z\"}'",
+                "<SCORE>": "1"
+            }
+        },
+        {
+            "question": "Wie ist das Maximum des Luftqualitätsindex-Wertes in Karlsruhe-Nordwest vom 01.01.2023 bis 31.01.2021?",
+            "replacements": {
+                "<BODY>": "'{\"text\":\"01.01.2023 bis 31.01.2021\",\"start\":\"2021-01-31T12:00:00.000Z\",\"end\":\"2023-01-01T12:00:00.000Z\"}'",
+                "<SCORE>": "1"
+            }
+        }
+    ]
+}

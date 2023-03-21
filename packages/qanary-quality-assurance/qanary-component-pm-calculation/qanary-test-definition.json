@@ -1,0 +1,356 @@
+{
+  "qanary": {
+    "system_url": "http://qanary-pipeline:40111/startquestionansweringwithtextquestion",
+    "componentlist": ["qanary-component-pm-calculation"],
+    "additionalTriples": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX dc: <http://purl.org/dc/elements/1.1/>\n<urn:calculation> a <rdfs:Class> .\n<urn:minimum> a <urn:calculation> ;\n  dc:identifier \"minimum\" ;\n  rdfs:label \"Minimum\" .\n<urn:maximum> a <urn:calculation> ;\n  dc:identifier \"maximum\" ;\n  rdfs:label \"Maximum\" .\n<urn:average> a <urn:calculation> ;\n  dc:identifier \"average\" ;\n  rdfs:label \"Durchschnitt\" ."
+  },
+  "validation-sparql-templates": [
+    "0_was-any-instance-identified.sparql",
+    "1_was-the-expected-instance-recognized.sparql"
+  ],
+  "tests": [
+    {
+      "question": "Wie war das Minimum Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie war das Maximum Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie war der Durchschnitt Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie war der minimum Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie war der maximum Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie war der average Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie war der durchschnittliche Ozonwert in Ulm in den letzten 10 Jahren?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war gestern der Luftqaulitätsinndex in Ullm im Durchschnitt repräsentiert als Txt?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Maximum?",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Feinstaub PM25 in Heilbronn?",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Ozon in Tübingen?",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Minimum?",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Feinstaub PM10 in Pfinztal Karlsruher Straße?",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Stickstoffdioxid in DEBW118?",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie hoch war der pm10 in DEBW125 gestern im Minimum?",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie hoch war der Luftqualitätsindex in DEBW027 gestern im Durchschnitt?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der durchschnittliche pm10 in DEBW107?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Minimum vom pm25k in Biberach des letzten Jahres.",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Maximum vom Ozon in Mannheim Friedrichsring des letzten Jahres.",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Tabelle für den Durchschnitt der pm10 Werte von Bernhausen für die letzten 5 Jahre.",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für den Durchschnitt der Stickstoffdioxid Werte von LUBW082 für die letzten 5 Jahre.",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in DEBW033, repräsentiert als Graph?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Luftqualitätsindexwert in DEBW098 der letzten 4 Tage als Liste.",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 6 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Ozon Wert in DEBW136 vom 01.06.2022 bis 05.06.2023, verglichen mit den Maximumswerten der letzten 2 Jahre repräsentiert als Liste?",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der luqx in Weil am Rhein vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 3 Jahre repräsentiert als Graph?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 01.06.2022 bis 05.06.2023, verglichen mit den Minimumswerten der letzten 2 Jahre repräsentiert als table?",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Reutlingen Lederstraße-Ost vom 01.06.2022 bis 05.06.2023, verglichen mit den Durchschnittswerten der letzten 5 Jahre repräsentiert als list?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der durchschnittlichen Feinstaub PM10 Werte der letzten Woche aus DEBW033.",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste des Maximums der pm25k Werte des letzten Monats aus DEBW031.",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste des Minimums der Feinstaub PM10 Werte des letzten Monats aus DEBW156.",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der durchschnittlichen Stickstoffdioxid Werte der letzten Woche aus Stuttgart Hohenheimer Straße.",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen für das Maximum der Luftqualitätsindex Werte des letzten Monats aus DEBW156.",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen für das Minimum der Ozonwerte des letzten Monats aus Weil am Rhein.",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher no2 Wert wurde gestern in Tübingen im Maximum gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher Ozon Wert wurde gestern durchschnittlich in Schwäbische Alb gemessen? Repräsentiert als text.",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher Feinstaub PM25 Wert wurde gestern in Schramberg Oberndorfer Straße im Durchschnitt gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher pm10 Wert wurde gestern in Freiburg Schwarzwaldstraße im Maximum gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für das Maximum der Ozon Werte von DEBW073 für die letzten 4 Wochen.",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Erstelle mir einen Graphen für das Minimum der Luftqualitätsindex Werte von Reutlingen für die letzten 5 Wochen.",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Tabelle für das Maximum der Feinstaub PM25 Werte von Schwarzwald-Süd für die letzten 7 Monate.",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Minimum der no2 Messungen der letzten Woche in LUBW082?",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Maximum der o3 Messungen der letzten Woche in Aalen?",
+      "replacements": {
+        "<CALCULATION>": "maximum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der pm25k Messungen der letzten Woche in DEBW033, repräsentiert als Liste?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in Pfinztal Karlsruher Straße, repräsentiert als text?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Gib mir das Minimum des no2 in DEBW039 der letzten 7 Tage als Liste.",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Feinstaub PM25 Wert in Stuttgart Hohenheimer Straße der letzten 2 Wochen als Tabelle.",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Gib mir das Minimum des Stickstoffdioxidwert in DEBW005 der letzten 2 Monate als Graph.",
+      "replacements": {
+        "<CALCULATION>": "minimum",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnitswerte der Luftqaulitätsindex Messungen der letzten Woche in Fridrichshaven, repräsentiert als Tabbelle?",
+      "replacements": {
+        "<CALCULATION>": "average",
+        "<SCORE>": "0.0"
+      }
+    }
+  ]
+}

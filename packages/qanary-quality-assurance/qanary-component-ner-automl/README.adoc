@@ -1,0 +1,33 @@
+= Qanary Tests for compontent "qanary-component-ner-automl"
+:toc:
+
+This is a minimal example of evaluating a https://github.com/WDAqua/Qanary[Qanary] Question Answering system.
+
+== Example System
+
+To execute the evaluation, you need to have a running Qanary system and need to store the configuration of the Qanary system in a file called link:qanary-test-definition.json[`qanary-test-definition.json`] in this folder. 
+
+Here 1 component is used in the Qanary system:
+
+- qanary-component-ner-automl
+
+== Test Configuration
+
+The test configuration is stored in the file link:qanary-test-definition.json[`qanary-test-definition.json`]. 
+The configuration contains the following properties:
+
+. The configuration contains 2 tests expressed by SPAQRL queries (configured in the file `qanary-test-definition.json` by the property `validation-sparql-templates`):
+
+.. *0_was-any-instance-identified.sparql:* Calculate the number of annotated entities and checks if there is at least one corresponding annotation.
+.. *1_was-the-expected-instance-recognized.sparql:* Validate if the pre-defined values for test-case-specific replacements/placeholders are available in the graph as annotation of type `AnnotationOfInstance`.
+
+== Execution of Quality Evaluation Script
+
+To execute the evaluation, use the following command in the *parent directory* of this folder:
+
+[,shell]
+----
+python evaluate-qanary-system.py --directory=qanary-component-ner-automl
+----
+
+The results will be stored in the folder link:./output[`output`].

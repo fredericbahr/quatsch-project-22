@@ -1,0 +1,57 @@
+= Qanary Quality Assurance
+:toc:
+
+A documentation and guide for setting up a qanary component.
+
+== Basic
+
+The Qanary Quality Assurance tests the quality of the question-answering system and its components. It is a test framework that is part of the Qanary ecosystem. 
+
+Tests are written in SPARQL and are executed on the knowledge graph.
+Expected behavior is defined in the test cases as SPARQL-Ask queries that should find the expected triples in the knowledge graph.
+
+== Prerequisites
+
+- Docker
+- Qanary Pipeline and Qanary Components started
+- add an alias for the qanary pipeline to your hosts file (e.g. 127.0.0.1 qanary-pipeline)
+
+== Usage
+
+To run the Qanary Quality Assurance tests one have two options:
+
+1. Run the Qanary Quality Assurance tests as a Docker container
+
+2. Run the Qanary Quality Assurance tests as a python script
+
+=== Run the Qanary Quality Assurance tests as a Docker container
+
+To run the Qanary Quality Assurance tests as a Docker container, you have to build the Docker image first. To do so, you have to run the following command in the root directory of the Qanary Quality Assurance package:
+
+[source, bash]
+docker build -t qanary_quality_assurance .
+
+After the Docker image is built, you can run the Qanary Quality Assurance tests as a Docker container. To do so, you have to run the following command in the root directory of the Qanary Quality Assurance package:
+
+[source, bash]
+
+docker run --net=host python3 evaluate-qanary-system.py --directory=<your-directory>
+
+Alternatively, you can run the Qanary Quality Assurance tests via npm scripts as follow:
+
+[source, bash]
+npm run qa:all
+
+This will run the Qanary Quality Assurance tests for all components inside a Docker container. Make sure that you started the Qanary Pipeline and Qanary Components before running the Qanary Quality Assurance tests via `docker compose` as the Quality Assurance tests will try to connect to the created network.
+
+=== Run the Qanary Quality Assurance tests as a python script
+
+To run the Qanary Quality Assurance tests as a python script, you have to install the requirements first. To do so, you have to run the following command in the root directory of the Qanary Quality Assurance package:
+
+[source, bash]
+RUN pip3 install -r requirements.txt
+
+After the requirements are installed, you can run the Qanary Quality Assurance tests as a python script. To do so, you have to run the following command in the root directory of the Qanary Quality Assurance package:
+
+[source, bash]
+python3 evaluate-qanary-system.py --directory=<your-directory>

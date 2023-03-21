@@ -1,0 +1,482 @@
+{
+  "qanary": {
+    "system_url": "http://qanary-pipeline:40111/startquestionansweringwithtextquestion",
+    "componentlist": ["qanary-component-pm-measurand"],
+    "additionalTriples": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX dc: <http://purl.org/dc/elements/1.1/>\nPREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos>\n\n<urn:measurand> a <rdfs:Class> .\n<urn:station> a <rdfs:Class> .\n<urn:calculation> a <rdfs:Class> .\n<urn:representation> a <rdfs:Class> .\n<urn:time> a <rdfs:Class> .\n\n<urn:luqx> a <urn:measurand> ;\n  dc:identifier \"luqx\" ;\n  rdfs:label \"Luftqualitätsindex\" .\n<urn:no2> a <urn:measurand> ;\n  dc:identifier \"no2\" ;\n  rdfs:label \"Stickstoffdioxid\" .\n<urn:o3> a <urn:measurand> ;\n  dc:identifier \"o3\" ;\n  rdfs:label \"Ozon\" .\n<urn:pm10> a <urn:measurand> ;\n  dc:identifier \"pm10\" ;\n  rdfs:label \"Feinstaub PM10\" .\n<urn:pm25k> a <urn:measurand> ;\n  dc:identifier \"pm25k\" ;\n  rdfs:label \"Feinstaub PM25\" ."
+  },
+  "validation-sparql-templates": [
+    "0_was-any-instance-identified.sparql",
+    "1_was-the-expected-instance-recognized.sparql"
+  ],
+  "tests": [
+    {
+      "question": "Wie ist der Luftqualitätsindex in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Stickstoffdioxidwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Feinstaub PM10 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Feinstaub PM25 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "pm25k",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der luqx Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der no2 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der o3 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der pm10 Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der pm25k Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "pm25k",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindexwert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Feinstaub PM10-Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Feinstaub PM25-Wert in Ulm vom 23.01.2023 bis 29.01.2023, verglichen mit den Durchschnittswerten der letzten 10 Jahre repräsentiert als Tabelle?",
+      "replacements": {
+        "<MEASURAND>": "pm25k",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war gestern der Luftqualitätsindex in Ullm im Durchschnitt repräsentiert als Txt?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in Ulm?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher ist der maximale Messwert für luqx in DEBW152?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher ist der maximale Messwert für Stickstoffdioxid in Schwäbische Alb?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für Feinstaub PM10 in Freiburg?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für o3 in Schramberg Oberndorfer Straße?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war der höchste Messwert für Luftqualitätsindex in DEBW019?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Feinstaub PM25 in Heilbronn?",
+      "replacements": {
+        "<MEASURAND>": "pm25k",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Maximum für Ozon in Tübingen?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für Ozon in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für Stickstoffdioxid in Schwäbische Alb?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher ist der minimale Messwert für o3 in DEBW033?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war der niedrigste Messwert für pm25k in DEBW046?",
+      "replacements": {
+        "<MEASURAND>": "pm25k",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war der niedrigste Messwert für no2 in Schwarzwald-Süd?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Feinstaub PM10 in Pfinztal Karlsruher Straße?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was war das Minimum für Stickstoffdioxid in DEBW118?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ist der pm10-Wert für die Station Leonberg Grabenstraße grenzwertig?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ist der Ozon-Wert für die Station DEBW059 grenzwertig?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ist der luqx-Wert für die Station Eggenstein extrem?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ist der Feinstaub PM25-Wert für die Station Karlsruhe-Nordwest gefährlich?",
+      "replacements": {
+        "<MEASURAND>": "pm25k",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des Luftqualitätsindex in Aalen kritisch?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des luqx in Freiburg Schwarzwaldstraße kritisch?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der o3 Wert in Karlsruhe-Nordwest?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der no2 Wert in DEBW073?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der pm10 Wert in Schwäbische Alb?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der luqx in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Wert des Ozons in Pforzheim?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Stickstoffdioxidwert in Freiburg Schwarzwaldstraße?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Ozonwert in LUBW082?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der o3 in Reutlingen Lederstraße-Ost?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Luftqualitätsindex in Mannheim Friedrichsring?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie ist der Stickstoffdioxidwert in Aalen?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir eine Liste der Luftqualitätsindex Werte der letzten Woche aus Freiburg.",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der luqx Werte der letzten Woche aus Friedrichshafen.",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir eine Tabelle der no2 Werte der letzten Woche aus Karlsruhe-Nordwest.",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der no2 Werte der letzten Woche aus LUBW082.",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Zeig mir einen Graphen der Ozonwerte der letzten Woche aus DEBW080.",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher Ozon Wert wird gerade in Aalen gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher Luftqualitätsindex Wert wird gerade in DEBW004 gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Welcher pm25k Wert wird gerade in Freiburg Schwarzwaldstraße gemessen? Repräsentiert als Text.",
+      "replacements": {
+        "<MEASURAND>": "pm25k",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie hoch war der pm10 in DEBW125 gestern im Minimum?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie hoch war der Luftqualitätsindex in DEBW027 gestern im Durchschnitt?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der minimale luqx in DEBW059?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Wie hoch war gestern der durchschnittliche pm10 in DEBW107?",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Minimum vom pm25k in Biberach des letzten Jahres.",
+      "replacements": {
+        "<MEASURAND>": "pm25k",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ich hätte gerne das Maximum vom Ozon in Mannheim Friedrichsring des letzten Jahres.",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Ist der aktuelle Wert des Ozons in Schwäbische Alb kritisch?",
+      "replacements": {
+        "<MEASURAND>": "o3",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Tabelle für den Durchschnitt der pm10 Werte von Bernhausen für die letzten 5 Jahre.",
+      "replacements": {
+        "<MEASURAND>": "pm10",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Erstelle mir eine Liste für den Durchschnitt der Stickstoffdioxid Werte von LUBW082 für die letzten 5 Jahre.",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was waren die Minima der Stickstoffdioxid Messungen der letzten Woche in DEBW004, repräsentiert als Graph?",
+      "replacements": {
+        "<MEASURAND>": "no2",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnittswerte der Luftqualitätsindex Messungen der letzten Woche in DEBW033, repräsentiert als Graph?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Gib mir den maximalen Luftqualitätsindexwert in DEBW084 der letzten 4 Tage als Graph.",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Gib mir den durchschnittlichen Luftqualitätsindexwert in DEBW098 der letzten 4 Tage als Liste.",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "1.0"
+      }
+    },
+    {
+      "question": "Was waren die Durchschnitswerte der Luftqaulitätsindex Messungen der letzten Woche in Fridrichshaven, repräsentiert als Tabbelle?",
+      "replacements": {
+        "<MEASURAND>": "luqx",
+        "<SCORE>": "0.0"
+      }
+    }
+  ]
+}
